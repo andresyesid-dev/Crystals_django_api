@@ -1,0 +1,53 @@
+INFO 2025-09-29 01:15:51,814 autoreload 30653 8601153088 Watching for file changes with StatReloader
+INFO 2025-09-29 01:17:59,618 autoreload 30653 8601153088 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/user_view.py changed, reloading.
+INFO 2025-09-29 01:18:00,171 autoreload 30726 8670006848 Watching for file changes with StatReloader
+INFO 2025-09-29 01:18:07,666 autoreload 30726 8670006848 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-09-29 01:18:08,106 autoreload 30743 8644742720 Watching for file changes with StatReloader
+INFO 2025-09-29 01:18:13,539 autoreload 30743 8644742720 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-09-29 01:18:13,981 autoreload 30755 8598941248 Watching for file changes with StatReloader
+INFO 2025-09-29 01:18:19,345 autoreload 30755 8598941248 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-09-29 01:18:19,783 autoreload 30763 8603110976 Watching for file changes with StatReloader
+INFO 2025-09-29 01:19:36,849 autoreload 30763 8603110976 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/urls.py changed, reloading.
+INFO 2025-09-29 01:19:38,170 autoreload 30814 8642006592 Watching for file changes with StatReloader
+INFO 2025-09-29 01:19:46,762 autoreload 30814 8642006592 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/urls.py changed, reloading.
+INFO 2025-09-29 01:19:47,229 autoreload 30824 8600587840 Watching for file changes with StatReloader
+INFO 2025-09-29 01:19:59,966 autoreload 30824 8600587840 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/urls.py changed, reloading.
+INFO 2025-09-29 01:20:00,427 autoreload 30832 8601796160 Watching for file changes with StatReloader
+INFO 2025-09-29 01:20:07,917 autoreload 30832 8601796160 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_project/settings.py changed, reloading.
+INFO 2025-09-29 01:20:08,372 autoreload 30850 8603741760 Watching for file changes with StatReloader
+INFO 2025-09-29 01:42:54,911 autoreload 30850 8603741760 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/utils.py changed, reloading.
+INFO 2025-09-29 01:42:56,315 autoreload 31275 8636956224 Watching for file changes with StatReloader
+WARNING 2025-09-29 01:43:07,911 log 31275 13026832384 Not Found: /
+WARNING 2025-09-29 01:43:07,912 basehttp 31275 13026832384 "GET / HTTP/1.1" 404 20856
+INFO 2025-09-29 01:43:50,068 basehttp 31275 13026832384 "GET /activation/status HTTP/1.1" 200 17
+WARNING 2025-09-29 01:44:13,377 log 31275 13026832384 Not Found: /auth/login/ [name='login']
+WARNING 2025-09-29 01:44:13,378 basehttp 31275 13026832384 "GET /auth/login/%20[name='login'] HTTP/1.1" 404 20990
+INFO 2025-09-29 03:10:39,377 autoreload 32607 8659852864 Watching for file changes with StatReloader
+WARNING 2025-09-29 03:10:46,390 log 32607 13073936384 Not Found: /
+WARNING 2025-09-29 03:10:46,390 basehttp 32607 13073936384 "GET / HTTP/1.1" 404 20856
+INFO 2025-09-29 03:15:35,186 autoreload 33197 8670801472 Watching for file changes with StatReloader
+WARNING 2025-09-29 03:17:17,032 log 33197 13096759296 Unauthorized: /auth/login/
+WARNING 2025-09-29 03:17:17,033 basehttp 33197 13096759296 "POST /auth/login/ HTTP/1.1" 401 31
+INFO 2025-09-29 03:20:12,752 basehttp 33197 13096759296 "POST /auth/login/ HTTP/1.1" 200 654
+WARNING 2025-09-29 03:20:48,912 log 33197 13096759296 Unauthorized: /calibration/list
+WARNING 2025-09-29 03:20:48,912 basehttp 33197 13096759296 "GET /calibration/list HTTP/1.1" 401 93
+INFO 2025-09-29 03:36:53,438 basehttp 33197 13096759296 "GET /calibration/list HTTP/1.1" 200 15
+WARNING 2025-09-29 03:38:34,639 log 33197 13096759296 Unauthorized: /security/dashboard/
+WARNING 2025-09-29 03:38:34,640 basehttp 33197 13096759296 "GET /security/dashboard/ HTTP/1.1" 401 63
+INFO 2025-09-29 03:38:57,533 basehttp 33197 13096759296 "POST /auth/login/ HTTP/1.1" 200 654
+WARNING 2025-09-29 03:45:57,174 log 33197 13096759296 Forbidden: /security/dashboard/
+WARNING 2025-09-29 03:45:57,175 basehttp 33197 13096759296 "GET /security/dashboard/ HTTP/1.1" 403 65
+WARNING 2025-09-29 03:47:20,584 log 33197 13096759296 Unauthorized: /auth/login/
+WARNING 2025-09-29 03:47:20,584 basehttp 33197 13096759296 "POST /auth/login/ HTTP/1.1" 401 31
+WARNING 2025-09-29 03:47:22,176 log 33197 13096759296 Unauthorized: /auth/login/
+WARNING 2025-09-29 03:47:22,176 basehttp 33197 13096759296 "POST /auth/login/ HTTP/1.1" 401 31
+WARNING 2025-09-29 03:47:23,542 log 33197 13096759296 Unauthorized: /auth/login/
+WARNING 2025-09-29 03:47:23,543 basehttp 33197 13096759296 "POST /auth/login/ HTTP/1.1" 401 31
+WARNING 2025-09-29 03:47:24,855 log 33197 13096759296 Unauthorized: /auth/login/
+WARNING 2025-09-29 03:47:24,856 basehttp 33197 13096759296 "POST /auth/login/ HTTP/1.1" 401 31
+WARNING 2025-09-29 03:47:26,246 log 33197 13096759296 Unauthorized: /auth/login/
+WARNING 2025-09-29 03:47:26,247 basehttp 33197 13096759296 "POST /auth/login/ HTTP/1.1" 401 31
+WARNING 2025-09-29 03:47:26,266 log 33197 13096759296 Too Many Requests: /auth/login/
+WARNING 2025-09-29 03:47:26,266 basehttp 33197 13096759296 "POST /auth/login/ HTTP/1.1" 429 64
+WARNING 2025-09-29 03:47:26,279 log 33197 13096759296 Too Many Requests: /auth/login/
+WARNING 2025-09-29 03:47:26,279 basehttp 33197 13096759296 "POST /auth/login/ HTTP/1.1" 429 64

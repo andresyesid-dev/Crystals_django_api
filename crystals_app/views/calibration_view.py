@@ -4,6 +4,7 @@ from django.views.decorators.http import require_http_methods
 from django.forms.models import model_to_dict
 from django.db import transaction
 from ..models import Calibration
+from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
 import json
 
 
@@ -15,6 +16,9 @@ def _parse_json(request: HttpRequest):
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def select_calibrations(request: HttpRequest):
     qs = Calibration.objects.all().order_by("-active", "name")
     data = [model_to_dict(o) for o in qs]
@@ -42,6 +46,9 @@ def select_active_calibration(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('calibration')
+@sensitive_endpoint
 def set_calibration_as_active(request: HttpRequest):
     payload = _parse_json(request)
     name = payload.get("name")

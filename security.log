@@ -1,0 +1,22 @@
+[SECURITY] 2025-09-29 03:17:17,027 WARNING Login attempt for non-existent user: admin - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:17:17,030 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:20:12,732 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-09-29 03:20:48,910 WARNING JWT token missing for protected endpoint: /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:20:48,911 WARNING Unauthorized access to /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:36:53,279 WARNING API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-09-29 03:38:34,634 WARNING Invalid JWT token for endpoint: /security/dashboard/ - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is invalid', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:38:34,638 WARNING Unauthorized access to /security/dashboard/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:38:57,530 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-09-29 03:45:57,170 WARNING Non-admin user admin tried to access admin endpoint: /security/dashboard/ - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-09-29 03:47:20,578 WARNING Login attempt for non-existent user: wrong - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:47:20,583 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:47:22,175 WARNING Login attempt for non-existent user: wrong - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:47:22,175 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:47:23,540 WARNING Login attempt for non-existent user: wrong - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:47:23,541 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:47:24,853 WARNING Login attempt for non-existent user: wrong - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:47:24,854 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:47:26,245 WARNING Login attempt for non-existent user: wrong - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:47:26,245 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:47:26,265 WARNING Brute force attack detected from IP: 127.0.0.1 - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-09-29 03:47:26,279 WARNING Brute force attack detected from IP: 127.0.0.1 - IP: 127.0.0.1 - User: Anonymous

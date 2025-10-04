@@ -2,6 +2,7 @@ from django.urls import path
 from .views import (
 	activation_view,
 	analysiscategory_view,
+	auth_view,
 	brixcalculatordata_view,
 	calibration_view,
 	company_view,
@@ -30,9 +31,26 @@ from .views import (
 	newparametersanalysiscategory_view,
 	processcodedata_view,
 	refinocalculation_view,
+	security_view,
 	specificreportingorder_view,
 	user_view,
 )
+
+# Authentication and Security URLs
+auth_urls = [
+	path('auth/login/', auth_view.login, name='login'),
+	path('auth/logout/', auth_view.logout, name='logout'),
+	path('auth/refresh/', auth_view.refresh_token, name='refresh_token'),
+	path('auth/verify/', auth_view.verify_token, name='verify_token'),
+	path('auth/profile/', auth_view.user_profile, name='user_profile'),
+]
+
+security_urls = [
+	path('security/dashboard/', security_view.security_dashboard, name='security_dashboard'),
+	path('security/block-ip/', security_view.block_ip_endpoint, name='block_ip'),
+	path('security/unblock-ip/', security_view.unblock_ip_endpoint, name='unblock_ip'),
+	path('security/logs/', security_view.security_logs, name='security_logs'),
+]
 
 # Per-model route lists
 activation_urls = [
@@ -234,7 +252,9 @@ user_urls = [
 ]
 
 urlpatterns = (
-	activation_urls
+	auth_urls
+	+ security_urls
+	+ activation_urls
 	+ analysiscategory_urls
 	+ brixcalculator_urls
 	+ calibration_urls

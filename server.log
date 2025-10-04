@@ -1,0 +1,48 @@
+INFO Watching for file changes with StatReloader
+WARNING Login attempt for non-existent user: admin
+WARNING Unauthorized access to /auth/login/
+WARNING Unauthorized: /auth/login/
+WARNING "POST /auth/login/ HTTP/1.1" 401 31
+WARNING Successful login for user: admin
+INFO "POST /auth/login/ HTTP/1.1" 200 654
+WARNING JWT token missing for protected endpoint: /calibration/list
+WARNING Unauthorized access to /calibration/list
+WARNING Unauthorized: /calibration/list
+WARNING "GET /calibration/list HTTP/1.1" 401 93
+WARNING API access: GET /calibration/list
+INFO "GET /calibration/list HTTP/1.1" 200 15
+WARNING Invalid JWT token for endpoint: /security/dashboard/ - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is invalid', code='token_not_valid')}]}
+WARNING Unauthorized access to /security/dashboard/
+WARNING Unauthorized: /security/dashboard/
+WARNING "GET /security/dashboard/ HTTP/1.1" 401 63
+WARNING Successful login for user: admin
+INFO "POST /auth/login/ HTTP/1.1" 200 654
+WARNING Non-admin user admin tried to access admin endpoint: /security/dashboard/
+WARNING Forbidden: /security/dashboard/
+WARNING "GET /security/dashboard/ HTTP/1.1" 403 65
+WARNING Login attempt for non-existent user: wrong
+WARNING Unauthorized access to /auth/login/
+WARNING Unauthorized: /auth/login/
+WARNING "POST /auth/login/ HTTP/1.1" 401 31
+WARNING Login attempt for non-existent user: wrong
+WARNING Unauthorized access to /auth/login/
+WARNING Unauthorized: /auth/login/
+WARNING "POST /auth/login/ HTTP/1.1" 401 31
+WARNING Login attempt for non-existent user: wrong
+WARNING Unauthorized access to /auth/login/
+WARNING Unauthorized: /auth/login/
+WARNING "POST /auth/login/ HTTP/1.1" 401 31
+WARNING Login attempt for non-existent user: wrong
+WARNING Unauthorized access to /auth/login/
+WARNING Unauthorized: /auth/login/
+WARNING "POST /auth/login/ HTTP/1.1" 401 31
+WARNING Login attempt for non-existent user: wrong
+WARNING Unauthorized access to /auth/login/
+WARNING Unauthorized: /auth/login/
+WARNING "POST /auth/login/ HTTP/1.1" 401 31
+WARNING Brute force attack detected from IP: 127.0.0.1
+WARNING Too Many Requests: /auth/login/
+WARNING "POST /auth/login/ HTTP/1.1" 429 64
+WARNING Brute force attack detected from IP: 127.0.0.1
+WARNING Too Many Requests: /auth/login/
+WARNING "POST /auth/login/ HTTP/1.1" 429 64
