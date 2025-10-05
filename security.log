@@ -20,3 +20,25 @@
 [SECURITY] 2025-09-29 03:47:26,245 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
 [SECURITY] 2025-09-29 03:47:26,265 WARNING Brute force attack detected from IP: 127.0.0.1 - IP: 127.0.0.1 - User: Anonymous
 [SECURITY] 2025-09-29 03:47:26,279 WARNING Brute force attack detected from IP: 127.0.0.1 - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 18:24:09,488 WARNING API Error: MethodNotAllowed - Method "GET" not allowed. - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 18:35:57,652 WARNING Missing credentials for login attempt - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 18:36:06,408 WARNING Login attempt for non-existent user: administrador - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 18:36:06,410 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 18:37:34,305 WARNING Login attempt for non-existent user: administrador - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 18:37:34,309 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 18:37:45,139 WARNING Wrong password for user: admin - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 18:37:45,140 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 18:40:10,306 WARNING Login attempt for non-existent user: andresyesidmottasarmiento - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 18:40:10,309 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 18:41:42,650 WARNING Wrong password for user: admin - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 18:41:42,654 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 18:44:05,147 WARNING Brute force attack detected from IP: 127.0.0.1 - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 19:01:57,836 WARNING JWT token missing for protected endpoint: /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 19:01:57,838 WARNING Unauthorized access to /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 19:04:39,608 WARNING JWT token missing for protected endpoint: /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 19:04:39,611 WARNING Unauthorized access to /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 19:18:50,128 WARNING Brute force attack detected from IP: 127.0.0.1 - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 19:19:21,893 WARNING API Error: AuthenticationFailed - {'detail': ErrorDetail(string='Authorization header must contain two space-delimited values', code='authentication_failed'), 'code': ErrorDetail(string='bad_authorization_header', code='authentication_failed')} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 19:19:21,894 WARNING Unauthorized access to /auth/verify/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 19:29:31,020 WARNING JWT token missing for protected endpoint: /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-05 19:29:31,025 WARNING Unauthorized access to /calibration/list - IP: 127.0.0.1 - User: Anonymous

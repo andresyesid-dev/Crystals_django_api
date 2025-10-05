@@ -1,0 +1,169 @@
+{
+  "info": {
+    "_postman_id": "d1f1ab48-7ce2-4f4f-8d1c-6b6b8d6b70a2",
+    "name": "Crystals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Colección de endpoints de autenticación y seguridad para Crystals API"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login/",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login", ""]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"Soporte\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.access_token) pm.environment.set('access_token', json.access_token);",
+                  "if (json.refresh_token) pm.environment.set('refresh_token', json.refresh_token);",
+                  "pm.test('Login status 200', function () { pm.response.to.have.status(200); });"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Verify Token",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{access_token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/verify/",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "verify", ""]
+            }
+          }
+        },
+        {
+          "name": "Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{access_token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/profile/",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "profile", ""]
+            }
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"refresh\": \"{{refresh_token}}\"\n}" },
+            "url": { "raw": "{{baseUrl}}/auth/refresh/", "host": ["{{baseUrl}}"], "path": ["auth", "refresh", ""] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.access_token) pm.environment.set('access_token', json.access_token);",
+                  "pm.test('Refresh status 200', function () { pm.response.to.have.status(200); });"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{access_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"refresh_token\": \"{{refresh_token}}\"\n}" },
+            "url": { "raw": "{{baseUrl}}/auth/logout/", "host": ["{{baseUrl}}"], "path": ["auth", "logout", ""] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Security",
+      "item": [
+        {
+          "name": "Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Authorization", "value": "Bearer {{access_token}}" } ],
+            "url": { "raw": "{{baseUrl}}/security/dashboard/", "host": ["{{baseUrl}}"], "path": ["security", "dashboard", ""] }
+          }
+        },
+        {
+          "name": "Block IP",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{access_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"ip_address\": \"127.0.0.1\",\n  \"duration_hours\": 1,\n  \"reason\": \"Testing block\"\n}" },
+            "url": { "raw": "{{baseUrl}}/security/block-ip/", "host": ["{{baseUrl}}"], "path": ["security", "block-ip", ""] }
+          }
+        },
+        {
+          "name": "Unblock IP",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{access_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"ip_address\": \"127.0.0.1\"\n}" },
+            "url": { "raw": "{{baseUrl}}/security/unblock-ip/", "host": ["{{baseUrl}}"], "path": ["security", "unblock-ip", ""] }
+          }
+        },
+        {
+          "name": "Security Logs",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Authorization", "value": "Bearer {{access_token}}" } ],
+            "url": { "raw": "{{baseUrl}}/security/logs/?limit=50", "host": ["{{baseUrl}}"], "path": ["security", "logs", ""], "query": [{"key":"limit","value":"50"}] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Calibrations (Protected Example)",
+      "item": [
+        {
+          "name": "List calibrations",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Authorization", "value": "Bearer {{access_token}}" } ],
+            "url": { "raw": "{{baseUrl}}/calibration/list", "host": ["{{baseUrl}}"], "path": ["calibration", "list"] }
+          }
+        }
+      ]
+    }
+  ]
+}
