@@ -65,3 +65,25 @@
 [SECURITY] 2025-10-07 00:29:31,271 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
 [SECURITY] 2025-10-07 00:29:44,181 WARNING Token refresh failed: Token is blacklisted - IP: 127.0.0.1 - User: Anonymous
 [SECURITY] 2025-10-07 00:29:44,184 WARNING Unauthorized access to /auth/refresh/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 00:35:34,585 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-10 00:37:17,555 WARNING User logged out: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-10 01:27:11,047 WARNING Invalid credentials for user: admin - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 01:27:11,049 ERROR Security Event: LOGIN_FAILED_INVALID_CREDENTIALS - Invalid credentials for user: admin - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 01:27:11,050 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 01:27:11,050 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 01:29:57,472 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-10 01:29:57,476 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-10 01:31:01,373 WARNING Invalid credentials for user: admin - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 01:31:01,390 ERROR Security Event: LOGIN_FAILED_INVALID_CREDENTIALS - Invalid credentials for user: admin - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 01:31:01,396 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 01:31:01,397 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 01:31:03,223 WARNING Invalid credentials for user: hacker - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 01:31:03,224 ERROR Security Event: LOGIN_FAILED_INVALID_CREDENTIALS - Invalid credentials for user: hacker - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 01:31:03,227 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 01:31:03,227 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 01:31:04,958 WARNING Invalid credentials for user: admin - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 01:31:04,960 ERROR Security Event: LOGIN_FAILED_INVALID_CREDENTIALS - Invalid credentials for user: admin - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 01:31:04,961 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 01:31:04,961 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 01:31:14,324 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-10 01:31:14,325 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin

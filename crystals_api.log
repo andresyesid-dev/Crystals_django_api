@@ -177,3 +177,48 @@ WARNING 2025-10-08 03:25:28,680 basehttp 99886 13087469568 "GET / HTTP/1.1" 404 
 INFO 2025-10-08 03:31:05,340 autoreload 504 8669687360 Watching for file changes with StatReloader
 WARNING 2025-10-08 03:31:10,313 log 504 13091893248 Not Found: /
 WARNING 2025-10-08 03:31:10,314 basehttp 504 13091893248 "GET / HTTP/1.1" 404 20856
+INFO 2025-10-10 00:35:34,589 basehttp 504 13090779136 "POST /auth/login/ HTTP/1.1" 200 649
+INFO 2025-10-10 00:36:40,157 basehttp 504 13108129792 "GET /auth/verify/ HTTP/1.1" 200 49
+INFO 2025-10-10 00:36:44,673 basehttp 504 13108129792 "GET /auth/profile/ HTTP/1.1" 200 98
+INFO 2025-10-10 00:36:53,064 basehttp 504 13108129792 "POST /auth/refresh/ HTTP/1.1" 200 318
+INFO 2025-10-10 00:37:11,113 basehttp 504 13108129792 "GET /auth/verify/ HTTP/1.1" 200 49
+INFO 2025-10-10 00:37:17,559 basehttp 504 13108129792 "POST /auth/logout/ HTTP/1.1" 200 37
+INFO 2025-10-10 01:15:29,725 basehttp 504 13124919296 "GET /security/dashboard/ HTTP/1.1" 200 103
+INFO 2025-10-10 01:16:29,616 autoreload 504 8669687360 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/utils.py changed, reloading.
+INFO 2025-10-10 01:16:32,859 autoreload 61329 8602533440 Watching for file changes with StatReloader
+WARNING 2025-10-10 01:19:33,043 log 61329 12958756864 Not Found: /api/auth/login/
+WARNING 2025-10-10 01:19:33,044 basehttp 61329 12958756864 "POST /api/auth/login/ HTTP/1.1" 404 20920
+WARNING 2025-10-10 01:19:33,054 log 61329 12958756864 Not Found: /api/auth/login/
+WARNING 2025-10-10 01:19:33,054 basehttp 61329 12958756864 "POST /api/auth/login/ HTTP/1.1" 404 20920
+WARNING 2025-10-10 01:19:34,079 log 61329 12958756864 Not Found: /api/auth/login/
+WARNING 2025-10-10 01:19:34,079 basehttp 61329 12958756864 "POST /api/auth/login/ HTTP/1.1" 404 20920
+WARNING 2025-10-10 01:19:35,113 log 61329 12958756864 Not Found: /api/auth/login/
+WARNING 2025-10-10 01:19:35,114 basehttp 61329 12958756864 "POST /api/auth/login/ HTTP/1.1" 404 20920
+WARNING 2025-10-10 01:19:36,149 log 61329 12958756864 Not Found: /api/auth/login/
+WARNING 2025-10-10 01:19:36,150 basehttp 61329 12958756864 "POST /api/auth/login/ HTTP/1.1" 404 20920
+WARNING 2025-10-10 01:19:37,181 log 61329 12975546368 Not Found: /api/auth/login/
+WARNING 2025-10-10 01:19:37,182 basehttp 61329 12975546368 "POST /api/auth/login/ HTTP/1.1" 404 20920
+WARNING 2025-10-10 01:19:38,216 log 61329 12958756864 Not Found: /api/auth/login/
+WARNING 2025-10-10 01:19:38,217 basehttp 61329 12958756864 "POST /api/auth/login/ HTTP/1.1" 404 20920
+WARNING 2025-10-10 01:19:39,243 log 61329 12975546368 Not Found: /api/auth/login/
+WARNING 2025-10-10 01:19:39,244 basehttp 61329 12975546368 "POST /api/auth/login/ HTTP/1.1" 404 20920
+INFO 2025-10-10 01:20:40,889 basehttp 61329 12958756864 "GET /security/dashboard/ HTTP/1.1" 200 103
+INFO 2025-10-10 01:24:34,597 autoreload 61329 8602533440 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/utils.py changed, reloading.
+INFO 2025-10-10 01:24:38,524 autoreload 62071 8635158080 Watching for file changes with StatReloader
+INFO 2025-10-10 01:25:02,676 autoreload 62071 8635158080 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/utils.py changed, reloading.
+INFO 2025-10-10 01:25:04,927 autoreload 62109 8669822528 Watching for file changes with StatReloader
+INFO 2025-10-10 01:26:39,536 autoreload 62352 8599854656 Watching for file changes with StatReloader
+INFO 2025-10-10 01:27:02,239 autoreload 62793 8594832960 Watching for file changes with StatReloader
+WARNING 2025-10-10 01:27:11,052 log 62793 12943667200 Unauthorized: /auth/login/
+WARNING 2025-10-10 01:27:11,053 basehttp 62793 12943667200 "POST /auth/login/ HTTP/1.1" 401 31
+INFO 2025-10-10 01:29:57,483 basehttp 62793 12943667200 "POST /auth/login/ HTTP/1.1" 200 667
+WARNING 2025-10-10 01:31:01,400 log 62793 12943667200 Unauthorized: /auth/login/
+WARNING 2025-10-10 01:31:01,409 basehttp 62793 12943667200 "POST /auth/login/ HTTP/1.1" 401 31
+WARNING 2025-10-10 01:31:03,228 log 62793 12943667200 Unauthorized: /auth/login/
+WARNING 2025-10-10 01:31:03,230 basehttp 62793 12943667200 "POST /auth/login/ HTTP/1.1" 401 31
+WARNING 2025-10-10 01:31:04,962 log 62793 12943667200 Unauthorized: /auth/login/
+WARNING 2025-10-10 01:31:04,962 basehttp 62793 12943667200 "POST /auth/login/ HTTP/1.1" 401 31
+INFO 2025-10-10 01:31:14,327 basehttp 62793 12943667200 "POST /auth/login/ HTTP/1.1" 200 667
+INFO 2025-10-10 01:31:15,847 basehttp 62793 12943667200 "GET /security/dashboard/ HTTP/1.1" 200 2161
+INFO 2025-10-10 01:31:34,344 basehttp 62793 12943667200 "GET /security/dashboard/ HTTP/1.1" 200 2161
+INFO 2025-10-10 01:34:43,248 basehttp 62793 12960456704 "GET /security/logs/?limit=50 HTTP/1.1" 200 1979

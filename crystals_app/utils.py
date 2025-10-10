@@ -44,6 +44,29 @@ def log_security_event(event_type, request, message, user=None):
     }
     
     security_logger.warning(message, extra=extra_data)
+    
+    # También registrar en SecurityMonitor para el dashboard
+    try:
+        # Import aquí para evitar imports circulares
+        from .views.security_view import security_monitor
+        
+        # Determinar severidad basado en el tipo de evento
+        severity = 'INFO'
+        if 'FAILED' in event_type or 'BLOCKED' in event_type or 'SUSPICIOUS' in event_type:
+            severity = 'WARNING'
+        if 'ATTACK' in event_type or 'INJECTION' in event_type:
+            severity = 'HIGH'
+            
+        security_monitor.record_security_event(
+            event_type=event_type,
+            severity=severity,
+            details=message,
+            ip=ip,
+            user=user
+        )
+    except Exception as e:
+        # No fallar si SecurityMonitor falla
+        security_logger.error(f"Failed to record event in SecurityMonitor: {str(e)}")
 
 
 def custom_exception_handler(exc, context):
