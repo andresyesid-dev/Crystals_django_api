@@ -97,3 +97,83 @@ WARNING 2025-10-05 22:03:29,709 log 25225 13180030976 Forbidden (CSRF cookie not
 WARNING 2025-10-05 22:03:29,710 basehttp 25225 13180030976 "POST /security/unblock-ip/ HTTP/1.1" 403 2870
 WARNING 2025-10-05 22:04:38,013 log 25225 13196820480 Forbidden (CSRF cookie not set.): /security/unblock-ip/
 WARNING 2025-10-05 22:04:38,013 basehttp 25225 13196820480 "POST /security/unblock-ip/ HTTP/1.1" 403 2870
+INFO 2025-10-06 22:24:52,833 autoreload 70538 8604155456 Watching for file changes with StatReloader
+WARNING 2025-10-06 22:26:53,714 log 70538 12961329152 Forbidden (CSRF cookie not set.): /security/unblock-ip/
+WARNING 2025-10-06 22:26:53,721 basehttp 70538 12961329152 "POST /security/unblock-ip/ HTTP/1.1" 403 2870
+INFO 2025-10-06 22:30:47,106 autoreload 70815 8666488384 Watching for file changes with StatReloader
+WARNING 2025-10-06 22:31:25,666 log 70815 13085896704 Forbidden (CSRF cookie not set.): /security/unblock-ip/
+WARNING 2025-10-06 22:31:25,669 basehttp 70815 13085896704 "POST /security/unblock-ip/ HTTP/1.1" 403 2870
+WARNING 2025-10-06 22:31:47,226 log 70815 13102686208 Forbidden (CSRF cookie not set.): /security/unblock-ip/
+WARNING 2025-10-06 22:31:47,226 basehttp 70815 13102686208 "POST /security/unblock-ip/ HTTP/1.1" 403 2870
+WARNING 2025-10-06 22:32:49,748 log 70815 13102686208 Forbidden (CSRF cookie not set.): /security/unblock-ip/
+WARNING 2025-10-06 22:32:49,749 basehttp 70815 13102686208 "POST /security/unblock-ip/ HTTP/1.1" 403 2870
+INFO 2025-10-06 22:33:49,965 autoreload 70815 8666488384 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/security_view.py changed, reloading.
+INFO 2025-10-06 22:33:51,495 autoreload 72438 8638930496 Watching for file changes with StatReloader
+INFO 2025-10-06 22:35:38,857 autoreload 72438 8638930496 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/security_view.py changed, reloading.
+INFO 2025-10-06 22:35:40,294 autoreload 72492 8605650496 Watching for file changes with StatReloader
+INFO 2025-10-06 22:35:53,978 autoreload 72492 8605650496 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/security_view.py changed, reloading.
+INFO 2025-10-06 22:35:54,464 autoreload 72511 8602594880 Watching for file changes with StatReloader
+INFO 2025-10-06 22:36:16,460 autoreload 72511 8602594880 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/security_view.py changed, reloading.
+INFO 2025-10-06 22:36:16,968 autoreload 72532 8641498688 Watching for file changes with StatReloader
+WARNING 2025-10-06 22:36:18,900 log 72532 13035941888 Unauthorized: /security/unblock-ip/
+WARNING 2025-10-06 22:36:18,900 basehttp 72532 13035941888 "POST /security/unblock-ip/ HTTP/1.1" 401 63
+INFO 2025-10-06 22:38:16,708 autoreload 72728 8636497472 Watching for file changes with StatReloader
+WARNING 2025-10-06 22:38:55,629 log 72728 13027110912 Forbidden: /security/unblock-ip/
+WARNING 2025-10-06 22:38:55,630 basehttp 72728 13027110912 "POST /security/unblock-ip/ HTTP/1.1" 403 65
+WARNING 2025-10-06 22:39:08,771 log 72728 13043900416 Forbidden: /security/unblock-ip/
+WARNING 2025-10-06 22:39:08,772 basehttp 72728 13043900416 "POST /security/unblock-ip/ HTTP/1.1" 403 65
+WARNING 2025-10-06 23:45:43,498 log 72728 13043900416 Unauthorized: /security/unblock-ip/
+WARNING 2025-10-06 23:45:43,499 basehttp 72728 13043900416 "POST /security/unblock-ip/ HTTP/1.1" 401 63
+INFO 2025-10-06 23:51:09,121 autoreload 73791 8664833600 Watching for file changes with StatReloader
+INFO 2025-10-06 23:54:00,913 basehttp 73791 13080997888 "POST /security/unblock-ip/ HTTP/1.1" 200 58
+INFO 2025-10-06 23:59:26,300 autoreload 73791 8664833600 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_project/settings.py changed, reloading.
+INFO 2025-10-06 23:59:27,919 autoreload 76028 8641039936 Watching for file changes with StatReloader
+INFO 2025-10-06 23:59:37,467 autoreload 76028 8641039936 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/auth_view.py changed, reloading.
+INFO 2025-10-06 23:59:37,942 autoreload 76047 8631475776 Watching for file changes with StatReloader
+INFO 2025-10-06 23:59:48,512 autoreload 76047 8631475776 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/auth_view.py changed, reloading.
+INFO 2025-10-06 23:59:49,033 autoreload 76066 8596020800 Watching for file changes with StatReloader
+INFO 2025-10-07 00:00:35,072 autoreload 76066 8596020800 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/auth_view.py changed, reloading.
+INFO 2025-10-07 00:00:35,778 autoreload 76107 8667053632 Watching for file changes with StatReloader
+INFO 2025-10-07 00:00:49,397 autoreload 76107 8667053632 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/auth_view.py changed, reloading.
+INFO 2025-10-07 00:00:49,912 autoreload 76123 8663842368 Watching for file changes with StatReloader
+INFO 2025-10-07 00:00:54,444 autoreload 76123 8663842368 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/auth_view.py changed, reloading.
+INFO 2025-10-07 00:00:54,914 autoreload 76139 8662720064 Watching for file changes with StatReloader
+INFO 2025-10-07 00:01:20,078 autoreload 76139 8662720064 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_project/settings.py changed, reloading.
+INFO 2025-10-07 00:01:20,601 autoreload 76162 8600346176 Watching for file changes with StatReloader
+INFO 2025-10-07 00:04:51,134 autoreload 77874 8632061504 Watching for file changes with StatReloader
+INFO 2025-10-07 00:07:18,332 basehttp 77874 13016657920 "POST /auth/login/ HTTP/1.1" 200 649
+WARNING 2025-10-07 00:09:52,282 log 77874 13033447424 Bad Request: /auth/logout/
+WARNING 2025-10-07 00:09:52,283 basehttp 77874 13033447424 "POST /auth/logout/ HTTP/1.1" 400 25
+WARNING 2025-10-07 00:11:26,620 log 77874 13050236928 Bad Request: /auth/logout/
+WARNING 2025-10-07 00:11:26,622 basehttp 77874 13050236928 "POST /auth/logout/ HTTP/1.1" 400 25
+INFO 2025-10-07 00:12:43,387 autoreload 77874 8632061504 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_project/settings.py changed, reloading.
+INFO 2025-10-07 00:12:44,887 autoreload 78056 8640384576 Watching for file changes with StatReloader
+INFO 2025-10-07 00:15:29,763 autoreload 78056 8640384576 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_project/settings.py changed, reloading.
+INFO 2025-10-07 00:15:31,245 autoreload 78132 8661175872 Watching for file changes with StatReloader
+INFO 2025-10-07 00:19:41,168 autoreload 78721 8634142272 Watching for file changes with StatReloader
+INFO 2025-10-07 00:19:48,494 basehttp 78721 13022179328 "POST /auth/logout/ HTTP/1.1" 200 37
+INFO 2025-10-07 00:20:06,873 basehttp 78721 13022179328 "POST /auth/login/ HTTP/1.1" 200 675
+INFO 2025-10-07 00:24:01,089 basehttp 78721 13038968832 "GET /auth/verify/ HTTP/1.1" 200 52
+INFO 2025-10-07 00:24:12,620 basehttp 78721 13038968832 "GET /auth/profile/ HTTP/1.1" 200 101
+INFO 2025-10-07 00:24:29,259 basehttp 78721 13038968832 "POST /auth/refresh/ HTTP/1.1" 200 318
+WARNING 2025-10-07 00:26:51,980 log 78721 13055758336 Forbidden: /security/dashboard/
+WARNING 2025-10-07 00:26:51,982 basehttp 78721 13055758336 "GET /security/dashboard/ HTTP/1.1" 403 65
+WARNING 2025-10-07 00:27:02,058 log 78721 13055758336 Forbidden: /security/logs/
+WARNING 2025-10-07 00:27:02,059 basehttp 78721 13055758336 "GET /security/logs/?limit=50 HTTP/1.1" 403 65
+INFO 2025-10-07 00:27:11,762 basehttp 78721 13055758336 "POST /auth/logout/ HTTP/1.1" 200 37
+WARNING 2025-10-07 00:27:18,708 log 78721 13055758336 Unauthorized: /auth/refresh/
+WARNING 2025-10-07 00:27:18,710 basehttp 78721 13055758336 "POST /auth/refresh/ HTTP/1.1" 401 33
+WARNING 2025-10-07 00:29:14,437 log 78721 13072547840 Unauthorized: /auth/login/
+WARNING 2025-10-07 00:29:14,437 basehttp 78721 13072547840 "POST /auth/login/ HTTP/1.1" 401 31
+INFO 2025-10-07 00:29:31,275 basehttp 78721 13072547840 "POST /auth/login/ HTTP/1.1" 200 649
+WARNING 2025-10-07 00:29:44,185 log 78721 13072547840 Unauthorized: /auth/refresh/
+WARNING 2025-10-07 00:29:44,186 basehttp 78721 13072547840 "POST /auth/refresh/ HTTP/1.1" 401 33
+INFO 2025-10-07 00:32:52,593 basehttp 78721 13089337344 "GET /security/dashboard/ HTTP/1.1" 200 103
+INFO 2025-10-07 00:33:10,985 basehttp 78721 13089337344 "GET /security/logs/?limit=50 HTTP/1.1" 200 45
+INFO 2025-10-07 00:36:56,408 basehttp 78721 13106126848 "GET /security/logs/?limit=50 HTTP/1.1" 200 45
+INFO 2025-10-08 03:25:21,961 autoreload 99886 8668053056 Watching for file changes with StatReloader
+WARNING 2025-10-08 03:25:28,675 log 99886 13087469568 Not Found: /
+WARNING 2025-10-08 03:25:28,680 basehttp 99886 13087469568 "GET / HTTP/1.1" 404 20856
+INFO 2025-10-08 03:31:05,340 autoreload 504 8669687360 Watching for file changes with StatReloader
+WARNING 2025-10-08 03:31:10,313 log 504 13091893248 Not Found: /
+WARNING 2025-10-08 03:31:10,314 basehttp 504 13091893248 "GET / HTTP/1.1" 404 20856

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
     'crystals_app',
 ]
@@ -263,3 +264,8 @@ CACHES = {
         'LOCATION': 'unique-snowflake',
     }
 }
+
+# User Model Configuration
+# Usamos el modelo User por defecto de Django para autenticación
+# El modelo User personalizado en crystals_app es para datos de negocio
+AUTH_USER_MODEL = 'auth.User'  # Explícitamente usar el modelo Django por defecto

@@ -42,3 +42,26 @@
 [SECURITY] 2025-10-05 19:19:21,894 WARNING Unauthorized access to /auth/verify/ - IP: 127.0.0.1 - User: Anonymous
 [SECURITY] 2025-10-05 19:29:31,020 WARNING JWT token missing for protected endpoint: /calibration/list - IP: 127.0.0.1 - User: Anonymous
 [SECURITY] 2025-10-05 19:29:31,025 WARNING Unauthorized access to /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-06 22:36:18,898 WARNING Invalid JWT token for endpoint: /security/unblock-ip/ - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is invalid', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-06 22:36:18,899 WARNING Unauthorized access to /security/unblock-ip/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-06 22:38:55,625 WARNING Non-admin user admin tried to access admin endpoint: /security/unblock-ip/ - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-06 22:39:08,768 WARNING Non-admin user admin tried to access admin endpoint: /security/unblock-ip/ - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-06 23:45:43,495 WARNING Invalid JWT token for endpoint: /security/unblock-ip/ - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-06 23:45:43,498 WARNING Unauthorized access to /security/unblock-ip/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-06 23:54:00,908 ERROR Security Event: IP_UNBLOCKED - IP 127.0.0.1 unblocked - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-07 00:07:18,323 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-07 00:09:52,276 ERROR Logout error: 'RefreshToken' object has no attribute 'blacklist' - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-07 00:11:26,617 ERROR Logout error: 'RefreshToken' object has no attribute 'blacklist' - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-07 00:19:48,489 WARNING User logged out: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-07 00:20:06,869 WARNING Successful login for user: testuser - IP: 127.0.0.1 - User: testuser
+[SECURITY] 2025-10-07 00:26:51,968 WARNING Non-admin user testuser tried to access admin endpoint: /security/dashboard/ - IP: 127.0.0.1 - User: testuser
+[SECURITY] 2025-10-07 00:27:02,056 WARNING Non-admin user testuser tried to access admin endpoint: /security/logs/ - IP: 127.0.0.1 - User: testuser
+[SECURITY] 2025-10-07 00:27:11,758 WARNING User logged out: testuser - IP: 127.0.0.1 - User: testuser
+[SECURITY] 2025-10-07 00:27:18,706 WARNING Token refresh failed: Token is blacklisted - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-07 00:27:18,708 WARNING Unauthorized access to /auth/refresh/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-07 00:29:14,434 WARNING Invalid credentials for user: user - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-07 00:29:14,436 WARNING Slow request detected: 5.40s - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-07 00:29:14,436 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-07 00:29:31,271 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-07 00:29:44,181 WARNING Token refresh failed: Token is blacklisted - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-07 00:29:44,184 WARNING Unauthorized access to /auth/refresh/ - IP: 127.0.0.1 - User: Anonymous

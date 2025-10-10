@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate
-from django.contrib.auth.models import User as DjangoUser
+from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
@@ -13,7 +13,6 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django_ratelimit.decorators import ratelimit
 import json
 import logging
-from ..models import User
 from ..utils import get_client_ip, log_security_event
 
 security_logger = logging.getLogger('security')
@@ -59,34 +58,28 @@ def login(request):
                 'error': 'Username and password are required'
             }, status=status.HTTP_400_BAD_REQUEST)
         
-        # Check if user exists in custom User model
-        custom_user = User.objects.filter(username=username).first()
-        if not custom_user:
+        # Authenticate using Django's built-in authentication
+        django_user = authenticate(request, username=username, password=password)
+        
+        if not django_user:
             log_security_event(
-                'LOGIN_FAILED_USER_NOT_FOUND',
+                'LOGIN_FAILED_INVALID_CREDENTIALS',
                 request,
-                f"Login attempt for non-existent user: {username}"
+                f"Invalid credentials for user: {username}"
             )
             return Response({
                 'error': 'Invalid credentials'
             }, status=status.HTTP_401_UNAUTHORIZED)
         
-        # Verify password with custom User model
-        if custom_user.password != password:
+        if not django_user.is_active:
             log_security_event(
-                'LOGIN_FAILED_WRONG_PASSWORD',
+                'LOGIN_FAILED_INACTIVE_USER',
                 request,
-                f"Wrong password for user: {username}"
+                f"Login attempt for inactive user: {username}"
             )
             return Response({
-                'error': 'Invalid credentials'
+                'error': 'Account is disabled'
             }, status=status.HTTP_401_UNAUTHORIZED)
-        
-        # Get or create Django User for JWT
-        django_user, created = DjangoUser.objects.get_or_create(
-            username=username,
-            defaults={'password': 'jwt_managed', 'is_active': True}
-        )
         
         # Generate JWT tokens
         refresh = RefreshToken.for_user(django_user)
@@ -94,7 +87,7 @@ def login(request):
         
         # Add custom claims
         access['username'] = username
-        access['user_id'] = custom_user.id
+        access['user_id'] = django_user.id
         
         log_security_event(
             'LOGIN_SUCCESS',
@@ -104,14 +97,15 @@ def login(request):
         )
         
         return Response({
-            'access_token': str(access),
-            'refresh_token': str(refresh),
+            'access': str(access),
+            'refresh': str(refresh),
             'user': {
-                'id': custom_user.id,
-                'username': custom_user.username
-            },
-            'token_type': 'Bearer',
-            'expires_in': 3600  # 1 hour
+                'id': django_user.id,
+                'username': django_user.username,
+                'email': django_user.email,
+                'is_staff': django_user.is_staff,
+                'is_superuser': django_user.is_superuser
+            }
         }, status=status.HTTP_200_OK)
         
     except json.JSONDecodeError:
@@ -141,16 +135,30 @@ def logout(request):
     Logout endpoint - blacklist refresh token
     """
     try:
-        refresh_token = request.data.get('refresh_token')
-        if refresh_token:
+        refresh_token = request.data.get('refresh_token') or request.data.get('refresh')
+        
+        if not refresh_token:
+            return Response({
+                'error': 'Refresh token is required'
+            }, status=status.HTTP_400_BAD_REQUEST)
+            
+        # Blacklist the refresh token
+        from rest_framework_simplejwt.tokens import RefreshToken
+        try:
             token = RefreshToken(refresh_token)
             token.blacklist()
+        except Exception as blacklist_error:
+            # Log the specific blacklist error but continue
+            security_logger.warning(f"Blacklist error: {str(blacklist_error)}", extra={
+                'extra_ip': get_client_ip(request),
+                'extra_user': getattr(request.user, 'username', 'Unknown')
+            })
             
         log_security_event(
             'LOGOUT_SUCCESS',
             request,
-            f"User logged out: {request.user.username}",
-            user=request.user.username
+            f"User logged out: {getattr(request.user, 'username', 'Unknown')}",
+            user=getattr(request.user, 'username', 'Unknown')
         )
         
         return Response({
@@ -163,7 +171,8 @@ def logout(request):
             'extra_user': getattr(request.user, 'username', 'Unknown')
         })
         return Response({
-            'error': 'Logout failed'
+            'error': f'Logout failed: {str(e)}',
+            'detail': 'Please check server logs for more information'
         }, status=status.HTTP_400_BAD_REQUEST)
 
 

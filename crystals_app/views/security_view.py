@@ -6,6 +6,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
+from django.views.decorators.csrf import csrf_exempt
 from ..decorators import admin_required
 from ..utils import get_client_ip
 
@@ -235,6 +236,7 @@ def security_dashboard(request):
 
 
 @require_http_methods(["POST"])
+@csrf_exempt
 @admin_required
 def block_ip_endpoint(request):
     """
@@ -266,6 +268,7 @@ def block_ip_endpoint(request):
 
 
 @require_http_methods(["POST"])
+@csrf_exempt
 @admin_required
 def unblock_ip_endpoint(request):
     """
