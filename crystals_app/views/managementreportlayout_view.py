@@ -1,4 +1,5 @@
 from django.http import JsonResponse, HttpRequest
+from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.forms.models import model_to_dict
@@ -7,12 +8,18 @@ import json
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def get_management_report_layout(request: HttpRequest):
     data = [model_to_dict(o) for o in ManagementReportLayout.objects.all()]
     return JsonResponse({"results": data})
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def get_tab_management_report_layout(request: HttpRequest):
     element_id = request.GET.get("element_id")
     obj = ManagementReportLayout.objects.filter(element_id=element_id).first()
@@ -21,6 +28,10 @@ def get_tab_management_report_layout(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('write')
+@sensitive_endpoint
+@log_api_access
 def insert_management_report_layout(request: HttpRequest):
     body = json.loads(request.body or b"{}")
     default_data = body.get("default_data") or []
@@ -47,6 +58,10 @@ def insert_management_report_layout(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('write')
+@sensitive_endpoint
+@log_api_access
 def update_management_report_layout(request: HttpRequest):
     body = json.loads(request.body or b"{}")
     new_data = body.get("new_data") or []
@@ -59,6 +74,10 @@ def update_management_report_layout(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('write')
+@sensitive_endpoint
+@log_api_access
 def set_default_management_report_layout(request: HttpRequest):
     default_data = [
         (1, 0, 0, "general_data_table", "table"),

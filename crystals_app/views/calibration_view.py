@@ -26,6 +26,9 @@ def select_calibrations(request: HttpRequest):
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def select_historic_reports_calibrations(request: HttpRequest):
     # In original code, filtered by ordering not null. Here we list all.
     data = [model_to_dict(o) for o in Calibration.objects.all().order_by("name")]
@@ -33,12 +36,18 @@ def select_historic_reports_calibrations(request: HttpRequest):
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def select_excluded_reports_calibrations(request: HttpRequest):
     # In original, those without ordering. Not available in ORM model; return empty list for compatibility.
     return JsonResponse({"results": []})
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def select_active_calibration(request: HttpRequest):
     c = Calibration.objects.filter(active=1).first()
     return JsonResponse({"result": model_to_dict(c) if c else None})
@@ -62,6 +71,10 @@ def set_calibration_as_active(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('calibration')
+@log_api_access
+@sensitive_endpoint
 def create_calibration(request: HttpRequest):
     payload = _parse_json(request)
     fields = {k: v for k, v in payload.items() if k in {"name", "pixels_per_metric", "metric_name", "range", "active", "powder"}}
@@ -71,6 +84,10 @@ def create_calibration(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST", "PATCH"])
+@jwt_required
+@permission_required('calibration')
+@log_api_access
+@sensitive_endpoint
 def update_calibration(request: HttpRequest):
     payload = _parse_json(request)
     calibration_id = payload.get("id")
@@ -90,6 +107,10 @@ def update_calibration(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('calibration')
+@log_api_access
+@sensitive_endpoint
 def delete_calibration(request: HttpRequest):
     payload = _parse_json(request)
     calibration_id = payload.get("id")
@@ -100,6 +121,9 @@ def delete_calibration(request: HttpRequest):
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def get_calibration(request: HttpRequest):
     name = request.GET.get("name")
     if not name:
@@ -110,12 +134,19 @@ def get_calibration(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('calibration')
+@log_api_access
+@sensitive_endpoint
 def update_calibration_order(request: HttpRequest):
     # Field 'ordering' not present in ORM model; keep no-op for compatibility
     return JsonResponse({"ok": True, "note": "ordering field not available; no-op"})
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def get_calibrations_table_info(request: HttpRequest):
     # Provide table/field metadata via ORM
     fields = [f.name for f in Calibration._meta.get_fields()]
@@ -123,6 +154,10 @@ def get_calibrations_table_info(request: HttpRequest):
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('admin')
+@log_api_access
+@sensitive_endpoint
 def update_calibration_table(request: HttpRequest):
     # Schema management is handled by migrations in Django; keep as no-op
     return JsonResponse({"ok": True, "note": "Schema managed by Django migrations"})

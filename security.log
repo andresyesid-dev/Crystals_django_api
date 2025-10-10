@@ -87,3 +87,39 @@
 [SECURITY] 2025-10-10 01:31:04,961 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Unknown
 [SECURITY] 2025-10-10 01:31:14,324 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
 [SECURITY] 2025-10-10 01:31:14,325 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-10 02:53:00,153 WARNING Invalid JWT token for endpoint: /calibration/list - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 02:53:00,162 ERROR Security Event: JWT_INVALID - Invalid JWT token for endpoint: /calibration/list - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 02:53:00,166 WARNING Unauthorized access to /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 02:53:00,167 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /calibration/list - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 02:53:11,488 WARNING Token refresh failed: Token is blacklisted - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 02:53:11,492 ERROR Security Event: TOKEN_REFRESH_FAILED - Token refresh failed: Token is blacklisted - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 02:53:11,495 WARNING Unauthorized access to /auth/refresh/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 02:53:11,495 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /auth/refresh/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 02:53:17,912 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-10 02:53:17,913 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-10 02:53:32,368 WARNING Invalid JWT token for endpoint: /calibration/list - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 02:53:32,368 ERROR Security Event: JWT_INVALID - Invalid JWT token for endpoint: /calibration/list - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 02:53:32,369 WARNING Unauthorized access to /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 02:53:32,369 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /calibration/list - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 02:55:04,327 WARNING Invalid JWT token for endpoint: /calibration/list - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 02:55:04,331 ERROR Security Event: JWT_INVALID - Invalid JWT token for endpoint: /calibration/list - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 02:55:04,332 WARNING Unauthorized access to /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 02:55:04,333 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /calibration/list - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 02:56:19,493 WARNING API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-10 02:56:19,495 ERROR Security Event: API_ACCESS - API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-10 02:56:50,338 WARNING Permission denied for user admin: calibration - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-10 02:56:50,339 ERROR Security Event: PERMISSION_DENIED - Permission denied for user admin: calibration - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-10 02:57:14,333 WARNING Unhandled exception: DataError: value too long for type character varying(20)
+ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 02:57:14,339 ERROR Security Event: UNHANDLED_EXCEPTION - Unhandled exception: DataError: value too long for type character varying(20)
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 02:57:14,762 WARNING Server error 500 on /calibration/create - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 02:57:14,763 ERROR Security Event: SERVER_ERROR - Server error 500 on /calibration/create - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 03:18:23,798 WARNING Invalid credentials for user: admin - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 03:18:23,801 ERROR Security Event: LOGIN_FAILED_INVALID_CREDENTIALS - Invalid credentials for user: admin - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 03:18:23,802 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 03:18:23,802 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 03:19:45,015 WARNING JWT token missing for protected endpoint: /security/dashboard/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 03:19:45,018 ERROR Security Event: JWT_MISSING - JWT token missing for protected endpoint: /security/dashboard/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-10 03:19:45,019 WARNING Unauthorized access to /security/dashboard/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-10 03:19:45,019 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /security/dashboard/ - IP: 127.0.0.1 - User: Unknown

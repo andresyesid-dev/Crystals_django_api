@@ -1,4 +1,5 @@
 from django.http import JsonResponse, HttpRequest
+from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.forms.models import model_to_dict
@@ -7,6 +8,9 @@ import json
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def get_laboratory_data(request: HttpRequest):
     obj = LaboratoryData.objects.filter(id=0).first()
     return JsonResponse({"result": model_to_dict(obj) if obj else None})
@@ -14,6 +18,10 @@ def get_laboratory_data(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('write')
+@sensitive_endpoint
+@log_api_access
 def update_laboratory_data(request: HttpRequest):
     body = json.loads(request.body or b"{}")
     obj, _ = LaboratoryData.objects.get_or_create(id=0)
@@ -25,6 +33,10 @@ def update_laboratory_data(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('write')
+@sensitive_endpoint
+@log_api_access
 def add_laboratory_data(request: HttpRequest):
     body = json.loads(request.body or b"{}")
     # copy row 0 with provided datetime
@@ -39,6 +51,9 @@ def add_laboratory_data(request: HttpRequest):
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def get_historic_laboratory_data(request: HttpRequest):
     start = request.GET.get("start")
     end = request.GET.get("end")
@@ -50,6 +65,10 @@ def get_historic_laboratory_data(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('write')
+@sensitive_endpoint
+@log_api_access
 def delete_laboratory_data_record(request: HttpRequest):
     body = json.loads(request.body or b"{}")
     hr_id = body.get("id")

@@ -222,3 +222,108 @@ INFO 2025-10-10 01:31:14,327 basehttp 62793 12943667200 "POST /auth/login/ HTTP/
 INFO 2025-10-10 01:31:15,847 basehttp 62793 12943667200 "GET /security/dashboard/ HTTP/1.1" 200 2161
 INFO 2025-10-10 01:31:34,344 basehttp 62793 12943667200 "GET /security/dashboard/ HTTP/1.1" 200 2161
 INFO 2025-10-10 01:34:43,248 basehttp 62793 12960456704 "GET /security/logs/?limit=50 HTTP/1.1" 200 1979
+INFO 2025-10-10 01:39:35,832 autoreload 62793 8594832960 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/utils.py changed, reloading.
+INFO 2025-10-10 01:39:37,239 autoreload 66663 8673246784 Watching for file changes with StatReloader
+WARNING 2025-10-10 02:53:00,170 log 66663 13101264896 Unauthorized: /calibration/list
+WARNING 2025-10-10 02:53:00,173 basehttp 66663 13101264896 "GET /calibration/list?limit=10&offset=0 HTTP/1.1" 401 63
+WARNING 2025-10-10 02:53:11,496 log 66663 13118054400 Unauthorized: /auth/refresh/
+WARNING 2025-10-10 02:53:11,496 basehttp 66663 13118054400 "POST /auth/refresh/ HTTP/1.1" 401 33
+INFO 2025-10-10 02:53:17,915 basehttp 66663 13118054400 "POST /auth/login/ HTTP/1.1" 200 667
+WARNING 2025-10-10 02:53:32,369 log 66663 13101264896 Unauthorized: /calibration/list
+WARNING 2025-10-10 02:53:32,370 basehttp 66663 13101264896 "GET /calibration/list?limit=10&offset=0 HTTP/1.1" 401 63
+WARNING 2025-10-10 02:55:04,334 log 66663 13134843904 Unauthorized: /calibration/list
+WARNING 2025-10-10 02:55:04,335 basehttp 66663 13134843904 "GET /calibration/list?limit=10&offset=0 HTTP/1.1" 401 63
+INFO 2025-10-10 02:56:19,653 basehttp 66663 13151633408 "GET /calibration/list?limit=10&offset=0 HTTP/1.1" 200 15
+INFO 2025-10-10 02:56:26,506 basehttp 66663 13151633408 "GET /calibration/historic?date_from=2025-09-09&date_to=2025-10-10 HTTP/1.1" 200 15
+INFO 2025-10-10 02:56:32,237 basehttp 66663 13151633408 "GET /calibration/active HTTP/1.1" 200 16
+WARNING 2025-10-10 02:56:50,342 log 66663 13151633408 Forbidden: /calibration/activate
+WARNING 2025-10-10 02:56:50,342 basehttp 66663 13151633408 "POST /calibration/activate HTTP/1.1" 403 82
+ERROR 2025-10-10 02:57:14,760 log 66663 13151633408 Internal Server Error: /calibration/create
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.StringDataRightTruncation: value too long for type character varying(20)
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/views/decorators/http.py", line 43, in inner
+    return func(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py", line 68, in create_calibration
+    obj = Calibration.objects.create(**fields)
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.DataError: value too long for type character varying(20)
+
+ERROR 2025-10-10 02:57:14,763 basehttp 66663 13151633408 "POST /calibration/create HTTP/1.1" 500 158560
+INFO 2025-10-10 03:09:42,613 autoreload 66663 8673246784 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-10-10 03:09:44,720 autoreload 69302 8671600192 Watching for file changes with StatReloader
+INFO 2025-10-10 03:09:50,232 autoreload 69302 8671600192 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-10-10 03:09:50,729 autoreload 69327 8625491520 Watching for file changes with StatReloader
+INFO 2025-10-10 03:10:01,437 autoreload 69327 8625491520 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-10-10 03:10:02,080 autoreload 69339 8642117184 Watching for file changes with StatReloader
+INFO 2025-10-10 03:10:16,928 autoreload 69339 8642117184 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-10-10 03:10:17,450 autoreload 69363 8597700160 Watching for file changes with StatReloader
+INFO 2025-10-10 03:10:28,150 autoreload 69363 8597700160 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-10-10 03:10:28,757 autoreload 69382 8674623040 Watching for file changes with StatReloader
+INFO 2025-10-10 03:10:49,794 autoreload 69382 8674623040 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-10-10 03:10:50,378 autoreload 69403 8630849088 Watching for file changes with StatReloader
+INFO 2025-10-10 03:10:57,957 autoreload 69403 8630849088 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-10-10 03:10:58,462 autoreload 69418 8630758976 Watching for file changes with StatReloader
+INFO 2025-10-10 03:11:11,323 autoreload 69418 8630758976 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-10-10 03:11:11,863 autoreload 69444 8638672448 Watching for file changes with StatReloader
+INFO 2025-10-10 03:11:19,461 autoreload 69444 8638672448 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-10-10 03:11:19,952 autoreload 69463 8666484288 Watching for file changes with StatReloader
+INFO 2025-10-10 03:11:33,825 autoreload 69463 8666484288 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-10-10 03:11:34,333 autoreload 69475 8643522112 Watching for file changes with StatReloader
+INFO 2025-10-10 03:12:02,771 autoreload 69475 8643522112 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/company_view.py changed, reloading.
+INFO 2025-10-10 03:12:03,275 autoreload 69499 8676748864 Watching for file changes with StatReloader
+INFO 2025-10-10 03:12:10,848 autoreload 69499 8676748864 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/company_view.py changed, reloading.
+INFO 2025-10-10 03:12:11,385 autoreload 69518 8630263360 Watching for file changes with StatReloader
+INFO 2025-10-10 03:12:19,079 autoreload 69518 8630263360 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/company_view.py changed, reloading.
+INFO 2025-10-10 03:12:19,564 autoreload 69538 8609263168 Watching for file changes with StatReloader
+INFO 2025-10-10 03:12:27,116 autoreload 69538 8609263168 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/company_view.py changed, reloading.
+INFO 2025-10-10 03:12:27,661 autoreload 69553 8633212480 Watching for file changes with StatReloader
+INFO 2025-10-10 03:14:36,995 autoreload 69553 8633212480 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/managementreportlayout_view.py changed, reloading.
+INFO 2025-10-10 03:14:38,429 autoreload 69759 8601566784 Watching for file changes with StatReloader
+WARNING 2025-10-10 03:18:23,803 log 70640 13007433728 Unauthorized: /auth/login/
+WARNING 2025-10-10 03:18:23,804 basehttp 70640 13007433728 "POST /auth/login/ HTTP/1.1" 401 31
+WARNING 2025-10-10 03:19:45,020 log 71728 13002223616 Unauthorized: /security/dashboard/
+WARNING 2025-10-10 03:19:45,021 basehttp 71728 13002223616 "GET /security/dashboard/?id=82e9e7e5-be89-46b4-b4fc-dab8ee889cfb&vscodeBrowserReqId=1760066384988 HTTP/1.1" 401 93
+INFO 2025-10-10 03:20:09,437 autoreload 69759 8601566784 /Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-10-10 03:20:10,470 autoreload 71751 8594898496 Watching for file changes with StatReloader

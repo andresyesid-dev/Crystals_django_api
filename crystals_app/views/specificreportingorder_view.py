@@ -1,4 +1,5 @@
 from django.http import JsonResponse, HttpRequest
+from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.forms.models import model_to_dict
@@ -8,6 +9,9 @@ import json
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def get_specific_headers_ordering(request: HttpRequest):
     vals = list(SpecificReportingOrder.objects.order_by("ordering").values_list("value", flat=True))
     return JsonResponse({"results": vals})
@@ -15,6 +19,10 @@ def get_specific_headers_ordering(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('write')
+@sensitive_endpoint
+@log_api_access
 def update_specific_headers_order(request: HttpRequest):
     body = json.loads(request.body or b"{}")
     value = body.get("value")
@@ -26,6 +34,10 @@ def update_specific_headers_order(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"]) 
+@jwt_required
+@permission_required('write')
+@sensitive_endpoint
+@log_api_access
 def insert_new_parameter_single_val(request: HttpRequest):
     body = json.loads(request.body or b"{}")
     parameter_name = body.get("parameter_name")

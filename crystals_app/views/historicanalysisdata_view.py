@@ -1,4 +1,5 @@
 from django.http import JsonResponse, HttpRequest
+from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.forms.models import model_to_dict
@@ -9,6 +10,10 @@ import json
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('write')
+@sensitive_endpoint
+@log_api_access
 def add_historic_analysis_data(request: HttpRequest):
     body = json.loads(request.body or b"{}")
     hr_id = body.get("historic_reports_id")
@@ -29,6 +34,9 @@ def add_historic_analysis_data(request: HttpRequest):
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def get_analysis_historic_data(request: HttpRequest):
     start = request.GET.get("start")
     end = request.GET.get("end")

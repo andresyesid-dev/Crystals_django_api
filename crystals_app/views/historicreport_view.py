@@ -1,4 +1,5 @@
 from django.http import JsonResponse, HttpRequest
+from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.forms.models import model_to_dict
@@ -10,6 +11,10 @@ import json
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('write')
+@sensitive_endpoint
+@log_api_access
 def add_historic_report(request: HttpRequest):
     body = json.loads(request.body or b"{}")
     analysis_datetime = body.get("datetime")
@@ -49,6 +54,9 @@ def add_historic_report(request: HttpRequest):
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def get_historic_reports(request: HttpRequest):
     start = request.GET.get("start")
     end = request.GET.get("end")
@@ -73,6 +81,9 @@ def get_historic_reports(request: HttpRequest):
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def get_historic_reports_for_process(request: HttpRequest):
     start = request.GET.get("start")
     end = request.GET.get("end")
@@ -84,6 +95,9 @@ def get_historic_reports_for_process(request: HttpRequest):
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def get_last_report(request: HttpRequest):
     start = request.GET.get("start")
     end = request.GET.get("end")
@@ -94,6 +108,9 @@ def get_last_report(request: HttpRequest):
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def get_order_last_report(request: HttpRequest):
     # ordering not available in ORM Calibration; returning None for compatibility
     return JsonResponse({"ordering": None})
@@ -101,6 +118,10 @@ def get_order_last_report(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('write')
+@sensitive_endpoint
+@log_api_access
 def delete_last_report_db(request: HttpRequest):
     body = json.loads(request.body or b"{}")
     report_id = body.get("id")
@@ -112,6 +133,10 @@ def delete_last_report_db(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('write')
+@sensitive_endpoint
+@log_api_access
 def delete_management_record(request: HttpRequest):
     body = json.loads(request.body or b"{}")
     hr_id = body.get("hr_id")

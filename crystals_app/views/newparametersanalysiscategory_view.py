@@ -1,4 +1,5 @@
 from django.http import JsonResponse, HttpRequest
+from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from ..models import NewParametersAnalysisCategory
@@ -7,6 +8,10 @@ import json
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('write')
+@sensitive_endpoint
+@log_api_access
 def add_new_parameter(request: HttpRequest):
     body = json.loads(request.body or b"{}")
     parameter = (body.get("parameter") or "").replace(' ', '_')
@@ -18,6 +23,9 @@ def add_new_parameter(request: HttpRequest):
 
 
 @require_http_methods(["GET"])
+@jwt_required
+@permission_required('read')
+@log_api_access
 def get_new_parameters(request: HttpRequest):
     data = list(NewParametersAnalysisCategory.objects.all().values())
     return JsonResponse({"results": data})
@@ -25,6 +33,10 @@ def get_new_parameters(request: HttpRequest):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@jwt_required
+@permission_required('write')
+@sensitive_endpoint
+@log_api_access
 def delete_new_parameter(request: HttpRequest):
     body = json.loads(request.body or b"{}")
     parameter = (body.get("parameter") or "").replace(' ', '_')
