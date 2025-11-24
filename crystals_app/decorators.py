@@ -50,7 +50,15 @@ def jwt_required(view_func):
                 'code': 'token_invalid'
             }, status=401)
         except Exception as e:
-            security_logger.error(f"JWT Authentication error: {str(e)}")
+            # Log error with proper extra fields
+            from .utils import get_client_ip
+            security_logger.error(
+                f"JWT Authentication error: {str(e)}", 
+                extra={
+                    'extra_ip': get_client_ip(request) if hasattr(request, 'META') else 'Unknown',
+                    'extra_user': 'Anonymous'
+                }
+            )
             return JsonResponse({
                 'error': 'Authentication failed.',
                 'code': 'authentication_failed'
@@ -130,37 +138,33 @@ def log_api_access(view_func):
 def permission_required(permission_name):
     """
     Decorator to check for specific permissions
+    SIMPLIFIED: All authenticated users (especially superusers) have all permissions
+    since this API is only used by the Crystals application with a single user
     """
     def decorator(view_func):
         @wraps(view_func)
         @jwt_required
         def wrapper(request, *args, **kwargs):
-            # For now, we'll implement a simple role-based system
-            # You can extend this with more complex permission logic
+            # Superusers always have all permissions
+            if request.user.is_superuser:
+                return view_func(request, *args, **kwargs)
             
-            user_permissions = {
-                'admin': ['all'],
-                'manager': ['read', 'write', 'calibration', 'reports'],
-                'operator': ['read', 'calibration'],
-                'viewer': ['read']
-            }
+            # For non-superusers, check if they have is_staff permission
+            # (all authenticated users for this single-user API should have access)
+            if request.user.is_authenticated:
+                return view_func(request, *args, **kwargs)
             
-            # Get user role (you can implement this based on your User model)
-            user_role = getattr(request.user, 'role', 'viewer')  # default to viewer
-            
-            if permission_name not in user_permissions.get(user_role, []) and 'all' not in user_permissions.get(user_role, []):
-                log_security_event(
-                    'PERMISSION_DENIED',
-                    request,
-                    f"Permission denied for user {request.user.username}: {permission_name}",
-                    user=request.user.username
-                )
-                return JsonResponse({
-                    'error': f'Permission denied: {permission_name} required.',
-                    'code': 'permission_denied'
-                }, status=403)
-            
-            return view_func(request, *args, **kwargs)
+            # If somehow we get here, deny access
+            log_security_event(
+                'PERMISSION_DENIED',
+                request,
+                f"Permission denied for user {request.user.username}: {permission_name}",
+                user=request.user.username
+            )
+            return JsonResponse({
+                'error': f'Permission denied: {permission_name} required.',
+                'code': 'permission_denied'
+            }, status=403)
         
         return wrapper
     return decorator

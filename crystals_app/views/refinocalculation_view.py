@@ -9,36 +9,44 @@ import json
 
 @require_http_methods(["GET"])
 @jwt_required
-@permission_required('read')
 @log_api_access
 def get_refino_calculations(request: HttpRequest):
-    data = [model_to_dict(o) for o in RefinoCalculation.objects.all()]
-    return JsonResponse({"results": data})
+    try:
+        data = [model_to_dict(o) for o in RefinoCalculation.objects.all()]
+        return JsonResponse({"message": "✅ Cálculos de refino obtenidos exitosamente", "results": data})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al obtener cálculos de refino", "error": str(e)}, status=500)
 
 
 @csrf_exempt
 @require_http_methods(["POST"])
 @jwt_required
-@permission_required('write')
 @sensitive_endpoint
 @log_api_access
 def insert_refino_calculations(request: HttpRequest):
-    body = json.loads(request.body or b"{}")
-    payload = body.get("data") or []
-    created = 0
-    for item in payload:
-        fields = {
-            "am_azucar": item.get("am_azucar"),
-            "temperatura": item.get("temperatura"),
-            "volumen_tacho": item.get("volumen_tacho"),
-            "densidad_grano": item.get("densidad_grano"),
-            "rendimiento_solidos": item.get("rendimiento_solidos"),
-            "concentracion_masacocida": item.get("concentracion_masacocida"),
-            "am_semilla_lock": item.get("am_semilla_lock"),
-            "concentracion_slurry": item.get("concentracion_slurry"),
-            "alcohol_slurry": item.get("alcohol_slurry"),
-            "densidad_slurry": item.get("densidad_slurry"),
-        }
-        RefinoCalculation.objects.create(**fields)
-        created += 1
-    return JsonResponse({"ok": True, "created": created})
+    try:
+        body = json.loads(request.body or b"{}")
+        field_name = body.get("field_name")
+        field_value = body.get("field_value")
+        
+        if not field_name:
+            return JsonResponse({"message": "❌ El campo 'field_name' es requerido", "error": "field_name required"}, status=400)
+        
+        # Match local: Check if row exists, UPDATE if yes, INSERT if no
+        count = RefinoCalculation.objects.count()
+        
+        if count > 0:
+            # UPDATE existing row (first row)
+            first_obj = RefinoCalculation.objects.first()
+            if field_value is not None:
+                setattr(first_obj, field_name, field_value)
+            else:
+                setattr(first_obj, field_name, None)
+            first_obj.save()
+            return JsonResponse({"message": "✅ Cálculo de refino actualizado", "updated": True})
+        else:
+            # INSERT new row
+            RefinoCalculation.objects.create(**{field_name: field_value})
+            return JsonResponse({"message": "✅ Cálculo de refino insertado", "created": True})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al insertar/actualizar cálculo de refino", "error": str(e)}, status=500)

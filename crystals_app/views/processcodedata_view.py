@@ -9,26 +9,52 @@ import json
 
 @require_http_methods(["GET"])
 @jwt_required
-@permission_required('read')
 @log_api_access
 def get_process_code_data(request: HttpRequest):
-    data = [model_to_dict(o) for o in ProcessCodeData.objects.all().order_by("process")]
-    return JsonResponse({"results": data})
+    try:
+        data = [model_to_dict(o) for o in ProcessCodeData.objects.all().order_by("process")]
+        return JsonResponse({"message": "✅ Códigos de proceso obtenidos exitosamente", "results": data})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al obtener códigos de proceso", "error": str(e)}, status=500)
 
 
 @csrf_exempt
 @require_http_methods(["POST"])
 @jwt_required
-@permission_required('write')
 @sensitive_endpoint
 @log_api_access
 def update_process_code_data(request: HttpRequest):
-    body = json.loads(request.body or b"{}")
-    process = body.get("process")
-    code = body.get("code")
-    if process is None or code is None:
-        return JsonResponse({"error": "process and code required"}, status=400)
-    obj, _ = ProcessCodeData.objects.get_or_create(process=process)
-    obj.code = code
-    obj.save()
-    return JsonResponse({"updated": model_to_dict(obj)})
+    try:
+        body = json.loads(request.body or b"{}")
+        new_value = body.get("new_value")
+        fila = body.get("fila")
+        
+        if new_value is None or fila is None:
+            return JsonResponse({
+                "message": "❌ Los campos 'new_value' y 'fila' son requeridos", 
+                "error": "new_value and fila required"
+            }, status=400)
+        
+        # Match local: Get process from row offset
+        # SELECT process FROM process_code_data ORDER BY process LIMIT 1 OFFSET fila
+        try:
+            process_obj = ProcessCodeData.objects.all().order_by("process")[fila]
+            process_valor = process_obj.process
+        except IndexError:
+            return JsonResponse({"message": "❌ Fila no encontrada", "error": "Row not found"}, status=404)
+        
+        # Match local: UPDATE process_code_data SET code = new_value WHERE process = process_valor
+        updated = ProcessCodeData.objects.filter(process=process_valor).update(code=new_value)
+        
+        if not updated:
+            return JsonResponse({"message": "❌ No se pudo actualizar", "error": "Update failed"}, status=500)
+        
+        obj = ProcessCodeData.objects.get(process=process_valor)
+        return JsonResponse({"message": "✅ Código de proceso actualizado exitosamente", "updated": model_to_dict(obj)})
+    except Exception as e:
+        import traceback
+        return JsonResponse({
+            "message": "❌ Error al actualizar código de proceso", 
+            "error": str(e),
+            "traceback": traceback.format_exc()
+        }, status=500)

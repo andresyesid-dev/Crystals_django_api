@@ -48,16 +48,22 @@ class SecurityMonitor:
         # Check for alert conditions
         self.check_alert_conditions(event_type, ip, user)
         
-        # Log to file
-        security_logger.error(
-            f"Security Event: {event_type} - {details}",
-            extra={
-                'extra_ip': ip or 'Unknown',
-                'extra_user': user or 'Unknown',
-                'severity': severity,
-                'event_type': event_type
-            }
-        )
+        # Log to file con nivel apropiado
+        extra = {
+            'extra_ip': ip or 'Unknown',
+            'extra_user': user or 'Unknown',
+            'severity': severity,
+            'event_type': event_type
+        }
+        
+        log_message = f"Security Event: {event_type} - {details}"
+        
+        if severity == 'HIGH':
+            security_logger.error(log_message, extra=extra)
+        elif severity == 'WARNING':
+            security_logger.warning(log_message, extra=extra)
+        else:  # INFO
+            security_logger.info(log_message, extra=extra)
     
     def check_alert_conditions(self, event_type, ip=None, user=None):
         """
@@ -128,7 +134,10 @@ class SecurityMonitor:
                     fail_silently=True
                 )
             except Exception as e:
-                security_logger.error(f"Failed to send security alert email: {str(e)}")
+                security_logger.error(
+                    f"Failed to send security alert email: {str(e)}",
+                    extra={'extra_ip': 'System', 'extra_user': 'System'}
+                )
     
     def get_security_dashboard_data(self):
         """
@@ -225,12 +234,21 @@ def security_dashboard(request):
     try:
         dashboard_data = security_monitor.get_security_dashboard_data()
         return JsonResponse({
+            'message': '✅ Dashboard de seguridad obtenido exitosamente',
             'status': 'success',
             'data': dashboard_data
         })
     except Exception as e:
-        security_logger.error(f"Security dashboard error: {str(e)}")
+        from ..utils import get_client_ip
+        security_logger.error(
+            f"Security dashboard error: {str(e)}",
+            extra={
+                'extra_ip': get_client_ip(request),
+                'extra_user': getattr(request.user, 'username', 'Unknown')
+            }
+        )
         return JsonResponse({
+            'message': '❌ Error al cargar dashboard de seguridad',
             'error': 'Failed to load security dashboard'
         }, status=500)
 
@@ -250,19 +268,28 @@ def block_ip_endpoint(request):
         
         if not ip_address:
             return JsonResponse({
+                'message': '❌ La dirección IP es requerida',
                 'error': 'IP address is required'
             }, status=400)
         
         security_monitor.block_ip(ip_address, duration_hours, reason)
         
         return JsonResponse({
-            'status': 'success',
-            'message': f'IP {ip_address} blocked for {duration_hours} hours'
+            'message': f'✅ IP {ip_address} bloqueada exitosamente por {duration_hours} horas',
+            'status': 'success'
         })
         
     except Exception as e:
-        security_logger.error(f"Block IP error: {str(e)}")
+        from ..utils import get_client_ip
+        security_logger.error(
+            f"Block IP error: {str(e)}",
+            extra={
+                'extra_ip': get_client_ip(request),
+                'extra_user': getattr(request.user, 'username', 'Unknown')
+            }
+        )
         return JsonResponse({
+            'message': '❌ Error al bloquear IP',
             'error': 'Failed to block IP'
         }, status=500)
 
@@ -280,19 +307,28 @@ def unblock_ip_endpoint(request):
         
         if not ip_address:
             return JsonResponse({
+                'message': '❌ La dirección IP es requerida',
                 'error': 'IP address is required'
             }, status=400)
         
         security_monitor.unblock_ip(ip_address)
         
         return JsonResponse({
-            'status': 'success',
-            'message': f'IP {ip_address} unblocked'
+            'message': f'✅ IP {ip_address} desbloqueada exitosamente',
+            'status': 'success'
         })
         
     except Exception as e:
-        security_logger.error(f"Unblock IP error: {str(e)}")
+        from ..utils import get_client_ip
+        security_logger.error(
+            f"Unblock IP error: {str(e)}",
+            extra={
+                'extra_ip': get_client_ip(request),
+                'extra_user': getattr(request.user, 'username', 'Unknown')
+            }
+        )
         return JsonResponse({
+            'message': '❌ Error al desbloquear IP',
             'error': 'Failed to unblock IP'
         }, status=500)
 
@@ -326,13 +362,22 @@ def security_logs(request):
         all_events = sorted(all_events, key=lambda x: x['timestamp'], reverse=True)[:limit]
         
         return JsonResponse({
+            'message': '✅ Logs de seguridad obtenidos exitosamente',
             'status': 'success',
             'logs': all_events,
             'total': len(all_events)
         })
         
     except Exception as e:
-        security_logger.error(f"Security logs error: {str(e)}")
+        from ..utils import get_client_ip
+        security_logger.error(
+            f"Security logs error: {str(e)}",
+            extra={
+                'extra_ip': get_client_ip(request),
+                'extra_user': getattr(request.user, 'username', 'Unknown')
+            }
+        )
         return JsonResponse({
+            'message': '❌ Error al obtener logs de seguridad',
             'error': 'Failed to get security logs'
         }, status=500)

@@ -9,24 +9,28 @@ import json
 
 @require_http_methods(["GET"])
 @jwt_required
-@permission_required('read')
 @log_api_access
 def get_laboratory_calculated_masa_c_parametrization(request: HttpRequest):
-    data = [model_to_dict(o) for o in LaboratoryCalculatedMasaCParametrization.objects.all()]
-    return JsonResponse({"results": data})
+    try:
+        data = [model_to_dict(o) for o in LaboratoryCalculatedMasaCParametrization.objects.all()]
+        return JsonResponse({"message": "✅ Parametrización Masa C calculada obtenida exitosamente", "results": data})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al obtener parametrización Masa C calculada", "error": str(e)}, status=500)
 
 
 @csrf_exempt
 @require_http_methods(["POST"]) 
 @jwt_required
-@permission_required('write')
 @sensitive_endpoint
 @log_api_access
 def update_laboratory_calculated_masa_c_parametrization(request: HttpRequest):
-    body = json.loads(request.body or b"{}")
-    for parameter, categories in body.items():
-        for categoria, ranges in (categories or {}).items():
-            LaboratoryCalculatedMasaCParametrization.objects.filter(parameter=parameter, categoria=categoria).update(
-                range_from=ranges.get("range_from"), range_to=ranges.get("range_to")
-            )
-    return JsonResponse({"ok": True})
+    try:
+        body = json.loads(request.body or b"{}")
+        for parameter, categories in body.items():
+            for categoria, ranges in (categories or {}).items():
+                LaboratoryCalculatedMasaCParametrization.objects.filter(parameter=parameter, categoria=categoria).update(
+                    range_from=ranges.get("range_from"), range_to=ranges.get("range_to")
+                )
+        return JsonResponse({"message": "✅ Parametrización Masa C calculada actualizada exitosamente", "ok": True})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al actualizar parametrización Masa C calculada", "error": str(e)}, status=500)

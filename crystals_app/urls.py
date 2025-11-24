@@ -35,6 +35,12 @@ from .views import (
 	specificreportingorder_view,
 	user_view,
 )
+# New default data insertion views
+from .views import (
+	reporting_order_view,
+	laboratory_parametrization_view as lab_param_insert_view,
+	laboratory_data_view as lab_data_insert_view,
+)
 
 # Authentication and Security URLs
 auth_urls = [
@@ -118,6 +124,7 @@ globalsetting_urls = [
 manualmeasurement_urls = [
 	path('manual-measurements/list', manualmeasurement_view.select_manual_measurements),
 	path('manual-measurements/add', manualmeasurement_view.add_manual_measurement),
+	path('manual-measurements/update', manualmeasurement_view.update_manual_measurement),
 	path('manual-measurements/clear', manualmeasurement_view.clear_manual_measurement_db),
 ]
 
@@ -140,6 +147,7 @@ managementreportsettings_urls = [
 	path('management-report-settings/get', managementreportsettings_view.get_management_report_settings),
 	path('management-report-settings/insert', managementreportsettings_view.insert_management_report_settings),
 	path('management-report-settings/update', managementreportsettings_view.update_management_report_settings),
+	path('management-report-settings/insert-default', managementreportsettings_view.insert_default_management_report_settings),
 ]
 
 reportingorder_general_urls = [
@@ -231,6 +239,7 @@ management_report_layout_urls = [
 	path('management-report-layout/insert', managementreportlayout_view.insert_management_report_layout),
 	path('management-report-layout/update', managementreportlayout_view.update_management_report_layout),
 	path('management-report-layout/defaults', managementreportlayout_view.set_default_management_report_layout),
+	path('management-report-layout/insert-default', managementreportlayout_view.insert_default_management_report_layout),
 ]
 
 laboratory_settings_excel_urls = [
@@ -249,6 +258,26 @@ laboratory_data_urls = [
 
 user_urls = [
 	path('user/validate', user_view.validate_user_credentials),
+	path('user/create', user_view.create_user),
+]
+
+# Default data insertion URLs
+default_data_urls = [
+	# Reporting order tables
+	path('reporting-order/specific/insert', reporting_order_view.insert_specific_reporting_order),
+	path('reporting-order/general/insert', reporting_order_view.insert_general_reporting_order),
+	path('reporting-order/laboratory/insert', reporting_order_view.insert_laboratory_reporting_order),
+	
+	# Laboratory parametrization tables
+	path('laboratory-parametrization/insert', lab_param_insert_view.insert_laboratory_parametrization),
+	path('laboratory-parametrization/refino/insert', lab_param_insert_view.insert_laboratory_calculated_refino),
+	path('laboratory-parametrization/masa-a/insert', lab_param_insert_view.insert_laboratory_calculated_masa_a),
+	path('laboratory-parametrization/masa-b/insert', lab_param_insert_view.insert_laboratory_calculated_masa_b),
+	path('laboratory-parametrization/masa-c/insert', lab_param_insert_view.insert_laboratory_calculated_masa_c),
+	path('crystals-parametrization/insert', lab_param_insert_view.insert_crystals_data_parametrization),
+	
+	# Laboratory data default record
+	path('laboratory-data/insert-default', lab_data_insert_view.insert_laboratory_data_default),
 ]
 
 urlpatterns = (
@@ -286,4 +315,5 @@ urlpatterns = (
 	+ laboratory_settings_excel_urls
 	+ laboratory_data_urls
 	+ user_urls
+	+ default_data_urls
 )

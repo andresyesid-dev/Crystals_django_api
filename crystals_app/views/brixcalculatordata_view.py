@@ -9,33 +9,62 @@ import json
 
 @require_http_methods(["GET"])
 @jwt_required
-@permission_required('read')
 @log_api_access
 def get_brix_calculator_data(request: HttpRequest):
-    data = [model_to_dict(o) for o in BrixCalculatorData.objects.all().order_by("tc")]
-    return JsonResponse({"results": data})
+    try:
+        data = [model_to_dict(o) for o in BrixCalculatorData.objects.all().order_by("tc")]
+        return JsonResponse({"message": "✅ Datos obtenidos", "results": data})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al obtener datos", "error": str(e)}, status=500)
 
 
 @csrf_exempt
 @require_http_methods(["POST"])
 @jwt_required
-@permission_required('write')
 @sensitive_endpoint
 @log_api_access
 def update_brix_calculator_data(request: HttpRequest):
-    body = json.loads(request.body or b"{}")
-    tc = body.get("tc")
-    pureza = body.get("pureza")
-    ss = body.get("ss")
-    brx = body.get("brx")
-    if tc is None:
-        return JsonResponse({"error": "tc required"}, status=400)
-    obj, _ = BrixCalculatorData.objects.get_or_create(tc=tc)
-    if pureza is not None:
-        obj.pureza = pureza
-    if ss is not None:
-        obj.ss = ss
-    if brx is not None:
-        obj.brx = brx
-    obj.save()
-    return JsonResponse({"updated": model_to_dict(obj)})
+    try:
+        body = json.loads(request.body or b"{}")
+        valor_numerico = body.get("valor_numerico")
+        columna = body.get("columna")
+        fila = body.get("fila")
+        resultado = body.get("resultado")
+        
+        if valor_numerico is None or columna is None or fila is None or resultado is None:
+            return JsonResponse({
+                "message": "❌ Campos requeridos: valor_numerico, columna, fila, resultado", 
+                "error": "valor_numerico, columna, fila, resultado required"
+            }, status=400)
+        
+        # Match local: Get tc from row offset
+        # SELECT tc FROM brix_calculator_data ORDER BY tc LIMIT 1 OFFSET fila
+        try:
+            tc_obj = BrixCalculatorData.objects.all().order_by("tc")[fila]
+            tc_valor = tc_obj.tc
+        except IndexError:
+            return JsonResponse({"message": "❌ Fila no encontrada", "error": "Row not found"}, status=404)
+        
+        # Match local: Determine field based on column (1=pureza, 2=ss)
+        if columna == 1:
+            campo_actualizar = "pureza"
+        elif columna == 2:
+            campo_actualizar = "ss"
+        else:
+            return JsonResponse({"message": "❌ Columna inválida (debe ser 1 o 2)", "error": "Invalid column"}, status=400)
+        
+        # Match local: UPDATE brix_calculator_data SET {campo} = valor_numerico, brx = resultado WHERE tc = tc_valor
+        update_data = {
+            campo_actualizar: valor_numerico,
+            "brx": resultado
+        }
+        
+        updated = BrixCalculatorData.objects.filter(tc=tc_valor).update(**update_data)
+        
+        if not updated:
+            return JsonResponse({"message": "❌ No se pudo actualizar", "error": "Update failed"}, status=500)
+        
+        obj = BrixCalculatorData.objects.get(tc=tc_valor)
+        return JsonResponse({"message": "✅ Datos actualizados", "updated": model_to_dict(obj)})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al actualizar", "error": str(e)}, status=500)

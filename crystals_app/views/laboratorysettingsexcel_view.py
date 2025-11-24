@@ -9,40 +9,46 @@ import json
 
 @require_http_methods(["GET"])
 @jwt_required
-@permission_required('write')
 @sensitive_endpoint
 @log_api_access
 def get_laboratory_settings_excel_letters(request: HttpRequest):
-    obj = LaboratorySettingsExcel.objects.filter(id=0).first()
-    if not obj:
-        return JsonResponse({"result": None})
-    data = model_to_dict(obj)
-    return JsonResponse({"result": {k: v for k, v in data.items() if k.endswith('_letter')}})
+    try:
+        obj = LaboratorySettingsExcel.objects.filter(id=0).first()
+        if not obj:
+            return JsonResponse({"message": "✅ Configuración Excel de laboratorio (letras) obtenida", "result": None})
+        data = model_to_dict(obj)
+        return JsonResponse({"message": "✅ Configuración Excel de laboratorio (letras) obtenida exitosamente", "result": {k: v for k, v in data.items() if k.endswith('_letter')}})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al obtener configuración Excel (letras)", "error": str(e)}, status=500)
 
 
 @require_http_methods(["GET"])
 @jwt_required
-@permission_required('write')
 @sensitive_endpoint
 @log_api_access
 def get_laboratory_settings_excel_numbers(request: HttpRequest):
-    obj = LaboratorySettingsExcel.objects.filter(id=0).first()
-    if not obj:
-        return JsonResponse({"result": None})
-    data = model_to_dict(obj)
-    return JsonResponse({"result": {k: v for k, v in data.items() if k.endswith('_number')}})
+    try:
+        obj = LaboratorySettingsExcel.objects.filter(id=0).first()
+        if not obj:
+            return JsonResponse({"message": "✅ Configuración Excel de laboratorio (números) obtenida", "result": None})
+        data = model_to_dict(obj)
+        return JsonResponse({"message": "✅ Configuración Excel de laboratorio (números) obtenida exitosamente", "result": {k: v for k, v in data.items() if k.endswith('_number')}})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al obtener configuración Excel (números)", "error": str(e)}, status=500)
 
 
 @csrf_exempt
-@require_http_methods(["POST"])
+@require_http_methods(["POST", "PATCH"])
 @jwt_required
-@permission_required('write')
 @sensitive_endpoint
 @log_api_access
 def update_laboratory_settings_excel(request: HttpRequest):
-    body = json.loads(request.body or b"{}")
-    obj, _ = LaboratorySettingsExcel.objects.get_or_create(id=0)
-    for k, v in body.items():
-        setattr(obj, k, v)
-    obj.save()
-    return JsonResponse({"updated": True})
+    try:
+        body = json.loads(request.body or b"{}")
+        obj, _ = LaboratorySettingsExcel.objects.get_or_create(id=0)
+        for k, v in body.items():
+            setattr(obj, k, v)
+        obj.save()
+        return JsonResponse({"message": "✅ Configuración Excel de laboratorio actualizada exitosamente", "updated": True})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al actualizar configuración Excel", "error": str(e)}, status=500)

@@ -97,6 +97,7 @@ def login(request):
         )
         
         return Response({
+            'message': '✅ Inicio de sesión exitoso',
             'access': str(access),
             'refresh': str(refresh),
             'user': {
@@ -162,7 +163,7 @@ def logout(request):
         )
         
         return Response({
-            'message': 'Successfully logged out'
+            'message': '✅ Cierre de sesión exitoso'
         }, status=status.HTTP_200_OK)
         
     except Exception as e:
@@ -194,6 +195,7 @@ def refresh_token(request):
         new_access = token.access_token
         
         return Response({
+            'message': '✅ Token renovado exitosamente',
             'access_token': str(new_access),
             'token_type': 'Bearer',
             'expires_in': 3600
@@ -206,6 +208,7 @@ def refresh_token(request):
             f"Token refresh failed: {str(e)}"
         )
         return Response({
+            'message': '❌ Error al renovar token',
             'error': 'Invalid refresh token'
         }, status=status.HTTP_401_UNAUTHORIZED)
 
@@ -222,10 +225,12 @@ def verify_token(request):
         
         if not custom_user:
             return Response({
+                'message': '❌ Usuario no encontrado',
                 'error': 'User not found'
             }, status=status.HTTP_404_NOT_FOUND)
         
         return Response({
+            'message': '✅ Token verificado exitosamente',
             'valid': True,
             'user': {
                 'id': custom_user.id,
@@ -235,6 +240,7 @@ def verify_token(request):
         
     except Exception as e:
         return Response({
+            'message': '❌ Error al verificar token',
             'error': 'Token verification failed'
         }, status=status.HTTP_401_UNAUTHORIZED)
 
@@ -250,10 +256,12 @@ def user_profile(request):
         
         if not custom_user:
             return Response({
+                'message': '❌ Usuario no encontrado',
                 'error': 'User not found'
             }, status=status.HTTP_404_NOT_FOUND)
         
         return Response({
+            'message': '✅ Perfil de usuario obtenido exitosamente',
             'user': {
                 'id': custom_user.id,
                 'username': custom_user.username,
@@ -264,5 +272,6 @@ def user_profile(request):
         
     except Exception as e:
         return Response({
+            'message': '❌ Error al obtener perfil de usuario',
             'error': 'Failed to get user profile'
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

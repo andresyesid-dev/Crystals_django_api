@@ -1,0 +1,2120 @@
+{
+  "info": {
+    "_postman_id": "crystals-core-tables-2025",
+    "name": "Crystals API - Core Tables (Supabase)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Colección completa de endpoints para las 6 tablas principales de Crystals API en Supabase PostgreSQL (SIN campos 'time')"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "🔐 Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.access_token) {",
+                  "    pm.environment.set('access_token', json.access_token);",
+                  "    console.log('✅ Access token guardado');",
+                  "}",
+                  "if (json.refresh_token) {",
+                  "    pm.environment.set('refresh_token', json.refresh_token);",
+                  "    console.log('✅ Refresh token guardado');",
+                  "}",
+                  "pm.test('Login exitoso', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login/",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login", ""]
+            }
+          }
+        },
+        {
+          "name": "Verify Token",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/verify/",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "verify", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📊 Historic Reports",
+      "item": [
+        {
+          "name": "Add Historic Report",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"datetime\": \"2025-10-30 17:30:00\",\n  \"calibration\": \"TEST_CAL_001\",\n  \"metrics\": {\n    \"common\": {\n      \"correlation\": [0.95]\n    },\n    \"width\": {\n      \"min\": 100.5,\n      \"max\": 500.2,\n      \"sd\": 25.3,\n      \"cv\": 12.5,\n      \"mean\": 250.0,\n      \"sum\": 10000.0,\n      \"samples\": 40,\n      \"range\": 399.7\n    },\n    \"height\": {\n      \"min\": 80.2,\n      \"max\": 450.1,\n      \"sd\": 20.1,\n      \"cv\": 10.2,\n      \"mean\": 220.5,\n      \"sum\": 8820.0,\n      \"samples\": 40,\n      \"range\": 369.9\n    }\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/historic-report/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["historic-report", "add"]
+            }
+          }
+        },
+        {
+          "name": "Get Historic Reports List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/historic-report/list?limit=50&offset=0",
+              "host": ["{{baseUrl}}"],
+              "path": ["historic-report", "list"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "50"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Historic Reports by Process",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/historic-report/list-by-process?calibration=TEST_CAL_001",
+              "host": ["{{baseUrl}}"],
+              "path": ["historic-report", "list-by-process"],
+              "query": [
+                {
+                  "key": "calibration",
+                  "value": "TEST_CAL_001"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Last Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/historic-report/last?calibration=TEST_CAL_001",
+              "host": ["{{baseUrl}}"],
+              "path": ["historic-report", "last"],
+              "query": [
+                {
+                  "key": "calibration",
+                  "value": "TEST_CAL_001"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Order of Last Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/historic-report/order-of-last",
+              "host": ["{{baseUrl}}"],
+              "path": ["historic-report", "order-of-last"]
+            }
+          }
+        },
+        {
+          "name": "Delete Last Report",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"calibration\": \"TEST_CAL_001\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/historic-report/delete-last",
+              "host": ["{{baseUrl}}"],
+              "path": ["historic-report", "delete-last"]
+            }
+          }
+        },
+        {
+          "name": "Delete Management Record",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hr_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/historic-report/delete-management",
+              "host": ["{{baseUrl}}"],
+              "path": ["historic-report", "delete-management"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📈 Analysis Categories",
+      "item": [
+        {
+          "name": "Add Analysis Category Values",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batch_number\": \"BATCH001\",\n  \"username\": \"operator1\",\n  \"baking_time\": 120,\n  \"mass_number\": 1,\n  \"historic_reports_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/analysis-category/add-values",
+              "host": ["{{baseUrl}}"],
+              "path": ["analysis-category", "add-values"]
+            }
+          }
+        },
+        {
+          "name": "Add New Parameter",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter\": \"temperature\",\n  \"type\": \"numeric\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/analysis-category/add-new",
+              "host": ["{{baseUrl}}"],
+              "path": ["analysis-category", "add-new"]
+            }
+          }
+        },
+        {
+          "name": "Get New Parameters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/analysis-category/get-new",
+              "host": ["{{baseUrl}}"],
+              "path": ["analysis-category", "get-new"]
+            }
+          }
+        },
+        {
+          "name": "Delete Parameter",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter\": \"temperature\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/analysis-category/delete",
+              "host": ["{{baseUrl}}"],
+              "path": ["analysis-category", "delete"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔬 Historic Analysis Data",
+      "item": [
+        {
+          "name": "Add Historic Analysis Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"range_class\": \"OPTIMAL\",\n  \"object_length\": 1500.5,\n  \"pct_object_length\": 35.2,\n  \"mean_object_length\": 250.3,\n  \"object_width\": 1200.8,\n  \"pct_object_width\": 30.5,\n  \"mean_object_width\": 200.1,\n  \"long_crystals\": 100.5,\n  \"historic_reports_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/historic-analysis/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["historic-analysis", "add"]
+            }
+          }
+        },
+        {
+          "name": "Get Analysis Historic Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"historic_report_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/historic-analysis/list",
+              "host": ["{{baseUrl}}"],
+              "path": ["historic-analysis", "list"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🧪 Laboratory Data",
+      "item": [
+        {
+          "name": "Add Laboratory Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"datetime\": \"2025-10-30 17:30:00\",\n  \"pza_licor\": 85,\n  \"pza_sirope\": 90,\n  \"pza_masa_refino\": 88,\n  \"pza_magma_b\": 82,\n  \"pza_meladura\": 78,\n  \"pza_masa_a\": 86,\n  \"pza_lavado_a\": 84,\n  \"pza_nutsch_a\": 87,\n  \"pza_magma_c\": 81,\n  \"pza_miel_a\": 79,\n  \"pza_masa_b\": 85,\n  \"pza_nutsch_b\": 83,\n  \"pza_cr_des\": 89,\n  \"pza_miel_b\": 77,\n  \"pza_masa_c\": 80,\n  \"pza_nutsch_c\": 82,\n  \"pza_miel_final\": 76,\n  \"bx_masa_c\": 75,\n  \"bx_cristal_des\": 80,\n  \"bx_nutsch_c\": 74,\n  \"bx_masa_b\": 76,\n  \"bx_masa_a\": 78,\n  \"bx_magma_b\": 73,\n  \"bx_masa_refino\": 79,\n  \"bx_magma_c\": 72,\n  \"bx_miel_final\": 71,\n  \"bx_nutsch_b\": 75,\n  \"bx_miel_b\": 70,\n  \"bx_miel_a\": 69,\n  \"bx_lavado_a\": 77,\n  \"bx_nutsch_a\": 76,\n  \"bx_sirope\": 81,\n  \"bx_del_licor\": 82,\n  \"bx_meladura\": 74,\n  \"pol_azuc\": 95,\n  \"sol_tota_hda_azu\": 92\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lab-data/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-data", "add"]
+            }
+          }
+        },
+        {
+          "name": "Get Laboratory Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/lab-data/get?limit=50",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-data", "get"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Opcional: Límite de registros"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Laboratory Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"pza_licor\": 87,\n  \"bx_masa_c\": 77\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lab-data/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-data", "update"]
+            }
+          }
+        },
+        {
+          "name": "Get Historic Laboratory Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/lab-data/historic?limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-data", "historic"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Laboratory Data Record",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lab-data/delete",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-data", "delete"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔢 Numero (Test Table)",
+      "item": [
+        {
+          "name": "⚠️ INFO - No hay endpoints REST para 'numero'",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"],
+              "path": [""]
+            },
+            "description": "La tabla 'numero' es una tabla de prueba sin endpoints REST definidos.\n\nPara trabajar con ella, usa:\n1. Django shell: python manage.py shell\n2. SQL directo: INSERT INTO numero (valor) VALUES (123.45);\n3. ORM: from crystals_app.models import Numero; Numero.objects.create(valor=123.45)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "📉 Analysis Results",
+      "item": [
+        {
+          "name": "⚠️ INFO - No hay endpoints REST para 'analysis_results'",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"],
+              "path": [""]
+            },
+            "description": "La tabla 'analysis_results' no tiene endpoints REST definidos en urls.py.\n\nPara trabajar con ella, usa:\n1. Django shell: python manage.py shell\n2. SQL directo: INSERT INTO analysis_results (mean, cv, pct_fine, ...) VALUES (...);\n3. ORM: from crystals_app.models import AnalysisResults; AnalysisResults.objects.create(...)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "⚙️ Calibrations",
+      "item": [
+        {
+          "name": "Create Calibration",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"TEST_CAL_002\",\n  \"pixels_per_metric\": 12.5,\n  \"metric_name\": \"mm\",\n  \"range\": \"0-1000\",\n  \"active\": 0,\n  \"powder\": \"Sugar B\",\n  \"ordering\": 1,\n  \"target_cv\": 15.0,\n  \"target_mean\": 350.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/calibration/create",
+              "host": ["{{baseUrl}}"],
+              "path": ["calibration", "create"]
+            }
+          }
+        },
+        {
+          "name": "Get Calibrations List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calibration/list",
+              "host": ["{{baseUrl}}"],
+              "path": ["calibration", "list"]
+            }
+          }
+        },
+        {
+          "name": "Get Active Calibration",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calibration/active",
+              "host": ["{{baseUrl}}"],
+              "path": ["calibration", "active"]
+            }
+          }
+        },
+        {
+          "name": "Get Calibration by Name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calibration/get?name=TEST_CAL_001",
+              "host": ["{{baseUrl}}"],
+              "path": ["calibration", "get"],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "TEST_CAL_001"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Set Calibration as Active",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"TEST_CAL_001\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/calibration/activate",
+              "host": ["{{baseUrl}}"],
+              "path": ["calibration", "activate"]
+            }
+          }
+        },
+        {
+          "name": "Update Calibration",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"name\": \"TEST_CAL_001\",\n  \"pixels_per_metric\": 11.0,\n  \"range\": \"0-1200\",\n  \"ordering\": 2,\n  \"target_cv\": 16.5,\n  \"target_mean\": 380.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/calibration/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["calibration", "update"]
+            }
+          }
+        },
+        {
+          "name": "Delete Calibration",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/calibration/delete",
+              "host": ["{{baseUrl}}"],
+              "path": ["calibration", "delete"]
+            }
+          }
+        },
+        {
+          "name": "Get Historic Reports Calibrations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calibration/historic",
+              "host": ["{{baseUrl}}"],
+              "path": ["calibration", "historic"]
+            }
+          }
+        },
+        {
+          "name": "Get Excluded Reports Calibrations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calibration/excluded",
+              "host": ["{{baseUrl}}"],
+              "path": ["calibration", "excluded"]
+            }
+          }
+        },
+        {
+          "name": "Get Calibrations Table Info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calibration/table-info",
+              "host": ["{{baseUrl}}"],
+              "path": ["calibration", "table-info"]
+            }
+          }
+        },
+        {
+          "name": "Update Calibration Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orders\": [\n    {\"id\": 1, \"ordering\": 1},\n    {\"id\": 2, \"ordering\": 2}\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/calibration/update-order",
+              "host": ["{{baseUrl}}"],
+              "path": ["calibration", "update-order"]
+            }
+          }
+        },
+        {
+          "name": "Update Calibration Table",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"calibrations\": [\n    {\n      \"name\": \"TEST_CAL_001\",\n      \"pixels_per_metric\": 10.5,\n      \"range\": \"0-1000\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/calibration/update-table",
+              "host": ["{{baseUrl}}"],
+              "path": ["calibration", "update-table"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🏢 Company",
+      "item": [
+        {
+          "name": "Get Company Info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/company/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["company", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update Company Name",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Crystals Industries Inc.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/company/update-name",
+              "host": ["{{baseUrl}}"],
+              "path": ["company", "update-name"]
+            }
+          }
+        },
+        {
+          "name": "Update Company Logo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"logo\": \"logo_company.png\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/company/update-logo",
+              "host": ["{{baseUrl}}"],
+              "path": ["company", "update-logo"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔧 Config",
+      "item": [
+        {
+          "name": "Get Language",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/config/language/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["config", "language", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update Language",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"language\": \"es\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/config/language/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["config", "language", "update"]
+            }
+          }
+        },
+        {
+          "name": "Get DOP Config",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/config/dop/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["config", "dop", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update DOP Config",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dop\": \"value\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/config/dop/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["config", "dop", "update"]
+            }
+          }
+        },
+        {
+          "name": "Get Calculated Data Period",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/config/calculated-period/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["config", "calculated-period", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update Calculated Data Period",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"period\": 30\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/config/calculated-period/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["config", "calculated-period", "update"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🎨 Global Settings",
+      "item": [
+        {
+          "name": "Get Line Color",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/global-settings/line-color/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["global-settings", "line-color", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update Line Color",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"line_color\": \"#FF5733\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/global-settings/line-color/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["global-settings", "line-color", "update"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📐 Crystals Parametrization",
+      "item": [
+        {
+          "name": "Get Crystals Data Parametrization",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/crystals-param/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["crystals-param", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update Crystals Data Parametrization",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter\": \"mean\",\n  \"categoria\": \"OPTIMAL\",\n  \"range_from\": 300.0,\n  \"range_to\": 600.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/crystals-param/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["crystals-param", "update"]
+            }
+          }
+        },
+        {
+          "name": "Check Parameter Exists",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter\": \"mean\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/crystals-param/exist",
+              "host": ["{{baseUrl}}"],
+              "path": ["crystals-param", "exist"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📐 Crystals Param - New Params",
+      "item": [
+        {
+          "name": "Get New Params",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/crystals-param-new/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["crystals-param-new", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update New Params",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter\": \"new_param\",\n  \"categoria\": \"TEST\",\n  \"range_from\": 0.0,\n  \"range_to\": 100.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/crystals-param-new/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["crystals-param-new", "update"]
+            }
+          }
+        },
+        {
+          "name": "Add New Param",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter\": \"custom_param\",\n  \"categoria\": \"CUSTOM\",\n  \"range_from\": 50.0,\n  \"range_to\": 150.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/crystals-param-new/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["crystals-param-new", "add"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📐 Crystals Param - MA",
+      "item": [
+        {
+          "name": "Get MA Parametrization",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/crystals-param-ma/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["crystals-param-ma", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update MA Parametrization",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter\": \"ma_param\",\n  \"categoria\": \"OPTIMAL\",\n  \"tolerance\": 5,\n  \"range_from\": 250.0,\n  \"range_to\": 550.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/crystals-param-ma/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["crystals-param-ma", "update"]
+            }
+          }
+        },
+        {
+          "name": "Update Specific MA",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"tolerance\": 10,\n  \"range_from\": 300.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/crystals-param-ma/update-specific",
+              "host": ["{{baseUrl}}"],
+              "path": ["crystals-param-ma", "update-specific"]
+            }
+          }
+        },
+        {
+          "name": "Add New MA Parameter",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter\": \"new_ma_param\",\n  \"categoria\": \"LARGE\",\n  \"tolerance\": 8,\n  \"range_from\": 400.0,\n  \"range_to\": 700.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/crystals-param-ma/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["crystals-param-ma", "add"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📐 Crystals Param - CV",
+      "item": [
+        {
+          "name": "Get CV Parametrization",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/crystals-param-cv/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["crystals-param-cv", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update CV Parametrization",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter\": \"cv_param\",\n  \"categoria\": \"OPTIMAL\",\n  \"tolerance\": 3,\n  \"range_from\": 10.0,\n  \"range_to\": 20.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/crystals-param-cv/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["crystals-param-cv", "update"]
+            }
+          }
+        },
+        {
+          "name": "Update Specific CV",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"tolerance\": 5,\n  \"range_from\": 12.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/crystals-param-cv/update-specific",
+              "host": ["{{baseUrl}}"],
+              "path": ["crystals-param-cv", "update-specific"]
+            }
+          }
+        },
+        {
+          "name": "Add New CV Parameter",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter\": \"new_cv_param\",\n  \"categoria\": \"FINE\",\n  \"tolerance\": 2,\n  \"range_from\": 5.0,\n  \"range_to\": 15.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/crystals-param-cv/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["crystals-param-cv", "add"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔬 Laboratory Parametrization",
+      "item": [
+        {
+          "name": "Get Laboratory Parametrization",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/lab-param/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-param", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update Laboratory Parametrization",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"material\": \"pza_licor\",\n  \"categoria\": \"OPTIMAL\",\n  \"range_from\": 80.0,\n  \"range_to\": 90.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lab-param/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-param", "update"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🧮 Lab Calculated - Refino",
+      "item": [
+        {
+          "name": "Get Refino Parametrization",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/lab-param-calc/refino/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-param-calc", "refino", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update Refino Parametrization",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter\": \"refino_param\",\n  \"categoria\": \"STANDARD\",\n  \"range_from\": 70.0,\n  \"range_to\": 85.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lab-param-calc/refino/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-param-calc", "refino", "update"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🧮 Lab Calculated - Masa A",
+      "item": [
+        {
+          "name": "Get Masa A Parametrization",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/lab-param-calc/masa-a/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-param-calc", "masa-a", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update Masa A Parametrization",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter\": \"masa_a_param\",\n  \"categoria\": \"GOOD\",\n  \"range_from\": 75.0,\n  \"range_to\": 88.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lab-param-calc/masa-a/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-param-calc", "masa-a", "update"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🧮 Lab Calculated - Masa B",
+      "item": [
+        {
+          "name": "Get Masa B Parametrization",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/lab-param-calc/masa-b/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-param-calc", "masa-b", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update Masa B Parametrization",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter\": \"masa_b_param\",\n  \"categoria\": \"GOOD\",\n  \"range_from\": 72.0,\n  \"range_to\": 86.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lab-param-calc/masa-b/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-param-calc", "masa-b", "update"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🧮 Lab Calculated - Masa C",
+      "item": [
+        {
+          "name": "Get Masa C Parametrization",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/lab-param-calc/masa-c/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-param-calc", "masa-c", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update Masa C Parametrization",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter\": \"masa_c_param\",\n  \"categoria\": \"GOOD\",\n  \"range_from\": 70.0,\n  \"range_to\": 82.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lab-param-calc/masa-c/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-param-calc", "masa-c", "update"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "⚗️ Lab Materials Settings",
+      "item": [
+        {
+          "name": "Get Lab Materials Settings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/lab-materials/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-materials", "get"]
+            }
+          }
+        },
+        {
+          "name": "Insert Lab Materials Settings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"material\": \"pza_licor\",\n  \"visible\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lab-materials/insert",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-materials", "insert"]
+            }
+          }
+        },
+        {
+          "name": "Update Lab Materials Settings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"material\": \"pza_licor\",\n  \"visible\": 0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lab-materials/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-materials", "update"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📊 Laboratory Settings Excel",
+      "item": [
+        {
+          "name": "Get Excel Letters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/lab-excel/get-letters",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-excel", "get-letters"]
+            }
+          }
+        },
+        {
+          "name": "Get Excel Numbers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/lab-excel/get-numbers",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-excel", "get-numbers"]
+            }
+          }
+        },
+        {
+          "name": "Update Laboratory Excel Settings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pza_licor_letter\": \"A\",\n  \"pza_licor_number\": 5,\n  \"bx_masa_c_letter\": \"B\",\n  \"bx_masa_c_number\": 10\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lab-excel/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["lab-excel", "update"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📊 Management Report Settings",
+      "item": [
+        {
+          "name": "Get Management Report Settings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/management-report-settings/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["management-report-settings", "get"]
+            }
+          }
+        },
+        {
+          "name": "Insert Management Report Settings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"setting_name\": \"test_setting\",\n  \"setting_value\": \"test_value\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/management-report-settings/insert",
+              "host": ["{{baseUrl}}"],
+              "path": ["management-report-settings", "insert"]
+            }
+          }
+        },
+        {
+          "name": "Update Management Report Settings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"setting_name\": \"updated_setting\",\n  \"setting_value\": \"updated_value\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/management-report-settings/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["management-report-settings", "update"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📐 Management Report Layout",
+      "item": [
+        {
+          "name": "Get Management Report Layout",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/management-report-layout/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["management-report-layout", "get"]
+            }
+          }
+        },
+        {
+          "name": "Get Tab Management Report Layout",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/management-report-layout/tab",
+              "host": ["{{baseUrl}}"],
+              "path": ["management-report-layout", "tab"]
+            }
+          }
+        },
+        {
+          "name": "Insert Management Report Layout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tab_name\": \"Test Tab\",\n  \"layout_data\": {}\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/management-report-layout/insert",
+              "host": ["{{baseUrl}}"],
+              "path": ["management-report-layout", "insert"]
+            }
+          }
+        },
+        {
+          "name": "Update Management Report Layout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"tab_name\": \"Updated Tab\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/management-report-layout/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["management-report-layout", "update"]
+            }
+          }
+        },
+        {
+          "name": "Set Default Management Report Layout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/management-report-layout/defaults",
+              "host": ["{{baseUrl}}"],
+              "path": ["management-report-layout", "defaults"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📋 General Reporting Order",
+      "item": [
+        {
+          "name": "Get General Headers Ordering",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reporting-order/general/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["reporting-order", "general", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update General Headers Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_data\": [\"field1\", \"field2\", \"field3\"]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reporting-order/general/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["reporting-order", "general", "update"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📋 Laboratory Reporting Order",
+      "item": [
+        {
+          "name": "Get Laboratory Headers Ordering",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reporting-order/laboratory/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["reporting-order", "laboratory", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update Laboratory Headers Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_data\": [\"lab_field1\", \"lab_field2\"]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reporting-order/laboratory/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["reporting-order", "laboratory", "update"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📋 Specific Reporting Order",
+      "item": [
+        {
+          "name": "Get Specific Headers Ordering",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reporting-order/specific/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["reporting-order", "specific", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update Specific Headers Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_data\": [\"specific1\", \"specific2\"]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reporting-order/specific/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["reporting-order", "specific", "update"]
+            }
+          }
+        },
+        {
+          "name": "Insert New Parameter Single Value",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parameter_name\": \"new_param\",\n  \"value\": \"test_value\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reporting-order/specific/insert-single",
+              "host": ["{{baseUrl}}"],
+              "path": ["reporting-order", "specific", "insert-single"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🧪 Brix Calculator Data",
+      "item": [
+        {
+          "name": "Get Brix Calculator Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/brix-calc/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["brix-calc", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update Brix Calculator Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brix_value\": 12.5,\n  \"temperature\": 25.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/brix-calc/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["brix-calc", "update"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "⚙️ Process Code Data",
+      "item": [
+        {
+          "name": "Get Process Code Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/process-code/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["process-code", "get"]
+            }
+          }
+        },
+        {
+          "name": "Update Process Code Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"PC001\",\n  \"description\": \"Process code test\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/process-code/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["process-code", "update"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🛢️ Crudo Calculations",
+      "item": [
+        {
+          "name": "Get Crudo Calculations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/crudo/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["crudo", "get"]
+            }
+          }
+        },
+        {
+          "name": "Insert Crudo Calculations",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"calculation_type\": \"standard\",\n  \"value\": 100.5\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/crudo/insert",
+              "host": ["{{baseUrl}}"],
+              "path": ["crudo", "insert"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔧 Refino Calculations",
+      "item": [
+        {
+          "name": "Get Refino Calculations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/refino/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["refino", "get"]
+            }
+          }
+        },
+        {
+          "name": "Insert Refino Calculations",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"calculation_type\": \"refino\",\n  \"value\": 95.7\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/refino/insert",
+              "host": ["{{baseUrl}}"],
+              "path": ["refino", "insert"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "👤 Users",
+      "item": [
+        {
+          "name": "Validate User Credentials",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"testpass\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/validate",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "validate"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📏 Manual Measurements",
+      "item": [
+        {
+          "name": "Select Manual Measurements",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/manual-measurements/list",
+              "host": ["{{baseUrl}}"],
+              "path": ["manual-measurements", "list"]
+            }
+          }
+        },
+        {
+          "name": "Add Manual Measurement",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"time\": \"2025-10-30 17:30:00\",\n  \"value\": 25.5\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/manual-measurements/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["manual-measurements", "add"]
+            }
+          }
+        },
+        {
+          "name": "Clear Manual Measurement DB",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/manual-measurements/clear",
+              "host": ["{{baseUrl}}"],
+              "path": ["manual-measurements", "clear"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔐 Activation",
+      "item": [
+        {
+          "name": "Validate Software",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activation_code\": \"XXXX-XXXX-XXXX-XXXX\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/activation/validate",
+              "host": ["{{baseUrl}}"],
+              "path": ["activation", "validate"]
+            }
+          }
+        },
+        {
+          "name": "Check If Software Is Active",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/activation/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["activation", "status"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🆕 New Parameters Analysis Categories",
+      "item": [
+        {
+          "name": "Add New Parameters Analysis Categories",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category_name\": \"New Category\",\n  \"description\": \"Test category\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/analysis-category/add-new",
+              "host": ["{{baseUrl}}"],
+              "path": ["analysis-category", "add-new"]
+            }
+          }
+        },
+        {
+          "name": "Get New Parameters Analysis Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/analysis-category/get-new",
+              "host": ["{{baseUrl}}"],
+              "path": ["analysis-category", "get-new"]
+            }
+          }
+        },
+        {
+          "name": "Delete Parameter Analysis Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/analysis-category/delete",
+              "host": ["{{baseUrl}}"],
+              "path": ["analysis-category", "delete"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "refresh_token",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

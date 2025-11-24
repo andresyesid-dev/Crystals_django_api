@@ -1,17 +1,21 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Calibration(models.Model):
-	name = models.CharField(max_length=20, unique=True)
+	name = models.CharField(max_length=50, unique=True)  # Increased from 20 to 50 to accommodate longer names
 	pixels_per_metric = models.FloatField()
 	metric_name = models.CharField(max_length=5)
 	range = models.CharField(max_length=50)
 	active = models.IntegerField(default=0)
 	powder = models.CharField(max_length=50, null=True, blank=True)
+	ordering = models.IntegerField(null=True, blank=True)
+	target_cv = models.FloatField(null=True, blank=True)
+	target_mean = models.FloatField(null=True, blank=True)
 
 	class Meta:
 		db_table = 'calibrations'
-		managed = False
+		managed = True
 
 
 class User(models.Model):
@@ -20,16 +24,16 @@ class User(models.Model):
 
 	class Meta:
 		db_table = 'users'
-		managed = False
+		managed = True
 
 
 class Config(models.Model):
-	key = models.CharField(max_length=3, unique=True)
-	value = models.CharField(max_length=20)
+	key = models.CharField(max_length=50, unique=True)  # Changed from 3 to 50 to match actual data
+	value = models.CharField(max_length=50)  # Changed from 20 to 50 for flexibility
 
 	class Meta:
 		db_table = 'config'
-		managed = False
+		managed = True
 
 
 class Company(models.Model):
@@ -38,7 +42,7 @@ class Company(models.Model):
 
 	class Meta:
 		db_table = 'company'
-		managed = False
+		managed = True
 
 
 class ManualMeasurement(models.Model):
@@ -47,12 +51,12 @@ class ManualMeasurement(models.Model):
 
 	class Meta:
 		db_table = 'manual_measurements'
-		managed = False
+		managed = True
 
 
 class HistoricReport(models.Model):
 	datetime = models.CharField(max_length=50)
-	calibration = models.CharField(max_length=20)
+	calibration = models.CharField(max_length=50)  # Increased from 20 to 50 to match Calibration.name
 	correlation = models.FloatField()
 	width_min = models.FloatField()
 	width_max = models.FloatField()
@@ -76,7 +80,7 @@ class HistoricReport(models.Model):
 
 	class Meta:
 		db_table = 'historic_reports'
-		managed = False
+		managed = True
 
 
 class GlobalSetting(models.Model):
@@ -84,7 +88,7 @@ class GlobalSetting(models.Model):
 
 	class Meta:
 		db_table = 'global_settings'
-		managed = False
+		managed = True
 
 
 class Activation(models.Model):
@@ -93,7 +97,7 @@ class Activation(models.Model):
 
 	class Meta:
 		db_table = 'activation'
-		managed = False
+		managed = True
 
 
 class HistoricAnalysisData(models.Model):
@@ -111,7 +115,7 @@ class HistoricAnalysisData(models.Model):
 
 	class Meta:
 		db_table = 'historic_analysis_data'
-		managed = False
+		managed = True
 
 
 class ManagementReportSettings(models.Model):
@@ -161,10 +165,17 @@ class ManagementReportSettings(models.Model):
 	pol_azuc = models.IntegerField()
 	sol_tota_hda_azu = models.IntegerField()
 	rel_la_grapgh = models.IntegerField()
+	amount_perc_fino = models.IntegerField(null=True, blank=True, default=0)
+	amount_perc_peq = models.IntegerField(null=True, blank=True, default=0)
+	amount_perc_opt = models.IntegerField(null=True, blank=True, default=0)
+	amount_perc_gran = models.IntegerField(null=True, blank=True, default=0)
+	amount_perc_muy_gran = models.IntegerField(null=True, blank=True, default=0)
+	amount_total = models.IntegerField(null=True, blank=True, default=0)
+	perc_powder = models.IntegerField(null=True, blank=True, default=0)
 
 	class Meta:
 		db_table = 'management_report_settings'
-		managed = False
+		managed = True
 
 
 class AnalysisCategory(models.Model):
@@ -178,7 +189,7 @@ class AnalysisCategory(models.Model):
 
 	class Meta:
 		db_table = 'analysis_categories'
-		managed = False
+		managed = True
 
 
 class NewParametersAnalysisCategory(models.Model):
@@ -187,7 +198,7 @@ class NewParametersAnalysisCategory(models.Model):
 
 	class Meta:
 		db_table = 'new_parameters_analysis_categories'
-		managed = False
+		managed = True
 
 
 class CrudoCalculation(models.Model):
@@ -203,7 +214,7 @@ class CrudoCalculation(models.Model):
 
 	class Meta:
 		db_table = 'crudo_calculations'
-		managed = False
+		managed = True
 
 
 class RefinoCalculation(models.Model):
@@ -220,7 +231,7 @@ class RefinoCalculation(models.Model):
 
 	class Meta:
 		db_table = 'refino_calculations'
-		managed = False
+		managed = True
 
 
 class SpecificReportingOrder(models.Model):
@@ -229,7 +240,7 @@ class SpecificReportingOrder(models.Model):
 
 	class Meta:
 		db_table = 'specific_reporting_order'
-		managed = False
+		managed = True
 
 
 class GeneralReportingOrder(models.Model):
@@ -238,7 +249,7 @@ class GeneralReportingOrder(models.Model):
 
 	class Meta:
 		db_table = 'general_reporting_order'
-		managed = False
+		managed = True
 
 
 class LaboratoryReportingOrder(models.Model):
@@ -247,7 +258,7 @@ class LaboratoryReportingOrder(models.Model):
 
 	class Meta:
 		db_table = 'laboratory_reporting_order'
-		managed = False
+		managed = True
 
 
 class LaboratoryParametrization(models.Model):
@@ -258,7 +269,7 @@ class LaboratoryParametrization(models.Model):
 
 	class Meta:
 		db_table = 'laboratory_parametrization'
-		managed = False
+		managed = True
 
 
 class LaboratoryCalculatedRefinoParametrization(models.Model):
@@ -269,7 +280,7 @@ class LaboratoryCalculatedRefinoParametrization(models.Model):
 
 	class Meta:
 		db_table = 'laboratory_calculated_refino_parametrization'
-		managed = False
+		managed = True
 
 
 class LaboratoryCalculatedMasaAParametrization(models.Model):
@@ -280,7 +291,7 @@ class LaboratoryCalculatedMasaAParametrization(models.Model):
 
 	class Meta:
 		db_table = 'laboratory_calculated_masa_a_parametrization'
-		managed = False
+		managed = True
 
 
 class LaboratoryCalculatedMasaBParametrization(models.Model):
@@ -291,7 +302,7 @@ class LaboratoryCalculatedMasaBParametrization(models.Model):
 
 	class Meta:
 		db_table = 'laboratory_calculated_masa_b_parametrization'
-		managed = False
+		managed = True
 
 
 class LaboratoryCalculatedMasaCParametrization(models.Model):
@@ -302,7 +313,7 @@ class LaboratoryCalculatedMasaCParametrization(models.Model):
 
 	class Meta:
 		db_table = 'laboratory_calculated_masa_c_parametrization'
-		managed = False
+		managed = True
 
 
 class CrystalsDataParametrization(models.Model):
@@ -313,7 +324,7 @@ class CrystalsDataParametrization(models.Model):
 
 	class Meta:
 		db_table = 'crystals_data_parametrization'
-		managed = False
+		managed = True
 
 
 class CrystalsDataParametrizationNewParams(models.Model):
@@ -324,7 +335,7 @@ class CrystalsDataParametrizationNewParams(models.Model):
 
 	class Meta:
 		db_table = 'crystals_data_parametrization_nw_params'
-		managed = False
+		managed = True
 
 
 class CrystalsDataParametrizationMA(models.Model):
@@ -336,7 +347,7 @@ class CrystalsDataParametrizationMA(models.Model):
 
 	class Meta:
 		db_table = 'crystals_data_parametrization_ma'
-		managed = False
+		managed = True
 
 
 class CrystalsDataParametrizationCV(models.Model):
@@ -348,7 +359,7 @@ class CrystalsDataParametrizationCV(models.Model):
 
 	class Meta:
 		db_table = 'crystals_data_parametrization_cv'
-		managed = False
+		managed = True
 
 
 class BrixCalculatorData(models.Model):
@@ -359,16 +370,16 @@ class BrixCalculatorData(models.Model):
 
 	class Meta:
 		db_table = 'brix_calculator_data'
-		managed = False
+		managed = True
 
 
 class ProcessCodeData(models.Model):
-	process = models.FloatField(primary_key=True)
+	process = models.TextField(primary_key=True)
 	code = models.TextField()
 
 	class Meta:
 		db_table = 'process_code_data'
-		managed = False
+		managed = True
 
 
 class ManagementReportLayout(models.Model):
@@ -380,7 +391,7 @@ class ManagementReportLayout(models.Model):
 
 	class Meta:
 		db_table = 'management_report_layout'
-		managed = False
+		managed = True
 
 
 class LabMaterialsSettings(models.Model):
@@ -389,7 +400,7 @@ class LabMaterialsSettings(models.Model):
 
 	class Meta:
 		db_table = 'lab_materials_settings'
-		managed = False
+		managed = True
 
 
 class LaboratorySettingsExcel(models.Model):
@@ -470,7 +481,7 @@ class LaboratorySettingsExcel(models.Model):
 
 	class Meta:
 		db_table = 'laboratory_settings_excel'
-		managed = False
+		managed = True
 
 
 class LaboratoryData(models.Model):
@@ -514,5 +525,31 @@ class LaboratoryData(models.Model):
 
 	class Meta:
 		db_table = 'laboratory_data'
-		managed = False
+		managed = True
+
+
+class Numero(models.Model):
+	valor = models.FloatField(default=0.0)
+
+	class Meta:
+		db_table = 'numero'
+		managed = True
+
+
+class AnalysisResults(models.Model):
+	mean = models.FloatField(default=0.0)
+	cv = models.FloatField(default=0.0)
+	pct_fine = models.FloatField(default=0.0)
+	pct_small = models.FloatField(default=0.0)
+	pct_optimal = models.FloatField(default=0.0)
+	pct_large = models.FloatField(default=0.0)
+	pct_very_large = models.FloatField(default=0.0)
+	ratio_l_to_w = models.FloatField(default=0.0)
+	elongated_crystals = models.FloatField(default=0.0)
+	pct_powder = models.FloatField(default=0.0)
+	historic_report_id = models.BigIntegerField(default=0)
+
+	class Meta:
+		db_table = 'analysis_results'
+		managed = True
 

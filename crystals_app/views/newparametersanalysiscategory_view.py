@@ -9,38 +9,44 @@ import json
 @csrf_exempt
 @require_http_methods(["POST"])
 @jwt_required
-@permission_required('write')
 @sensitive_endpoint
 @log_api_access
 def add_new_parameter(request: HttpRequest):
-    body = json.loads(request.body or b"{}")
-    parameter = (body.get("parameter") or "").replace(' ', '_')
-    type_ = body.get("type")
-    if not parameter or not type_:
-        return JsonResponse({"error": "parameter and type required"}, status=400)
-    NewParametersAnalysisCategory.objects.create(parameter=parameter, type=type_)
-    return JsonResponse({"ok": True})
+    try:
+        body = json.loads(request.body or b"{}")
+        parameter = (body.get("parameter") or "").replace(' ', '_')
+        type_ = body.get("type")
+        if not parameter or not type_:
+            return JsonResponse({"message": "❌ Los campos 'parameter' y 'type' son requeridos", "error": "parameter and type required"}, status=400)
+        NewParametersAnalysisCategory.objects.create(parameter=parameter, type=type_)
+        return JsonResponse({"message": "✅ Nuevo parámetro agregado exitosamente", "ok": True})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al agregar nuevo parámetro", "error": str(e)}, status=500)
 
 
 @require_http_methods(["GET"])
 @jwt_required
-@permission_required('read')
 @log_api_access
 def get_new_parameters(request: HttpRequest):
-    data = list(NewParametersAnalysisCategory.objects.all().values())
-    return JsonResponse({"results": data})
+    try:
+        data = list(NewParametersAnalysisCategory.objects.all().values())
+        return JsonResponse({"message": "✅ Nuevos parámetros obtenidos exitosamente", "results": data})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al obtener nuevos parámetros", "error": str(e)}, status=500)
 
 
 @csrf_exempt
 @require_http_methods(["POST"])
 @jwt_required
-@permission_required('write')
 @sensitive_endpoint
 @log_api_access
 def delete_new_parameter(request: HttpRequest):
-    body = json.loads(request.body or b"{}")
-    parameter = (body.get("parameter") or "").replace(' ', '_')
-    if not parameter:
-        return JsonResponse({"error": "parameter required"}, status=400)
-    NewParametersAnalysisCategory.objects.filter(parameter=parameter).delete()
-    return JsonResponse({"deleted": True})
+    try:
+        body = json.loads(request.body or b"{}")
+        parameter = (body.get("parameter") or "").replace(' ', '_')
+        if not parameter:
+            return JsonResponse({"message": "❌ El campo 'parameter' es requerido", "error": "parameter required"}, status=400)
+        NewParametersAnalysisCategory.objects.filter(parameter=parameter).delete()
+        return JsonResponse({"message": "✅ Nuevo parámetro eliminado exitosamente", "deleted": True})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al eliminar nuevo parámetro", "error": str(e)}, status=500)

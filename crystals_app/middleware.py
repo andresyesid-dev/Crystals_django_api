@@ -57,8 +57,8 @@ class SecurityMiddleware(MiddlewareMixin):
         rate_limit_key = f'rate_limit_{client_ip}'
         request_count = cache.get(rate_limit_key, 0)
         
-        # Allow 100 requests per minute per IP
-        if request_count >= 100:
+        # Allow 500 requests per minute per IP (increased for bulk operations like Excel imports)
+        if request_count >= 500:
             log_security_event(
                 'RATE_LIMIT_EXCEEDED',
                 request,

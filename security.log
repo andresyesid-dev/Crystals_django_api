@@ -123,3 +123,355 @@
 [SECURITY] 2025-10-10 03:19:45,018 ERROR Security Event: JWT_MISSING - JWT token missing for protected endpoint: /security/dashboard/ - IP: 127.0.0.1 - User: Unknown
 [SECURITY] 2025-10-10 03:19:45,019 WARNING Unauthorized access to /security/dashboard/ - IP: 127.0.0.1 - User: Anonymous
 [SECURITY] 2025-10-10 03:19:45,019 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /security/dashboard/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-27 17:20:37,642 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 17:20:37,646 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 18:35:55,223 WARNING API Error: InvalidToken - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-27 18:35:55,228 ERROR Security Event: API_ERROR - API Error: InvalidToken - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-27 18:35:55,229 WARNING Unauthorized access to /auth/profile/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-27 18:35:55,229 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /auth/profile/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-27 18:36:01,038 WARNING API Error: InvalidToken - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-27 18:36:01,040 ERROR Security Event: API_ERROR - API Error: InvalidToken - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-27 18:36:01,040 WARNING Unauthorized access to /auth/verify/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-27 18:36:01,041 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /auth/verify/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-27 18:40:55,689 WARNING API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 18:40:55,694 ERROR Security Event: API_ACCESS - API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 18:41:48,320 WARNING API access: GET /calibration/active - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 18:41:48,323 ERROR Security Event: API_ACCESS - API access: GET /calibration/active - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 18:41:57,181 WARNING API access: GET /calibration/excluded - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 18:41:57,183 ERROR Security Event: API_ACCESS - API access: GET /calibration/excluded - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 18:42:04,017 WARNING API access: GET /calibration/historic - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 18:42:04,018 ERROR Security Event: API_ACCESS - API access: GET /calibration/historic - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:39:47,509 WARNING Invalid JWT token for endpoint: /activation/status - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-27 19:39:47,511 ERROR Security Event: JWT_INVALID - Invalid JWT token for endpoint: /activation/status - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-27 19:39:47,511 WARNING Unauthorized access to /activation/status - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-27 19:39:47,511 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /activation/status - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-27 19:40:07,123 WARNING Invalid JWT token for endpoint: /activation/status - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-27 19:40:07,124 ERROR Security Event: JWT_INVALID - Invalid JWT token for endpoint: /activation/status - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-27 19:40:07,124 WARNING Unauthorized access to /activation/status - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-27 19:40:07,125 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /activation/status - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-27 19:40:08,712 WARNING Invalid JWT token for endpoint: /activation/status - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-27 19:40:08,713 ERROR Security Event: JWT_INVALID - Invalid JWT token for endpoint: /activation/status - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-27 19:40:08,713 WARNING Unauthorized access to /activation/status - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-27 19:40:08,714 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /activation/status - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-27 19:40:38,804 WARNING API access: GET /activation/status - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:40:38,806 ERROR Security Event: API_ACCESS - API access: GET /activation/status - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:40:52,771 WARNING API access: GET /analysis-category/get-new - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:40:52,774 ERROR Security Event: API_ACCESS - API access: GET /analysis-category/get-new - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:41:03,125 WARNING API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:41:03,127 ERROR Security Event: API_ACCESS - API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:41:11,135 WARNING API access: GET /calibration/historic - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:41:11,137 ERROR Security Event: API_ACCESS - API access: GET /calibration/historic - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:42:16,371 WARNING API access: GET /lab-data/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:42:16,374 ERROR Security Event: API_ACCESS - API access: GET /lab-data/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:42:16,585 WARNING API error in /lab-data/get: column laboratory_data.date_and_time does not exist
+LINE 1: SELECT "laboratory_data"."id", "laboratory_data"."date_and_t...
+                                       ^
+ - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:42:16,586 ERROR Security Event: API_ERROR - API error in /lab-data/get: column laboratory_data.date_and_time does not exist
+LINE 1: SELECT "laboratory_data"."id", "laboratory_data"."date_and_t...
+                                       ^
+ - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:42:16,605 WARNING Unauthorized access to /lab-data/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-27 19:42:16,605 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /lab-data/get - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-27 19:42:29,849 WARNING API access: GET /lab-data/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:42:29,850 ERROR Security Event: API_ACCESS - API access: GET /lab-data/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:42:30,027 WARNING API error in /lab-data/get: column laboratory_data.date_and_time does not exist
+LINE 1: SELECT "laboratory_data"."id", "laboratory_data"."date_and_t...
+                                       ^
+ - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:42:30,029 ERROR Security Event: API_ERROR - API error in /lab-data/get: column laboratory_data.date_and_time does not exist
+LINE 1: SELECT "laboratory_data"."id", "laboratory_data"."date_and_t...
+                                       ^
+ - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:42:30,035 WARNING Unauthorized access to /lab-data/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-27 19:42:30,036 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /lab-data/get - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-27 19:44:41,493 WARNING API access: GET /lab-data/historic - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-27 19:44:41,495 ERROR Security Event: API_ACCESS - API access: GET /lab-data/historic - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 00:22:57,856 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 00:22:57,859 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 12:56:13,757 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 12:56:13,760 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 12:59:42,690 WARNING API access: GET /activation/status - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 12:59:42,695 ERROR Security Event: API_ACCESS - API access: GET /activation/status - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 14:36:05,162 WARNING Invalid credentials for user: admin - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-30 14:36:05,164 ERROR Security Event: LOGIN_FAILED_INVALID_CREDENTIALS - Invalid credentials for user: admin - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-30 14:36:05,165 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-30 14:36:05,165 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-30 14:37:16,666 WARNING Invalid credentials for user: admin - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-30 14:37:16,667 ERROR Security Event: LOGIN_FAILED_INVALID_CREDENTIALS - Invalid credentials for user: admin - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-30 14:37:16,667 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-30 14:37:16,667 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-30 14:39:24,623 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 14:39:24,626 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 14:41:49,697 WARNING API access: GET /activation/status - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 14:41:49,703 ERROR Security Event: API_ACCESS - API access: GET /activation/status - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 14:42:07,892 WARNING API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 14:42:07,894 ERROR Security Event: API_ACCESS - API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 17:27:51,015 WARNING Invalid credentials for user: admin - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-30 17:27:51,017 ERROR Security Event: LOGIN_FAILED_INVALID_CREDENTIALS - Invalid credentials for user: admin - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-30 17:27:51,018 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-30 17:27:51,018 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-30 17:29:08,126 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 17:29:08,128 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 17:29:39,421 WARNING Permission denied for user admin: write - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 17:29:39,422 ERROR Security Event: PERMISSION_DENIED - Permission denied for user admin: write - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 17:33:31,835 WARNING Permission denied for user admin: write - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 17:33:31,839 ERROR Security Event: PERMISSION_DENIED - Permission denied for user admin: write - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 17:52:05,103 WARNING Access to sensitive endpoint: /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 17:52:05,108 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 17:52:05,108 WARNING API access: POST /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 17:52:05,109 ERROR Security Event: API_ACCESS - API access: POST /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 18:19:33,782 WARNING Access to sensitive endpoint: /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 18:19:33,791 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 18:19:33,791 WARNING API access: POST /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 18:19:33,791 ERROR Security Event: API_ACCESS - API access: POST /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 18:21:11,285 WARNING Access to sensitive endpoint: /lab-data/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 18:21:11,291 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /lab-data/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 18:21:11,291 WARNING API access: POST /lab-data/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 18:21:11,291 ERROR Security Event: API_ACCESS - API access: POST /lab-data/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 18:21:37,546 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 18:21:37,547 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 18:21:46,000 WARNING Access to sensitive endpoint: /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 18:21:46,001 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 18:21:46,002 WARNING API access: POST /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 18:21:46,002 ERROR Security Event: API_ACCESS - API access: POST /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 20:43:58,158 ERROR Login error: relation "auth_user" does not exist
+LINE 1: ...user"."is_active", "auth_user"."date_joined" FROM "auth_user...
+                                                             ^
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-30 20:43:58,161 WARNING Server error 500 on /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-30 20:43:58,163 ERROR Security Event: SERVER_ERROR - Server error 500 on /auth/login/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-30 20:51:45,526 WARNING Invalid credentials for user: admin - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-30 20:51:45,530 ERROR Security Event: LOGIN_FAILED_INVALID_CREDENTIALS - Invalid credentials for user: admin - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-30 20:51:45,530 WARNING Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-30 20:51:45,530 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /auth/login/ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-30 20:54:04,216 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 20:54:04,218 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 20:57:19,287 WARNING Access to sensitive endpoint: /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 20:57:19,290 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 20:57:19,290 WARNING API access: POST /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 20:57:19,290 ERROR Security Event: API_ACCESS - API access: POST /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 20:57:38,540 WARNING Access to sensitive endpoint: /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 20:57:38,544 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 20:57:38,544 WARNING API access: POST /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 20:57:38,545 ERROR Security Event: API_ACCESS - API access: POST /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 20:59:03,521 WARNING Access to sensitive endpoint: /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 20:59:03,526 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 20:59:03,527 WARNING API access: POST /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 20:59:03,527 ERROR Security Event: API_ACCESS - API access: POST /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:15:25,109 WARNING Access to sensitive endpoint: /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:15:25,114 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:15:25,115 WARNING API access: POST /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:15:25,115 ERROR Security Event: API_ACCESS - API access: POST /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:17:32,164 WARNING Access to sensitive endpoint: /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:17:32,168 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:17:32,168 WARNING API access: POST /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:17:32,168 ERROR Security Event: API_ACCESS - API access: POST /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:19:27,166 WARNING Access to sensitive endpoint: /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:19:27,169 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:19:27,169 WARNING API access: POST /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:19:27,170 ERROR Security Event: API_ACCESS - API access: POST /analysis-category/add-values - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:20:19,506 WARNING Access to sensitive endpoint: /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:20:19,510 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:20:19,510 WARNING API access: POST /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:20:19,510 ERROR Security Event: API_ACCESS - API access: POST /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:24:40,586 WARNING API access: POST /calibration/create - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:24:40,591 ERROR Security Event: API_ACCESS - API access: POST /calibration/create - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:24:40,674 WARNING Access to sensitive endpoint: /calibration/create - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:24:40,674 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /calibration/create - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:26:31,767 WARNING Access to sensitive endpoint: /lab-data/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:26:31,771 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /lab-data/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:26:31,772 WARNING API access: POST /lab-data/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 21:26:31,772 ERROR Security Event: API_ACCESS - API access: POST /lab-data/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:31:14,463 WARNING Invalid JWT token for endpoint: /lab-data/add - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-30 22:31:14,468 ERROR Security Event: JWT_INVALID - Invalid JWT token for endpoint: /lab-data/add - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-30 22:31:14,468 WARNING Unauthorized access to /lab-data/add - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-30 22:31:14,468 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /lab-data/add - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-30 22:31:24,769 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:31:24,772 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:31:30,269 WARNING Invalid JWT token for endpoint: /lab-data/add - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-30 22:31:30,270 ERROR Security Event: JWT_INVALID - Invalid JWT token for endpoint: /lab-data/add - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-30 22:31:30,270 WARNING Unauthorized access to /lab-data/add - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-30 22:31:30,271 ERROR Security Event: UNAUTHORIZED_ACCESS_ATTEMPT - Unauthorized access to /lab-data/add - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-30 22:32:10,911 WARNING Access to sensitive endpoint: /lab-data/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:32:10,913 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /lab-data/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:32:10,913 WARNING API access: POST /lab-data/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:32:10,914 ERROR Security Event: API_ACCESS - API access: POST /lab-data/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:33:45,166 WARNING Access to sensitive endpoint: /lab-data/update - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:33:45,168 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /lab-data/update - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:33:45,168 WARNING API access: POST /lab-data/update - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:33:45,169 ERROR Security Event: API_ACCESS - API access: POST /lab-data/update - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:34:01,309 WARNING API access: GET /lab-data/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:34:01,310 ERROR Security Event: API_ACCESS - API access: GET /lab-data/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:34:22,338 WARNING API access: GET /lab-data/historic - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:34:22,341 ERROR Security Event: API_ACCESS - API access: GET /lab-data/historic - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:34:36,292 WARNING Access to sensitive endpoint: /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:34:36,295 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:34:36,300 WARNING API access: POST /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-30 22:34:36,307 ERROR Security Event: API_ACCESS - API access: POST /historic-report/add - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:23:55,546 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:23:55,550 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:33,447 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:33,450 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:34,321 WARNING Access to sensitive endpoint: /management-report-layout/insert - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:34,322 ERROR Security Event: SENSITIVE_ACCESS - Access to sensitive endpoint: /management-report-layout/insert - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:34,322 WARNING API access: POST /management-report-layout/insert - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:34,323 ERROR Security Event: API_ACCESS - API access: POST /management-report-layout/insert - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:35,090 WARNING API access: GET /config/dop/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:35,090 ERROR Security Event: API_ACCESS - API access: GET /config/dop/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:35,958 WARNING API access: GET /config/language/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:35,958 ERROR Security Event: API_ACCESS - API access: GET /config/language/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:35,960 WARNING Server error 500 on /config/language/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-31 03:29:35,960 ERROR Security Event: SERVER_ERROR - Server error 500 on /config/language/get - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-31 03:29:36,777 WARNING API access: GET /global-settings/line-color/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:36,777 ERROR Security Event: API_ACCESS - API access: GET /global-settings/line-color/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:37,607 WARNING API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:37,614 ERROR Security Event: API_ACCESS - API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:38,520 WARNING API access: GET /calibration/active - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:38,521 ERROR Security Event: API_ACCESS - API access: GET /calibration/active - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:39,380 WARNING API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:39,382 ERROR Security Event: API_ACCESS - API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:40,492 WARNING API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:40,494 ERROR Security Event: API_ACCESS - API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:41,404 WARNING API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:29:41,406 ERROR Security Event: API_ACCESS - API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:47,004 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:47,006 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:47,788 WARNING API access: GET /config/dop/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:47,789 ERROR Security Event: API_ACCESS - API access: GET /config/dop/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:48,654 WARNING API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:48,654 ERROR Security Event: API_ACCESS - API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:49,514 WARNING API access: GET /config/language/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:49,514 ERROR Security Event: API_ACCESS - API access: GET /config/language/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:49,517 WARNING Server error 500 on /config/language/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-10-31 03:31:49,517 ERROR Security Event: SERVER_ERROR - Server error 500 on /config/language/get - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-10-31 03:31:50,334 WARNING API access: GET /global-settings/line-color/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:50,334 ERROR Security Event: API_ACCESS - API access: GET /global-settings/line-color/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:51,134 WARNING API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:51,135 ERROR Security Event: API_ACCESS - API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:52,023 WARNING API access: GET /calibration/active - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:52,025 ERROR Security Event: API_ACCESS - API access: GET /calibration/active - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:52,877 WARNING API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:52,877 ERROR Security Event: API_ACCESS - API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:53,902 WARNING API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:53,902 ERROR Security Event: API_ACCESS - API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:54,784 WARNING API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:31:54,784 ERROR Security Event: API_ACCESS - API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:35:59,754 WARNING Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:35:59,757 ERROR Security Event: LOGIN_SUCCESS - Successful login for user: admin - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:00,525 WARNING API access: GET /config/dop/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:00,526 ERROR Security Event: API_ACCESS - API access: GET /config/dop/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:01,437 WARNING API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:01,438 ERROR Security Event: API_ACCESS - API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:02,357 WARNING API access: GET /config/language/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:02,376 ERROR Security Event: API_ACCESS - API access: GET /config/language/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:03,618 WARNING API access: GET /global-settings/line-color/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:03,619 ERROR Security Event: API_ACCESS - API access: GET /global-settings/line-color/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:04,473 WARNING API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:04,474 ERROR Security Event: API_ACCESS - API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:05,311 WARNING API access: GET /calibration/active - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:05,312 ERROR Security Event: API_ACCESS - API access: GET /calibration/active - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:06,130 WARNING API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:06,130 ERROR Security Event: API_ACCESS - API access: GET /calibration/list - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:07,302 WARNING API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:07,303 ERROR Security Event: API_ACCESS - API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:08,202 WARNING API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 03:36:08,203 ERROR Security Event: API_ACCESS - API access: GET /company/get - IP: 127.0.0.1 - User: admin
+[SECURITY] 2025-10-31 14:27:54,231 WARNING Invalid JWT token for endpoint: /calibration/list - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-16 04:36:56,833 WARNING JWT token missing for protected endpoint: /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-17 23:39:25,563 WARNING JWT token missing for protected endpoint: /config/language/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 06:03:04,303 ERROR Login error: could not translate host name "db.iwmrkcuuhvygchesovwl.supabase.co" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-11-18 06:03:04,331 WARNING JWT token missing for protected endpoint: /management-report-layout/insert-default - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 06:03:04,340 ERROR Login error: could not translate host name "db.iwmrkcuuhvygchesovwl.supabase.co" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-11-18 06:03:04,343 WARNING JWT token missing for protected endpoint: /management-report-layout/insert-default - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 06:03:04,357 WARNING JWT token missing for protected endpoint: /config/dop/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 06:03:04,368 ERROR Login error: could not translate host name "db.iwmrkcuuhvygchesovwl.supabase.co" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-11-18 06:03:04,372 WARNING JWT token missing for protected endpoint: /config/dop/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 06:35:08,830 ERROR Login error: could not translate host name "db.iwmrkcuuhvygchesovwl.supabase.co" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-11-18 06:35:08,871 WARNING JWT token missing for protected endpoint: /config/language/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 06:35:08,876 ERROR Login error: could not translate host name "db.iwmrkcuuhvygchesovwl.supabase.co" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-11-18 06:35:08,879 WARNING JWT token missing for protected endpoint: /config/language/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 06:35:08,939 WARNING JWT token missing for protected endpoint: /global-settings/line-color/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 06:35:08,943 ERROR Login error: could not translate host name "db.iwmrkcuuhvygchesovwl.supabase.co" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-11-18 06:35:08,946 WARNING JWT token missing for protected endpoint: /global-settings/line-color/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 06:35:08,949 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 06:35:08,954 ERROR Login error: could not translate host name "db.iwmrkcuuhvygchesovwl.supabase.co" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-11-18 06:35:08,956 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 16:17:09,304 ERROR JWT Authentication error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 5432 failed: timeout expired
+ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 16:17:19,342 ERROR JWT Authentication error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 5432 failed: timeout expired
+ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 16:17:29,340 ERROR JWT Authentication error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 5432 failed: timeout expired
+ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 16:25:07,239 ERROR JWT Authentication error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: timeout expired
+ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:30:27,171 WARNING JWT token missing for protected endpoint: /config/language/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:30:37,179 WARNING JWT token missing for protected endpoint: /config/language/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:30:37,236 WARNING JWT token missing for protected endpoint: /global-settings/line-color/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:30:47,240 WARNING JWT token missing for protected endpoint: /global-settings/line-color/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:30:47,244 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:30:47,779 ERROR Login error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: timeout expired
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-11-18 18:30:57,249 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:30:57,263 WARNING JWT token missing for protected endpoint: /activation/status - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:30:57,728 ERROR Login error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: timeout expired
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-11-18 18:31:07,276 WARNING JWT token missing for protected endpoint: /activation/status - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:31:07,534 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:31:07,842 ERROR Login error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: timeout expired
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-11-18 18:31:17,539 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:31:17,929 ERROR Login error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 5432 failed: timeout expired
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-11-18 18:31:27,779 ERROR Login error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 5432 failed: timeout expired
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-11-18 18:31:37,068 ERROR Login error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 5432 failed: timeout expired
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-11-18 18:54:45,397 ERROR JWT Authentication error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:55:02,887 ERROR JWT Authentication error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:55:18,513 ERROR JWT Authentication error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:56:03,758 ERROR Login error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-11-18 18:56:33,604 ERROR JWT Authentication error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:57:03,594 ERROR JWT Authentication error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 5432 failed: timeout expired
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:57:04,275 ERROR JWT Authentication error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:57:27,468 ERROR JWT Authentication error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-11-18 18:57:43,017 ERROR Login error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+ - IP: 127.0.0.1 - User: Unknown

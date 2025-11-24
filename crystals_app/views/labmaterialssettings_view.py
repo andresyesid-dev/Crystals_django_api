@@ -9,46 +9,77 @@ import json
 
 @require_http_methods(["GET"])
 @jwt_required
-@permission_required('write')
 @sensitive_endpoint
 @log_api_access
 def get_lab_materials_settings(request: HttpRequest):
-    data = [model_to_dict(o) for o in LabMaterialsSettings.objects.all()]
-    return JsonResponse({"results": data})
+    try:
+        data = [model_to_dict(o) for o in LabMaterialsSettings.objects.all()]
+        return JsonResponse({"message": "✅ Configuración de materiales obtenida exitosamente", "results": data})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al obtener configuración de materiales", "error": str(e)}, status=500)
 
 
 @csrf_exempt
 @require_http_methods(["POST"])
 @jwt_required
-@permission_required('write')
 @sensitive_endpoint
 @log_api_access
 def insert_lab_materials_settings(request: HttpRequest):
-    body = json.loads(request.body or b"{}")
-    materials = body.get("materials") or []
-    created = 0
-    for item in materials:
-        material = item if isinstance(item, str) else item.get("material")
-        visible = 1 if (not isinstance(item, dict) or item.get("visible", 1)) else 1
-        if material:
-            LabMaterialsSettings.objects.get_or_create(material=material, defaults={"visible": visible})
-            created += 1
-    return JsonResponse({"ok": True, "created": created})
+    """
+    Inserta los 19 materiales base con visible=1 SOLO si la tabla está vacía.
+    Endpoint muy simple para inicialización de base de datos.
+    """
+    try:
+        # Verificar si la tabla está vacía
+        if LabMaterialsSettings.objects.count() > 0:
+            return JsonResponse({
+                "message": "ℹ️ Materiales ya existen en la base de datos",
+                "ok": True,
+                "already_exists": True
+            })
+        
+        # Lista de los 19 materiales base
+        base_materials = [
+            'licor', 'sirope', 'masa_refino', 'magma_b', 'meladura',
+            'masa_a', 'lavado_a', 'nutsch_a', 'magma_c', 'miel_a',
+            'masa_b', 'nutsch_b', 'cr_des', 'miel_b', 'masa_c',
+            'nutsch_c', 'miel_final', 'pol_azuc', 'sol_tota_hda_azu'
+        ]
+        
+        # Insertar cada material con visible=1 (por defecto)
+        for material_name in base_materials:
+            LabMaterialsSettings.objects.create(
+                material=material_name,
+                visible=1
+            )
+        
+        return JsonResponse({
+            "message": f"✅ {len(base_materials)} materiales base insertados exitosamente",
+            "ok": True,
+            "created": len(base_materials)
+        })
+    except Exception as e:
+        return JsonResponse({
+            "message": "❌ Error al insertar materiales",
+            "error": str(e)
+        }, status=500)
 
 
 @csrf_exempt
 @require_http_methods(["POST"])
 @jwt_required
-@permission_required('write')
 @sensitive_endpoint
 @log_api_access
 def update_lab_materials_settings(request: HttpRequest):
-    body = json.loads(request.body or b"{}")
-    updates = body.get("updates") or []
-    updated = 0
-    for item in updates:
-        material = item.get("material")
-        visible = item.get("visible")
-        if material is not None and visible is not None:
-            updated += LabMaterialsSettings.objects.filter(material=material).update(visible=int(bool(visible)))
-    return JsonResponse({"ok": True, "updated": updated})
+    try:
+        body = json.loads(request.body or b"{}")
+        updates = body.get("updates") or []
+        updated = 0
+        for item in updates:
+            material = item.get("material")
+            visible = item.get("visible")
+            if material is not None and visible is not None:
+                updated += LabMaterialsSettings.objects.filter(material=material).update(visible=int(bool(visible)))
+        return JsonResponse({"message": f"✅ Materiales actualizados exitosamente ({updated} registros)", "ok": True, "updated": updated})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al actualizar materiales", "error": str(e)}, status=500)

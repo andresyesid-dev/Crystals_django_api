@@ -81,19 +81,52 @@ WSGI_APPLICATION = 'crystals_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# OPCIÓN RECOMENDADA: Transaction Mode (Puerto 6543)
+# Ventaja: MUCHAS más conexiones simultáneas, ideal para APIs con múltiples clientes
+# Desventaja: No soporta prepared statements (no problem para Django ORM)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tsdb',
-        'USER': 'tsdbadmin',
+        'NAME': 'postgres',
+        'USER': 'postgres.iwmrkcuuhvygchesovwl',  # Formato: postgres.PROJECT_REF
         'PASSWORD': 'Soporte!2025',
-        'HOST': 'v9wsmf1s92.o8k9nsb5pv.tsdb.cloud.timescale.com',
-        'PORT': '32450',
+        'HOST': 'aws-1-us-east-1.pooler.supabase.com',  # Pooler compartido
+        'PORT': '6543',  # Puerto 6543 para Transaction Mode (más conexiones)
         'OPTIONS': {
             'sslmode': 'require',
+            'connect_timeout': 30,
         },
+        'CONN_MAX_AGE': 60,  # Conexiones de 1 minuto (Transaction Mode cierra rápido)
+        'CONN_HEALTH_CHECKS': True,  # Verificar salud de conexiones
+        'ATOMIC_REQUESTS': False,
     }
 }
+
+# OPCIÓN ALTERNATIVA: Session Mode (Puerto 5432) - SOLO si necesitas prepared statements
+# Desventaja: LÍMITE de conexiones muy bajo (máx 15-25 según plan Supabase)
+# ERROR común: "MaxClientsInSessionMode: max clients reached"
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres.iwmrkcuuhvygchesovwl',
+#         'PASSWORD': 'Soporte!2025',
+#         'HOST': 'aws-1-us-east-1.pooler.supabase.com',
+#         'PORT': '5432',  # Puerto 5432 para Session Mode
+#         'OPTIONS': {
+#             'sslmode': 'require',
+#             'connect_timeout': 30,
+#             'keepalives': 1,
+#             'keepalives_idle': 30,
+#             'keepalives_interval': 10,
+#             'keepalives_count': 5,
+#         },
+#         'CONN_MAX_AGE': 300,
+#         'CONN_HEALTH_CHECKS': True,
+#         'ATOMIC_REQUESTS': False,
+#     }
+# }
 
 
 # Password validation

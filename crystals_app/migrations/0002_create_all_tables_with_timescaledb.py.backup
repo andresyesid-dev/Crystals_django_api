@@ -1,0 +1,764 @@
+# Generated migration - Consolidated from 0002, 0003, 0005, 0007
+
+from django.db import migrations, models
+import django.db.models.deletion
+import django.utils.timezone
+
+
+def create_hypertables(apps, schema_editor):
+    """Convierte las tablas en hipertablas de TimescaleDB"""
+    if schema_editor.connection.vendor == 'postgresql':
+        with schema_editor.connection.cursor() as cursor:
+            # Crear extensión TimescaleDB si no existe
+            try:
+                cursor.execute("CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;")
+                print("✅ Extensión TimescaleDB habilitada")
+            except Exception as e:
+                print(f"⚠️  Error al crear extensión TimescaleDB: {e}")
+                return
+            
+            # Agregar DEFAULT NOW() a las columnas time
+            # Incluimos todas las tablas con campo time, sean o no hypertables
+            time_tables = [
+                'analysis_categories',
+                'historic_analysis_data',
+                'historic_reports',
+                'laboratory_data',
+                'numero',
+                'analysis_results'
+            ]
+            
+            for table in time_tables:
+                try:
+                    cursor.execute(f"""
+                        ALTER TABLE {table} 
+                        ALTER COLUMN time SET DEFAULT NOW();
+                    """)
+                    print(f"✅ DEFAULT NOW() agregado a {table}.time")
+                except Exception as e:
+                    print(f"⚠️  Error al agregar DEFAULT: {e}")
+            
+            # Agregar DEFAULT NOW() a datetime en historic_reports
+            try:
+                cursor.execute("""
+                    ALTER TABLE historic_reports 
+                    ALTER COLUMN datetime SET DEFAULT NOW()::text;
+                """)
+                print("✅ DEFAULT NOW()::text agregado a historic_reports.datetime")
+            except Exception as e:
+                print(f"⚠️  Error al agregar DEFAULT a datetime: {e}")
+            
+            # Configurar hypertables con primary keys compuestos
+            # NOTA: Solo convertimos tablas SIN foreign keys o que NO son referenciadas por otras tablas
+            # - historic_reports tiene FK desde analysis_categories y historic_analysis_data (NO convertir)
+            # - laboratory_data es independiente (SÍ convertir)
+            # - numero es independiente (SÍ convertir - tabla de prueba)
+            # - analysis_results es independiente (SÍ convertir)
+            hypertables_config = [
+                ('laboratory_data', 'time'),
+                ('numero', 'time'),
+                ('analysis_results', 'time')
+            ]
+            
+            for table, time_column in hypertables_config:
+                try:
+                    # Obtener el nombre de la constraint de primary key
+                    cursor.execute(f"""
+                        SELECT constraint_name 
+                        FROM information_schema.table_constraints 
+                        WHERE table_name = '{table}' 
+                        AND constraint_type = 'PRIMARY KEY';
+                    """)
+                    pk_constraint = cursor.fetchone()
+                    
+                    if pk_constraint:
+                        pk_name = pk_constraint[0]
+                        # Eliminar el primary key constraint con CASCADE
+                        cursor.execute(f"ALTER TABLE {table} DROP CONSTRAINT {pk_name} CASCADE;")
+                        # Crear un nuevo primary key compuesto con id y time
+                        cursor.execute(f"ALTER TABLE {table} ADD PRIMARY KEY (id, {time_column});")
+                        print(f"✅ Primary key compuesto (id, {time_column}) para {table}")
+                    
+                    # Crear la hipertabla
+                    cursor.execute(f"""
+                        SELECT create_hypertable(
+                            '{table}', 
+                            '{time_column}', 
+                            if_not_exists => TRUE,
+                            migrate_data => TRUE
+                        );
+                    """)
+                    print(f"✅ Hipertabla creada: {table}")
+                    
+                except Exception as e:
+                    print(f"⚠️  Error al crear hipertabla {table}: {e}")
+
+
+def reverse_hypertables(apps, schema_editor):
+    """Revierte las hipertablas (no soportado completamente en TimescaleDB)"""
+    pass
+
+
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = [
+        ('crystals_app', '0001_baseline_existing_schema'),
+    ]
+
+    operations = [
+        # ===============================================================
+        # CREAR TODOS LOS MODELOS CON TIME FIELDS INCLUIDOS
+        # ===============================================================
+        
+        migrations.CreateModel(
+            name='Activation',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('validation_code', models.CharField(max_length=50)),
+                ('validated', models.IntegerField()),
+            ],
+            options={
+                'db_table': 'activation',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='BrixCalculatorData',
+            fields=[
+                ('tc', models.FloatField(primary_key=True, serialize=False)),
+                ('pureza', models.FloatField()),
+                ('ss', models.FloatField()),
+                ('brx', models.FloatField()),
+            ],
+            options={
+                'db_table': 'brix_calculator_data',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='Calibration',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=20, unique=True)),
+                ('pixels_per_metric', models.FloatField()),
+                ('metric_name', models.CharField(max_length=5)),
+                ('range', models.CharField(max_length=50)),
+                ('active', models.IntegerField(default=0)),
+                ('powder', models.CharField(blank=True, max_length=50, null=True)),
+            ],
+            options={
+                'db_table': 'calibrations',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='Company',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=20, unique=True)),
+                ('logo', models.CharField(max_length=50)),
+            ],
+            options={
+                'db_table': 'company',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='Config',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('key', models.CharField(max_length=3, unique=True)),
+                ('value', models.CharField(max_length=20)),
+            ],
+            options={
+                'db_table': 'config',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='CrudoCalculation',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('ti', models.IntegerField(blank=True, null=True)),
+                ('ft3_per_templa', models.IntegerField(blank=True, null=True)),
+                ('bx_masa_c', models.IntegerField(blank=True, db_column='bx_masa__c', null=True)),
+                ('no_templas', models.IntegerField(blank=True, null=True)),
+                ('porcentaje_cristales', models.IntegerField(blank=True, null=True)),
+                ('tamano_final_polv', models.IntegerField(blank=True, null=True)),
+                ('concentracion_slurry', models.IntegerField(blank=True, null=True)),
+                ('alcohol_slurry', models.IntegerField(blank=True, null=True)),
+                ('densidad_slurry', models.IntegerField(blank=True, null=True)),
+            ],
+            options={
+                'db_table': 'crudo_calculations',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='CrystalsDataParametrization',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('parameter', models.CharField(max_length=50)),
+                ('categoria', models.CharField(max_length=20)),
+                ('range_from', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+                ('range_to', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+            ],
+            options={
+                'db_table': 'crystals_data_parametrization',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='CrystalsDataParametrizationCV',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('parameter', models.CharField(max_length=50)),
+                ('categoria', models.CharField(max_length=20)),
+                ('tolerance', models.IntegerField(blank=True, null=True)),
+                ('range_from', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+                ('range_to', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+            ],
+            options={
+                'db_table': 'crystals_data_parametrization_cv',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='CrystalsDataParametrizationMA',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('parameter', models.CharField(max_length=50)),
+                ('categoria', models.CharField(max_length=20)),
+                ('tolerance', models.IntegerField(blank=True, null=True)),
+                ('range_from', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+                ('range_to', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+            ],
+            options={
+                'db_table': 'crystals_data_parametrization_ma',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='CrystalsDataParametrizationNewParams',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('parameter', models.CharField(max_length=50)),
+                ('categoria', models.CharField(max_length=20)),
+                ('range_from', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+                ('range_to', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+            ],
+            options={
+                'db_table': 'crystals_data_parametrization_nw_params',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='GeneralReportingOrder',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('value', models.CharField(blank=True, max_length=25, null=True)),
+                ('ordering', models.IntegerField(blank=True, null=True)),
+            ],
+            options={
+                'db_table': 'general_reporting_order',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='GlobalSetting',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('line_color', models.CharField(max_length=7)),
+            ],
+            options={
+                'db_table': 'global_settings',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='LabMaterialsSettings',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('material', models.CharField(max_length=50)),
+                ('visible', models.IntegerField(default=1)),
+            ],
+            options={
+                'db_table': 'lab_materials_settings',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='LaboratoryCalculatedMasaAParametrization',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('parameter', models.CharField(max_length=50)),
+                ('categoria', models.CharField(max_length=20)),
+                ('range_from', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+                ('range_to', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+            ],
+            options={
+                'db_table': 'laboratory_calculated_masa_a_parametrization',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='LaboratoryCalculatedMasaBParametrization',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('parameter', models.CharField(max_length=50)),
+                ('categoria', models.CharField(max_length=20)),
+                ('range_from', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+                ('range_to', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+            ],
+            options={
+                'db_table': 'laboratory_calculated_masa_b_parametrization',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='LaboratoryCalculatedMasaCParametrization',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('parameter', models.CharField(max_length=50)),
+                ('categoria', models.CharField(max_length=20)),
+                ('range_from', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+                ('range_to', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+            ],
+            options={
+                'db_table': 'laboratory_calculated_masa_c_parametrization',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='LaboratoryCalculatedRefinoParametrization',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('parameter', models.CharField(max_length=50)),
+                ('categoria', models.CharField(max_length=20)),
+                ('range_from', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+                ('range_to', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+            ],
+            options={
+                'db_table': 'laboratory_calculated_refino_parametrization',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='LaboratoryData',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('time', models.DateTimeField(default=django.utils.timezone.now, db_index=True)),
+                ('date_and_time', models.CharField(blank=True, max_length=50, null=True)),
+                ('pza_licor', models.IntegerField(blank=True, null=True)),
+                ('pza_sirope', models.IntegerField(blank=True, null=True)),
+                ('pza_masa_refino', models.IntegerField(blank=True, null=True)),
+                ('pza_magma_b', models.IntegerField(blank=True, null=True)),
+                ('pza_meladura', models.IntegerField(blank=True, null=True)),
+                ('pza_masa_a', models.IntegerField(blank=True, null=True)),
+                ('pza_lavado_a', models.IntegerField(blank=True, null=True)),
+                ('pza_nutsch_a', models.IntegerField(blank=True, null=True)),
+                ('pza_magma_c', models.IntegerField(blank=True, null=True)),
+                ('pza_miel_a', models.IntegerField(blank=True, null=True)),
+                ('pza_masa_b', models.IntegerField(blank=True, null=True)),
+                ('pza_nutsch_b', models.IntegerField(blank=True, null=True)),
+                ('pza_cr_des', models.IntegerField(blank=True, null=True)),
+                ('pza_miel_b', models.IntegerField(blank=True, null=True)),
+                ('pza_masa_c', models.IntegerField(blank=True, null=True)),
+                ('pza_nutsch_c', models.IntegerField(blank=True, null=True)),
+                ('pza_miel_final', models.IntegerField(blank=True, null=True)),
+                ('bx_masa_c', models.IntegerField(blank=True, null=True)),
+                ('bx_cristal_des', models.IntegerField(blank=True, null=True)),
+                ('bx_nutsch_c', models.IntegerField(blank=True, null=True)),
+                ('bx_masa_b', models.IntegerField(blank=True, null=True)),
+                ('bx_masa_a', models.IntegerField(blank=True, null=True)),
+                ('bx_magma_b', models.IntegerField(blank=True, null=True)),
+                ('bx_masa_refino', models.IntegerField(blank=True, null=True)),
+                ('bx_magma_c', models.IntegerField(blank=True, null=True)),
+                ('bx_miel_final', models.IntegerField(blank=True, null=True)),
+                ('bx_nutsch_b', models.IntegerField(blank=True, null=True)),
+                ('bx_miel_b', models.IntegerField(blank=True, null=True)),
+                ('bx_miel_a', models.IntegerField(blank=True, null=True)),
+                ('bx_lavado_a', models.IntegerField(blank=True, null=True)),
+                ('bx_nutsch_a', models.IntegerField(blank=True, null=True)),
+                ('bx_sirope', models.IntegerField(blank=True, null=True)),
+                ('bx_del_licor', models.IntegerField(blank=True, null=True)),
+                ('bx_meladura', models.IntegerField(blank=True, null=True)),
+                ('pol_azuc', models.IntegerField(blank=True, null=True)),
+                ('sol_tota_hda_azu', models.IntegerField(blank=True, null=True)),
+            ],
+            options={
+                'db_table': 'laboratory_data',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='LaboratoryParametrization',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('material', models.CharField(max_length=50)),
+                ('categoria', models.CharField(max_length=20)),
+                ('range_from', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+                ('range_to', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
+            ],
+            options={
+                'db_table': 'laboratory_parametrization',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='LaboratoryReportingOrder',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('value', models.CharField(blank=True, max_length=25, null=True)),
+                ('ordering', models.IntegerField(blank=True, null=True)),
+            ],
+            options={
+                'db_table': 'laboratory_reporting_order',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='LaboratorySettingsExcel',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('pza_licor_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_licor_number', models.IntegerField(blank=True, null=True)),
+                ('pza_sirope_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_sirope_number', models.IntegerField(blank=True, null=True)),
+                ('pza_masa_refino_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_masa_refino_number', models.IntegerField(blank=True, null=True)),
+                ('pza_magma_b_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_magma_b_number', models.IntegerField(blank=True, null=True)),
+                ('pza_meladura_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_meladura_number', models.IntegerField(blank=True, null=True)),
+                ('pza_masa_a_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_masa_a_number', models.IntegerField(blank=True, null=True)),
+                ('pza_lavado_a_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_lavado_a_number', models.IntegerField(blank=True, null=True)),
+                ('pza_nutsch_a_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_nutsch_a_number', models.IntegerField(blank=True, null=True)),
+                ('pza_magma_c_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_magma_c_number', models.IntegerField(blank=True, null=True)),
+                ('pza_miel_a_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_miel_a_number', models.IntegerField(blank=True, null=True)),
+                ('pza_masa_b_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_masa_b_number', models.IntegerField(blank=True, null=True)),
+                ('pza_nutsch_b_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_nutsch_b_number', models.IntegerField(blank=True, null=True)),
+                ('pza_cr_des_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_cr_des_number', models.IntegerField(blank=True, null=True)),
+                ('pza_miel_b_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_miel_b_number', models.IntegerField(blank=True, null=True)),
+                ('pza_masa_c_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_masa_c_number', models.IntegerField(blank=True, null=True)),
+                ('pza_nutsch_c_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_nutsch_c_number', models.IntegerField(blank=True, null=True)),
+                ('pza_miel_final_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pza_miel_final_number', models.IntegerField(blank=True, null=True)),
+                ('bx_masa_c_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_masa_c_number', models.IntegerField(blank=True, null=True)),
+                ('bx_cristal_des_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_cristal_des_number', models.IntegerField(blank=True, null=True)),
+                ('bx_nutsch_c_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_nutsch_c_number', models.IntegerField(blank=True, null=True)),
+                ('bx_masa_b_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_masa_b_number', models.IntegerField(blank=True, null=True)),
+                ('bx_masa_a_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_masa_a_number', models.IntegerField(blank=True, null=True)),
+                ('bx_magma_b_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_magma_b_number', models.IntegerField(blank=True, null=True)),
+                ('bx_masa_refino_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_masa_refino_number', models.IntegerField(blank=True, null=True)),
+                ('bx_magma_c_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_magma_c_number', models.IntegerField(blank=True, null=True)),
+                ('bx_miel_final_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_miel_final_number', models.IntegerField(blank=True, null=True)),
+                ('bx_nutsch_b_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_nutsch_b_number', models.IntegerField(blank=True, null=True)),
+                ('bx_miel_b_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_miel_b_number', models.IntegerField(blank=True, null=True)),
+                ('bx_miel_a_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_miel_a_number', models.IntegerField(blank=True, null=True)),
+                ('bx_lavado_a_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_lavado_a_number', models.IntegerField(blank=True, null=True)),
+                ('bx_nutsch_a_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_nutsch_a_number', models.IntegerField(blank=True, null=True)),
+                ('bx_sirope_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_sirope_number', models.IntegerField(blank=True, null=True)),
+                ('bx_del_licor_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_del_licor_number', models.IntegerField(blank=True, null=True)),
+                ('bx_meladura_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('bx_meladura_number', models.IntegerField(blank=True, null=True)),
+                ('pol_azuc_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('pol_azuc_number', models.IntegerField(blank=True, null=True)),
+                ('sol_tota_hda_azu_letter', models.CharField(blank=True, max_length=1, null=True)),
+                ('sol_tota_hda_azu_number', models.IntegerField(blank=True, null=True)),
+            ],
+            options={
+                'db_table': 'laboratory_settings_excel',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='ManagementReportLayout',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('screen_number', models.IntegerField()),
+                ('row', models.IntegerField()),
+                ('column', models.IntegerField()),
+                ('element_id', models.TextField()),
+                ('element_type', models.TextField()),
+            ],
+            options={
+                'db_table': 'management_report_layout',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='ManagementReportSettings',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('mean_variable', models.IntegerField()),
+                ('cv_variable', models.IntegerField()),
+                ('perc_fino', models.IntegerField()),
+                ('perc_peq', models.IntegerField()),
+                ('perc_opt', models.IntegerField()),
+                ('perc_gran', models.IntegerField()),
+                ('perc_muygran', models.IntegerField()),
+                ('rel_la', models.IntegerField()),
+                ('perc_crst_alarg', models.IntegerField()),
+                ('pza_licor', models.IntegerField()),
+                ('pza_sirope', models.IntegerField()),
+                ('pza_masa_refino', models.IntegerField()),
+                ('pza_magma_b', models.IntegerField()),
+                ('pza_meladura', models.IntegerField()),
+                ('pza_masa_a', models.IntegerField()),
+                ('pza_lavado_a', models.IntegerField()),
+                ('pza_nutsch_a', models.IntegerField()),
+                ('pza_magma_c', models.IntegerField()),
+                ('pza_miel_a', models.IntegerField()),
+                ('pza_masa_b', models.IntegerField()),
+                ('pza_nutsch_b', models.IntegerField()),
+                ('pza_cr_des', models.IntegerField()),
+                ('pza_miel_b', models.IntegerField()),
+                ('pza_masa_c', models.IntegerField()),
+                ('pza_nutsch_c', models.IntegerField()),
+                ('pza_miel_final', models.IntegerField()),
+                ('bx_masa_c', models.IntegerField()),
+                ('bx_cristal_des', models.IntegerField()),
+                ('bx_nutsch_c', models.IntegerField()),
+                ('bx_masa_b', models.IntegerField()),
+                ('bx_masa_a', models.IntegerField()),
+                ('bx_magma_b', models.IntegerField()),
+                ('bx_masa_refino', models.IntegerField()),
+                ('bx_magma_c', models.IntegerField()),
+                ('bx_miel_final', models.IntegerField()),
+                ('bx_nutsch_b', models.IntegerField()),
+                ('bx_miel_b', models.IntegerField()),
+                ('bx_miel_a', models.IntegerField()),
+                ('bx_lavado_a', models.IntegerField()),
+                ('bx_nutsch_a', models.IntegerField()),
+                ('bx_sirope', models.IntegerField()),
+                ('bx_del_licor', models.IntegerField()),
+                ('bx_meladura', models.IntegerField()),
+                ('pol_azuc', models.IntegerField()),
+                ('sol_tota_hda_azu', models.IntegerField()),
+                ('rel_la_grapgh', models.IntegerField()),
+            ],
+            options={
+                'db_table': 'management_report_settings',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='ManualMeasurement',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('time', models.CharField(max_length=50)),
+                ('value', models.CharField(max_length=50)),
+            ],
+            options={
+                'db_table': 'manual_measurements',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='NewParametersAnalysisCategory',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('parameter', models.CharField(max_length=30)),
+                ('type', models.CharField(max_length=20)),
+            ],
+            options={
+                'db_table': 'new_parameters_analysis_categories',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='ProcessCodeData',
+            fields=[
+                ('process', models.FloatField(primary_key=True, serialize=False)),
+                ('code', models.TextField()),
+            ],
+            options={
+                'db_table': 'process_code_data',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='RefinoCalculation',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('am_azucar', models.IntegerField(blank=True, null=True)),
+                ('temperatura', models.IntegerField(blank=True, null=True)),
+                ('volumen_tacho', models.IntegerField(blank=True, null=True)),
+                ('densidad_grano', models.IntegerField(blank=True, null=True)),
+                ('rendimiento_solidos', models.IntegerField(blank=True, null=True)),
+                ('concentracion_masacocida', models.IntegerField(blank=True, null=True)),
+                ('am_semilla_lock', models.IntegerField(blank=True, null=True)),
+                ('concentracion_slurry', models.IntegerField(blank=True, null=True)),
+                ('alcohol_slurry', models.IntegerField(blank=True, null=True)),
+                ('densidad_slurry', models.IntegerField(blank=True, null=True)),
+            ],
+            options={
+                'db_table': 'refino_calculations',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='SpecificReportingOrder',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('value', models.CharField(blank=True, max_length=25, null=True)),
+                ('ordering', models.IntegerField(blank=True, null=True)),
+            ],
+            options={
+                'db_table': 'specific_reporting_order',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='User',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('username', models.CharField(max_length=20, unique=True)),
+                ('password', models.CharField(max_length=50)),
+            ],
+            options={
+                'db_table': 'users',
+                'managed': True,
+            },
+        ),
+        
+        # Tablas con time fields incluidos desde el inicio
+        migrations.CreateModel(
+            name='AnalysisResults',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('time', models.DateTimeField(default=django.utils.timezone.now, db_index=True)),
+                ('mean', models.FloatField(default=0.0)),
+                ('cv', models.FloatField(default=0.0)),
+                ('pct_fine', models.FloatField(default=0.0)),
+                ('pct_small', models.FloatField(default=0.0)),
+                ('pct_optimal', models.FloatField(default=0.0)),
+                ('pct_large', models.FloatField(default=0.0)),
+                ('pct_very_large', models.FloatField(default=0.0)),
+                ('ratio_l_to_w', models.FloatField(default=0.0)),
+                ('elongated_crystals', models.FloatField(default=0.0)),
+                ('pct_powder', models.FloatField(default=0.0)),
+                ('historic_report_id', models.BigIntegerField(default=0)),
+            ],
+            options={
+                'db_table': 'analysis_results',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='Numero',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('valor', models.FloatField(default=0.0)),
+                ('time', models.DateTimeField(default=django.utils.timezone.now, db_index=True)),
+            ],
+            options={
+                'db_table': 'numero',
+                'managed': True,
+            },
+        ),
+        
+        # Modelos con ForeignKey y time fields incluidos
+        migrations.CreateModel(
+            name='HistoricReport',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('time', models.DateTimeField(default=django.utils.timezone.now, db_index=True)),
+                ('datetime', models.CharField(max_length=50)),
+                ('calibration', models.CharField(max_length=20)),
+                ('correlation', models.FloatField()),
+                ('width_min', models.FloatField()),
+                ('width_max', models.FloatField()),
+                ('width_sd', models.FloatField()),
+                ('width_cv', models.FloatField()),
+                ('width_mean', models.FloatField()),
+                ('width_sum', models.FloatField()),
+                ('width_samples', models.FloatField()),
+                ('width_range', models.FloatField()),
+                ('height_min', models.FloatField()),
+                ('height_max', models.FloatField()),
+                ('height_sd', models.FloatField()),
+                ('height_cv', models.FloatField()),
+                ('height_mean', models.FloatField()),
+                ('height_sum', models.FloatField()),
+                ('height_samples', models.FloatField()),
+                ('height_range', models.FloatField()),
+                ('calibration_fk', models.ForeignKey(db_column='calibration_id', on_delete=django.db.models.deletion.CASCADE, to='crystals_app.calibration')),
+            ],
+            options={
+                'db_table': 'historic_reports',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='HistoricAnalysisData',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('time', models.DateTimeField(default=django.utils.timezone.now, db_index=True)),
+                ('range_class', models.CharField(max_length=20)),
+                ('object_length', models.FloatField()),
+                ('pct_object_length', models.FloatField()),
+                ('mean_object_length', models.FloatField()),
+                ('object_width', models.FloatField()),
+                ('pct_object_width', models.FloatField()),
+                ('mean_object_width', models.FloatField()),
+                ('long_crystals', models.FloatField(blank=True, null=True)),
+                ('historic_report', models.ForeignKey(db_column='historic_reports_id', on_delete=django.db.models.deletion.CASCADE, to='crystals_app.historicreport')),
+            ],
+            options={
+                'db_table': 'historic_analysis_data',
+                'managed': True,
+            },
+        ),
+        migrations.CreateModel(
+            name='AnalysisCategory',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('time', models.DateTimeField(default=django.utils.timezone.now, db_index=True)),
+                ('batch_number', models.CharField(max_length=20)),
+                ('username', models.CharField(max_length=20)),
+                ('baking_time', models.IntegerField(blank=True, null=True)),
+                ('mass_number', models.IntegerField(blank=True, null=True)),
+                ('historic_report', models.ForeignKey(db_column='historic_reports_id', on_delete=django.db.models.deletion.CASCADE, to='crystals_app.historicreport')),
+            ],
+            options={
+                'db_table': 'analysis_categories',
+                'managed': True,
+            },
+        ),
+        
+        # ===============================================================
+        # CONVERTIR EN HIPERTABLAS DE TIMESCALEDB
+        # ===============================================================
+        migrations.RunPython(create_hypertables, reverse_hypertables),
+    ]

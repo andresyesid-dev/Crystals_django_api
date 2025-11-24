@@ -9,43 +9,49 @@ import json
 
 @require_http_methods(["GET"])
 @jwt_required
-@permission_required('read')
 @log_api_access
 def get_crystals_data_parametrization_nw_params(request: HttpRequest):
-    data = [model_to_dict(o) for o in CrystalsDataParametrizationNewParams.objects.all()]
-    return JsonResponse({"results": data})
+    try:
+        data = [model_to_dict(o) for o in CrystalsDataParametrizationNewParams.objects.all()]
+        return JsonResponse({"message": "✅ Parametrización nuevos parámetros obtenida", "results": data})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al obtener parametrización", "error": str(e)}, status=500)
 
 
 @csrf_exempt
 @require_http_methods(["POST"]) 
 @jwt_required
-@permission_required('write')
 @sensitive_endpoint
 @log_api_access
 def update_crystals_data_parametrization_nw_params(request: HttpRequest):
-    body = json.loads(request.body or b"{}")
-    for parameter, categories in body.items():
-        for categoria, ranges in (categories or {}).items():
-            CrystalsDataParametrizationNewParams.objects.filter(parameter=parameter, categoria=categoria).update(
-                range_from=ranges.get("range_from"), range_to=ranges.get("range_to")
-            )
-    return JsonResponse({"ok": True})
+    try:
+        body = json.loads(request.body or b"{}")
+        for parameter, categories in body.items():
+            for categoria, ranges in (categories or {}).items():
+                CrystalsDataParametrizationNewParams.objects.filter(parameter=parameter, categoria=categoria).update(
+                    range_from=ranges.get("range_from"), range_to=ranges.get("range_to")
+                )
+        return JsonResponse({"message": "✅ Parametrización actualizada exitosamente", "ok": True})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al actualizar parametrización", "error": str(e)}, status=500)
 
 
 @csrf_exempt
 @require_http_methods(["POST"]) 
 @jwt_required
-@permission_required('write')
 @sensitive_endpoint
 @log_api_access
 def add_new_newprms_parameters(request: HttpRequest):
-    body = json.loads(request.body or b"{}")
-    params = body.get("parameters") or []
-    existing = set(CrystalsDataParametrizationNewParams.objects.values_list("parameter", flat=True))
-    incoming = set(params)
-    to_add = incoming - existing
-    for parametro in to_add:
-        for categoria in ["Good", "Regular", "Bad"]:
-            CrystalsDataParametrizationNewParams.objects.create(parameter=parametro, categoria=categoria)
-    CrystalsDataParametrizationNewParams.objects.exclude(parameter__in=incoming).delete()
-    return JsonResponse({"ok": True, "added": list(to_add)})
+    try:
+        body = json.loads(request.body or b"{}")
+        params = body.get("parameters") or []
+        existing = set(CrystalsDataParametrizationNewParams.objects.values_list("parameter", flat=True))
+        incoming = set(params)
+        to_add = incoming - existing
+        for parametro in to_add:
+            for categoria in ["Good", "Regular", "Bad"]:
+                CrystalsDataParametrizationNewParams.objects.create(parameter=parametro, categoria=categoria)
+        CrystalsDataParametrizationNewParams.objects.exclude(parameter__in=incoming).delete()
+        return JsonResponse({"message": "✅ Parámetros agregados exitosamente", "ok": True, "added": list(to_add)})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al agregar parámetros", "error": str(e)}, status=500)
