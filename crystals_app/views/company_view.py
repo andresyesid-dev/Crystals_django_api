@@ -13,7 +13,7 @@ import json
 def get_company(request: HttpRequest):
     try:
         # Match local implementation: get company with id=1
-        obj = Company.objects.filter(id=1).first()
+        obj = Company.objects.filter(id=1, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
         return JsonResponse({"message": "✅ Datos de compañía obtenidos", "result": model_to_dict(obj) if obj else None})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener datos de compañía", "error": str(e)}, status=500)
@@ -31,7 +31,7 @@ def update_company_name(request: HttpRequest):
         if name is None:
             return JsonResponse({"message": "❌ El campo 'name' es requerido", "error": "name required"}, status=400)
         # Match local implementation: direct update on id=1
-        Company.objects.filter(id=1).update(name=name)
+        Company.objects.filter(id=1, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(name=name)
         return JsonResponse({"message": "✅ Nombre de compañía actualizado", "updated": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar nombre", "error": str(e)}, status=500)
@@ -49,7 +49,7 @@ def update_company_logo(request: HttpRequest):
         if logo is None:
             return JsonResponse({"message": "❌ El campo 'logo' es requerido", "error": "logo required"}, status=400)
         # Match local implementation: direct update on id=1
-        Company.objects.filter(id=1).update(logo=logo)
+        Company.objects.filter(id=1, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(logo=logo)
         return JsonResponse({"message": "✅ Logo de compañía actualizado", "updated": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar logo", "error": str(e)}, status=500)

@@ -11,7 +11,7 @@ import json
 @log_api_access
 def get_general_headers_ordering(request: HttpRequest):
     try:
-        vals = list(GeneralReportingOrder.objects.order_by("ordering").values_list("value", flat=True))
+        vals = list(GeneralReportingOrder.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).order_by("ordering").values_list("value", flat=True))
         return JsonResponse({"message": "✅ Orden de encabezados obtenido", "results": vals})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener orden", "error": str(e)}, status=500)
@@ -29,7 +29,7 @@ def update_general_headers_order(request: HttpRequest):
         ordering = body.get("ordering")
         if value is None or ordering is None:
             return JsonResponse({"message": "❌ Los campos 'value' y 'ordering' son requeridos", "error": "value and ordering required"}, status=400)
-        GeneralReportingOrder.objects.filter(value=value).update(ordering=ordering)
+        GeneralReportingOrder.objects.filter(value=value, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(ordering=ordering)
         return JsonResponse({"message": "✅ Orden actualizado exitosamente", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar orden", "error": str(e)}, status=500)

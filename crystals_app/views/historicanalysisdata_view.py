@@ -29,6 +29,7 @@ def add_historic_analysis_data(request: HttpRequest):
             pct_object_width=body.get("pct_object_width") or 0,
             mean_object_width=body.get("mean_object_width") or 0,
             long_crystals=body.get("long_crystals") or None,
+            factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
         )
         return JsonResponse({"message": "✅ Datos de análisis histórico agregados", "created": model_to_dict(obj)})
     except Exception as e:
@@ -44,7 +45,7 @@ def get_analysis_historic_data(request: HttpRequest):
         end = request.GET.get("end")
         if not start or not end:
             return JsonResponse({"message": "❌ Los parámetros 'start' y 'end' son requeridos", "error": "start and end required"}, status=400)
-        qs = HistoricAnalysisData.objects.filter(historic_report__datetime__gte=start, historic_report__datetime__lte=end)
+        qs = HistoricAnalysisData.objects.filter(historic_report__datetime__gte=start, historic_report__datetime__lte=end, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         data = [model_to_dict(o) for o in qs]
         return JsonResponse({"message": "✅ Datos históricos obtenidos", "results": data})
     except Exception as e:

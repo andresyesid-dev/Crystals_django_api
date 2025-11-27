@@ -16,7 +16,7 @@ import json
 @log_api_access
 def get_crystals_data_parametrization(request: HttpRequest):
     try:
-        data = [model_to_dict(o) for o in CrystalsDataParametrization.objects.all()]
+        data = [model_to_dict(o) for o in CrystalsDataParametrization.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))]
         return JsonResponse({"message": "✅ Datos obtenidos exitosamente", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener datos", "error": str(e)}, status=500)
@@ -32,7 +32,7 @@ def update_crystals_data_parametrization(request: HttpRequest):
         body = json.loads(request.body or b"{}")
         for parameter, categories in body.items():
             for categoria, ranges in (categories or {}).items():
-                CrystalsDataParametrization.objects.filter(parameter=parameter, categoria=categoria).update(
+                CrystalsDataParametrization.objects.filter(parameter=parameter, categoria=categoria, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(
                     range_from=ranges.get("range_from"), range_to=ranges.get("range_to")
                 )
         return JsonResponse({"message": "✅ Actualizado exitosamente", "ok": True})
@@ -50,9 +50,9 @@ def exist_parameter_crystals_data_parametrization(request: HttpRequest):
         if value is None:
             return JsonResponse({"message": "❌ Falta el parámetro 'value'", "error": "value is required"}, status=400)
         exists = (
-            CrystalsDataParametrization.objects.filter(parameter__icontains=value).exists()
-            or (belong in (None, 'ma') and CrystalsDataParametrizationMA.objects.filter(parameter__icontains=value).exists())
-            or (belong in (None, 'cv') and CrystalsDataParametrizationCV.objects.filter(parameter__icontains=value).exists())
+            CrystalsDataParametrization.objects.filter(parameter__icontains=value, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).exists()
+            or (belong in (None, 'ma') and CrystalsDataParametrizationMA.objects.filter(parameter__icontains=value, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).exists())
+            or (belong in (None, 'cv') and CrystalsDataParametrizationCV.objects.filter(parameter__icontains=value, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).exists())
         )
         return JsonResponse({"message": "✅ Consulta exitosa", "exists": exists})
     except Exception as e:

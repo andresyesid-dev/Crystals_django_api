@@ -13,7 +13,7 @@ import json
 @log_api_access
 def get_lab_materials_settings(request: HttpRequest):
     try:
-        data = [model_to_dict(o) for o in LabMaterialsSettings.objects.all()]
+        data = [model_to_dict(o) for o in LabMaterialsSettings.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))]
         return JsonResponse({"message": "✅ Configuración de materiales obtenida exitosamente", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener configuración de materiales", "error": str(e)}, status=500)
@@ -31,7 +31,7 @@ def insert_lab_materials_settings(request: HttpRequest):
     """
     try:
         # Verificar si la tabla está vacía
-        if LabMaterialsSettings.objects.count() > 0:
+        if LabMaterialsSettings.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).count() > 0:
             return JsonResponse({
                 "message": "ℹ️ Materiales ya existen en la base de datos",
                 "ok": True,
@@ -50,7 +50,8 @@ def insert_lab_materials_settings(request: HttpRequest):
         for material_name in base_materials:
             LabMaterialsSettings.objects.create(
                 material=material_name,
-                visible=1
+                visible=1,
+                factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
             )
         
         return JsonResponse({
@@ -79,7 +80,7 @@ def update_lab_materials_settings(request: HttpRequest):
             material = item.get("material")
             visible = item.get("visible")
             if material is not None and visible is not None:
-                updated += LabMaterialsSettings.objects.filter(material=material).update(visible=int(bool(visible)))
+                updated += LabMaterialsSettings.objects.filter(material=material, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(visible=int(bool(visible)))
         return JsonResponse({"message": f"✅ Materiales actualizados exitosamente ({updated} registros)", "ok": True, "updated": updated})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar materiales", "error": str(e)}, status=500)

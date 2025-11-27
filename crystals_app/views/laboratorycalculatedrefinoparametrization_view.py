@@ -12,7 +12,7 @@ import json
 @log_api_access
 def get_laboratory_calculated_refino_parametrization(request: HttpRequest):
     try:
-        data = [model_to_dict(o) for o in LaboratoryCalculatedRefinoParametrization.objects.all()]
+        data = [ model_to_dict(o) for o in LaboratoryCalculatedRefinoParametrization.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))]
         return JsonResponse({"message": "✅ Parametrización Refino calculada obtenida exitosamente", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener parametrización Refino calculada", "error": str(e)}, status=500)
@@ -28,7 +28,7 @@ def update_laboratory_calculated_refino_parametrization(request: HttpRequest):
         body = json.loads(request.body or b"{}")
         for parameter, categories in body.items():
             for categoria, ranges in (categories or {}).items():
-                LaboratoryCalculatedRefinoParametrization.objects.filter(parameter=parameter, categoria=categoria).update(
+                LaboratoryCalculatedRefinoParametrization.objects.filter(parameter=parameter, categoria=categoria, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(
                     range_from=ranges.get("range_from"), range_to=ranges.get("range_to")
                 )
         return JsonResponse({"message": "✅ Parametrización Refino calculada actualizada exitosamente", "ok": True})

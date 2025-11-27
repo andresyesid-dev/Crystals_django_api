@@ -13,7 +13,7 @@ import json
 @log_api_access
 def get_laboratory_settings_excel_letters(request: HttpRequest):
     try:
-        obj = LaboratorySettingsExcel.objects.filter(id=0).first()
+        obj = LaboratorySettingsExcel.objects.filter(id=0, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
         if not obj:
             return JsonResponse({"message": "✅ Configuración Excel de laboratorio (letras) obtenida", "result": None})
         data = model_to_dict(obj)
@@ -28,7 +28,7 @@ def get_laboratory_settings_excel_letters(request: HttpRequest):
 @log_api_access
 def get_laboratory_settings_excel_numbers(request: HttpRequest):
     try:
-        obj = LaboratorySettingsExcel.objects.filter(id=0).first()
+        obj = LaboratorySettingsExcel.objects.filter(id=0, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
         if not obj:
             return JsonResponse({"message": "✅ Configuración Excel de laboratorio (números) obtenida", "result": None})
         data = model_to_dict(obj)
@@ -45,7 +45,7 @@ def get_laboratory_settings_excel_numbers(request: HttpRequest):
 def update_laboratory_settings_excel(request: HttpRequest):
     try:
         body = json.loads(request.body or b"{}")
-        obj, _ = LaboratorySettingsExcel.objects.get_or_create(id=0)
+        obj, _ = LaboratorySettingsExcel.objects.get_or_create(id=0, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         for k, v in body.items():
             setattr(obj, k, v)
         obj.save()

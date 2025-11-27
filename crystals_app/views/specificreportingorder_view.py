@@ -13,7 +13,7 @@ import json
 @log_api_access
 def get_specific_headers_ordering(request: HttpRequest):
     try:
-        vals = list(SpecificReportingOrder.objects.order_by("ordering").values_list("value", flat=True))
+        vals = list(SpecificReportingOrder.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).order_by("ordering").values_list("value", flat=True))
         return JsonResponse({"message": "✅ Orden de encabezados específicos obtenido exitosamente", "results": vals})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener orden de encabezados específicos", "error": str(e)}, status=500)
@@ -31,7 +31,7 @@ def update_specific_headers_order(request: HttpRequest):
         ordering = body.get("ordering")
         if value is None or ordering is None:
             return JsonResponse({"message": "❌ Los campos 'value' y 'ordering' son requeridos", "error": "value and ordering required"}, status=400)
-        SpecificReportingOrder.objects.filter(value=value).update(ordering=ordering)
+        SpecificReportingOrder.objects.filter(value=value, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(ordering=ordering)
         return JsonResponse({"message": "✅ Orden de encabezados actualizado exitosamente", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar orden de encabezados", "error": str(e)}, status=500)
@@ -47,8 +47,8 @@ def insert_new_parameter_single_val(request: HttpRequest):
         parameter_name = body.get("parameter_name")
         if not parameter_name:
             return JsonResponse({"message": "❌ El campo 'parameter_name' es requerido", "error": "parameter_name required"}, status=400)
-        max_order = SpecificReportingOrder.objects.aggregate(m=models.Max("ordering")).get("m") or 0
-        SpecificReportingOrder.objects.create(value=str(parameter_name), ordering=max_order + 1)
+        max_order = SpecificReportingOrder.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).aggregate(m=models.Max("ordering")).get("m") or 0
+        SpecificReportingOrder.objects.create(value=str(parameter_name), ordering=max_order + 1, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Nuevo parámetro insertado exitosamente", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al insertar nuevo parámetro", "error": str(e)}, status=500)

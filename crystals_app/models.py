@@ -12,6 +12,7 @@ class Calibration(models.Model):
 	ordering = models.IntegerField(null=True, blank=True)
 	target_cv = models.FloatField(null=True, blank=True)
 	target_mean = models.FloatField(null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'calibrations'
@@ -21,6 +22,7 @@ class Calibration(models.Model):
 class User(models.Model):
 	username = models.CharField(max_length=20, unique=True)
 	password = models.CharField(max_length=50)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'users'
@@ -30,6 +32,7 @@ class User(models.Model):
 class Config(models.Model):
 	key = models.CharField(max_length=50, unique=True)  # Changed from 3 to 50 to match actual data
 	value = models.CharField(max_length=50)  # Changed from 20 to 50 for flexibility
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'config'
@@ -39,6 +42,7 @@ class Config(models.Model):
 class Company(models.Model):
 	name = models.CharField(max_length=20, unique=True)
 	logo = models.CharField(max_length=50)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'company'
@@ -48,6 +52,7 @@ class Company(models.Model):
 class ManualMeasurement(models.Model):
 	time = models.CharField(max_length=50)
 	value = models.CharField(max_length=50)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'manual_measurements'
@@ -77,6 +82,7 @@ class HistoricReport(models.Model):
 	calibration_fk = models.ForeignKey(
 		Calibration, on_delete=models.CASCADE, db_column='calibration_id'
 	)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'historic_reports'
@@ -85,6 +91,7 @@ class HistoricReport(models.Model):
 
 class GlobalSetting(models.Model):
 	line_color = models.CharField(max_length=7)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'global_settings'
@@ -94,6 +101,7 @@ class GlobalSetting(models.Model):
 class Activation(models.Model):
 	validation_code = models.CharField(max_length=50)
 	validated = models.IntegerField()
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'activation'
@@ -112,6 +120,7 @@ class HistoricAnalysisData(models.Model):
 	pct_object_width = models.FloatField()
 	mean_object_width = models.FloatField()
 	long_crystals = models.FloatField(null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'historic_analysis_data'
@@ -172,6 +181,7 @@ class ManagementReportSettings(models.Model):
 	amount_perc_muy_gran = models.IntegerField(null=True, blank=True, default=0)
 	amount_total = models.IntegerField(null=True, blank=True, default=0)
 	perc_powder = models.IntegerField(null=True, blank=True, default=0)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'management_report_settings'
@@ -186,6 +196,7 @@ class AnalysisCategory(models.Model):
 	username = models.CharField(max_length=20)
 	baking_time = models.IntegerField(null=True, blank=True)
 	mass_number = models.IntegerField(null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'analysis_categories'
@@ -195,6 +206,7 @@ class AnalysisCategory(models.Model):
 class NewParametersAnalysisCategory(models.Model):
 	parameter = models.CharField(max_length=30)
 	type = models.CharField(max_length=20)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'new_parameters_analysis_categories'
@@ -211,6 +223,7 @@ class CrudoCalculation(models.Model):
 	concentracion_slurry = models.IntegerField(null=True, blank=True)
 	alcohol_slurry = models.IntegerField(null=True, blank=True)
 	densidad_slurry = models.IntegerField(null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'crudo_calculations'
@@ -228,6 +241,7 @@ class RefinoCalculation(models.Model):
 	concentracion_slurry = models.IntegerField(null=True, blank=True)
 	alcohol_slurry = models.IntegerField(null=True, blank=True)
 	densidad_slurry = models.IntegerField(null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'refino_calculations'
@@ -237,6 +251,7 @@ class RefinoCalculation(models.Model):
 class SpecificReportingOrder(models.Model):
 	value = models.CharField(max_length=25, null=True, blank=True)
 	ordering = models.IntegerField(null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'specific_reporting_order'
@@ -246,6 +261,7 @@ class SpecificReportingOrder(models.Model):
 class GeneralReportingOrder(models.Model):
 	value = models.CharField(max_length=25, null=True, blank=True)
 	ordering = models.IntegerField(null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'general_reporting_order'
@@ -255,6 +271,7 @@ class GeneralReportingOrder(models.Model):
 class LaboratoryReportingOrder(models.Model):
 	value = models.CharField(max_length=25, null=True, blank=True)
 	ordering = models.IntegerField(null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'laboratory_reporting_order'
@@ -266,6 +283,7 @@ class LaboratoryParametrization(models.Model):
 	categoria = models.CharField(max_length=20)
 	range_from = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 	range_to = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'laboratory_parametrization'
@@ -277,6 +295,7 @@ class LaboratoryCalculatedRefinoParametrization(models.Model):
 	categoria = models.CharField(max_length=20)
 	range_from = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 	range_to = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'laboratory_calculated_refino_parametrization'
@@ -288,6 +307,7 @@ class LaboratoryCalculatedMasaAParametrization(models.Model):
 	categoria = models.CharField(max_length=20)
 	range_from = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 	range_to = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'laboratory_calculated_masa_a_parametrization'
@@ -299,6 +319,7 @@ class LaboratoryCalculatedMasaBParametrization(models.Model):
 	categoria = models.CharField(max_length=20)
 	range_from = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 	range_to = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'laboratory_calculated_masa_b_parametrization'
@@ -310,6 +331,7 @@ class LaboratoryCalculatedMasaCParametrization(models.Model):
 	categoria = models.CharField(max_length=20)
 	range_from = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 	range_to = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'laboratory_calculated_masa_c_parametrization'
@@ -321,6 +343,7 @@ class CrystalsDataParametrization(models.Model):
 	categoria = models.CharField(max_length=20)
 	range_from = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 	range_to = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'crystals_data_parametrization'
@@ -332,6 +355,7 @@ class CrystalsDataParametrizationNewParams(models.Model):
 	categoria = models.CharField(max_length=20)
 	range_from = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 	range_to = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'crystals_data_parametrization_nw_params'
@@ -344,6 +368,7 @@ class CrystalsDataParametrizationMA(models.Model):
 	tolerance = models.IntegerField(null=True, blank=True)
 	range_from = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 	range_to = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'crystals_data_parametrization_ma'
@@ -356,6 +381,7 @@ class CrystalsDataParametrizationCV(models.Model):
 	tolerance = models.IntegerField(null=True, blank=True)
 	range_from = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 	range_to = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'crystals_data_parametrization_cv'
@@ -367,6 +393,7 @@ class BrixCalculatorData(models.Model):
 	pureza = models.FloatField()
 	ss = models.FloatField()
 	brx = models.FloatField()
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'brix_calculator_data'
@@ -376,6 +403,7 @@ class BrixCalculatorData(models.Model):
 class ProcessCodeData(models.Model):
 	process = models.TextField(primary_key=True)
 	code = models.TextField()
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'process_code_data'
@@ -388,6 +416,7 @@ class ManagementReportLayout(models.Model):
 	column = models.IntegerField()
 	element_id = models.TextField()
 	element_type = models.TextField()
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'management_report_layout'
@@ -397,6 +426,7 @@ class ManagementReportLayout(models.Model):
 class LabMaterialsSettings(models.Model):
 	material = models.CharField(max_length=50)
 	visible = models.IntegerField(default=1)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'lab_materials_settings'
@@ -478,6 +508,7 @@ class LaboratorySettingsExcel(models.Model):
 	pol_azuc_number = models.IntegerField(null=True, blank=True)
 	sol_tota_hda_azu_letter = models.CharField(max_length=1, null=True, blank=True)
 	sol_tota_hda_azu_number = models.IntegerField(null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'laboratory_settings_excel'
@@ -522,6 +553,7 @@ class LaboratoryData(models.Model):
 	bx_meladura = models.IntegerField(null=True, blank=True)
 	pol_azuc = models.IntegerField(null=True, blank=True)
 	sol_tota_hda_azu = models.IntegerField(null=True, blank=True)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'laboratory_data'

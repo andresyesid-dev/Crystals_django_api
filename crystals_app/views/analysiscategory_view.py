@@ -20,6 +20,7 @@ def add_analysis_cat_values(request: HttpRequest):
             return JsonResponse({"message": "❌ ID de reporte requerido", "error": "historic_reports_id required"}, status=400)
         data = {k: (v if v != "" else None) for k, v in values}
         data["historic_report_id"] = hr_id
+        data["factory_id"] = request.META.get('HTTP_X_FACTORY_ID', 1)
         AnalysisCategory.objects.create(**data)
         return JsonResponse({"message": "✅ Valores agregados exitosamente", "ok": True})
     except Exception as e:
@@ -38,7 +39,7 @@ def add_new_parameters_analysis_categories(request: HttpRequest):
         type_ = body.get("type")
         if not parameter or not type_:
             return JsonResponse({"message": "❌ Parámetro y tipo requeridos", "error": "parameter and type required"}, status=400)
-        NewParametersAnalysisCategory.objects.create(parameter=parameter, type=type_)
+        NewParametersAnalysisCategory.objects.create(parameter=parameter, type=type_, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Parámetro agregado exitosamente", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al agregar parámetro", "error": str(e)}, status=500)
@@ -49,7 +50,7 @@ def add_new_parameters_analysis_categories(request: HttpRequest):
 @log_api_access
 def get_new_parameters_analysis_categories(request: HttpRequest):
     try:
-        data = list(NewParametersAnalysisCategory.objects.all().values())
+        data = list(NewParametersAnalysisCategory.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).values())
         return JsonResponse({"message": "✅ Parámetros obtenidos", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener parámetros", "error": str(e)}, status=500)
@@ -66,8 +67,8 @@ def delete_parameter_analysis_category(request: HttpRequest):
         parameter = (body.get("parameter") or "").replace(' ', '_')
         if not parameter:
             return JsonResponse({"message": "❌ Parámetro requerido", "error": "parameter required"}, status=400)
-        NewParametersAnalysisCategory.objects.filter(parameter=parameter).delete()
-        SpecificReportingOrder.objects.filter(value=parameter.replace('_', ' ')).delete()
+        NewParametersAnalysisCategory.objects.filter(parameter=parameter, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).delete()
+        SpecificReportingOrder.objects.filter(value=parameter.replace('_', ' '), factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).delete()
         return JsonResponse({"message": "✅ Parámetro eliminado exitosamente", "deleted": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al eliminar parámetro", "error": str(e)}, status=500)

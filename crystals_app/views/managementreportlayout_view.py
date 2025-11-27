@@ -12,7 +12,7 @@ import json
 @log_api_access
 def get_management_report_layout(request: HttpRequest):
     try:
-        data = [model_to_dict(o) for o in ManagementReportLayout.objects.all()]
+        data = [model_to_dict(o) for o in ManagementReportLayout.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))]
         return JsonResponse({"message": "✅ Diseño de reporte de gestión obtenido exitosamente", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener diseño de reporte", "error": str(e)}, status=500)
@@ -24,7 +24,7 @@ def get_management_report_layout(request: HttpRequest):
 def get_tab_management_report_layout(request: HttpRequest):
     try:
         element_id = request.GET.get("element_id")
-        obj = ManagementReportLayout.objects.filter(element_id=element_id).first()
+        obj = ManagementReportLayout.objects.filter(element_id=element_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
         return JsonResponse({"message": "✅ Pestaña de diseño obtenida exitosamente", "screen_number": obj.screen_number if obj else None})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener pestaña de diseño", "error": str(e)}, status=500)
@@ -41,7 +41,7 @@ def insert_management_report_layout(request: HttpRequest):
         default_data = body.get("default_data") or []
         for item in default_data:
             screen_number, row, column, element_id, element_type = item
-            exists = ManagementReportLayout.objects.filter(element_id=element_id).exists()
+            exists = ManagementReportLayout.objects.filter(element_id=element_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).exists()
             if not exists:
                 ManagementReportLayout.objects.create(
                     screen_number=screen_number,
@@ -49,9 +49,10 @@ def insert_management_report_layout(request: HttpRequest):
                     column=column,
                     element_id=element_id,
                     element_type=element_type,
+                    factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
                 )
             else:
-                ManagementReportLayout.objects.filter(element_id=element_id).update(
+                ManagementReportLayout.objects.filter(element_id=element_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(
                     screen_number=screen_number,
                     row=row,
                     column=column,
@@ -72,7 +73,7 @@ def update_management_report_layout(request: HttpRequest):
         body = json.loads(request.body or b"{}")
         new_data = body.get("new_data") or []
         for screen_number, row, column, element_id in new_data:
-            ManagementReportLayout.objects.filter(element_id=element_id).update(
+            ManagementReportLayout.objects.filter(element_id=element_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(
                 screen_number=screen_number, row=row, column=column
             )
         return JsonResponse({"message": "✅ Diseño de reporte actualizado exitosamente", "ok": True})
@@ -103,7 +104,7 @@ def set_default_management_report_layout(request: HttpRequest):
         # Reuse insert/update behavior
         for item in default_data:
             screen_number, row, column, element_id, element_type = item
-            exists = ManagementReportLayout.objects.filter(element_id=element_id).exists()
+            exists = ManagementReportLayout.objects.filter(element_id=element_id, factory_id=request.factory_id).exists()
             if not exists:
                 ManagementReportLayout.objects.create(
                     screen_number=screen_number,
@@ -111,6 +112,7 @@ def set_default_management_report_layout(request: HttpRequest):
                     column=column,
                     element_id=element_id,
                     element_type=element_type,
+                    factory_id=request.factory_id
                 )
         return JsonResponse({"message": "✅ Diseño predeterminado establecido exitosamente", "ok": True})
     except Exception as e:
@@ -127,7 +129,7 @@ def insert_default_management_report_layout(request: HttpRequest):
     Called during initial setup.
     """
     try:
-        count = ManagementReportLayout.objects.count()
+        count = ManagementReportLayout.objects.filter(factory_id=request.factory_id).count()
         if count > 0:
             return JsonResponse({
                 "ok": True,
@@ -158,6 +160,7 @@ def insert_default_management_report_layout(request: HttpRequest):
                 column=column,
                 element_id=element_id,
                 element_type=element_type,
+                factory_id=request.factory_id
             ))
         
         ManagementReportLayout.objects.bulk_create(layouts)

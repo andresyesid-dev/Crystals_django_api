@@ -4298,3 +4298,925 @@ INFO 2025-11-18 19:55:11,139 basehttp 37896 13082095616 "GET /crystals-param-ma/
 INFO 2025-11-18 19:55:11,810 basehttp 37896 13082095616 "GET /crystals-param-cv/get HTTP/1.1" 200 69
 INFO 2025-11-18 19:55:12,568 basehttp 37896 13082095616 "GET /management-report-settings/get HTTP/1.1" 200 105
 INFO 2025-11-18 19:55:13,285 basehttp 37896 13082095616 "GET /reporting-order/general/get HTTP/1.1" 200 66
+INFO 2025-11-26 16:20:20,701 autoreload 9411 8659930688 Watching for file changes with StatReloader
+INFO 2025-11-26 16:23:28,041 autoreload 10745 8671567424 Watching for file changes with StatReloader
+INFO 2025-11-26 16:46:15,418 autoreload 14556 8595209792 Watching for file changes with StatReloader
+INFO 2025-11-26 16:46:49,443 autoreload 14896 8671608384 Watching for file changes with StatReloader
+INFO 2025-11-26 16:49:01,907 basehttp 14896 13097086976 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-26 16:49:02,672 basehttp 14896 13097086976 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-26 16:49:03,381 basehttp 14896 13097086976 "GET /global-settings/line-color/get HTTP/1.1" 200 70
+INFO 2025-11-26 16:49:04,087 basehttp 14896 13097086976 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-26 16:49:04,839 basehttp 14896 13097086976 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-26 16:49:06,036 basehttp 14896 13097086976 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-26 16:49:45,000 basehttp 14896 13097086976 "POST /user/validate HTTP/1.1" 200 77
+INFO 2025-11-26 16:49:45,750 basehttp 14896 13097086976 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-26 16:49:47,677 basehttp 14896 13097086976 "GET /process-code/get HTTP/1.1" 200 2589
+ERROR 2025-11-26 16:49:58,707 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:49:58,708 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:49:59,609 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:49:59,609 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:00,547 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:00,548 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:01,523 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:01,524 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:02,469 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:02,470 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:03,414 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:03,414 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:04,371 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:04,372 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:05,331 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:05,331 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:06,284 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:06,284 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:07,279 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:07,279 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:08,260 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:08,261 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:09,234 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:09,235 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:10,178 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:10,179 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:11,126 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:11,126 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:12,026 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:12,027 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:12,943 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:12,943 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:13,915 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:13,915 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:14,876 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:14,877 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:15,831 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:15,832 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:16,787 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:16,788 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:17,701 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:17,702 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:18,668 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:18,668 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:19,754 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:19,754 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:20,743 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:20,744 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:21,684 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:21,684 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:22,639 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:22,640 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:23,624 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:23,625 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:24,612 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:24,613 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:25,518 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:25,519 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:26,481 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:26,481 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:27,428 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:27,428 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:28,387 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:28,388 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:29,341 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:29,342 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:30,241 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:30,241 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:31,208 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:31,209 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+INFO 2025-11-26 16:50:31,902 basehttp 14896 13097086976 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+ERROR 2025-11-26 16:50:32,852 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:32,852 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+INFO 2025-11-26 16:50:33,574 basehttp 14896 13097086976 "GET /calibration/get?name=PRIMITIVO HTTP/1.1" 200 270
+ERROR 2025-11-26 16:50:34,490 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:34,491 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:35,455 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:35,455 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:36,405 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:36,405 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:37,370 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:37,371 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:38,337 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:38,337 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:39,321 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:39,322 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:40,248 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:40,249 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:41,170 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:41,170 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:42,180 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:42,181 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:43,200 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:43,202 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:44,111 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:44,112 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:45,044 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:45,045 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:46,019 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:46,020 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:47,148 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:47,150 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:48,166 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:48,168 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:49,088 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:49,089 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+ERROR 2025-11-26 16:50:50,097 log 14896 13097086976 Internal Server Error: /calibration/create
+ERROR 2025-11-26 16:50:50,101 basehttp 14896 13097086976 "POST /calibration/create HTTP/1.1" 500 4176
+INFO 2025-11-26 17:22:53,649 basehttp 14896 13097086976 "GET /process-code/get HTTP/1.1" 200 2589
+WARNING 2025-11-26 17:22:57,616 log 14896 13097086976 Method Not Allowed (PATCH): /process-code/update
+WARNING 2025-11-26 17:22:57,617 basehttp 14896 13097086976 "PATCH /process-code/update HTTP/1.1" 405 0
+WARNING 2025-11-26 17:22:58,879 log 14896 13097086976 Method Not Allowed (PATCH): /process-code/update
+WARNING 2025-11-26 17:22:58,880 basehttp 14896 13097086976 "PATCH /process-code/update HTTP/1.1" 405 0
+INFO 2025-11-26 17:23:14,957 basehttp 14896 13097086976 "GET /management-report-layout/get HTTP/1.1" 200 97
+INFO 2025-11-26 17:23:22,537 basehttp 14896 13097086976 "PATCH /management-report-layout/update HTTP/1.1" 200 81
+INFO 2025-11-26 17:23:23,256 basehttp 14896 13097086976 "GET /management-report-layout/get HTTP/1.1" 200 97
+INFO 2025-11-27 02:39:45,195 autoreload 24242 8633372224 Watching for file changes with StatReloader
+INFO 2025-11-27 03:31:29,053 basehttp 24242 13020082176 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-27 03:31:29,812 basehttp 24242 13020082176 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-27 03:31:30,596 basehttp 24242 13020082176 "GET /global-settings/line-color/get HTTP/1.1" 200 70
+INFO 2025-11-27 03:31:31,286 basehttp 24242 13020082176 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-27 03:31:32,011 basehttp 24242 13020082176 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-27 03:31:32,827 basehttp 24242 13020082176 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-27 03:56:06,646 autoreload 24242 8633372224 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_project/settings.py changed, reloading.
+INFO 2025-11-27 03:56:08,666 autoreload 36607 8629550656 Watching for file changes with StatReloader
+INFO 2025-11-27 03:56:35,010 autoreload 36607 8629550656 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_project/settings.py changed, reloading.
+INFO 2025-11-27 03:56:37,173 autoreload 36636 8660434496 Watching for file changes with StatReloader
+INFO 2025-11-27 04:02:58,693 autoreload 36636 8660434496 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/activation_view.py changed, reloading.
+INFO 2025-11-27 04:03:00,924 autoreload 36886 8666320448 Watching for file changes with StatReloader
+INFO 2025-11-27 04:04:21,674 autoreload 36886 8666320448 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/analysiscategory_view.py changed, reloading.
+INFO 2025-11-27 04:04:22,774 autoreload 36935 8640314944 Watching for file changes with StatReloader
+INFO 2025-11-27 04:04:36,730 autoreload 36935 8640314944 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/brixcalculatordata_view.py changed, reloading.
+INFO 2025-11-27 04:04:37,569 autoreload 36961 8675368512 Watching for file changes with StatReloader
+INFO 2025-11-27 04:05:11,110 autoreload 36961 8675368512 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-11-27 04:05:11,681 autoreload 36988 8675069504 Watching for file changes with StatReloader
+INFO 2025-11-27 04:05:31,534 autoreload 36988 8675069504 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-11-27 04:05:32,047 autoreload 37003 8609578560 Watching for file changes with StatReloader
+INFO 2025-11-27 04:05:55,265 autoreload 37003 8609578560 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/company_view.py changed, reloading.
+INFO 2025-11-27 04:05:56,830 autoreload 37021 8592043584 Watching for file changes with StatReloader
+INFO 2025-11-27 04:08:03,230 autoreload 37021 8592043584 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/config_view.py changed, reloading.
+INFO 2025-11-27 04:08:05,238 autoreload 37091 8637173312 Watching for file changes with StatReloader
+INFO 2025-11-27 04:08:22,403 autoreload 37091 8637173312 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/crudocalculation_view.py changed, reloading.
+INFO 2025-11-27 04:08:23,613 autoreload 37111 8607895104 Watching for file changes with StatReloader
+INFO 2025-11-27 04:09:01,531 autoreload 37111 8607895104 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/crystalsdataparametrization_view.py changed, reloading.
+INFO 2025-11-27 04:09:02,155 autoreload 37143 8603078208 Watching for file changes with StatReloader
+INFO 2025-11-27 04:09:09,762 autoreload 37143 8603078208 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/crystalsdataparametrizationcv_view.py changed, reloading.
+INFO 2025-11-27 04:09:10,754 autoreload 37160 8601001536 Watching for file changes with StatReloader
+INFO 2025-11-27 04:09:47,510 autoreload 37160 8601001536 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/crystalsdataparametrizationnwparams_view.py changed, reloading.
+INFO 2025-11-27 04:09:48,550 autoreload 37195 8641400384 Watching for file changes with StatReloader
+INFO 2025-11-27 04:09:53,014 autoreload 37195 8641400384 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/generalreportingorder_view.py changed, reloading.
+INFO 2025-11-27 04:09:55,193 autoreload 37209 8669208128 Watching for file changes with StatReloader
+INFO 2025-11-27 04:10:29,116 autoreload 37209 8669208128 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/historicanalysisdata_view.py changed, reloading.
+INFO 2025-11-27 04:10:30,004 autoreload 37248 8641265216 Watching for file changes with StatReloader
+INFO 2025-11-27 04:10:33,545 autoreload 37248 8641265216 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/labmaterialssettings_view.py changed, reloading.
+INFO 2025-11-27 04:10:35,658 autoreload 37261 8661122624 Watching for file changes with StatReloader
+INFO 2025-11-27 04:12:39,222 autoreload 37261 8661122624 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/historicreport_view.py changed, reloading.
+INFO 2025-11-27 04:12:39,803 autoreload 37328 8604352064 Watching for file changes with StatReloader
+INFO 2025-11-27 04:13:09,299 autoreload 37328 8604352064 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratory_data_view.py changed, reloading.
+INFO 2025-11-27 04:13:10,865 autoreload 37358 8660540992 Watching for file changes with StatReloader
+INFO 2025-11-27 04:13:13,387 autoreload 37358 8660540992 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorycalculatedmasaa_parametrization_view.py changed, reloading.
+INFO 2025-11-27 04:13:14,373 autoreload 37369 8673177152 Watching for file changes with StatReloader
+INFO 2025-11-27 04:13:16,776 autoreload 37369 8673177152 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorycalculatedmasab_parametrization_view.py changed, reloading.
+INFO 2025-11-27 04:13:18,223 autoreload 37374 8669109824 Watching for file changes with StatReloader
+INFO 2025-11-27 04:13:20,865 autoreload 37374 8669109824 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorycalculatedmasac_parametrization_view.py changed, reloading.
+INFO 2025-11-27 04:13:22,020 autoreload 37383 8604110400 Watching for file changes with StatReloader
+INFO 2025-11-27 04:13:24,664 autoreload 37383 8604110400 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorycalculatedrefinoparametrization_view.py changed, reloading.
+INFO 2025-11-27 04:13:25,121 autoreload 37391 8602975808 Watching for file changes with StatReloader
+INFO 2025-11-27 04:14:03,866 autoreload 37391 8602975808 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorydata_view.py changed, reloading.
+INFO 2025-11-27 04:14:05,526 autoreload 37414 8604098112 Watching for file changes with StatReloader
+INFO 2025-11-27 04:14:11,076 autoreload 37414 8604098112 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorysettingsexcel_view.py changed, reloading.
+INFO 2025-11-27 04:14:12,691 autoreload 37428 8668266048 Watching for file changes with StatReloader
+INFO 2025-11-27 04:14:16,227 autoreload 37428 8668266048 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/manualmeasurement_view.py changed, reloading.
+INFO 2025-11-27 04:14:17,002 autoreload 37434 8604520000 Watching for file changes with StatReloader
+INFO 2025-11-27 04:14:21,514 autoreload 37434 8604520000 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/newparametersanalysiscategory_view.py changed, reloading.
+INFO 2025-11-27 04:14:23,027 autoreload 37443 8667045440 Watching for file changes with StatReloader
+INFO 2025-11-27 04:14:28,480 autoreload 37443 8667045440 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/processcodedata_view.py changed, reloading.
+INFO 2025-11-27 04:14:29,536 autoreload 37461 8632565312 Watching for file changes with StatReloader
+INFO 2025-11-27 04:14:35,112 autoreload 37461 8632565312 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/refinocalculation_view.py changed, reloading.
+INFO 2025-11-27 04:14:37,118 autoreload 37475 8662806080 Watching for file changes with StatReloader
+INFO 2025-11-27 04:15:18,104 autoreload 37475 8662806080 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratory_parametrization_view.py changed, reloading.
+INFO 2025-11-27 04:15:19,265 autoreload 37516 8639352384 Watching for file changes with StatReloader
+INFO 2025-11-27 04:15:44,624 autoreload 37516 8639352384 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratoryparametrization_view.py changed, reloading.
+INFO 2025-11-27 04:15:45,752 autoreload 37535 8633003584 Watching for file changes with StatReloader
+INFO 2025-11-27 04:16:14,249 autoreload 37535 8633003584 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/managementreportlayout_view.py changed, reloading.
+INFO 2025-11-27 04:16:15,230 autoreload 37556 8637845056 Watching for file changes with StatReloader
+INFO 2025-11-27 04:16:22,730 autoreload 37556 8637845056 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/managementreportsettings_view.py changed, reloading.
+INFO 2025-11-27 04:16:23,642 autoreload 37568 8629956160 Watching for file changes with StatReloader
+INFO 2025-11-27 04:29:42,273 basehttp 37568 13013233664 "POST /auth/login/ HTTP/1.1" 200 709
+ERROR 2025-11-27 04:29:42,913 log 37568 13013233664 Internal Server Error: /config/language/get
+ERROR 2025-11-27 04:29:42,914 basehttp 37568 13013233664 "GET /config/language/get HTTP/1.1" 500 108
+ERROR 2025-11-27 04:29:43,574 log 37568 13013233664 Internal Server Error: /global-settings/line-color/get
+ERROR 2025-11-27 04:29:43,575 basehttp 37568 13013233664 "GET /global-settings/line-color/get HTTP/1.1" 500 121
+ERROR 2025-11-27 04:29:44,174 log 37568 13013233664 Internal Server Error: /company/get
+ERROR 2025-11-27 04:29:44,175 basehttp 37568 13013233664 "GET /company/get HTTP/1.1" 500 129
+ERROR 2025-11-27 04:29:44,791 log 37568 13013233664 Internal Server Error: /activation/status
+ERROR 2025-11-27 04:29:44,791 basehttp 37568 13013233664 "GET /activation/status HTTP/1.1" 500 110
+ERROR 2025-11-27 04:29:45,705 log 37568 13013233664 Internal Server Error: /company/get
+ERROR 2025-11-27 04:29:45,706 basehttp 37568 13013233664 "GET /company/get HTTP/1.1" 500 129
+INFO 2025-11-27 05:09:55,713 basehttp 37568 13013233664 "POST /auth/login/ HTTP/1.1" 200 709
+ERROR 2025-11-27 05:09:56,391 log 37568 13013233664 Internal Server Error: /config/language/get
+ERROR 2025-11-27 05:09:56,392 basehttp 37568 13013233664 "GET /config/language/get HTTP/1.1" 500 108
+ERROR 2025-11-27 05:09:57,081 log 37568 13013233664 Internal Server Error: /global-settings/line-color/get
+ERROR 2025-11-27 05:09:57,081 basehttp 37568 13013233664 "GET /global-settings/line-color/get HTTP/1.1" 500 121
+ERROR 2025-11-27 05:09:57,738 log 37568 13013233664 Internal Server Error: /company/get
+ERROR 2025-11-27 05:09:57,739 basehttp 37568 13013233664 "GET /company/get HTTP/1.1" 500 129
+ERROR 2025-11-27 05:09:58,384 log 37568 13013233664 Internal Server Error: /activation/status
+ERROR 2025-11-27 05:09:58,385 basehttp 37568 13013233664 "GET /activation/status HTTP/1.1" 500 110
+ERROR 2025-11-27 05:09:59,463 log 37568 13013233664 Internal Server Error: /company/get
+ERROR 2025-11-27 05:09:59,464 basehttp 37568 13013233664 "GET /company/get HTTP/1.1" 500 129
+INFO 2025-11-27 05:11:41,422 basehttp 37568 13013233664 "POST /auth/login/ HTTP/1.1" 200 709
+ERROR 2025-11-27 05:11:42,077 log 37568 13013233664 Internal Server Error: /config/language/get
+ERROR 2025-11-27 05:11:42,078 basehttp 37568 13013233664 "GET /config/language/get HTTP/1.1" 500 108
+ERROR 2025-11-27 05:11:42,772 log 37568 13013233664 Internal Server Error: /global-settings/line-color/get
+ERROR 2025-11-27 05:11:42,774 basehttp 37568 13013233664 "GET /global-settings/line-color/get HTTP/1.1" 500 121
+ERROR 2025-11-27 05:11:43,375 log 37568 13013233664 Internal Server Error: /company/get
+ERROR 2025-11-27 05:11:43,375 basehttp 37568 13013233664 "GET /company/get HTTP/1.1" 500 129
+ERROR 2025-11-27 05:11:43,988 log 37568 13013233664 Internal Server Error: /activation/status
+ERROR 2025-11-27 05:11:43,989 basehttp 37568 13013233664 "GET /activation/status HTTP/1.1" 500 110
+ERROR 2025-11-27 05:11:44,682 log 37568 13013233664 Internal Server Error: /company/get
+ERROR 2025-11-27 05:11:44,683 basehttp 37568 13013233664 "GET /company/get HTTP/1.1" 500 129
+INFO 2025-11-27 05:13:09,516 basehttp 37568 13013233664 "POST /auth/login/ HTTP/1.1" 200 709
+ERROR 2025-11-27 05:13:10,359 log 37568 13013233664 Internal Server Error: /config/language/get
+ERROR 2025-11-27 05:13:10,360 basehttp 37568 13013233664 "GET /config/language/get HTTP/1.1" 500 108
+ERROR 2025-11-27 05:13:11,051 log 37568 13013233664 Internal Server Error: /global-settings/line-color/get
+ERROR 2025-11-27 05:13:11,052 basehttp 37568 13013233664 "GET /global-settings/line-color/get HTTP/1.1" 500 121
+ERROR 2025-11-27 05:13:11,652 log 37568 13013233664 Internal Server Error: /company/get
+ERROR 2025-11-27 05:13:11,652 basehttp 37568 13013233664 "GET /company/get HTTP/1.1" 500 129
+ERROR 2025-11-27 05:13:12,259 log 37568 13013233664 Internal Server Error: /activation/status
+ERROR 2025-11-27 05:13:12,260 basehttp 37568 13013233664 "GET /activation/status HTTP/1.1" 500 110
+ERROR 2025-11-27 05:13:13,231 log 37568 13013233664 Internal Server Error: /company/get
+ERROR 2025-11-27 05:13:13,233 basehttp 37568 13013233664 "GET /company/get HTTP/1.1" 500 129
+INFO 2025-11-27 05:13:31,060 basehttp 37568 13013233664 "POST /user/validate HTTP/1.1" 200 77
+ERROR 2025-11-27 05:13:31,704 log 37568 13013233664 Internal Server Error: /activation/status
+ERROR 2025-11-27 05:13:31,705 basehttp 37568 13013233664 "GET /activation/status HTTP/1.1" 500 110
+ERROR 2025-11-27 05:13:41,549 log 37568 13013233664 Internal Server Error: /activation/validate
+ERROR 2025-11-27 05:13:41,550 basehttp 37568 13013233664 "POST /activation/validate HTTP/1.1" 500 109
+ERROR 2025-11-27 05:13:42,178 log 37568 13013233664 Internal Server Error: /activation/status
+ERROR 2025-11-27 05:13:42,179 basehttp 37568 13013233664 "GET /activation/status HTTP/1.1" 500 110
+ERROR 2025-11-27 05:14:31,135 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:31,137 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:31,817 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:31,817 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:32,503 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:32,503 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:33,193 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:33,193 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:33,895 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:33,896 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:34,595 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:34,596 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:35,325 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:35,326 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:36,060 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:36,060 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:36,741 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:36,742 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:37,436 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:37,437 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:38,133 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:38,134 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:38,820 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:38,820 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:39,558 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:39,559 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:40,244 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:40,245 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:41,033 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:41,033 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:41,708 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:41,709 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:42,396 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:42,397 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:43,070 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:43,072 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:43,777 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:43,778 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:44,487 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:44,488 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:45,187 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:45,187 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:45,877 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:45,877 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:46,571 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:46,571 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:47,251 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:47,251 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:47,932 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:47,933 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:48,622 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:48,623 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:49,333 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:49,334 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:50,030 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:50,030 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:50,887 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:50,887 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:51,578 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:51,578 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:52,261 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:52,262 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:52,961 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:52,961 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:53,662 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:53,663 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:54,377 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:54,377 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:55,074 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:55,074 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:55,700 log 37568 13013233664 Internal Server Error: /calibration/get
+ERROR 2025-11-27 05:14:55,701 basehttp 37568 13013233664 "GET /calibration/get?name=SLURRY HTTP/1.1" 500 118
+ERROR 2025-11-27 05:14:56,397 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:56,398 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:57,019 log 37568 13013233664 Internal Server Error: /calibration/get
+ERROR 2025-11-27 05:14:57,020 basehttp 37568 13013233664 "GET /calibration/get?name=PRIMITIVO HTTP/1.1" 500 118
+ERROR 2025-11-27 05:14:57,797 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:57,809 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:58,523 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:58,524 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:59,186 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:59,186 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:14:59,887 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:14:59,887 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:15:00,782 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:15:00,783 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:15:01,471 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:15:01,472 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:15:02,172 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:15:02,173 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:15:02,858 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:15:02,859 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:15:03,552 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:15:03,553 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:15:04,232 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:15:04,233 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:15:04,920 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:15:04,921 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:15:05,646 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:15:05,647 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:15:06,333 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:15:06,333 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:15:07,031 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:15:07,032 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:15:07,759 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:15:07,759 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:15:08,469 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:15:08,470 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+ERROR 2025-11-27 05:15:09,177 log 37568 13013233664 Internal Server Error: /calibration/create
+ERROR 2025-11-27 05:15:09,177 basehttp 37568 13013233664 "POST /calibration/create HTTP/1.1" 500 477
+INFO 2025-11-27 05:19:10,236 autoreload 37568 8629956160 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/models.py changed, reloading.
+INFO 2025-11-27 05:19:13,322 autoreload 44548 8626069056 Watching for file changes with StatReloader
+INFO 2025-11-27 06:04:19,976 autoreload 44548 8626069056 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/urls.py changed, reloading.
+INFO 2025-11-27 06:04:21,566 autoreload 51398 8670236224 Watching for file changes with StatReloader
+INFO 2025-11-27 06:11:13,550 autoreload 54433 8672849472 Watching for file changes with StatReloader
+INFO 2025-11-27 06:11:35,292 basehttp 54433 13097906176 "POST /auth/login/ HTTP/1.1" 200 709
+WARNING 2025-11-27 06:11:35,337 log 54433 13097906176 Not Found: /
+WARNING 2025-11-27 06:11:35,337 basehttp 54433 13097906176 "POST / HTTP/1.1" 404 24567
+ERROR 2025-11-27 06:11:35,975 log 54433 13097906176 Internal Server Error: /config/language/get
+ERROR 2025-11-27 06:11:35,975 basehttp 54433 13097906176 "GET /config/language/get HTTP/1.1" 500 108
+ERROR 2025-11-27 06:11:36,651 log 54433 13097906176 Internal Server Error: /global-settings/line-color/get
+ERROR 2025-11-27 06:11:36,652 basehttp 54433 13097906176 "GET /global-settings/line-color/get HTTP/1.1" 500 121
+ERROR 2025-11-27 06:11:37,242 log 54433 13097906176 Internal Server Error: /company/get
+ERROR 2025-11-27 06:11:37,242 basehttp 54433 13097906176 "GET /company/get HTTP/1.1" 500 129
+ERROR 2025-11-27 06:11:37,854 log 54433 13097906176 Internal Server Error: /activation/status
+ERROR 2025-11-27 06:11:37,855 basehttp 54433 13097906176 "GET /activation/status HTTP/1.1" 500 110
+ERROR 2025-11-27 06:11:38,802 log 54433 13097906176 Internal Server Error: /company/get
+ERROR 2025-11-27 06:11:38,803 basehttp 54433 13097906176 "GET /company/get HTTP/1.1" 500 129
+INFO 2025-11-27 06:16:55,922 basehttp 54433 13097906176 "POST /auth/login/ HTTP/1.1" 200 709
+ERROR 2025-11-27 06:16:56,578 log 54433 13097906176 Internal Server Error: /config/language/get
+ERROR 2025-11-27 06:16:56,578 basehttp 54433 13097906176 "GET /config/language/get HTTP/1.1" 500 108
+ERROR 2025-11-27 06:16:57,231 log 54433 13097906176 Internal Server Error: /global-settings/line-color/get
+ERROR 2025-11-27 06:16:57,231 basehttp 54433 13097906176 "GET /global-settings/line-color/get HTTP/1.1" 500 121
+ERROR 2025-11-27 06:16:57,841 log 54433 13097906176 Internal Server Error: /company/get
+ERROR 2025-11-27 06:16:57,843 basehttp 54433 13097906176 "GET /company/get HTTP/1.1" 500 129
+ERROR 2025-11-27 06:16:58,481 log 54433 13097906176 Internal Server Error: /activation/status
+ERROR 2025-11-27 06:16:58,482 basehttp 54433 13097906176 "GET /activation/status HTTP/1.1" 500 110
+ERROR 2025-11-27 06:16:59,202 log 54433 13097906176 Internal Server Error: /company/get
+ERROR 2025-11-27 06:16:59,202 basehttp 54433 13097906176 "GET /company/get HTTP/1.1" 500 129
+INFO 2025-11-27 06:19:41,328 autoreload 56943 8636259904 Watching for file changes with StatReloader
+INFO 2025-11-27 06:21:09,954 basehttp 56943 13026914304 "POST /auth/login/ HTTP/1.1" 200 709
+ERROR 2025-11-27 06:21:10,596 log 56943 13026914304 Internal Server Error: /config/language/get
+ERROR 2025-11-27 06:21:10,597 basehttp 56943 13026914304 "GET /config/language/get HTTP/1.1" 500 108
+ERROR 2025-11-27 06:21:11,265 log 56943 13026914304 Internal Server Error: /global-settings/line-color/get
+ERROR 2025-11-27 06:21:11,265 basehttp 56943 13026914304 "GET /global-settings/line-color/get HTTP/1.1" 500 121
+ERROR 2025-11-27 06:21:11,871 log 56943 13026914304 Internal Server Error: /company/get
+ERROR 2025-11-27 06:21:11,871 basehttp 56943 13026914304 "GET /company/get HTTP/1.1" 500 129
+ERROR 2025-11-27 06:21:12,481 log 56943 13026914304 Internal Server Error: /activation/status
+ERROR 2025-11-27 06:21:12,481 basehttp 56943 13026914304 "GET /activation/status HTTP/1.1" 500 110
+ERROR 2025-11-27 06:21:13,227 log 56943 13026914304 Internal Server Error: /company/get
+ERROR 2025-11-27 06:21:13,228 basehttp 56943 13026914304 "GET /company/get HTTP/1.1" 500 129
+INFO 2025-11-27 06:23:51,021 basehttp 56943 13026914304 "POST /auth/login/ HTTP/1.1" 200 709
+ERROR 2025-11-27 06:23:51,711 log 56943 13026914304 Internal Server Error: /info-default/users
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/request.py", line 422, in __getattr__
+    return getattr(_request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'factory_id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py", line 23, in insert_default_users
+    factory_id = request.factory_id
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/request.py", line 424, in __getattr__
+    raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{attr}'")
+AttributeError: 'Request' object has no attribute 'factory_id'
+ERROR 2025-11-27 06:23:51,713 basehttp 56943 13026914304 "POST /info-default/users HTTP/1.1" 500 108297
+ERROR 2025-11-27 06:23:52,331 log 56943 13026914304 Internal Server Error: /info-default/config
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/request.py", line 422, in __getattr__
+    return getattr(_request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'factory_id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py", line 46, in insert_default_config
+    factory_id = request.factory_id
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/request.py", line 424, in __getattr__
+    raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{attr}'")
+AttributeError: 'Request' object has no attribute 'factory_id'
+ERROR 2025-11-27 06:23:52,332 basehttp 56943 13026914304 "POST /info-default/config HTTP/1.1" 500 108603
+ERROR 2025-11-27 06:23:52,945 log 56943 13026914304 Internal Server Error: /info-default/global-settings
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/request.py", line 422, in __getattr__
+    return getattr(_request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'factory_id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py", line 78, in insert_default_global_settings
+    factory_id = request.factory_id
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/request.py", line 424, in __getattr__
+    raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{attr}'")
+AttributeError: 'Request' object has no attribute 'factory_id'
+ERROR 2025-11-27 06:23:52,946 basehttp 56943 13026914304 "POST /info-default/global-settings HTTP/1.1" 500 108714
+ERROR 2025-11-27 06:23:53,624 log 56943 13026914304 Internal Server Error: /info-default/company
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/request.py", line 422, in __getattr__
+    return getattr(_request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'factory_id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py", line 99, in insert_default_company
+    factory_id = request.factory_id
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/request.py", line 424, in __getattr__
+    raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{attr}'")
+AttributeError: 'Request' object has no attribute 'factory_id'
+ERROR 2025-11-27 06:23:53,625 basehttp 56943 13026914304 "POST /info-default/company HTTP/1.1" 500 108528
+ERROR 2025-11-27 06:23:54,326 log 56943 13026914304 Internal Server Error: /info-default/activation
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/request.py", line 422, in __getattr__
+    return getattr(_request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'factory_id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py", line 120, in insert_default_activation
+    factory_id = request.factory_id
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/request.py", line 424, in __getattr__
+    raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{attr}'")
+AttributeError: 'Request' object has no attribute 'factory_id'
+ERROR 2025-11-27 06:23:54,328 basehttp 56943 13026914304 "POST /info-default/activation HTTP/1.1" 500 108657
+ERROR 2025-11-27 06:23:54,927 log 56943 13026914304 Internal Server Error: /info-default/mgmt-layout
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/request.py", line 422, in __getattr__
+    return getattr(_request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'factory_id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py", line 145, in insert_default_mgmt_layout
+    factory_id = request.factory_id
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/request.py", line 424, in __getattr__
+    raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{attr}'")
+AttributeError: 'Request' object has no attribute 'factory_id'
+ERROR 2025-11-27 06:23:54,928 basehttp 56943 13026914304 "POST /info-default/mgmt-layout HTTP/1.1" 500 108739
+ERROR 2025-11-27 06:23:55,604 log 56943 13026914304 Internal Server Error: /info-default/mgmt-settings
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/request.py", line 422, in __getattr__
+    return getattr(_request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'factory_id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py", line 190, in insert_default_mgmt_settings
+    factory_id = request.factory_id
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/rest_framework/request.py", line 424, in __getattr__
+    raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{attr}'")
+AttributeError: 'Request' object has no attribute 'factory_id'
+ERROR 2025-11-27 06:23:55,605 basehttp 56943 13026914304 "POST /info-default/mgmt-settings HTTP/1.1" 500 108706
+ERROR 2025-11-27 06:23:56,249 log 56943 13026914304 Internal Server Error: /config/language/get
+ERROR 2025-11-27 06:23:56,249 basehttp 56943 13026914304 "GET /config/language/get HTTP/1.1" 500 108
+ERROR 2025-11-27 06:23:56,952 log 56943 13026914304 Internal Server Error: /global-settings/line-color/get
+ERROR 2025-11-27 06:23:56,953 basehttp 56943 13026914304 "GET /global-settings/line-color/get HTTP/1.1" 500 121
+ERROR 2025-11-27 06:23:57,535 log 56943 13026914304 Internal Server Error: /company/get
+ERROR 2025-11-27 06:23:57,536 basehttp 56943 13026914304 "GET /company/get HTTP/1.1" 500 129
+ERROR 2025-11-27 06:23:58,126 log 56943 13026914304 Internal Server Error: /activation/status
+ERROR 2025-11-27 06:23:58,126 basehttp 56943 13026914304 "GET /activation/status HTTP/1.1" 500 110
+ERROR 2025-11-27 06:23:59,077 log 56943 13026914304 Internal Server Error: /company/get
+ERROR 2025-11-27 06:23:59,077 basehttp 56943 13026914304 "GET /company/get HTTP/1.1" 500 129
+INFO 2025-11-27 06:25:36,637 autoreload 56943 8636259904 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-11-27 06:25:38,197 autoreload 58282 8594431552 Watching for file changes with StatReloader
+INFO 2025-11-27 06:25:57,305 autoreload 58282 8594431552 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-11-27 06:25:57,791 autoreload 58345 8641150528 Watching for file changes with StatReloader
+INFO 2025-11-27 06:27:41,539 basehttp 58345 13033664512 "POST /auth/login/ HTTP/1.1" 200 709
+ERROR 2025-11-27 06:27:42,182 info_default 58345 13033664512 Error inserting default user: Cannot resolve keyword 'factory_id' into field. Choices are: id, password, username
+ERROR 2025-11-27 06:27:42,187 log 58345 13033664512 Internal Server Error: /info-default/users
+ERROR 2025-11-27 06:27:42,188 basehttp 58345 13033664512 "POST /info-default/users HTTP/1.1" 500 111
+ERROR 2025-11-27 06:27:43,225 info_default 58345 13033664512 Error inserting default config: null value in column "id" of relation "config_p2" violates not-null constraint
+DETAIL:  Failing row contains (null, language, en, 2).
+
+ERROR 2025-11-27 06:27:43,228 log 58345 13033664512 Internal Server Error: /info-default/config
+ERROR 2025-11-27 06:27:43,229 basehttp 58345 13033664512 "POST /info-default/config HTTP/1.1" 500 168
+ERROR 2025-11-27 06:27:44,225 info_default 58345 13033664512 Error inserting default global settings: null value in column "id" of relation "global_settings_p2" violates not-null constraint
+DETAIL:  Failing row contains (null, #55ffff, 2).
+
+ERROR 2025-11-27 06:27:44,228 log 58345 13033664512 Internal Server Error: /info-default/global-settings
+ERROR 2025-11-27 06:27:44,229 basehttp 58345 13033664512 "POST /info-default/global-settings HTTP/1.1" 500 172
+ERROR 2025-11-27 06:27:45,207 info_default 58345 13033664512 Error inserting default company: null value in column "id" of relation "company_p2" violates not-null constraint
+DETAIL:  Failing row contains (null, , , 2).
+
+ERROR 2025-11-27 06:27:45,211 log 58345 13033664512 Internal Server Error: /info-default/company
+ERROR 2025-11-27 06:27:45,212 basehttp 58345 13033664512 "POST /info-default/company HTTP/1.1" 500 159
+ERROR 2025-11-27 06:27:46,237 info_default 58345 13033664512 Error inserting default activation: null value in column "id" of relation "activation_p2" violates not-null constraint
+DETAIL:  Failing row contains (null, $p5k2$$lDD.2q8l$FSS9CFIP2YEihV.qk4W1oVD2NO6z3Vzn, 0, 2).
+
+ERROR 2025-11-27 06:27:46,240 log 58345 13033664512 Internal Server Error: /info-default/activation
+ERROR 2025-11-27 06:27:46,241 basehttp 58345 13033664512 "POST /info-default/activation HTTP/1.1" 500 211
+ERROR 2025-11-27 06:27:47,261 info_default 58345 13033664512 Error inserting default mgmt layout: null value in column "id" of relation "management_report_layout_p2" violates not-null constraint
+DETAIL:  Failing row contains (null, 1, 0, 0, general_data_table, table, 2).
+
+ERROR 2025-11-27 06:27:47,265 log 58345 13033664512 Internal Server Error: /info-default/mgmt-layout
+ERROR 2025-11-27 06:27:47,267 basehttp 58345 13033664512 "POST /info-default/mgmt-layout HTTP/1.1" 500 208
+ERROR 2025-11-27 06:27:48,056 info_default 58345 13033664512 Error inserting default mgmt settings: null value in column "id" of relation "management_report_settings_p2" violates not-null constraint
+DETAIL:  Failing row contains (null, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2).
+
+ERROR 2025-11-27 06:27:48,058 log 58345 13033664512 Internal Server Error: /info-default/mgmt-settings
+ERROR 2025-11-27 06:27:48,058 basehttp 58345 13033664512 "POST /info-default/mgmt-settings HTTP/1.1" 500 333
+ERROR 2025-11-27 06:27:48,679 log 58345 13033664512 Internal Server Error: /config/language/get
+ERROR 2025-11-27 06:27:48,680 basehttp 58345 13033664512 "GET /config/language/get HTTP/1.1" 500 108
+ERROR 2025-11-27 06:27:49,328 log 58345 13033664512 Internal Server Error: /global-settings/line-color/get
+ERROR 2025-11-27 06:27:49,328 basehttp 58345 13033664512 "GET /global-settings/line-color/get HTTP/1.1" 500 121
+ERROR 2025-11-27 06:27:49,954 log 58345 13033664512 Internal Server Error: /company/get
+ERROR 2025-11-27 06:27:49,955 basehttp 58345 13033664512 "GET /company/get HTTP/1.1" 500 129
+ERROR 2025-11-27 06:27:50,553 log 58345 13033664512 Internal Server Error: /activation/status
+ERROR 2025-11-27 06:27:50,553 basehttp 58345 13033664512 "GET /activation/status HTTP/1.1" 500 110
+ERROR 2025-11-27 06:27:51,744 log 58345 13033664512 Internal Server Error: /company/get
+ERROR 2025-11-27 06:27:51,744 basehttp 58345 13033664512 "GET /company/get HTTP/1.1" 500 129
+INFO 2025-11-27 06:29:03,930 autoreload 58345 8641150528 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/models.py changed, reloading.
+INFO 2025-11-27 06:29:05,304 autoreload 58839 8629341760 Watching for file changes with StatReloader
+INFO 2025-11-27 06:29:52,298 autoreload 58839 8629341760 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-11-27 06:29:53,668 autoreload 58982 8638836288 Watching for file changes with StatReloader
+INFO 2025-11-27 06:32:36,173 basehttp 58982 13031829504 "POST /auth/login/ HTTP/1.1" 200 709
+ERROR 2025-11-27 06:32:36,949 info_default 58982 13031829504 Error inserting default user: null value in column "id" of relation "users_p2" violates not-null constraint
+DETAIL:  Failing row contains (null, admin, $p5k2$$dYnR.Z1Y$E83bbM0gY6fhiP1sWLUcieTw3ON68FVU, 2).
+
+ERROR 2025-11-27 06:32:36,952 log 58982 13031829504 Internal Server Error: /info-default/users
+ERROR 2025-11-27 06:32:36,952 basehttp 58982 13031829504 "POST /info-default/users HTTP/1.1" 500 210
+ERROR 2025-11-27 06:32:37,707 info_default 58982 13031829504 Error inserting default config: null value in column "id" of relation "config_p2" violates not-null constraint
+DETAIL:  Failing row contains (null, language, en, 2).
+
+ERROR 2025-11-27 06:32:37,708 log 58982 13031829504 Internal Server Error: /info-default/config
+ERROR 2025-11-27 06:32:37,708 basehttp 58982 13031829504 "POST /info-default/config HTTP/1.1" 500 168
+ERROR 2025-11-27 06:32:38,472 info_default 58982 13031829504 Error inserting default global settings: null value in column "id" of relation "global_settings_p2" violates not-null constraint
+DETAIL:  Failing row contains (null, #55ffff, 2).
+
+ERROR 2025-11-27 06:32:38,473 log 58982 13031829504 Internal Server Error: /info-default/global-settings
+ERROR 2025-11-27 06:32:38,474 basehttp 58982 13031829504 "POST /info-default/global-settings HTTP/1.1" 500 172
+ERROR 2025-11-27 06:32:39,236 info_default 58982 13031829504 Error inserting default company: null value in column "id" of relation "company_p2" violates not-null constraint
+DETAIL:  Failing row contains (null, , , 2).
+
+ERROR 2025-11-27 06:32:39,238 log 58982 13031829504 Internal Server Error: /info-default/company
+ERROR 2025-11-27 06:32:39,239 basehttp 58982 13031829504 "POST /info-default/company HTTP/1.1" 500 159
+ERROR 2025-11-27 06:32:39,996 info_default 58982 13031829504 Error inserting default activation: null value in column "id" of relation "activation_p2" violates not-null constraint
+DETAIL:  Failing row contains (null, $p5k2$$lDD.2q8l$FSS9CFIP2YEihV.qk4W1oVD2NO6z3Vzn, 0, 2).
+
+ERROR 2025-11-27 06:32:39,998 log 58982 13031829504 Internal Server Error: /info-default/activation
+ERROR 2025-11-27 06:32:39,999 basehttp 58982 13031829504 "POST /info-default/activation HTTP/1.1" 500 211
+ERROR 2025-11-27 06:32:40,787 info_default 58982 13031829504 Error inserting default mgmt layout: null value in column "id" of relation "management_report_layout_p2" violates not-null constraint
+DETAIL:  Failing row contains (null, 1, 0, 0, general_data_table, table, 2).
+
+ERROR 2025-11-27 06:32:40,788 log 58982 13031829504 Internal Server Error: /info-default/mgmt-layout
+ERROR 2025-11-27 06:32:40,788 basehttp 58982 13031829504 "POST /info-default/mgmt-layout HTTP/1.1" 500 208
+ERROR 2025-11-27 06:32:41,533 info_default 58982 13031829504 Error inserting default mgmt settings: null value in column "id" of relation "management_report_settings_p2" violates not-null constraint
+DETAIL:  Failing row contains (null, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2).
+
+ERROR 2025-11-27 06:32:41,535 log 58982 13031829504 Internal Server Error: /info-default/mgmt-settings
+ERROR 2025-11-27 06:32:41,535 basehttp 58982 13031829504 "POST /info-default/mgmt-settings HTTP/1.1" 500 333
+ERROR 2025-11-27 06:32:42,257 log 58982 13031829504 Internal Server Error: /config/language/get
+ERROR 2025-11-27 06:32:42,257 basehttp 58982 13031829504 "GET /config/language/get HTTP/1.1" 500 108
+ERROR 2025-11-27 06:32:42,909 log 58982 13031829504 Internal Server Error: /global-settings/line-color/get
+ERROR 2025-11-27 06:32:42,910 basehttp 58982 13031829504 "GET /global-settings/line-color/get HTTP/1.1" 500 121
+ERROR 2025-11-27 06:32:43,532 log 58982 13031829504 Internal Server Error: /company/get
+ERROR 2025-11-27 06:32:43,533 basehttp 58982 13031829504 "GET /company/get HTTP/1.1" 500 129
+ERROR 2025-11-27 06:32:44,138 log 58982 13031829504 Internal Server Error: /activation/status
+ERROR 2025-11-27 06:32:44,139 basehttp 58982 13031829504 "GET /activation/status HTTP/1.1" 500 110
+ERROR 2025-11-27 06:32:45,244 log 58982 13031829504 Internal Server Error: /company/get
+ERROR 2025-11-27 06:32:45,245 basehttp 58982 13031829504 "GET /company/get HTTP/1.1" 500 129
+INFO 2025-11-27 06:37:00,402 autoreload 58982 8638836288 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-11-27 06:37:02,092 autoreload 60416 8634768960 Watching for file changes with StatReloader
+INFO 2025-11-27 06:46:31,439 autoreload 60416 8634768960 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-11-27 06:46:33,428 autoreload 61812 8669306432 Watching for file changes with StatReloader
+INFO 2025-11-27 06:48:53,628 autoreload 61812 8669306432 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-11-27 06:48:55,282 autoreload 62177 8596901440 Watching for file changes with StatReloader
+INFO 2025-11-27 06:48:59,806 autoreload 62177 8596901440 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-11-27 06:49:01,332 autoreload 62202 8676392512 Watching for file changes with StatReloader
+INFO 2025-11-27 06:54:30,785 basehttp 62202 13104214016 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-27 06:54:31,615 basehttp 62202 13104214016 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-11-27 06:54:32,705 basehttp 62202 13104214016 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-27 06:54:33,509 basehttp 62202 13104214016 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-11-27 06:54:34,274 basehttp 62202 13104214016 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-11-27 06:54:35,057 basehttp 62202 13104214016 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-11-27 06:54:37,485 basehttp 62202 13104214016 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-11-27 06:54:38,265 basehttp 62202 13104214016 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+ERROR 2025-11-27 06:54:38,867 log 62202 13104214016 Internal Server Error: /config/language/get
+ERROR 2025-11-27 06:54:38,867 basehttp 62202 13104214016 "GET /config/language/get HTTP/1.1" 500 108
+ERROR 2025-11-27 06:54:39,523 log 62202 13104214016 Internal Server Error: /global-settings/line-color/get
+ERROR 2025-11-27 06:54:39,524 basehttp 62202 13104214016 "GET /global-settings/line-color/get HTTP/1.1" 500 121
+ERROR 2025-11-27 06:54:40,107 log 62202 13104214016 Internal Server Error: /company/get
+ERROR 2025-11-27 06:54:40,108 basehttp 62202 13104214016 "GET /company/get HTTP/1.1" 500 129
+ERROR 2025-11-27 06:54:40,736 log 62202 13104214016 Internal Server Error: /activation/status
+ERROR 2025-11-27 06:54:40,736 basehttp 62202 13104214016 "GET /activation/status HTTP/1.1" 500 110
+ERROR 2025-11-27 06:54:41,684 log 62202 13104214016 Internal Server Error: /company/get
+ERROR 2025-11-27 06:54:41,685 basehttp 62202 13104214016 "GET /company/get HTTP/1.1" 500 129
+INFO 2025-11-27 06:58:24,039 autoreload 62202 8676392512 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/config_view.py changed, reloading.
+INFO 2025-11-27 06:58:26,964 autoreload 63604 8602549824 Watching for file changes with StatReloader
+INFO 2025-11-27 06:58:38,785 autoreload 63604 8602549824 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/globalsetting_view.py changed, reloading.
+INFO 2025-11-27 06:58:41,312 autoreload 63656 8594755136 Watching for file changes with StatReloader
+INFO 2025-11-27 06:58:43,691 autoreload 63656 8594755136 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/company_view.py changed, reloading.
+INFO 2025-11-27 06:58:45,669 autoreload 63673 8661569088 Watching for file changes with StatReloader
+INFO 2025-11-27 06:58:47,276 autoreload 63673 8661569088 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/activation_view.py changed, reloading.
+INFO 2025-11-27 06:58:48,732 autoreload 63691 8673631808 Watching for file changes with StatReloader
+INFO 2025-11-27 07:07:07,662 basehttp 63691 13099741184 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-27 07:07:08,375 basehttp 63691 13099741184 "POST /info-default/users HTTP/1.1" 200 70
+INFO 2025-11-27 07:07:09,239 basehttp 63691 13099741184 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-27 07:07:09,925 basehttp 63691 13099741184 "POST /info-default/global-settings HTTP/1.1" 200 74
+INFO 2025-11-27 07:07:10,624 basehttp 63691 13099741184 "POST /info-default/company HTTP/1.1" 200 74
+INFO 2025-11-27 07:07:11,341 basehttp 63691 13099741184 "POST /info-default/activation HTTP/1.1" 200 77
+INFO 2025-11-27 07:07:12,832 basehttp 63691 13099741184 "POST /info-default/mgmt-layout HTTP/1.1" 200 39
+INFO 2025-11-27 07:07:13,567 basehttp 63691 13099741184 "POST /info-default/mgmt-settings HTTP/1.1" 200 85
+INFO 2025-11-27 07:07:14,273 basehttp 63691 13099741184 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-27 07:07:15,057 basehttp 63691 13099741184 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-11-27 07:07:15,766 basehttp 63691 13099741184 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-11-27 07:07:16,477 basehttp 63691 13099741184 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-11-27 07:07:17,557 basehttp 63691 13099741184 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-11-27 07:09:51,423 autoreload 63691 8673631808 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/analysiscategory_view.py changed, reloading.
+INFO 2025-11-27 07:09:55,576 autoreload 65471 8666558016 Watching for file changes with StatReloader
+INFO 2025-11-27 07:09:59,485 autoreload 65471 8666558016 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-11-27 07:10:01,837 autoreload 65512 8641789504 Watching for file changes with StatReloader
+INFO 2025-11-27 07:10:03,558 autoreload 65512 8641789504 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/crystalsdataparametrization_view.py changed, reloading.
+INFO 2025-11-27 07:10:05,931 autoreload 65532 8672599616 Watching for file changes with StatReloader
+INFO 2025-11-27 07:10:09,216 autoreload 65532 8672599616 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/crystalsdataparametrizationcv_view.py changed, reloading.
+INFO 2025-11-27 07:10:11,092 autoreload 65553 8666902080 Watching for file changes with StatReloader
+INFO 2025-11-27 07:10:14,462 autoreload 65553 8666902080 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/generalreportingorder_view.py changed, reloading.
+INFO 2025-11-27 07:10:17,524 autoreload 65573 8669843008 Watching for file changes with StatReloader
+INFO 2025-11-27 07:10:35,263 autoreload 65573 8669843008 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/historicreport_view.py changed, reloading.
+INFO 2025-11-27 07:10:39,282 autoreload 65669 8608452160 Watching for file changes with StatReloader
+INFO 2025-11-27 07:10:44,567 autoreload 65669 8608452160 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratory_parametrization_view.py changed, reloading.
+INFO 2025-11-27 07:10:46,882 autoreload 65708 8669326912 Watching for file changes with StatReloader
+INFO 2025-11-27 07:10:49,906 autoreload 65708 8669326912 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorycalculatedmasaa_parametrization_view.py changed, reloading.
+INFO 2025-11-27 07:10:52,249 autoreload 65721 8660418112 Watching for file changes with StatReloader
+INFO 2025-11-27 07:10:54,226 autoreload 65721 8660418112 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorycalculatedmasac_parametrization_view.py changed, reloading.
+INFO 2025-11-27 07:10:55,847 autoreload 65740 8605834816 Watching for file changes with StatReloader
+INFO 2025-11-27 07:10:58,127 autoreload 65740 8605834816 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorycalculatedrefinoparametrization_view.py changed, reloading.
+INFO 2025-11-27 07:10:59,358 autoreload 65754 8595205696 Watching for file changes with StatReloader
+INFO 2025-11-27 07:11:02,412 autoreload 65754 8595205696 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratoryparametrization_view.py changed, reloading.
+INFO 2025-11-27 07:11:05,102 autoreload 65770 8595390016 Watching for file changes with StatReloader
+INFO 2025-11-27 07:11:16,151 autoreload 65770 8595390016 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratoryreportingorder_view.py changed, reloading.
+INFO 2025-11-27 07:11:18,421 autoreload 65812 8672153152 Watching for file changes with StatReloader
+INFO 2025-11-27 07:11:22,038 autoreload 65812 8672153152 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorysettingsexcel_view.py changed, reloading.
+INFO 2025-11-27 07:11:24,525 autoreload 65838 8671366720 Watching for file changes with StatReloader
+INFO 2025-11-27 07:11:28,080 autoreload 65838 8671366720 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/managementreportsettings_view.py changed, reloading.
+INFO 2025-11-27 07:11:30,687 autoreload 65861 8668720704 Watching for file changes with StatReloader
+INFO 2025-11-27 07:11:34,743 autoreload 65861 8668720704 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/newparametersanalysiscategory_view.py changed, reloading.
+INFO 2025-11-27 07:11:36,045 autoreload 65894 8659570240 Watching for file changes with StatReloader
+INFO 2025-11-27 07:11:38,594 autoreload 65894 8659570240 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/refinocalculation_view.py changed, reloading.
+INFO 2025-11-27 07:11:41,056 autoreload 65909 8664768064 Watching for file changes with StatReloader
+INFO 2025-11-27 07:11:45,917 autoreload 65909 8664768064 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/reporting_order_view.py changed, reloading.
+INFO 2025-11-27 07:11:47,729 autoreload 65937 8602287680 Watching for file changes with StatReloader
+INFO 2025-11-27 07:13:01,926 autoreload 66565 8670674496 Watching for file changes with StatReloader
+INFO 2025-11-27 07:13:28,882 basehttp 66565 13094367232 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-27 07:13:29,710 basehttp 66565 13094367232 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-11-27 07:13:30,827 basehttp 66565 13094367232 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-27 07:13:31,629 basehttp 66565 13094367232 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-11-27 07:13:32,422 basehttp 66565 13094367232 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-11-27 07:13:33,214 basehttp 66565 13094367232 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-11-27 07:13:35,727 basehttp 66565 13094367232 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-11-27 07:13:36,706 basehttp 66565 13094367232 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-11-27 07:13:37,489 basehttp 66565 13094367232 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-27 07:13:38,223 basehttp 66565 13094367232 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-11-27 07:13:38,935 basehttp 66565 13094367232 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-27 07:13:40,718 basehttp 66565 13094367232 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-27 07:13:41,605 basehttp 66565 13094367232 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-27 07:17:08,361 basehttp 66565 13094367232 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-11-27 07:17:09,088 basehttp 66565 13094367232 "GET /activation/status HTTP/1.1" 200 76
+WARNING 2025-11-27 07:17:16,958 log 66565 13094367232 Not Found: /activation/validate
+WARNING 2025-11-27 07:17:16,959 basehttp 66565 13094367232 "POST /activation/validate HTTP/1.1" 404 72
+INFO 2025-11-27 07:17:17,708 basehttp 66565 13094367232 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-27 07:18:02,702 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 310
+INFO 2025-11-27 07:18:03,760 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 279
+INFO 2025-11-27 07:18:04,746 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 282
+INFO 2025-11-27 07:18:05,820 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-11-27 07:18:06,870 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 278
+INFO 2025-11-27 07:18:07,961 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-11-27 07:18:09,069 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 298
+INFO 2025-11-27 07:18:10,157 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-11-27 07:18:11,229 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 308
+INFO 2025-11-27 07:18:12,281 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 308
+INFO 2025-11-27 07:18:13,329 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 317
+INFO 2025-11-27 07:18:14,346 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 309
+INFO 2025-11-27 07:18:15,435 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 308
+INFO 2025-11-27 07:18:16,459 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 309
+INFO 2025-11-27 07:18:17,503 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 309
+INFO 2025-11-27 07:18:18,564 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 306
+INFO 2025-11-27 07:18:19,640 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 316
+INFO 2025-11-27 07:18:20,664 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 317
+INFO 2025-11-27 07:18:21,764 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 319
+INFO 2025-11-27 07:18:22,821 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 325
+INFO 2025-11-27 07:18:23,809 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 327
+INFO 2025-11-27 07:18:24,816 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-11-27 07:18:26,053 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 306
+INFO 2025-11-27 07:18:27,127 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 314
+INFO 2025-11-27 07:18:28,202 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 323
+INFO 2025-11-27 07:18:29,229 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 304
+INFO 2025-11-27 07:18:30,254 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 300
+INFO 2025-11-27 07:18:31,274 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 300
+INFO 2025-11-27 07:18:32,307 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 313
+INFO 2025-11-27 07:18:33,289 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 315
+INFO 2025-11-27 07:18:34,307 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 317
+INFO 2025-11-27 07:18:35,402 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 313
+INFO 2025-11-27 07:18:36,421 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 311
+INFO 2025-11-27 07:18:37,506 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 308
+INFO 2025-11-27 07:18:38,535 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 303
+ERROR 2025-11-27 07:18:39,186 log 66565 13094367232 Internal Server Error: /calibration/get
+ERROR 2025-11-27 07:18:39,187 basehttp 66565 13094367232 "GET /calibration/get?name=SLURRY HTTP/1.1" 500 118
+INFO 2025-11-27 07:18:40,249 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 286
+ERROR 2025-11-27 07:18:41,173 log 66565 13094367232 Internal Server Error: /calibration/get
+ERROR 2025-11-27 07:18:41,174 basehttp 66565 13094367232 "GET /calibration/get?name=PRIMITIVO HTTP/1.1" 500 118
+INFO 2025-11-27 07:18:42,246 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-27 07:18:43,617 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-27 07:18:44,844 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 304
+INFO 2025-11-27 07:18:45,914 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-27 07:18:47,322 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 298
+INFO 2025-11-27 07:18:48,365 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-27 07:18:49,432 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-27 07:18:50,458 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-27 07:18:51,460 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 294
+INFO 2025-11-27 07:18:52,479 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 304
+INFO 2025-11-27 07:18:53,537 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-11-27 07:18:54,560 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 307
+INFO 2025-11-27 07:18:55,553 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 303
+INFO 2025-11-27 07:18:56,649 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-11-27 07:18:57,661 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-27 07:18:58,667 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 299
+INFO 2025-11-27 07:18:59,701 basehttp 66565 13094367232 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-11-27 07:19:19,075 basehttp 66565 13094367232 "GET /process-code/get HTTP/1.1" 200 3490
+WARNING 2025-11-27 07:20:02,923 log 66565 13094367232 Method Not Allowed (PATCH): /process-code/update
+WARNING 2025-11-27 07:20:02,927 basehttp 66565 13094367232 "PATCH /process-code/update HTTP/1.1" 405 0
+WARNING 2025-11-27 07:20:07,868 log 66565 13094367232 Method Not Allowed (PATCH): /process-code/update
+WARNING 2025-11-27 07:20:07,869 basehttp 66565 13094367232 "PATCH /process-code/update HTTP/1.1" 405 0
+INFO 2025-11-27 07:20:43,633 basehttp 66565 13094367232 "GET /management-report-layout/get HTTP/1.1" 200 1603
+INFO 2025-11-27 07:20:48,774 basehttp 66565 13094367232 "PATCH /management-report-layout/update HTTP/1.1" 200 81
+INFO 2025-11-27 07:20:49,452 basehttp 66565 13094367232 "GET /management-report-layout/get HTTP/1.1" 200 1603
+WARNING 2025-11-27 07:21:33,150 log 66565 13094367232 Not Found: /
+WARNING 2025-11-27 07:21:33,150 basehttp 66565 13094367232 "GET / HTTP/1.1" 404 24566
+INFO 2025-11-27 14:06:31,470 basehttp 66565 13094367232 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-27 14:06:32,447 basehttp 66565 13094367232 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-11-27 14:06:33,544 basehttp 66565 13094367232 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-27 14:06:34,320 basehttp 66565 13094367232 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-11-27 14:06:35,130 basehttp 66565 13094367232 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-11-27 14:06:35,942 basehttp 66565 13094367232 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-11-27 14:06:38,383 basehttp 66565 13094367232 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-11-27 14:06:39,197 basehttp 66565 13094367232 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-11-27 14:06:39,910 basehttp 66565 13094367232 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-27 14:06:40,689 basehttp 66565 13094367232 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-11-27 14:06:41,410 basehttp 66565 13094367232 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-27 14:06:42,128 basehttp 66565 13094367232 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-27 14:06:43,280 basehttp 66565 13094367232 "GET /company/get HTTP/1.1" 200 75

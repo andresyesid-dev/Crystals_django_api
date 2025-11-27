@@ -22,7 +22,7 @@ def add_historic_report(request: HttpRequest):
         metrics = body.get("metrics") or {}
         if not calibration_name or not analysis_datetime or not metrics:
             return JsonResponse({"message": "❌ Los campos 'datetime', 'calibration' y 'metrics' son requeridos", "error": "datetime, calibration and metrics required"}, status=400)
-        cal = Calibration.objects.filter(name=calibration_name).first()
+        cal = Calibration.objects.filter(name=calibration_name, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
         if not cal:
             return JsonResponse({"message": "❌ Calibración no encontrada", "error": "Calibration not found"}, status=404)
         common = metrics.get("common", {})
@@ -49,6 +49,7 @@ def add_historic_report(request: HttpRequest):
             height_sum=float(height.get("sum", 0) or 0),
             height_samples=float(height.get("samples", 0) or 0),
             height_range=float(height.get("range", 0) or 0),
+            factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
         )
         return JsonResponse({"message": "✅ Reporte histórico agregado", "created": model_to_dict(obj)})
     except Exception as e:
@@ -65,9 +66,9 @@ def get_historic_reports(request: HttpRequest):
         additional = request.GET.getlist("cols")
         if not start or not end:
             return JsonResponse({"message": "❌ Los parámetros 'start' y 'end' son requeridos", "error": "start and end required (YYYY-mm-dd HH:MM:SS)"}, status=400)
-        qs = HistoricReport.objects.filter(datetime__gte=start, datetime__lte=end)
+        qs = HistoricReport.objects.filter(datetime__gte=start, datetime__lte=end, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         results = []
-        cats = {a.historic_report_id: a for a in AnalysisCategory.objects.filter(historic_report_id__in=list(qs.values_list('id', flat=True)))}
+        cats = {a.historic_report_id: a for a in AnalysisCategory.objects.filter(historic_report_id__in=list(qs.values_list('id', flat=True)), factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))}
         for hr in qs.order_by("datetime"):
             row = model_to_dict(hr)
             ac = cats.get(hr.id)
@@ -94,7 +95,7 @@ def get_historic_reports_for_process(request: HttpRequest):
         process = request.GET.get("process")
         if not all([start, end, process]):
             return JsonResponse({"message": "❌ Los parámetros 'start', 'end' y 'process' son requeridos", "error": "start, end, process required"}, status=400)
-        qs = HistoricReport.objects.filter(datetime__gte=start, datetime__lte=end, calibration=process)
+        qs = HistoricReport.objects.filter(datetime__gte=start, datetime__lte=end, calibration=process, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Reportes por proceso obtenidos", "results": [model_to_dict(o) for o in qs.order_by("datetime")]})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener reportes", "error": str(e)}, status=500)
@@ -113,7 +114,8 @@ def get_last_report(request: HttpRequest):
         obj = HistoricReport.objects.filter(
             datetime__gte=start,
             datetime__lte=end,
-            calibration_fk__ordering__isnull=False
+            calibration_fk__ordering__isnull=False,
+            factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
         ).select_related('calibration_fk').order_by("-datetime").first()
         return JsonResponse({"message": "✅ Último reporte obtenido", "result": model_to_dict(obj) if obj else None})
     except Exception as e:
@@ -131,7 +133,8 @@ def get_order_last_report(request: HttpRequest):
         # Match local: SELECT ordering FROM calibrations INNER JOIN historic_reports
         # WHERE historic_reports.calibration_id = :last_calibration
         obj = HistoricReport.objects.filter(
-            calibration_fk_id=last_id
+            calibration_fk_id=last_id,
+            factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
         ).select_related('calibration_fk').order_by("-datetime").first()
         
         ordering = obj.calibration_fk.ordering if obj and obj.calibration_fk else None
@@ -156,7 +159,7 @@ def delete_last_report_db(request: HttpRequest):
         # Extract id - local uses last_report.value(0) which is the first column (id)
         report_id = last_report.get("id") if isinstance(last_report, dict) else last_report
         
-        deleted, _ = HistoricReport.objects.filter(id=report_id).delete()
+        deleted, _ = HistoricReport.objects.filter(id=report_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).delete()
         return JsonResponse({"message": "✅ Reporte eliminado exitosamente", "deleted": bool(deleted)})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al eliminar reporte", "error": str(e)}, status=500)
@@ -173,10 +176,10 @@ def delete_management_record(request: HttpRequest):
         hr_id = body.get("hr_id")
         if not hr_id:
             return JsonResponse({"message": "❌ El campo 'hr_id' es requerido", "error": "hr_id required"}, status=400)
-        AnalysisCategory.objects.filter(historic_report_id=hr_id).delete()
+        AnalysisCategory.objects.filter(historic_report_id=hr_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).delete()
         from ..models import HistoricAnalysisData
-        HistoricAnalysisData.objects.filter(historic_report_id=hr_id).delete()
-        HistoricReport.objects.filter(id=hr_id).delete()
+        HistoricAnalysisData.objects.filter(historic_report_id=hr_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).delete()
+        HistoricReport.objects.filter(id=hr_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).delete()
         return JsonResponse({"message": "✅ Registro eliminado exitosamente", "deleted": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al eliminar registro", "error": str(e)}, status=500)

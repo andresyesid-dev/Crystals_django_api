@@ -18,7 +18,7 @@ def add_new_parameter(request: HttpRequest):
         type_ = body.get("type")
         if not parameter or not type_:
             return JsonResponse({"message": "❌ Los campos 'parameter' y 'type' son requeridos", "error": "parameter and type required"}, status=400)
-        NewParametersAnalysisCategory.objects.create(parameter=parameter, type=type_)
+        NewParametersAnalysisCategory.objects.create(parameter=parameter, type=type_, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Nuevo parámetro agregado exitosamente", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al agregar nuevo parámetro", "error": str(e)}, status=500)
@@ -29,7 +29,7 @@ def add_new_parameter(request: HttpRequest):
 @log_api_access
 def get_new_parameters(request: HttpRequest):
     try:
-        data = list(NewParametersAnalysisCategory.objects.all().values())
+        data = list(NewParametersAnalysisCategory.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).values())
         return JsonResponse({"message": "✅ Nuevos parámetros obtenidos exitosamente", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener nuevos parámetros", "error": str(e)}, status=500)
@@ -46,7 +46,7 @@ def delete_new_parameter(request: HttpRequest):
         parameter = (body.get("parameter") or "").replace(' ', '_')
         if not parameter:
             return JsonResponse({"message": "❌ El campo 'parameter' es requerido", "error": "parameter required"}, status=400)
-        NewParametersAnalysisCategory.objects.filter(parameter=parameter).delete()
+        NewParametersAnalysisCategory.objects.filter(parameter=parameter, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).delete()
         return JsonResponse({"message": "✅ Nuevo parámetro eliminado exitosamente", "deleted": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al eliminar nuevo parámetro", "error": str(e)}, status=500)

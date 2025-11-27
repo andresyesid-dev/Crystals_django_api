@@ -13,7 +13,7 @@ import json
 @log_api_access
 def get_management_report_settings(request: HttpRequest):
     try:
-        obj = ManagementReportSettings.objects.first()
+        obj = ManagementReportSettings.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
         return JsonResponse({"message": "✅ Configuración de reporte de gestión obtenida exitosamente", "result": model_to_dict(obj) if obj else None})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener configuración de reporte", "error": str(e)}, status=500)
@@ -27,7 +27,7 @@ def get_management_report_settings(request: HttpRequest):
 def insert_management_report_settings(request: HttpRequest):
     try:
         body = json.loads(request.body or b"{}")
-        obj = ManagementReportSettings.objects.create(**body)
+        obj = ManagementReportSettings.objects.create(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1), **body)
         return JsonResponse({"message": "✅ Configuración de reporte insertada exitosamente", "created": model_to_dict(obj)})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al insertar configuración de reporte", "error": str(e)}, status=500)
@@ -45,7 +45,7 @@ def update_management_report_settings(request: HttpRequest):
         if not m_r_id:
             return JsonResponse({"message": "❌ El campo 'id' es requerido", "error": "id required"}, status=400)
         try:
-            obj = ManagementReportSettings.objects.get(id=m_r_id)
+            obj = ManagementReportSettings.objects.get(id=m_r_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         except ManagementReportSettings.DoesNotExist:
             return JsonResponse({"message": "❌ Configuración no encontrada", "error": "not found"}, status=404)
         for k, v in body.items():
@@ -69,8 +69,8 @@ def insert_default_management_report_settings(request: HttpRequest):
     """
     try:
         # Check if settings already exist
-        if ManagementReportSettings.objects.exists():
-            obj = ManagementReportSettings.objects.first()
+        if ManagementReportSettings.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).exists():
+            obj = ManagementReportSettings.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
             return JsonResponse({
                 "message": "⚠️ Configuración ya existe",
                 "result": model_to_dict(obj)
@@ -130,7 +130,8 @@ def insert_default_management_report_settings(request: HttpRequest):
             amount_perc_gran=0,
             amount_perc_muy_gran=0,
             amount_total=0,
-            perc_powder=0
+            perc_powder=0,
+            factory_id=request.factory_id
         )
         
         return JsonResponse({

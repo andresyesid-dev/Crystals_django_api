@@ -12,7 +12,7 @@ import json
 @log_api_access
 def get_refino_calculations(request: HttpRequest):
     try:
-        data = [model_to_dict(o) for o in RefinoCalculation.objects.all()]
+        data = [model_to_dict(o) for o in RefinoCalculation.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))]
         return JsonResponse({"message": "✅ Cálculos de refino obtenidos exitosamente", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener cálculos de refino", "error": str(e)}, status=500)
@@ -33,11 +33,11 @@ def insert_refino_calculations(request: HttpRequest):
             return JsonResponse({"message": "❌ El campo 'field_name' es requerido", "error": "field_name required"}, status=400)
         
         # Match local: Check if row exists, UPDATE if yes, INSERT if no
-        count = RefinoCalculation.objects.count()
+        count = RefinoCalculation.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).count()
         
         if count > 0:
             # UPDATE existing row (first row)
-            first_obj = RefinoCalculation.objects.first()
+            first_obj = RefinoCalculation.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
             if field_value is not None:
                 setattr(first_obj, field_name, field_value)
             else:
@@ -46,7 +46,7 @@ def insert_refino_calculations(request: HttpRequest):
             return JsonResponse({"message": "✅ Cálculo de refino actualizado", "updated": True})
         else:
             # INSERT new row
-            RefinoCalculation.objects.create(**{field_name: field_value})
+            RefinoCalculation.objects.create(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1), **{field_name: field_value})
             return JsonResponse({"message": "✅ Cálculo de refino insertado", "created": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al insertar/actualizar cálculo de refino", "error": str(e)}, status=500)

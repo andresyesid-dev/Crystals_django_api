@@ -40,6 +40,7 @@ from .views import (
 	reporting_order_view,
 	laboratory_parametrization_view as lab_param_insert_view,
 	laboratory_data_view as lab_data_insert_view,
+	info_default,
 )
 
 # Authentication and Security URLs
@@ -278,6 +279,15 @@ default_data_urls = [
 	
 	# Laboratory data default record
 	path('laboratory-data/insert-default', lab_data_insert_view.insert_laboratory_data_default),
+	
+	# Core default data endpoints (info_default.py)
+	path('info-default/users', info_default.insert_default_users),
+	path('info-default/config', info_default.insert_default_config),
+	path('info-default/global-settings', info_default.insert_default_global_settings),
+	path('info-default/company', info_default.insert_default_company),
+	path('info-default/activation', info_default.insert_default_activation),
+	path('info-default/mgmt-layout', info_default.insert_default_mgmt_layout),
+	path('info-default/mgmt-settings', info_default.insert_default_mgmt_settings),
 ]
 
 urlpatterns = (

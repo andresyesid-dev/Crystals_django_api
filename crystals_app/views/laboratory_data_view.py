@@ -19,7 +19,7 @@ def insert_laboratory_data_default(request):
     """
     try:
         # Check if table already has data
-        count = LaboratoryData.objects.count()
+        count = LaboratoryData.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).count()
         if count > 0:
             return JsonResponse({
                 'ok': True,
@@ -34,6 +34,7 @@ def insert_laboratory_data_default(request):
         # If you specifically need id=0, we'd need to use raw SQL
         default_record = LaboratoryData.objects.create(
             date_and_time=None,
+            factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
             # All 36 material fields are already null by default (blank=True, null=True)
         )
         

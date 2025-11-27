@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env"
+VIRTUAL_ENV="/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

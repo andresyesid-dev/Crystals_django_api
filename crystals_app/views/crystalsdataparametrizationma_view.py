@@ -12,7 +12,7 @@ import json
 @log_api_access
 def get_crystals_data_parametrization_ma(request: HttpRequest):
     try:
-        data = [model_to_dict(o) for o in CrystalsDataParametrizationMA.objects.all()]
+        data = [model_to_dict(o) for o in CrystalsDataParametrizationMA.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))]
         return JsonResponse({"message": "✅ Parametrización MA obtenida", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener parametrización MA", "error": str(e)}, status=500)
@@ -29,10 +29,10 @@ def update_crystals_data_parametrization_ma(request: HttpRequest):
         for parameter, categories in body.items():
             for categoria, ranges in (categories or {}).items():
                 if categoria == 'Good' and 'tolerance' in ranges:
-                    CrystalsDataParametrizationMA.objects.filter(parameter=parameter, categoria='Good').update(
+                    CrystalsDataParametrizationMA.objects.filter(parameter=parameter, categoria='Good', factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(
                         tolerance=ranges.get("tolerance")
                     )
-                CrystalsDataParametrizationMA.objects.filter(parameter=parameter, categoria=categoria).update(
+                CrystalsDataParametrizationMA.objects.filter(parameter=parameter, categoria=categoria, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(
                     range_from=ranges.get("range_from"), range_to=ranges.get("range_to")
                 )
         return JsonResponse({"message": "✅ Parametrización MA actualizada", "ok": True})
@@ -55,10 +55,10 @@ def update_specific_parametrization_ma(request: HttpRequest):
             return JsonResponse({"message": "❌ Se requiere calibration y 3 rangos de categorías", "error": "calibration and 3-category ranges required"}, status=400)
         for categoria, ranges in zip(["Good", "Regular", "Bad"], specific_parameter):
             if categoria == "Good" and tolerance is not None:
-                CrystalsDataParametrizationMA.objects.filter(parameter=calibration, categoria="Good").update(
+                CrystalsDataParametrizationMA.objects.filter(parameter=calibration, categoria="Good", factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(
                     tolerance=tolerance
                 )
-            CrystalsDataParametrizationMA.objects.filter(parameter=calibration, categoria=categoria).update(
+            CrystalsDataParametrizationMA.objects.filter(parameter=calibration, categoria=categoria, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(
                 range_from=ranges[0], range_to=ranges[1]
             )
         return JsonResponse({"message": "✅ Parametrización específica MA actualizada", "ok": True})
@@ -75,13 +75,13 @@ def add_new_ma_parameters(request: HttpRequest):
     try:
         body = json.loads(request.body or b"{}")
         params = body.get("parameters") or []
-        existing = set(CrystalsDataParametrizationMA.objects.values_list("parameter", flat=True))
+        existing = set(CrystalsDataParametrizationMA.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).values_list("parameter", flat=True))
         incoming = set(params)
         to_add = incoming - existing
         for parametro in to_add:
             for categoria in ["Good", "Regular", "Bad"]:
-                CrystalsDataParametrizationMA.objects.create(parameter=parametro, categoria=categoria)
-        CrystalsDataParametrizationMA.objects.exclude(parameter__in=incoming).delete()
+                CrystalsDataParametrizationMA.objects.create(parameter=parametro, categoria=categoria, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
+        CrystalsDataParametrizationMA.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).exclude(parameter__in=incoming).delete()
         return JsonResponse({"message": "✅ Parámetros MA agregados exitosamente", "ok": True, "added": list(to_add)})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al agregar parámetros MA", "error": str(e)}, status=500)

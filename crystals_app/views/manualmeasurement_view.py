@@ -12,7 +12,7 @@ import json
 @log_api_access
 def select_manual_measurements(request: HttpRequest):
     try:
-        data = [model_to_dict(m) for m in ManualMeasurement.objects.all().order_by("id")]
+        data = [model_to_dict(m) for m in ManualMeasurement.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).order_by("id")]
         return JsonResponse({"message": "✅ Mediciones manuales obtenidas exitosamente", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener mediciones manuales", "error": str(e)}, status=500)
@@ -30,7 +30,7 @@ def add_manual_measurement(request: HttpRequest):
         value = body.get("value")
         if time is None or value is None:
             return JsonResponse({"message": "❌ Los campos 'time' y 'value' son requeridos", "error": "time and value required"}, status=400)
-        obj = ManualMeasurement.objects.create(time=time, value=value)
+        obj = ManualMeasurement.objects.create(time=time, value=value, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Medición manual agregada exitosamente", "created": model_to_dict(obj)}, status=201)
     except Exception as e:
         return JsonResponse({"message": "❌ Error al agregar medición manual", "error": str(e)}, status=500)
@@ -42,7 +42,7 @@ def add_manual_measurement(request: HttpRequest):
 @log_api_access
 def clear_manual_measurement_db(request: HttpRequest):
     try:
-        ManualMeasurement.objects.all().delete()
+        ManualMeasurement.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).delete()
         return JsonResponse({"message": "✅ Base de datos de mediciones manuales limpiada exitosamente", "cleared": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al limpiar base de datos", "error": str(e)}, status=500)
@@ -64,7 +64,7 @@ def update_manual_measurement(request: HttpRequest):
             return JsonResponse({"message": "❌ El campo 'measurement_id' es requerido", "error": "measurement_id required"}, status=400)
         
         # Match local: UPDATE manual_measurements SET time=:time, value=:value WHERE id=:id
-        updated = ManualMeasurement.objects.filter(id=measurement_id).update(
+        updated = ManualMeasurement.objects.filter(id=measurement_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(
             time=time,
             value=value
         )
@@ -72,7 +72,7 @@ def update_manual_measurement(request: HttpRequest):
         if not updated:
             return JsonResponse({"message": "❌ Medición no encontrada", "error": "Measurement not found"}, status=404)
         
-        obj = ManualMeasurement.objects.get(id=measurement_id)
+        obj = ManualMeasurement.objects.get(id=measurement_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Medición manual actualizada exitosamente", "updated": model_to_dict(obj)})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar medición manual", "error": str(e)}, status=500)

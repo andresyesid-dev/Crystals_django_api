@@ -21,7 +21,7 @@ def _parse_json(request: HttpRequest):
 def select_calibrations(request: HttpRequest):
     try:
         # Match local implementation: order by active desc, ordering asc
-        qs = Calibration.objects.all().order_by("-active", "ordering")
+        qs = Calibration.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).order_by("-active", "ordering")
         data = [model_to_dict(o) for o in qs]
         return JsonResponse({"message": "✅ Calibraciones obtenidas", "results": data})
     except Exception as e:
@@ -34,7 +34,7 @@ def select_calibrations(request: HttpRequest):
 def select_historic_reports_calibrations(request: HttpRequest):
     try:
         # Filtered by ordering not null, ordered by ordering asc
-        data = [model_to_dict(o) for o in Calibration.objects.filter(ordering__isnull=False).order_by("ordering")]
+        data = [model_to_dict(o) for o in Calibration.objects.filter(ordering__isnull=False, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).order_by("ordering")]
         return JsonResponse({"message": "✅ Calibraciones históricas obtenidas", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener calibraciones", "error": str(e)}, status=500)
@@ -46,7 +46,7 @@ def select_historic_reports_calibrations(request: HttpRequest):
 def select_excluded_reports_calibrations(request: HttpRequest):
     try:
         # Filtered by ordering null, ordered by name
-        data = [model_to_dict(o) for o in Calibration.objects.filter(ordering__isnull=True).order_by("name")]
+        data = [model_to_dict(o) for o in Calibration.objects.filter(ordering__isnull=True, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).order_by("name")]
         return JsonResponse({"message": "✅ Calibraciones excluidas obtenidas", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener calibraciones excluidas", "error": str(e)}, status=500)
@@ -57,7 +57,7 @@ def select_excluded_reports_calibrations(request: HttpRequest):
 @log_api_access
 def select_active_calibration(request: HttpRequest):
     try:
-        c = Calibration.objects.filter(active=1).first()
+        c = Calibration.objects.filter(active=1, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
         return JsonResponse({"message": "✅ Calibración activa obtenida", "result": model_to_dict(c) if c else None})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener calibración activa", "error": str(e)}, status=500)
@@ -74,8 +74,8 @@ def set_calibration_as_active(request: HttpRequest):
         if not name:
             return JsonResponse({"message": "❌ El campo 'name' es requerido", "error": "name is required"}, status=400)
         with transaction.atomic():
-            Calibration.objects.update(active=0)
-            Calibration.objects.filter(name=name).update(active=1)
+            Calibration.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(active=0)
+            Calibration.objects.filter(name=name, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(active=1)
         return JsonResponse({"message": "✅ Calibración activada exitosamente", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al activar calibración", "error": str(e)}, status=500)
@@ -124,9 +124,10 @@ def create_calibration(request: HttpRequest):
         # Match local implementation: create in both tables within transaction
         with transaction.atomic():
             # First insert into process_code_data
-            ProcessCodeData.objects.create(process=name, code='...')
+            ProcessCodeData.objects.create(process=name, code='...', factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
             
             # Then create calibration
+            fields["factory_id"] = request.META.get('HTTP_X_FACTORY_ID', 1)
             obj = Calibration.objects.create(**fields)
         
         return JsonResponse({"message": "✅ Calibración creada exitosamente", "created": model_to_dict(obj)}, status=201)
@@ -162,7 +163,7 @@ def update_calibration(request: HttpRequest):
         
         # Match local implementation: get old name first
         try:
-            obj = Calibration.objects.get(id=calibration_id)
+            obj = Calibration.objects.get(id=calibration_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
             old_name = obj.name
         except Calibration.DoesNotExist:
             return JsonResponse({
@@ -175,7 +176,7 @@ def update_calibration(request: HttpRequest):
             # If name is changing, update process_code_data
             new_name = values.get("name")
             if new_name and new_name != old_name:
-                ProcessCodeData.objects.filter(process=old_name).update(process=new_name)
+                ProcessCodeData.objects.filter(process=old_name, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(process=new_name)
             
             # Update calibration fields
             updatable_fields = {
@@ -214,17 +215,17 @@ def delete_calibration(request: HttpRequest):
         
         # Match local implementation: 4 steps
         try:
-            calibration = Calibration.objects.get(id=calibration_id)
+            calibration = Calibration.objects.get(id=calibration_id, factory_id=request.factory_id)
             calibration_name = calibration.name
         except Calibration.DoesNotExist:
             return JsonResponse({"message": "❌ Calibración no encontrada", "error": "not found"}, status=404)
         
         with transaction.atomic():
             # 1. Update historic_reports to set calibration_id to NULL
-            HistoricReport.objects.filter(calibration_fk_id=calibration_id).update(calibration_fk=None)
+            HistoricReport.objects.filter(calibration_fk_id=calibration_id, factory_id=request.factory_id).update(calibration_fk=None)
             
             # 2. Delete from process_code_data
-            ProcessCodeData.objects.filter(process=calibration_name).delete()
+            ProcessCodeData.objects.filter(process=calibration_name, factory_id=request.factory_id).delete()
             
             # 3. Delete calibration
             calibration.delete()
@@ -242,7 +243,7 @@ def get_calibration(request: HttpRequest):
         name = request.GET.get("name")
         if not name:
             return JsonResponse({"message": "❌ El parámetro 'name' es requerido", "error": "name is required"}, status=400)
-        obj = Calibration.objects.filter(name=name).first()
+        obj = Calibration.objects.filter(name=name, factory_id=request.factory_id).first()
         return JsonResponse({"message": "✅ Calibración obtenida", "result": model_to_dict(obj) if obj else None})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener calibración", "error": str(e)}, status=500)
@@ -269,7 +270,7 @@ def update_calibration_order(request: HttpRequest):
             return JsonResponse({"message": "❌ Se requiere el campo 'ordering'", "error": "ordering required"}, status=400)
         
         # Match local implementation: direct update
-        Calibration.objects.filter(id=calibration_id).update(ordering=ordering)
+        Calibration.objects.filter(id=calibration_id, factory_id=request.factory_id).update(ordering=ordering)
         return JsonResponse({"message": "✅ Orden de calibración actualizado", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar orden", "error": str(e)}, status=500)

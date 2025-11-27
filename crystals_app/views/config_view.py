@@ -6,9 +6,9 @@ from ..models import Config
 import json
 
 
-def _get(key: str):
+def _get(key: str, factory_id: int):
     """Helper function to get config value by key"""
-    c = Config.objects.filter(key=key).first()
+    c = Config.objects.filter(key=key, factory_id=factory_id).first()
     return c.value if c else None
 
 
@@ -17,7 +17,7 @@ def _get(key: str):
 @log_api_access
 def get_language(request: HttpRequest):
     try:
-        return JsonResponse({"message": "✅ Idioma obtenido", "value": _get("language")})
+        return JsonResponse({"message": "✅ Idioma obtenido", "value": _get("language", request.META.get('HTTP_X_FACTORY_ID', 1))})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener idioma", "error": str(e)}, status=500)
 
@@ -27,7 +27,7 @@ def get_language(request: HttpRequest):
 @log_api_access
 def get_DOP_config(request: HttpRequest):
     try:
-        v = _get("DOP graph divided")
+        v = _get("DOP graph divided", request.META.get('HTTP_X_FACTORY_ID', 1))
         if v is None:
             return JsonResponse({"message": "❌ Configuración DOP no encontrada", "value": "error"})
         return JsonResponse({"message": "✅ Configuración DOP obtenida", "value": v == "on"})
@@ -40,7 +40,7 @@ def get_DOP_config(request: HttpRequest):
 @log_api_access
 def get_calculated_data_period(request: HttpRequest):
     try:
-        return JsonResponse({"message": "✅ Período obtenido", "value": _get("calculated data period")})
+        return JsonResponse({"message": "✅ Período obtenido", "value": _get("calculated data period", request.META.get('HTTP_X_FACTORY_ID', 1))})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener período", "error": str(e)}, status=500)
 
@@ -57,7 +57,7 @@ def update_language(request: HttpRequest):
         if not v:
             return JsonResponse({"message": "❌ El campo 'language' es requerido", "error": "language required"}, status=400)
         # Match local implementation: direct update
-        Config.objects.filter(key="language").update(value=v)
+        Config.objects.filter(key="language", factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(value=v)
         return JsonResponse({"message": "✅ Idioma actualizado", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar idioma", "error": str(e)}, status=500)
@@ -74,7 +74,7 @@ def update_DOP_config(request: HttpRequest):
         checked = body.get("checked")
         val = "on" if checked else "off"
         # Match local implementation: direct update
-        Config.objects.filter(key="DOP graph divided").update(value=val)
+        Config.objects.filter(key="DOP graph divided", factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(value=val)
         return JsonResponse({"message": "✅ Configuración DOP actualizada", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar configuración DOP", "error": str(e)}, status=500)
@@ -92,7 +92,7 @@ def update_calculated_data_period(request: HttpRequest):
         if not period:
             return JsonResponse({"message": "❌ El campo 'period' es requerido", "error": "period required"}, status=400)
         # Match local implementation: direct update
-        Config.objects.filter(key="calculated data period").update(value=period)
+        Config.objects.filter(key="calculated data period", factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(value=period)
         return JsonResponse({"message": "✅ Período actualizado", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar período", "error": str(e)}, status=500)

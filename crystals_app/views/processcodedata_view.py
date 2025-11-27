@@ -12,7 +12,7 @@ import json
 @log_api_access
 def get_process_code_data(request: HttpRequest):
     try:
-        data = [model_to_dict(o) for o in ProcessCodeData.objects.all().order_by("process")]
+        data = [model_to_dict(o) for o in ProcessCodeData.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).order_by("process")]
         return JsonResponse({"message": "✅ Códigos de proceso obtenidos exitosamente", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener códigos de proceso", "error": str(e)}, status=500)
@@ -38,18 +38,18 @@ def update_process_code_data(request: HttpRequest):
         # Match local: Get process from row offset
         # SELECT process FROM process_code_data ORDER BY process LIMIT 1 OFFSET fila
         try:
-            process_obj = ProcessCodeData.objects.all().order_by("process")[fila]
+            process_obj = ProcessCodeData.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).order_by("process")[fila]
             process_valor = process_obj.process
         except IndexError:
             return JsonResponse({"message": "❌ Fila no encontrada", "error": "Row not found"}, status=404)
         
         # Match local: UPDATE process_code_data SET code = new_value WHERE process = process_valor
-        updated = ProcessCodeData.objects.filter(process=process_valor).update(code=new_value)
+        updated = ProcessCodeData.objects.filter(process=process_valor, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(code=new_value)
         
         if not updated:
             return JsonResponse({"message": "❌ No se pudo actualizar", "error": "Update failed"}, status=500)
         
-        obj = ProcessCodeData.objects.get(process=process_valor)
+        obj = ProcessCodeData.objects.get(process=process_valor, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Código de proceso actualizado exitosamente", "updated": model_to_dict(obj)})
     except Exception as e:
         import traceback

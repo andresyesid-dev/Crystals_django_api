@@ -12,7 +12,7 @@ import json
 @log_api_access
 def get_brix_calculator_data(request: HttpRequest):
     try:
-        data = [model_to_dict(o) for o in BrixCalculatorData.objects.all().order_by("tc")]
+        data = [model_to_dict(o) for o in BrixCalculatorData.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).order_by("tc")]
         return JsonResponse({"message": "✅ Datos obtenidos", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener datos", "error": str(e)}, status=500)
@@ -40,7 +40,7 @@ def update_brix_calculator_data(request: HttpRequest):
         # Match local: Get tc from row offset
         # SELECT tc FROM brix_calculator_data ORDER BY tc LIMIT 1 OFFSET fila
         try:
-            tc_obj = BrixCalculatorData.objects.all().order_by("tc")[fila]
+            tc_obj = BrixCalculatorData.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).order_by("tc")[fila]
             tc_valor = tc_obj.tc
         except IndexError:
             return JsonResponse({"message": "❌ Fila no encontrada", "error": "Row not found"}, status=404)
@@ -59,12 +59,12 @@ def update_brix_calculator_data(request: HttpRequest):
             "brx": resultado
         }
         
-        updated = BrixCalculatorData.objects.filter(tc=tc_valor).update(**update_data)
+        updated = BrixCalculatorData.objects.filter(tc=tc_valor, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(**update_data)
         
         if not updated:
             return JsonResponse({"message": "❌ No se pudo actualizar", "error": "Update failed"}, status=500)
         
-        obj = BrixCalculatorData.objects.get(tc=tc_valor)
+        obj = BrixCalculatorData.objects.get(tc=tc_valor, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Datos actualizados", "updated": model_to_dict(obj)})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar", "error": str(e)}, status=500)

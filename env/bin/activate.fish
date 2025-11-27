@@ -29,7 +29,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/andresyesidmottasarmiento/OneDrive/Mac/Crystals_django_api/env"
+set -gx VIRTUAL_ENV "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

@@ -13,7 +13,7 @@ import json
 def get_line_color(request: HttpRequest):
     try:
         # Match local implementation: get first record (no WHERE clause in local)
-        gs = GlobalSetting.objects.first()
+        gs = GlobalSetting.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
         return JsonResponse({"message": "✅ Color de línea obtenido", "line_color": gs.line_color if gs else None})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener color de línea", "error": str(e)}, status=500)
@@ -31,7 +31,7 @@ def update_line_color(request: HttpRequest):
         if not color:
             return JsonResponse({"message": "❌ El campo 'line_color' es requerido", "error": "line_color required"}, status=400)
         # Match local implementation: direct update on id=1
-        GlobalSetting.objects.filter(id=1).update(line_color=color)
+        GlobalSetting.objects.filter(id=1, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(line_color=color)
         return JsonResponse({"message": "✅ Color de línea actualizado", "updated": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar color", "error": str(e)}, status=500)

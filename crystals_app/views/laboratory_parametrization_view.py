@@ -38,7 +38,7 @@ def insert_laboratory_parametrization(request):
     """
     try:
         # Check if table already has data
-        count = LaboratoryParametrization.objects.count()
+        count = LaboratoryParametrization.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).count()
         if count > 0:
             return JsonResponse({
                 'ok': True,
@@ -56,7 +56,8 @@ def insert_laboratory_parametrization(request):
                     material=material,
                     categoria=category,
                     range_from=None,
-                    range_to=None
+                    range_to=None,
+                    factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
                 ))
         
         # Bulk create
@@ -86,7 +87,7 @@ def insert_laboratory_calculated_refino(request):
     Only inserts if table is empty.
     """
     try:
-        count = LaboratoryCalculatedRefinoParametrization.objects.count()
+        count = LaboratoryCalculatedRefinoParametrization.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).count()
         if count > 0:
             return JsonResponse({
                 'ok': True,
@@ -106,7 +107,8 @@ def insert_laboratory_calculated_refino(request):
                     parameter=parameter,
                     categoria=category,
                     range_from=None,
-                    range_to=None
+                    range_to=None,
+                    factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
                 ))
         
         LaboratoryCalculatedRefinoParametrization.objects.bulk_create(records)
@@ -131,7 +133,7 @@ def insert_laboratory_calculated_masa_a(request):
     Only inserts if table is empty.
     """
     try:
-        count = LaboratoryCalculatedMasaAParametrization.objects.count()
+        count = LaboratoryCalculatedMasaAParametrization.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).count()
         if count > 0:
             return JsonResponse({
                 'ok': True,
@@ -150,7 +152,8 @@ def insert_laboratory_calculated_masa_a(request):
                     parameter=parameter,
                     categoria=category,
                     range_from=None,
-                    range_to=None
+                    range_to=None,
+                    factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
                 ))
         
         LaboratoryCalculatedMasaAParametrization.objects.bulk_create(records)
@@ -175,7 +178,7 @@ def insert_laboratory_calculated_masa_b(request):
     Only inserts if table is empty.
     """
     try:
-        count = LaboratoryCalculatedMasaBParametrization.objects.count()
+        count = LaboratoryCalculatedMasaBParametrization.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).count()
         if count > 0:
             return JsonResponse({
                 'ok': True,
@@ -194,7 +197,8 @@ def insert_laboratory_calculated_masa_b(request):
                     parameter=parameter,
                     categoria=category,
                     range_from=None,
-                    range_to=None
+                    range_to=None,
+                    factory_id=request.factory_id
                 ))
         
         LaboratoryCalculatedMasaBParametrization.objects.bulk_create(records)
@@ -219,7 +223,7 @@ def insert_laboratory_calculated_masa_c(request):
     Only inserts if table is empty.
     """
     try:
-        count = LaboratoryCalculatedMasaCParametrization.objects.count()
+        count = LaboratoryCalculatedMasaCParametrization.objects.filter(factory_id=request.factory_id).count()
         if count > 0:
             return JsonResponse({
                 'ok': True,
@@ -238,7 +242,8 @@ def insert_laboratory_calculated_masa_c(request):
                     parameter=parameter,
                     categoria=category,
                     range_from=None,
-                    range_to=None
+                    range_to=None,
+                    factory_id=request.factory_id
                 ))
         
         LaboratoryCalculatedMasaCParametrization.objects.bulk_create(records)
@@ -263,7 +268,7 @@ def insert_crystals_data_parametrization(request):
     Only inserts if table is empty.
     """
     try:
-        count = CrystalsDataParametrization.objects.count()
+        count = CrystalsDataParametrization.objects.filter(factory_id=request.factory_id).count()
         if count > 0:
             return JsonResponse({
                 'ok': True,
@@ -286,7 +291,8 @@ def insert_crystals_data_parametrization(request):
                     parameter=parameter,
                     categoria=category,
                     range_from=None,
-                    range_to=None
+                    range_to=None,
+                    factory_id=request.factory_id
                 ))
         
         CrystalsDataParametrization.objects.bulk_create(records)
