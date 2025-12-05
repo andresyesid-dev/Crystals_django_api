@@ -121,6 +121,11 @@ def create_calibration(request: HttpRequest):
             "target_mean": values_dict.get("target_mean")
         }
         
+        # Allow explicit ID if provided (e.g. for imports)
+        explicit_id = payload.get("id") or values_dict.get("id")
+        if explicit_id:
+            fields["id"] = explicit_id
+        
         # Match local implementation: create in both tables within transaction
         with transaction.atomic():
             # First insert into process_code_data
@@ -215,17 +220,17 @@ def delete_calibration(request: HttpRequest):
         
         # Match local implementation: 4 steps
         try:
-            calibration = Calibration.objects.get(id=calibration_id, factory_id=request.factory_id)
+            calibration = Calibration.objects.get(id=calibration_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
             calibration_name = calibration.name
         except Calibration.DoesNotExist:
             return JsonResponse({"message": "❌ Calibración no encontrada", "error": "not found"}, status=404)
         
         with transaction.atomic():
             # 1. Update historic_reports to set calibration_id to NULL
-            HistoricReport.objects.filter(calibration_fk_id=calibration_id, factory_id=request.factory_id).update(calibration_fk=None)
+            HistoricReport.objects.filter(calibration_fk_id=calibration_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(calibration_fk=None)
             
             # 2. Delete from process_code_data
-            ProcessCodeData.objects.filter(process=calibration_name, factory_id=request.factory_id).delete()
+            ProcessCodeData.objects.filter(process=calibration_name, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).delete()
             
             # 3. Delete calibration
             calibration.delete()
@@ -243,7 +248,7 @@ def get_calibration(request: HttpRequest):
         name = request.GET.get("name")
         if not name:
             return JsonResponse({"message": "❌ El parámetro 'name' es requerido", "error": "name is required"}, status=400)
-        obj = Calibration.objects.filter(name=name, factory_id=request.factory_id).first()
+        obj = Calibration.objects.filter(name=name, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
         return JsonResponse({"message": "✅ Calibración obtenida", "result": model_to_dict(obj) if obj else None})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener calibración", "error": str(e)}, status=500)
@@ -264,15 +269,18 @@ def update_calibration_order(request: HttpRequest):
         ordering = payload.get("ordering")
         
         if not calibration_id:
+            print(f"❌ update_calibration_order failed: missing id. Payload: {payload}")
             return JsonResponse({"message": "❌ Se requiere 'id' o 'calibration_id'", "error": "calibration_id required"}, status=400)
         
         if ordering is None:
+            print(f"❌ update_calibration_order failed: missing ordering. Payload: {payload}")
             return JsonResponse({"message": "❌ Se requiere el campo 'ordering'", "error": "ordering required"}, status=400)
         
         # Match local implementation: direct update
-        Calibration.objects.filter(id=calibration_id, factory_id=request.factory_id).update(ordering=ordering)
+        Calibration.objects.filter(id=calibration_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(ordering=ordering)
         return JsonResponse({"message": "✅ Orden de calibración actualizado", "ok": True})
     except Exception as e:
+        print(f"❌ update_calibration_order exception: {e}")
         return JsonResponse({"message": "❌ Error al actualizar orden", "error": str(e)}, status=500)
 
 
@@ -298,3 +306,44 @@ def update_calibration_table(request: HttpRequest):
         return JsonResponse({"message": "✅ Operación completada", "ok": True, "note": "Schema managed by Django migrations"})
     except Exception as e:
         return JsonResponse({"message": "❌ Error en operación", "error": str(e)}, status=500)
+
+
+@csrf_exempt
+@require_http_methods(["POST", "DELETE"])
+@jwt_required
+@log_api_access
+@sensitive_endpoint
+def delete_all_calibrations(request: HttpRequest):
+    """
+    Deletes ALL calibrations for the current factory.
+    If the table becomes globally empty, resets the ID sequence.
+    """
+    try:
+        factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+        
+        with transaction.atomic():
+            # 1. Get all calibration names for this factory to clean up process_code_data
+            calibrations = Calibration.objects.filter(factory_id=factory_id)
+            names = list(calibrations.values_list('name', flat=True))
+            ids = list(calibrations.values_list('id', flat=True))
+            
+            # 2. Update historic_reports to set calibration_id to NULL
+            HistoricReport.objects.filter(calibration_fk__in=ids).update(calibration_fk=None)
+            
+            # 3. Delete from process_code_data
+            ProcessCodeData.objects.filter(process__in=names, factory_id=factory_id).delete()
+            
+            # 4. Delete calibrations
+            count, _ = calibrations.delete()
+            
+            # 5. Check if table is globally empty to reset sequence
+            if not Calibration.objects.exists():
+                from django.db import connection
+                with connection.cursor() as cursor:
+                    # PostgreSQL specific sequence reset
+                    cursor.execute("ALTER SEQUENCE crystals_app_calibration_id_seq RESTART WITH 1;")
+                    print("✅ Calibration ID sequence reset to 1")
+
+        return JsonResponse({"message": f"✅ Se eliminaron {count} calibraciones", "deleted_count": count})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al eliminar todas las calibraciones", "error": str(e)}, status=500)

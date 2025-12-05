@@ -61,7 +61,8 @@ security_urls = [
 
 # Per-model route lists
 activation_urls = [
-	path('activation/validate', activation_view.validate_software),
+    path('activation/validate', activation_view.validate_software),
+    path('activation/validate/', activation_view.validate_software),
 	path('activation/status', activation_view.check_if_software_is_active),
 ]
 
@@ -70,6 +71,7 @@ analysiscategory_urls = [
 	path('analysis-category/add-new', analysiscategory_view.add_new_parameters_analysis_categories),
 	path('analysis-category/get-new', analysiscategory_view.get_new_parameters_analysis_categories),
 	path('analysis-category/delete', analysiscategory_view.delete_parameter_analysis_category),
+	path('analysis-category/exists', analysiscategory_view.check_category_exists),
 ]
 
 brixcalculator_urls = [
@@ -90,6 +92,7 @@ calibration_urls = [
 	path('calibration/update-order', calibration_view.update_calibration_order),
 	path('calibration/table-info', calibration_view.get_calibrations_table_info),
 	path('calibration/update-table', calibration_view.update_calibration_table),
+	path('calibration/delete-all', calibration_view.delete_all_calibrations),
 ]
 
 company_urls = [
@@ -246,6 +249,7 @@ management_report_layout_urls = [
 laboratory_settings_excel_urls = [
 	path('lab-excel/get-letters', laboratorysettingsexcel_view.get_laboratory_settings_excel_letters),
 	path('lab-excel/get-numbers', laboratorysettingsexcel_view.get_laboratory_settings_excel_numbers),
+	path('lab-excel/get', laboratorysettingsexcel_view.get_laboratory_settings_excel),
 	path('lab-excel/update', laboratorysettingsexcel_view.update_laboratory_settings_excel),
 ]
 
@@ -288,6 +292,14 @@ default_data_urls = [
 	path('info-default/activation', info_default.insert_default_activation),
 	path('info-default/mgmt-layout', info_default.insert_default_mgmt_layout),
 	path('info-default/mgmt-settings', info_default.insert_default_mgmt_settings),
+	path('info-default/lab-materials-settings', info_default.insert_default_lab_materials_settings),
+	path('info-default/lab-settings-excel', info_default.insert_default_lab_settings_excel),
+	path('info-default/crystals-data-parametrization', info_default.insert_default_crystals_data_parametrization),
+	path('info-default/laboratory-parametrization', info_default.insert_default_laboratory_parametrization),
+	path('info-default/laboratory-calculated-refino-parametrization', info_default.insert_default_laboratory_calculated_refino_parametrization),
+	path('info-default/laboratory-calculated-masa-a-parametrization', info_default.insert_default_laboratory_calculated_masa_a_parametrization),
+	path('info-default/laboratory-calculated-masa-b-parametrization', info_default.insert_default_laboratory_calculated_masa_b_parametrization),
+	path('info-default/laboratory-calculated-masa-c-parametrization', info_default.insert_default_laboratory_calculated_masa_c_parametrization),
 ]
 
 urlpatterns = (

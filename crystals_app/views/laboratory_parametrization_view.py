@@ -198,7 +198,7 @@ def insert_laboratory_calculated_masa_b(request):
                     categoria=category,
                     range_from=None,
                     range_to=None,
-                    factory_id=request.factory_id
+                    factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
                 ))
         
         LaboratoryCalculatedMasaBParametrization.objects.bulk_create(records)
@@ -223,7 +223,7 @@ def insert_laboratory_calculated_masa_c(request):
     Only inserts if table is empty.
     """
     try:
-        count = LaboratoryCalculatedMasaCParametrization.objects.filter(factory_id=request.factory_id).count()
+        count = LaboratoryCalculatedMasaCParametrization.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).count()
         if count > 0:
             return JsonResponse({
                 'ok': True,
@@ -243,7 +243,7 @@ def insert_laboratory_calculated_masa_c(request):
                     categoria=category,
                     range_from=None,
                     range_to=None,
-                    factory_id=request.factory_id
+                    factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
                 ))
         
         LaboratoryCalculatedMasaCParametrization.objects.bulk_create(records)
@@ -268,7 +268,7 @@ def insert_crystals_data_parametrization(request):
     Only inserts if table is empty.
     """
     try:
-        count = CrystalsDataParametrization.objects.filter(factory_id=request.factory_id).count()
+        count = CrystalsDataParametrization.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).count()
         if count > 0:
             return JsonResponse({
                 'ok': True,
@@ -292,7 +292,7 @@ def insert_crystals_data_parametrization(request):
                     categoria=category,
                     range_from=None,
                     range_to=None,
-                    factory_id=request.factory_id
+                    factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
                 ))
         
         CrystalsDataParametrization.objects.bulk_create(records)

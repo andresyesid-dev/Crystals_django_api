@@ -72,3 +72,19 @@ def delete_parameter_analysis_category(request: HttpRequest):
         return JsonResponse({"message": "✅ Parámetro eliminado exitosamente", "deleted": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al eliminar parámetro", "error": str(e)}, status=500)
+
+
+@require_http_methods(["GET"])
+@jwt_required
+@log_api_access
+def check_category_exists(request: HttpRequest):
+    try:
+        parameter = request.GET.get("parameter")
+        if not parameter:
+            return JsonResponse({"message": "❌ Parámetro requerido", "error": "parameter required"}, status=400)
+        
+        parameter = parameter.replace(' ', '_')
+        exists = NewParametersAnalysisCategory.objects.filter(parameter=parameter, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).exists()
+        return JsonResponse({"message": "✅ Verificación completada", "exists": exists})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al verificar parámetro", "error": str(e)}, status=500)

@@ -18,8 +18,8 @@ def validate_software(request: HttpRequest):
         if not given_code:
             return JsonResponse({"message": "❌ Código requerido", "ok": False}, status=400)
         
-        # Match local implementation: get activation record with id=1
-        act = Activation.objects.filter(id=1, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
+        # Match local implementation: get activation record (first one)
+        act = Activation.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
         if not act:
             return JsonResponse({"message": "❌ No existe registro de activación", "ok": False}, status=404)
         
@@ -27,7 +27,8 @@ def validate_software(request: HttpRequest):
         validation_code = act.validation_code
         if validation_code == crypt(given_code, validation_code):
             # Update validated to 1
-            Activation.objects.filter(id=1,factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(validated=1)
+            act.validated = 1
+            act.save()
             return JsonResponse({"message": "✅ Software activado exitosamente", "ok": True})
         
         return JsonResponse({"message": "❌ Código inválido", "ok": False})
@@ -41,8 +42,8 @@ def validate_software(request: HttpRequest):
 @log_api_access
 def check_if_software_is_active(request: HttpRequest):
     try:
-        # Match local implementation: get activation record with id=1
-        act = Activation.objects.filter(id=1, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
+        # Match local implementation: get activation record (first one)
+        act = Activation.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).first()
         if not act:
             return JsonResponse({"message": "⚠️ Sin registro de activación", "active": False})
         

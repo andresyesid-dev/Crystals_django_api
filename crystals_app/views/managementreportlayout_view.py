@@ -104,7 +104,7 @@ def set_default_management_report_layout(request: HttpRequest):
         # Reuse insert/update behavior
         for item in default_data:
             screen_number, row, column, element_id, element_type = item
-            exists = ManagementReportLayout.objects.filter(element_id=element_id, factory_id=request.factory_id).exists()
+            exists = ManagementReportLayout.objects.filter(element_id=element_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).exists()
             if not exists:
                 ManagementReportLayout.objects.create(
                     screen_number=screen_number,
@@ -112,7 +112,7 @@ def set_default_management_report_layout(request: HttpRequest):
                     column=column,
                     element_id=element_id,
                     element_type=element_type,
-                    factory_id=request.factory_id
+                    factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
                 )
         return JsonResponse({"message": "✅ Diseño predeterminado establecido exitosamente", "ok": True})
     except Exception as e:
@@ -129,7 +129,7 @@ def insert_default_management_report_layout(request: HttpRequest):
     Called during initial setup.
     """
     try:
-        count = ManagementReportLayout.objects.filter(factory_id=request.factory_id).count()
+        count = ManagementReportLayout.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).count()
         if count > 0:
             return JsonResponse({
                 "ok": True,
@@ -160,7 +160,7 @@ def insert_default_management_report_layout(request: HttpRequest):
                 column=column,
                 element_id=element_id,
                 element_type=element_type,
-                factory_id=request.factory_id
+                factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
             ))
         
         ManagementReportLayout.objects.bulk_create(layouts)

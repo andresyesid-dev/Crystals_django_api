@@ -5220,3 +5220,1351 @@ INFO 2025-11-27 14:06:40,689 basehttp 66565 13094367232 "GET /global-settings/li
 INFO 2025-11-27 14:06:41,410 basehttp 66565 13094367232 "GET /company/get HTTP/1.1" 200 75
 INFO 2025-11-27 14:06:42,128 basehttp 66565 13094367232 "GET /activation/status HTTP/1.1" 200 76
 INFO 2025-11-27 14:06:43,280 basehttp 66565 13094367232 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 05:06:58,552 autoreload 37373 8671039040 Watching for file changes with StatReloader
+INFO 2025-11-29 05:09:20,292 basehttp 37373 13095104512 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-29 05:09:21,141 basehttp 37373 13095104512 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-11-29 05:09:22,271 basehttp 37373 13095104512 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-29 05:09:23,081 basehttp 37373 13095104512 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-11-29 05:09:23,913 basehttp 37373 13095104512 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-11-29 05:09:24,742 basehttp 37373 13095104512 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-11-29 05:09:27,155 basehttp 37373 13095104512 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-11-29 05:09:27,937 basehttp 37373 13095104512 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-11-29 05:09:28,712 basehttp 37373 13095104512 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-29 05:09:29,499 basehttp 37373 13095104512 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-11-29 05:09:30,235 basehttp 37373 13095104512 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 05:09:30,951 basehttp 37373 13095104512 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-29 05:09:31,744 basehttp 37373 13095104512 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 05:16:17,029 basehttp 37373 13095104512 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-11-29 05:16:17,794 basehttp 37373 13095104512 "GET /activation/status HTTP/1.1" 200 76
+WARNING 2025-11-29 05:16:27,276 log 37373 13095104512 Not Found: /activation/validate
+WARNING 2025-11-29 05:16:27,278 basehttp 37373 13095104512 "POST /activation/validate HTTP/1.1" 404 72
+INFO 2025-11-29 05:16:28,012 basehttp 37373 13095104512 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-29 05:21:19,871 basehttp 37373 13095104512 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-11-29 05:21:20,927 basehttp 37373 13095104512 "POST /calibration/create HTTP/1.1" 201 283
+INFO 2025-11-29 05:21:21,921 basehttp 37373 13095104512 "POST /calibration/create HTTP/1.1" 201 285
+INFO 2025-11-29 05:21:22,931 basehttp 37373 13095104512 "POST /calibration/create HTTP/1.1" 201 279
+INFO 2025-11-29 05:21:23,977 basehttp 37373 13095104512 "POST /calibration/create HTTP/1.1" 201 285
+INFO 2025-11-29 05:21:25,011 basehttp 37373 13095104512 "POST /calibration/create HTTP/1.1" 201 304
+INFO 2025-11-29 05:21:26,028 basehttp 37373 13095104512 "POST /calibration/create HTTP/1.1" 201 300
+INFO 2025-11-29 05:21:27,022 basehttp 37373 13095104512 "POST /calibration/create HTTP/1.1" 201 300
+ERROR 2025-11-29 05:21:27,636 log 37373 13095104512 Internal Server Error: /calibration/get
+ERROR 2025-11-29 05:21:27,637 basehttp 37373 13095104512 "GET /calibration/get?name=SLURRY HTTP/1.1" 500 118
+INFO 2025-11-29 05:21:28,659 basehttp 37373 13095104512 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 05:21:29,657 basehttp 37373 13095104512 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-29 05:21:30,687 basehttp 37373 13095104512 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 05:21:31,833 basehttp 37373 13095104512 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-29 05:21:32,973 basehttp 37373 13095104512 "POST /calibration/create HTTP/1.1" 201 294
+INFO 2025-11-29 05:21:39,131 basehttp 37373 13095104512 "GET /process-code/get HTTP/1.1" 200 814
+WARNING 2025-11-29 05:21:50,068 log 37373 13095104512 Method Not Allowed (PATCH): /process-code/update
+WARNING 2025-11-29 05:21:50,069 basehttp 37373 13095104512 "PATCH /process-code/update HTTP/1.1" 405 0
+INFO 2025-11-29 05:21:53,809 basehttp 37373 13095104512 "GET /process-code/get HTTP/1.1" 200 814
+INFO 2025-11-29 05:22:06,285 basehttp 37373 13095104512 "GET /management-report-layout/get HTTP/1.1" 200 1603
+INFO 2025-11-29 05:22:12,475 basehttp 37373 13095104512 "PATCH /management-report-layout/update HTTP/1.1" 200 81
+INFO 2025-11-29 05:22:13,178 basehttp 37373 13095104512 "GET /management-report-layout/get HTTP/1.1" 200 1603
+INFO 2025-11-29 05:22:33,916 basehttp 37373 13095104512 "GET /lab-materials/get HTTP/1.1" 200 91
+INFO 2025-11-29 05:22:42,356 basehttp 37373 13095104512 "POST /lab-materials/insert HTTP/1.1" 200 91
+INFO 2025-11-29 05:29:54,417 autoreload 37373 8671039040 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-11-29 05:29:57,667 autoreload 38029 8665603648 Watching for file changes with StatReloader
+INFO 2025-11-29 05:30:48,182 autoreload 38029 8665603648 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/urls.py changed, reloading.
+INFO 2025-11-29 05:30:48,777 autoreload 38057 8660815424 Watching for file changes with StatReloader
+INFO 2025-11-29 05:38:49,631 autoreload 38057 8660815424 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/reporting_order_view.py changed, reloading.
+INFO 2025-11-29 05:38:51,060 autoreload 39035 8600845888 Watching for file changes with StatReloader
+INFO 2025-11-29 05:38:53,581 autoreload 39035 8600845888 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-11-29 05:38:54,009 autoreload 39046 8671178304 Watching for file changes with StatReloader
+INFO 2025-11-29 05:38:56,330 autoreload 39046 8671178304 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/managementreportsettings_view.py changed, reloading.
+INFO 2025-11-29 05:38:56,744 autoreload 39055 8636661312 Watching for file changes with StatReloader
+INFO 2025-11-29 05:38:58,014 autoreload 39055 8636661312 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratory_parametrization_view.py changed, reloading.
+INFO 2025-11-29 05:38:58,401 autoreload 39061 8605752896 Watching for file changes with StatReloader
+INFO 2025-11-29 05:39:00,734 autoreload 39061 8605752896 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratoryparametrization_view.py changed, reloading.
+INFO 2025-11-29 05:39:01,726 autoreload 39064 8643829312 Watching for file changes with StatReloader
+INFO 2025-11-29 05:39:10,375 autoreload 39064 8643829312 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/urls.py changed, reloading.
+INFO 2025-11-29 05:39:10,786 autoreload 39072 8595123776 Watching for file changes with StatReloader
+INFO 2025-11-29 05:40:19,230 autoreload 39160 8595390016 Watching for file changes with StatReloader
+INFO 2025-11-29 05:40:38,776 basehttp 39160 12946075648 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-29 05:40:39,647 basehttp 39160 12946075648 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-11-29 05:40:40,721 basehttp 39160 12946075648 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-29 05:40:41,504 basehttp 39160 12946075648 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-11-29 05:40:42,260 basehttp 39160 12946075648 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-11-29 05:40:43,022 basehttp 39160 12946075648 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-11-29 05:40:45,385 basehttp 39160 12946075648 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-11-29 05:40:46,150 basehttp 39160 12946075648 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-11-29 05:40:46,890 basehttp 39160 12946075648 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-29 05:40:47,718 basehttp 39160 12946075648 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-11-29 05:40:48,403 basehttp 39160 12946075648 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 05:40:49,102 basehttp 39160 12946075648 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-29 05:40:49,904 basehttp 39160 12946075648 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 05:41:05,789 basehttp 39160 12946075648 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-11-29 05:41:06,530 basehttp 39160 12946075648 "GET /activation/status HTTP/1.1" 200 76
+ERROR 2025-11-29 05:41:12,256 log 39160 12946075648 Internal Server Error: /activation/validate
+Traceback (most recent call last):
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/utils/deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/middleware/common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+  File "/Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/env/lib/python3.9/site-packages/django/middleware/common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/activation/validate/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+ERROR 2025-11-29 05:41:12,257 basehttp 39160 12946075648 "POST /activation/validate HTTP/1.1" 500 72318
+INFO 2025-11-29 05:41:12,950 basehttp 39160 12946075648 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-29 05:41:48,665 basehttp 39160 12946075648 "GET /process-code/get HTTP/1.1" 200 83
+INFO 2025-11-29 05:41:59,354 basehttp 39160 12946075648 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-11-29 05:42:00,663 basehttp 39160 12946075648 "POST /calibration/create HTTP/1.1" 201 283
+INFO 2025-11-29 05:42:01,678 basehttp 39160 12946075648 "POST /calibration/create HTTP/1.1" 201 285
+INFO 2025-11-29 05:42:02,699 basehttp 39160 12946075648 "POST /calibration/create HTTP/1.1" 201 279
+INFO 2025-11-29 05:42:03,725 basehttp 39160 12946075648 "POST /calibration/create HTTP/1.1" 201 285
+INFO 2025-11-29 05:42:04,707 basehttp 39160 12946075648 "POST /calibration/create HTTP/1.1" 201 304
+INFO 2025-11-29 05:42:05,726 basehttp 39160 12946075648 "POST /calibration/create HTTP/1.1" 201 300
+INFO 2025-11-29 05:42:06,733 basehttp 39160 12946075648 "POST /calibration/create HTTP/1.1" 201 300
+INFO 2025-11-29 05:42:07,410 basehttp 39160 12946075648 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+INFO 2025-11-29 05:42:08,407 basehttp 39160 12946075648 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 05:42:09,420 basehttp 39160 12946075648 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-29 05:42:10,417 basehttp 39160 12946075648 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 05:42:11,413 basehttp 39160 12946075648 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-29 05:42:12,437 basehttp 39160 12946075648 "POST /calibration/create HTTP/1.1" 201 294
+INFO 2025-11-29 05:43:40,594 basehttp 39160 12946075648 "GET /process-code/get HTTP/1.1" 200 814
+INFO 2025-11-29 05:43:45,554 basehttp 39160 12946075648 "PATCH /process-code/update HTTP/1.1" 200 141
+INFO 2025-11-29 05:44:38,222 basehttp 39160 12946075648 "GET /management-report-layout/get HTTP/1.1" 200 1603
+INFO 2025-11-29 05:44:44,225 basehttp 39160 12946075648 "PATCH /management-report-layout/update HTTP/1.1" 200 81
+INFO 2025-11-29 05:44:44,908 basehttp 39160 12946075648 "GET /management-report-layout/get HTTP/1.1" 200 1603
+INFO 2025-11-29 05:45:22,492 basehttp 39160 12946075648 "GET /management-report-settings/get HTTP/1.1" 200 1103
+INFO 2025-11-29 05:45:23,206 basehttp 39160 12946075648 "GET /config/dop/get HTTP/1.1" 200 68
+INFO 2025-11-29 05:45:23,949 basehttp 39160 12946075648 "POST /config/dop/update HTTP/1.1" 200 68
+INFO 2025-11-29 05:45:33,812 basehttp 39160 12946075648 "GET /lab-materials/get HTTP/1.1" 200 91
+INFO 2025-11-29 05:45:38,670 basehttp 39160 12946075648 "POST /lab-materials/insert HTTP/1.1" 200 91
+INFO 2025-11-29 05:46:00,755 basehttp 39160 12946075648 "GET /lab-materials/get HTTP/1.1" 200 1356
+INFO 2025-11-29 05:46:08,115 basehttp 39160 12946075648 "POST /lab-materials/insert HTTP/1.1" 200 105
+INFO 2025-11-29 05:46:22,614 basehttp 39160 12946075648 "GET /lab-materials/get HTTP/1.1" 200 1356
+INFO 2025-11-29 05:48:57,072 autoreload 39160 8595390016 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/urls.py changed, reloading.
+INFO 2025-11-29 05:48:58,732 autoreload 39422 8641297984 Watching for file changes with StatReloader
+INFO 2025-11-29 05:49:47,224 autoreload 39422 8641297984 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/labmaterialssettings_view.py changed, reloading.
+INFO 2025-11-29 05:49:48,233 autoreload 39449 8627895872 Watching for file changes with StatReloader
+INFO 2025-11-29 05:50:39,853 autoreload 39449 8627895872 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-11-29 05:50:41,917 autoreload 39475 8598978112 Watching for file changes with StatReloader
+INFO 2025-11-29 05:50:43,599 autoreload 39475 8598978112 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-11-29 05:50:44,013 autoreload 39485 8633015872 Watching for file changes with StatReloader
+INFO 2025-11-29 05:50:52,589 autoreload 39485 8633015872 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-11-29 05:50:53,033 autoreload 39496 8626622016 Watching for file changes with StatReloader
+INFO 2025-11-29 05:56:00,659 autoreload 39612 8637087296 Watching for file changes with StatReloader
+INFO 2025-11-29 05:57:05,241 basehttp 39612 13028618240 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-29 05:57:06,103 basehttp 39612 13028618240 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-11-29 05:57:08,282 basehttp 39612 13028618240 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-29 05:57:09,075 basehttp 39612 13028618240 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-11-29 05:57:09,879 basehttp 39612 13028618240 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-11-29 05:57:10,644 basehttp 39612 13028618240 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-11-29 05:57:13,267 basehttp 39612 13028618240 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-11-29 05:57:14,025 basehttp 39612 13028618240 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-11-29 05:57:14,721 basehttp 39612 13028618240 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-29 05:57:15,579 basehttp 39612 13028618240 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-11-29 05:57:16,348 basehttp 39612 13028618240 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 05:57:17,049 basehttp 39612 13028618240 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-29 05:57:17,846 basehttp 39612 13028618240 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 05:57:58,393 basehttp 39612 13028618240 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-11-29 05:57:59,213 basehttp 39612 13028618240 "GET /activation/status HTTP/1.1" 200 76
+WARNING 2025-11-29 05:58:04,275 log 39612 13028618240 Not Found: /activation/validate
+WARNING 2025-11-29 05:58:04,276 basehttp 39612 13028618240 "POST /activation/validate HTTP/1.1" 404 72
+INFO 2025-11-29 05:58:05,010 basehttp 39612 13028618240 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-29 05:59:41,843 basehttp 39612 13028618240 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-29 05:59:42,632 basehttp 39612 13028618240 "POST /info-default/users HTTP/1.1" 200 70
+INFO 2025-11-29 05:59:43,705 basehttp 39612 13028618240 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-29 05:59:44,433 basehttp 39612 13028618240 "POST /info-default/global-settings HTTP/1.1" 200 74
+INFO 2025-11-29 05:59:45,137 basehttp 39612 13028618240 "POST /info-default/company HTTP/1.1" 200 74
+INFO 2025-11-29 05:59:45,843 basehttp 39612 13028618240 "POST /info-default/activation HTTP/1.1" 200 77
+INFO 2025-11-29 05:59:47,413 basehttp 39612 13028618240 "POST /info-default/mgmt-layout HTTP/1.1" 200 39
+INFO 2025-11-29 05:59:48,139 basehttp 39612 13028618240 "POST /info-default/mgmt-settings HTTP/1.1" 200 85
+INFO 2025-11-29 05:59:48,841 basehttp 39612 13028618240 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-29 05:59:49,631 basehttp 39612 13028618240 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-11-29 05:59:50,314 basehttp 39612 13028618240 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 05:59:50,981 basehttp 39612 13028618240 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-29 05:59:51,917 basehttp 39612 13028618240 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 06:00:42,504 basehttp 39612 13028618240 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-29 06:00:43,325 basehttp 39612 13028618240 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-11-29 06:00:45,563 basehttp 39612 13028618240 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-29 06:00:47,433 basehttp 39612 13028618240 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-11-29 06:00:48,527 basehttp 39612 13028618240 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-11-29 06:00:49,809 basehttp 39612 13028618240 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-11-29 06:00:52,269 basehttp 39612 13028618240 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-11-29 06:00:53,100 basehttp 39612 13028618240 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-11-29 06:00:53,778 basehttp 39612 13028618240 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-29 06:00:54,533 basehttp 39612 13028618240 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-11-29 06:00:55,216 basehttp 39612 13028618240 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 06:00:55,902 basehttp 39612 13028618240 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-29 06:00:56,732 basehttp 39612 13028618240 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 06:01:11,015 basehttp 39612 13028618240 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-11-29 06:01:11,752 basehttp 39612 13028618240 "GET /activation/status HTTP/1.1" 200 76
+WARNING 2025-11-29 06:01:17,067 log 39612 13028618240 Not Found: /activation/validate
+WARNING 2025-11-29 06:01:17,068 basehttp 39612 13028618240 "POST /activation/validate HTTP/1.1" 404 72
+INFO 2025-11-29 06:01:17,796 basehttp 39612 13028618240 "GET /activation/status HTTP/1.1" 200 76
+INFO 2025-11-29 06:01:42,518 basehttp 39612 13028618240 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-11-29 06:01:43,578 basehttp 39612 13028618240 "POST /calibration/create HTTP/1.1" 201 283
+INFO 2025-11-29 06:01:44,637 basehttp 39612 13028618240 "POST /calibration/create HTTP/1.1" 201 285
+INFO 2025-11-29 06:01:45,631 basehttp 39612 13028618240 "POST /calibration/create HTTP/1.1" 201 279
+INFO 2025-11-29 06:01:47,771 basehttp 39612 13028618240 "POST /calibration/create HTTP/1.1" 201 285
+INFO 2025-11-29 06:01:50,212 basehttp 39612 13028618240 "POST /calibration/create HTTP/1.1" 201 304
+INFO 2025-11-29 06:01:51,616 basehttp 39612 13028618240 "POST /calibration/create HTTP/1.1" 201 300
+INFO 2025-11-29 06:01:52,613 basehttp 39612 13028618240 "POST /calibration/create HTTP/1.1" 201 300
+INFO 2025-11-29 06:01:53,323 basehttp 39612 13028618240 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+INFO 2025-11-29 06:01:54,363 basehttp 39612 13028618240 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 06:01:55,349 basehttp 39612 13028618240 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-29 06:01:56,333 basehttp 39612 13028618240 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 06:01:57,678 basehttp 39612 13028618240 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-29 06:01:58,778 basehttp 39612 13028618240 "POST /calibration/create HTTP/1.1" 201 294
+INFO 2025-11-29 06:02:09,030 basehttp 39612 13028618240 "GET /process-code/get HTTP/1.1" 200 814
+INFO 2025-11-29 06:02:13,603 basehttp 39612 13028618240 "PATCH /process-code/update HTTP/1.1" 200 140
+INFO 2025-11-29 06:02:17,539 basehttp 39612 13028618240 "GET /management-report-layout/get HTTP/1.1" 200 1603
+INFO 2025-11-29 06:02:23,678 basehttp 39612 13028618240 "GET /lab-materials/get HTTP/1.1" 200 91
+INFO 2025-11-29 06:02:29,614 basehttp 39612 13028618240 "POST /lab-materials/insert HTTP/1.1" 200 91
+INFO 2025-11-29 06:02:55,710 basehttp 39612 13028618240 "GET /lab-materials/get HTTP/1.1" 200 1356
+INFO 2025-11-29 06:03:03,367 basehttp 39612 13028618240 "POST /lab-materials/insert HTTP/1.1" 200 105
+INFO 2025-11-29 06:03:15,390 basehttp 39612 13028618240 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-11-29 06:03:16,145 basehttp 39612 13028618240 "GET /lab-excel/get-numbers HTTP/1.1" 200 101
+INFO 2025-11-29 06:03:28,176 basehttp 39612 13028618240 "PATCH /lab-excel/update HTTP/1.1" 200 103
+WARNING 2025-11-29 06:03:36,776 log 39612 13028618240 Not Found: /
+WARNING 2025-11-29 06:03:36,776 basehttp 39612 13028618240 "GET / HTTP/1.1" 404 24733
+INFO 2025-11-29 06:08:03,257 autoreload 39612 8637087296 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/activation_view.py changed, reloading.
+INFO 2025-11-29 06:08:05,089 autoreload 41040 8605167168 Watching for file changes with StatReloader
+INFO 2025-11-29 06:08:08,543 autoreload 41040 8605167168 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/activation_view.py changed, reloading.
+INFO 2025-11-29 06:08:08,924 autoreload 41059 8667962944 Watching for file changes with StatReloader
+INFO 2025-11-29 06:08:14,327 autoreload 41059 8667962944 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/labmaterialssettings_view.py changed, reloading.
+INFO 2025-11-29 06:08:14,719 autoreload 41087 8632229440 Watching for file changes with StatReloader
+INFO 2025-11-29 06:12:26,336 autoreload 41087 8632229440 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/analysiscategory_view.py changed, reloading.
+INFO 2025-11-29 06:12:27,877 autoreload 41691 8630767168 Watching for file changes with StatReloader
+INFO 2025-11-29 13:15:53,786 basehttp 41691 13015969792 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-29 13:15:54,541 basehttp 41691 13015969792 "POST /info-default/users HTTP/1.1" 200 70
+INFO 2025-11-29 13:15:55,674 basehttp 41691 13015969792 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-29 13:15:56,361 basehttp 41691 13015969792 "POST /info-default/global-settings HTTP/1.1" 200 74
+INFO 2025-11-29 13:15:57,084 basehttp 41691 13015969792 "POST /info-default/company HTTP/1.1" 200 74
+INFO 2025-11-29 13:15:57,806 basehttp 41691 13015969792 "POST /info-default/activation HTTP/1.1" 200 77
+INFO 2025-11-29 13:15:59,348 basehttp 41691 13015969792 "POST /info-default/mgmt-layout HTTP/1.1" 200 39
+INFO 2025-11-29 13:16:01,250 basehttp 41691 13015969792 "POST /info-default/mgmt-settings HTTP/1.1" 200 85
+INFO 2025-11-29 13:16:03,324 basehttp 41691 13015969792 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-29 13:16:04,732 basehttp 41691 13015969792 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-11-29 13:16:05,448 basehttp 41691 13015969792 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 13:16:06,132 basehttp 41691 13015969792 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-11-29 13:16:07,534 basehttp 41691 13015969792 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 13:19:19,697 basehttp 41691 13015969792 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-11-29 13:19:20,435 basehttp 41691 13015969792 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-11-29 13:19:24,624 basehttp 41691 13015969792 "GET /lab-materials/get HTTP/1.1" 200 1356
+INFO 2025-11-29 13:19:29,215 basehttp 41691 13015969792 "POST /lab-materials/insert HTTP/1.1" 200 100
+INFO 2025-11-29 13:19:36,382 basehttp 41691 13015969792 "GET /lab-materials/get HTTP/1.1" 200 1356
+INFO 2025-11-29 13:22:21,503 autoreload 46630 8661921344 Watching for file changes with StatReloader
+INFO 2025-11-29 13:22:40,728 basehttp 46630 13076000768 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-29 13:22:41,571 basehttp 46630 13076000768 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-11-29 13:22:43,698 basehttp 46630 13076000768 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-29 13:22:44,490 basehttp 46630 13076000768 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-11-29 13:22:45,275 basehttp 46630 13076000768 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-11-29 13:22:46,042 basehttp 46630 13076000768 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-11-29 13:22:48,406 basehttp 46630 13076000768 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-11-29 13:22:49,174 basehttp 46630 13076000768 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-11-29 13:22:49,865 basehttp 46630 13076000768 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-29 13:22:50,629 basehttp 46630 13076000768 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-11-29 13:22:51,310 basehttp 46630 13076000768 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 13:22:52,015 basehttp 46630 13076000768 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-11-29 13:22:52,829 basehttp 46630 13076000768 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 13:23:00,898 basehttp 46630 13076000768 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-11-29 13:23:01,626 basehttp 46630 13076000768 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-11-29 13:23:08,311 basehttp 46630 13076000768 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-11-29 13:23:09,088 basehttp 46630 13076000768 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-11-29 13:23:26,335 basehttp 46630 13076000768 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-11-29 13:23:27,390 basehttp 46630 13076000768 "POST /calibration/create HTTP/1.1" 201 283
+INFO 2025-11-29 13:23:28,457 basehttp 46630 13076000768 "POST /calibration/create HTTP/1.1" 201 285
+INFO 2025-11-29 13:23:29,559 basehttp 46630 13076000768 "POST /calibration/create HTTP/1.1" 201 279
+INFO 2025-11-29 13:23:30,609 basehttp 46630 13076000768 "POST /calibration/create HTTP/1.1" 201 285
+INFO 2025-11-29 13:23:31,622 basehttp 46630 13076000768 "POST /calibration/create HTTP/1.1" 201 304
+INFO 2025-11-29 13:23:32,664 basehttp 46630 13076000768 "POST /calibration/create HTTP/1.1" 201 300
+INFO 2025-11-29 13:23:33,712 basehttp 46630 13076000768 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-11-29 13:23:34,416 basehttp 46630 13076000768 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+INFO 2025-11-29 13:23:35,409 basehttp 46630 13076000768 "POST /calibration/create HTTP/1.1" 201 287
+INFO 2025-11-29 13:23:36,781 basehttp 46630 13076000768 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 13:23:37,841 basehttp 46630 13076000768 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-11-29 13:23:39,156 basehttp 46630 13076000768 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 13:23:40,347 basehttp 46630 13076000768 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-29 13:25:27,949 basehttp 46630 13076000768 "GET /lab-materials/get HTTP/1.1" 200 91
+INFO 2025-11-29 13:25:32,055 basehttp 46630 13076000768 "POST /lab-materials/insert HTTP/1.1" 200 100
+INFO 2025-11-29 13:48:40,888 autoreload 50440 8631737920 Watching for file changes with StatReloader
+INFO 2025-11-29 13:50:46,937 basehttp 50440 13018656768 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-29 13:50:49,472 basehttp 50440 13018656768 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-11-29 13:50:50,224 basehttp 50440 13018656768 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-11-29 13:50:52,387 basehttp 50440 13018656768 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-29 13:50:53,169 basehttp 50440 13018656768 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-11-29 13:50:53,955 basehttp 50440 13018656768 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-11-29 13:50:54,758 basehttp 50440 13018656768 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-11-29 13:50:57,214 basehttp 50440 13018656768 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-11-29 13:50:58,004 basehttp 50440 13018656768 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-11-29 13:50:58,670 basehttp 50440 13018656768 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-29 13:50:59,421 basehttp 50440 13018656768 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-11-29 13:51:00,109 basehttp 50440 13018656768 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 13:51:00,827 basehttp 50440 13018656768 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-11-29 13:51:01,596 basehttp 50440 13018656768 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 13:51:21,415 basehttp 50440 13018656768 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-11-29 13:51:22,166 basehttp 50440 13018656768 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-11-29 13:51:29,006 basehttp 50440 13018656768 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-11-29 13:51:29,749 basehttp 50440 13018656768 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-11-29 13:51:41,914 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 281
+INFO 2025-11-29 13:51:42,986 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 281
+INFO 2025-11-29 13:51:43,980 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-11-29 13:51:45,012 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-11-29 13:51:46,067 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 13:51:47,047 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 13:51:48,087 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-11-29 13:51:49,132 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-11-29 13:51:50,207 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 13:51:51,248 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 13:51:52,303 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-11-29 13:51:53,397 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-11-29 13:51:54,369 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-11-29 13:51:55,331 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-11-29 13:51:56,381 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-11-29 13:51:57,384 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-11-29 13:51:58,079 basehttp 50440 13018656768 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+INFO 2025-11-29 13:51:59,140 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 287
+INFO 2025-11-29 13:52:00,378 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 287
+INFO 2025-11-29 13:52:01,361 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 13:52:02,398 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 13:52:03,427 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-11-29 13:52:05,386 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-11-29 13:52:06,410 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 13:52:07,460 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 13:52:08,458 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-29 13:52:09,472 basehttp 50440 13018656768 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-29 13:52:48,579 basehttp 50440 13018656768 "GET /management-report-layout/get HTTP/1.1" 200 1603
+INFO 2025-11-29 13:53:08,109 basehttp 50440 13018656768 "GET /lab-materials/get HTTP/1.1" 200 91
+INFO 2025-11-29 13:53:12,467 basehttp 50440 13018656768 "POST /lab-materials/insert HTTP/1.1" 200 100
+INFO 2025-11-29 13:53:14,943 basehttp 50440 13018656768 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-11-29 13:53:17,341 basehttp 50440 13018656768 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-11-29 13:53:23,960 basehttp 50440 13018656768 "GET /lab-materials/get HTTP/1.1" 200 91
+INFO 2025-11-29 14:02:33,180 autoreload 52525 8639094336 Watching for file changes with StatReloader
+INFO 2025-11-29 14:02:47,612 basehttp 52525 13033238528 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-29 14:02:50,149 basehttp 52525 13033238528 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-11-29 14:02:50,862 basehttp 52525 13033238528 "POST /info-default/users HTTP/1.1" 200 70
+INFO 2025-11-29 14:02:51,947 basehttp 52525 13033238528 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-29 14:02:52,649 basehttp 52525 13033238528 "POST /info-default/global-settings HTTP/1.1" 200 74
+INFO 2025-11-29 14:02:53,338 basehttp 52525 13033238528 "POST /info-default/company HTTP/1.1" 200 74
+INFO 2025-11-29 14:02:54,063 basehttp 52525 13033238528 "POST /info-default/activation HTTP/1.1" 200 77
+INFO 2025-11-29 14:02:55,667 basehttp 52525 13033238528 "POST /info-default/mgmt-layout HTTP/1.1" 200 39
+INFO 2025-11-29 14:02:56,384 basehttp 52525 13033238528 "POST /info-default/mgmt-settings HTTP/1.1" 200 85
+INFO 2025-11-29 14:02:57,134 basehttp 52525 13033238528 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-29 14:04:17,297 autoreload 53660 8606936640 Watching for file changes with StatReloader
+INFO 2025-11-29 14:05:45,970 basehttp 53660 12965982208 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-29 14:05:48,688 basehttp 53660 12965982208 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-11-29 14:05:49,483 basehttp 53660 12965982208 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-11-29 14:05:51,632 basehttp 53660 12965982208 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-29 14:05:52,412 basehttp 53660 12965982208 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-11-29 14:05:53,176 basehttp 53660 12965982208 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-11-29 14:05:53,938 basehttp 53660 12965982208 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-11-29 14:05:56,323 basehttp 53660 12965982208 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-11-29 14:05:57,132 basehttp 53660 12965982208 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-11-29 14:05:57,818 basehttp 53660 12965982208 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-29 14:05:58,583 basehttp 53660 12965982208 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-11-29 14:05:59,283 basehttp 53660 12965982208 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 14:05:59,988 basehttp 53660 12965982208 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-11-29 14:06:00,788 basehttp 53660 12965982208 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 14:09:17,011 basehttp 53660 12965982208 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-11-29 14:09:17,819 basehttp 53660 12965982208 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-11-29 14:09:26,697 basehttp 53660 12965982208 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-11-29 14:09:27,483 basehttp 53660 12965982208 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-11-29 14:11:05,755 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 281
+INFO 2025-11-29 14:11:06,822 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 281
+INFO 2025-11-29 14:11:07,846 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-11-29 14:11:08,874 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-11-29 14:11:09,891 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 14:11:10,932 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 14:11:11,976 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-11-29 14:11:12,991 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-11-29 14:11:14,037 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 14:11:15,071 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 14:11:16,033 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-11-29 14:11:17,004 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-11-29 14:11:18,000 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-11-29 14:11:18,973 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-11-29 14:11:19,996 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-11-29 14:11:20,975 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-11-29 14:11:21,712 basehttp 53660 12965982208 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+INFO 2025-11-29 14:11:22,734 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 287
+INFO 2025-11-29 14:11:23,747 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 287
+INFO 2025-11-29 14:11:24,776 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 14:11:25,832 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 14:11:26,866 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-11-29 14:11:27,920 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-11-29 14:11:28,940 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 14:11:29,960 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 14:11:30,990 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-29 14:11:32,023 basehttp 53660 12965982208 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-29 14:15:57,520 basehttp 53660 12965982208 "GET /process-code/get HTTP/1.1" 200 1547
+ERROR 2025-11-29 14:16:00,644 log 53660 12965982208 Internal Server Error: /process-code/update
+ERROR 2025-11-29 14:16:00,644 basehttp 53660 12965982208 "PATCH /process-code/update HTTP/1.1" 500 1013
+INFO 2025-11-29 14:16:08,014 basehttp 53660 12965982208 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-11-29 14:16:08,838 basehttp 53660 12965982208 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-11-29 14:16:09,652 basehttp 53660 12965982208 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-11-29 14:16:10,425 basehttp 53660 12965982208 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-11-29 14:16:11,206 basehttp 53660 12965982208 "PATCH /calibration/update-order HTTP/1.1" 200 71
+WARNING 2025-11-29 14:16:11,883 log 53660 12965982208 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:16:11,883 basehttp 53660 12965982208 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-11-29 14:16:12,593 log 53660 12965982208 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:16:12,594 basehttp 53660 12965982208 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-11-29 14:16:13,339 log 53660 12965982208 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:16:13,341 basehttp 53660 12965982208 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-11-29 14:16:14,052 log 53660 12965982208 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:16:14,052 basehttp 53660 12965982208 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-11-29 14:16:14,809 log 53660 12965982208 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:16:14,812 basehttp 53660 12965982208 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-11-29 14:16:15,583 log 53660 12965982208 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:16:15,585 basehttp 53660 12965982208 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-11-29 14:16:16,255 log 53660 12965982208 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:16:16,255 basehttp 53660 12965982208 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-11-29 14:16:16,978 log 53660 12965982208 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:16:16,979 basehttp 53660 12965982208 "PATCH /calibration/update-order HTTP/1.1" 400 83
+INFO 2025-11-29 14:16:26,282 basehttp 53660 12965982208 "GET /lab-materials/get HTTP/1.1" 200 91
+WARNING 2025-11-29 14:16:28,618 log 53660 12965982208 Method Not Allowed (PATCH): /lab-materials/update
+WARNING 2025-11-29 14:16:28,619 basehttp 53660 12965982208 "PATCH /lab-materials/update HTTP/1.1" 405 0
+INFO 2025-11-29 14:16:31,024 basehttp 53660 12965982208 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-11-29 14:16:34,917 basehttp 53660 12965982208 "GET /lab-materials/get HTTP/1.1" 200 91
+INFO 2025-11-29 14:19:11,600 basehttp 53660 12965982208 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-11-29 14:19:12,451 basehttp 53660 12965982208 "GET /lab-excel/get-numbers HTTP/1.1" 200 101
+INFO 2025-11-29 14:19:17,814 basehttp 53660 12965982208 "PATCH /lab-excel/update HTTP/1.1" 200 103
+INFO 2025-11-29 14:19:25,479 basehttp 53660 12965982208 "GET /lab-excel/get-letters HTTP/1.1" 200 1112
+INFO 2025-11-29 14:19:26,275 basehttp 53660 12965982208 "GET /lab-excel/get-numbers HTTP/1.1" 200 1118
+WARNING 2025-11-29 14:22:24,267 log 53660 12965982208 Not Found: /
+WARNING 2025-11-29 14:22:24,268 basehttp 53660 12965982208 "GET / HTTP/1.1" 404 24904
+INFO 2025-11-29 14:23:02,462 basehttp 53660 12965982208 "GET /analysis-category/exists?parameter=nuevo HTTP/1.1" 200 67
+INFO 2025-11-29 14:28:21,510 autoreload 53660 8606936640 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/urls.py changed, reloading.
+INFO 2025-11-29 14:28:23,131 autoreload 57489 8597974592 Watching for file changes with StatReloader
+INFO 2025-11-29 14:29:25,055 autoreload 57489 8597974592 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/processcodedata_view.py changed, reloading.
+INFO 2025-11-29 14:29:26,576 autoreload 57656 8635543104 Watching for file changes with StatReloader
+INFO 2025-11-29 14:35:45,066 autoreload 57656 8635543104 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-11-29 14:35:46,882 autoreload 58581 8637234752 Watching for file changes with StatReloader
+INFO 2025-11-29 14:37:35,382 autoreload 58865 8658984512 Watching for file changes with StatReloader
+INFO 2025-11-29 14:40:09,632 basehttp 58865 13072510976 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-29 14:40:12,120 basehttp 58865 13072510976 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-11-29 14:40:12,916 basehttp 58865 13072510976 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-11-29 14:40:15,122 basehttp 58865 13072510976 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-11-29 14:40:15,898 basehttp 58865 13072510976 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-11-29 14:40:16,712 basehttp 58865 13072510976 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-11-29 14:40:17,506 basehttp 58865 13072510976 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-11-29 14:40:20,035 basehttp 58865 13072510976 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-11-29 14:40:20,849 basehttp 58865 13072510976 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-11-29 14:40:23,153 basehttp 58865 13072510976 "POST /info-default/lab-materials-settings HTTP/1.1" 200 85
+INFO 2025-11-29 14:40:23,869 basehttp 58865 13072510976 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-11-29 14:40:24,647 basehttp 58865 13072510976 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-11-29 14:40:25,350 basehttp 58865 13072510976 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 14:40:26,053 basehttp 58865 13072510976 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-11-29 14:40:26,949 basehttp 58865 13072510976 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-11-29 14:40:41,739 basehttp 58865 13072510976 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-11-29 14:40:42,448 basehttp 58865 13072510976 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-11-29 14:40:58,702 basehttp 58865 13072510976 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-11-29 14:40:59,499 basehttp 58865 13072510976 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-11-29 14:41:09,301 basehttp 58865 13072510976 "GET /process-code/get HTTP/1.1" 200 83
+INFO 2025-11-29 14:41:18,804 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 281
+INFO 2025-11-29 14:41:19,838 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 281
+INFO 2025-11-29 14:41:20,924 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-11-29 14:41:21,988 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-11-29 14:41:23,003 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 14:41:24,102 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 14:41:25,149 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-11-29 14:41:26,206 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-11-29 14:41:27,368 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 14:41:28,429 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-11-29 14:41:29,446 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-11-29 14:41:30,438 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-11-29 14:41:31,495 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-11-29 14:41:32,592 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-11-29 14:41:33,602 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-11-29 14:41:34,680 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-11-29 14:41:35,354 basehttp 58865 13072510976 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+INFO 2025-11-29 14:41:36,365 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 287
+INFO 2025-11-29 14:41:37,364 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 287
+INFO 2025-11-29 14:41:38,395 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 14:41:39,464 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 14:41:40,493 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-11-29 14:41:41,586 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-11-29 14:41:42,739 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 14:41:43,735 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-11-29 14:41:44,730 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-29 14:41:45,812 basehttp 58865 13072510976 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-11-29 14:42:18,547 basehttp 58865 13072510976 "GET /process-code/get HTTP/1.1" 200 1547
+ERROR 2025-11-29 14:42:22,922 log 58865 13072510976 Internal Server Error: /process-code/update
+ERROR 2025-11-29 14:42:22,923 basehttp 58865 13072510976 "PATCH /process-code/update HTTP/1.1" 500 1013
+INFO 2025-11-29 14:42:30,476 basehttp 58865 13072510976 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-11-29 14:42:31,223 basehttp 58865 13072510976 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-11-29 14:42:32,031 basehttp 58865 13072510976 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-11-29 14:42:32,833 basehttp 58865 13072510976 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-11-29 14:42:33,621 basehttp 58865 13072510976 "PATCH /calibration/update-order HTTP/1.1" 200 71
+WARNING 2025-11-29 14:42:34,370 log 58865 13072510976 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:42:34,370 basehttp 58865 13072510976 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-11-29 14:42:35,075 log 58865 13072510976 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:42:35,075 basehttp 58865 13072510976 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-11-29 14:42:35,801 log 58865 13072510976 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:42:35,803 basehttp 58865 13072510976 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-11-29 14:42:36,493 log 58865 13072510976 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:42:36,494 basehttp 58865 13072510976 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-11-29 14:42:37,192 log 58865 13072510976 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:42:37,193 basehttp 58865 13072510976 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-11-29 14:42:37,878 log 58865 13072510976 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:42:37,880 basehttp 58865 13072510976 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-11-29 14:42:38,570 log 58865 13072510976 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:42:38,572 basehttp 58865 13072510976 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-11-29 14:42:39,242 log 58865 13072510976 Bad Request: /calibration/update-order
+WARNING 2025-11-29 14:42:39,242 basehttp 58865 13072510976 "PATCH /calibration/update-order HTTP/1.1" 400 83
+INFO 2025-11-29 14:42:44,006 basehttp 58865 13072510976 "GET /management-report-layout/get HTTP/1.1" 200 1614
+INFO 2025-11-29 14:42:48,684 basehttp 58865 13072510976 "GET /management-report-settings/get HTTP/1.1" 200 1104
+INFO 2025-11-29 14:42:49,405 basehttp 58865 13072510976 "GET /config/dop/get HTTP/1.1" 200 68
+INFO 2025-11-29 14:42:50,227 basehttp 58865 13072510976 "POST /config/dop/update HTTP/1.1" 200 68
+INFO 2025-12-02 00:44:01,997 autoreload 25672 8640851520 Watching for file changes with StatReloader
+INFO 2025-12-02 01:00:17,828 basehttp 25672 13033795584 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-02 01:00:20,578 basehttp 25672 13033795584 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-02 01:00:21,411 basehttp 25672 13033795584 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-02 01:00:23,884 basehttp 25672 13033795584 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-02 01:00:24,646 basehttp 25672 13033795584 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-02 01:00:25,468 basehttp 25672 13033795584 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-02 01:00:26,262 basehttp 25672 13033795584 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-02 01:00:28,782 basehttp 25672 13033795584 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-02 01:00:29,684 basehttp 25672 13033795584 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-12-02 01:00:32,014 basehttp 25672 13033795584 "POST /info-default/lab-materials-settings HTTP/1.1" 200 85
+INFO 2025-12-02 01:00:32,731 basehttp 25672 13033795584 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-02 01:00:33,500 basehttp 25672 13033795584 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-02 01:00:34,202 basehttp 25672 13033795584 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-12-02 01:00:34,896 basehttp 25672 13033795584 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 01:00:35,862 basehttp 25672 13033795584 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-12-02 01:01:21,742 basehttp 25672 13033795584 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-12-02 01:01:22,537 basehttp 25672 13033795584 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 01:01:35,545 basehttp 25672 13033795584 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-12-02 01:01:36,380 basehttp 25672 13033795584 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-02 01:02:32,181 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 281
+INFO 2025-12-02 01:02:33,206 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 281
+INFO 2025-12-02 01:02:34,231 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-12-02 01:02:35,331 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-12-02 01:02:36,402 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-12-02 01:02:37,439 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-12-02 01:02:38,475 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-12-02 01:02:39,526 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-12-02 01:02:40,543 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-12-02 01:02:41,609 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-12-02 01:02:42,653 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-12-02 01:02:43,778 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-12-02 01:02:44,848 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-12-02 01:02:45,960 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-12-02 01:02:47,007 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-12-02 01:02:48,075 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-12-02 01:02:48,784 basehttp 25672 13033795584 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+INFO 2025-12-02 01:02:49,874 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 287
+INFO 2025-12-02 01:02:50,882 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 287
+INFO 2025-12-02 01:02:51,926 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 01:02:53,082 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 01:02:54,125 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-12-02 01:02:55,272 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-12-02 01:02:56,308 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 01:02:57,337 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 01:02:58,374 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-12-02 01:02:59,501 basehttp 25672 13033795584 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-12-02 01:03:35,902 basehttp 25672 13033795584 "GET /process-code/get HTTP/1.1" 200 1547
+INFO 2025-12-02 01:03:41,746 basehttp 25672 13033795584 "PATCH /process-code/update HTTP/1.1" 200 136
+INFO 2025-12-02 01:04:03,242 basehttp 25672 13033795584 "PATCH /process-code/update HTTP/1.1" 200 136
+INFO 2025-12-02 01:04:20,193 basehttp 25672 13033795584 "PATCH /process-code/update HTTP/1.1" 200 139
+INFO 2025-12-02 01:05:27,199 basehttp 25672 13033795584 "GET /lab-materials/get HTTP/1.1" 200 1356
+WARNING 2025-12-02 01:05:30,263 log 25672 13033795584 Method Not Allowed (PATCH): /lab-materials/update
+WARNING 2025-12-02 01:05:30,264 basehttp 25672 13033795584 "PATCH /lab-materials/update HTTP/1.1" 405 0
+INFO 2025-12-02 01:05:32,681 basehttp 25672 13033795584 "POST /lab-materials/insert HTTP/1.1" 200 100
+INFO 2025-12-02 01:05:53,676 basehttp 25672 13033795584 "GET /management-report-settings/get HTTP/1.1" 200 1104
+INFO 2025-12-02 01:05:54,396 basehttp 25672 13033795584 "GET /config/dop/get HTTP/1.1" 200 68
+INFO 2025-12-02 01:05:55,196 basehttp 25672 13033795584 "POST /config/dop/update HTTP/1.1" 200 68
+INFO 2025-12-02 01:06:01,696 basehttp 25672 13033795584 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-02 01:06:02,520 basehttp 25672 13033795584 "GET /lab-excel/get-numbers HTTP/1.1" 200 101
+INFO 2025-12-02 01:06:10,559 basehttp 25672 13033795584 "PATCH /lab-excel/update HTTP/1.1" 200 103
+INFO 2025-12-02 01:06:50,390 basehttp 25672 13033795584 "GET /lab-materials/get HTTP/1.1" 200 1356
+INFO 2025-12-02 01:07:02,656 basehttp 25672 13033795584 "GET /lab-excel/get-letters HTTP/1.1" 200 1112
+INFO 2025-12-02 01:07:03,436 basehttp 25672 13033795584 "GET /lab-excel/get-numbers HTTP/1.1" 200 1118
+WARNING 2025-12-02 01:11:08,861 log 25672 13033795584 Not Found: /
+WARNING 2025-12-02 01:11:08,864 basehttp 25672 13033795584 "GET / HTTP/1.1" 404 25086
+INFO 2025-12-02 01:11:13,790 basehttp 25672 13033795584 "GET /analysis-category/exists?parameter=nuevo HTTP/1.1" 200 67
+INFO 2025-12-02 01:11:14,581 basehttp 25672 13033795584 "POST /analysis-category/add-new HTTP/1.1" 200 70
+WARNING 2025-12-02 01:11:14,604 log 25672 13033795584 Not Found: /
+WARNING 2025-12-02 01:11:14,607 basehttp 25672 13033795584 "POST / HTTP/1.1" 404 25087
+INFO 2025-12-02 01:15:22,251 autoreload 25672 8640851520 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorysettingsexcel_view.py changed, reloading.
+INFO 2025-12-02 01:15:25,912 autoreload 27056 8630431296 Watching for file changes with StatReloader
+INFO 2025-12-02 02:02:35,023 autoreload 33849 8636333632 Watching for file changes with StatReloader
+INFO 2025-12-02 02:03:27,647 basehttp 33849 13026684928 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-02 02:03:30,244 basehttp 33849 13026684928 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-02 02:03:31,031 basehttp 33849 13026684928 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-02 02:03:33,164 basehttp 33849 13026684928 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-02 02:03:33,967 basehttp 33849 13026684928 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-02 02:03:34,738 basehttp 33849 13026684928 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-02 02:03:35,497 basehttp 33849 13026684928 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-02 02:03:38,069 basehttp 33849 13026684928 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-02 02:03:38,840 basehttp 33849 13026684928 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-12-02 02:03:41,337 basehttp 33849 13026684928 "POST /info-default/lab-materials-settings HTTP/1.1" 200 85
+INFO 2025-12-02 02:03:42,064 basehttp 33849 13026684928 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-02 02:03:42,833 basehttp 33849 13026684928 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-02 02:03:43,534 basehttp 33849 13026684928 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-12-02 02:03:44,198 basehttp 33849 13026684928 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 02:03:45,033 basehttp 33849 13026684928 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-12-02 02:04:04,600 basehttp 33849 13026684928 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-12-02 02:04:05,323 basehttp 33849 13026684928 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 02:04:11,677 basehttp 33849 13026684928 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-12-02 02:04:12,410 basehttp 33849 13026684928 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-02 02:23:34,189 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 281
+INFO 2025-12-02 02:23:35,224 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 281
+INFO 2025-12-02 02:23:36,245 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-12-02 02:23:37,326 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-12-02 02:23:38,367 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-12-02 02:23:39,393 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-12-02 02:23:40,438 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-12-02 02:23:41,422 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-12-02 02:23:42,429 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-12-02 02:23:43,447 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-12-02 02:23:44,426 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-12-02 02:23:45,456 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-12-02 02:23:46,447 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-12-02 02:23:47,470 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-12-02 02:23:48,508 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-12-02 02:23:49,499 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-12-02 02:23:50,195 basehttp 33849 13026684928 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+INFO 2025-12-02 02:23:51,254 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 287
+INFO 2025-12-02 02:23:52,283 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 287
+INFO 2025-12-02 02:23:53,347 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 02:23:54,348 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 02:23:55,352 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-12-02 02:23:56,410 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-12-02 02:23:57,440 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 02:23:58,462 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 02:23:59,462 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-12-02 02:24:00,465 basehttp 33849 13026684928 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-12-02 02:28:28,226 basehttp 33849 13026684928 "GET /process-code/get HTTP/1.1" 200 1547
+INFO 2025-12-02 02:29:56,386 basehttp 33849 13026684928 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-02 02:29:57,180 basehttp 33849 13026684928 "GET /lab-excel/get-numbers HTTP/1.1" 200 101
+ERROR 2025-12-02 02:30:05,226 log 33849 13026684928 Internal Server Error: /lab-excel/update
+ERROR 2025-12-02 02:30:05,227 basehttp 33849 13026684928 "PATCH /lab-excel/update HTTP/1.1" 500 137
+INFO 2025-12-02 02:31:17,320 basehttp 33849 13026684928 "GET /process-code/get HTTP/1.1" 200 1547
+WARNING 2025-12-02 02:32:35,153 log 33849 13026684928 Not Found: /
+WARNING 2025-12-02 02:32:35,155 basehttp 33849 13026684928 "GET / HTTP/1.1" 404 25086
+INFO 2025-12-02 02:32:43,278 basehttp 33849 13026684928 "GET /analysis-category/exists?parameter=Nuevo HTTP/1.1" 200 67
+INFO 2025-12-02 02:32:44,075 basehttp 33849 13026684928 "POST /analysis-category/add-new HTTP/1.1" 200 70
+WARNING 2025-12-02 02:32:44,108 log 33849 13026684928 Not Found: /
+WARNING 2025-12-02 02:32:44,109 basehttp 33849 13026684928 "POST / HTTP/1.1" 404 25087
+INFO 2025-12-02 03:18:21,093 autoreload 45316 8669408832 Watching for file changes with StatReloader
+INFO 2025-12-02 03:18:47,692 basehttp 45316 13092319232 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-02 03:18:50,214 basehttp 45316 13092319232 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-02 03:18:51,042 basehttp 45316 13092319232 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-02 03:18:53,315 basehttp 45316 13092319232 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-02 03:18:54,088 basehttp 45316 13092319232 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-02 03:18:54,890 basehttp 45316 13092319232 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-02 03:18:55,661 basehttp 45316 13092319232 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-02 03:18:58,095 basehttp 45316 13092319232 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-02 03:18:58,935 basehttp 45316 13092319232 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-12-02 03:19:01,137 basehttp 45316 13092319232 "POST /info-default/lab-materials-settings HTTP/1.1" 200 85
+INFO 2025-12-02 03:19:01,904 basehttp 45316 13092319232 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-02 03:19:02,631 basehttp 45316 13092319232 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-02 03:19:03,343 basehttp 45316 13092319232 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-12-02 03:19:04,070 basehttp 45316 13092319232 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 03:19:04,857 basehttp 45316 13092319232 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-12-02 03:19:27,002 basehttp 45316 13092319232 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-12-02 03:19:28,054 basehttp 45316 13092319232 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 03:19:37,511 basehttp 45316 13092319232 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-12-02 03:19:38,348 basehttp 45316 13092319232 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-02 03:20:17,525 basehttp 45316 13092319232 "POST /calibration/create HTTP/1.1" 201 281
+INFO 2025-12-02 03:20:18,570 basehttp 45316 13092319232 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-12-02 03:20:19,678 basehttp 45316 13092319232 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-12-02 03:20:20,726 basehttp 45316 13092319232 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-12-02 03:20:21,725 basehttp 45316 13092319232 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-12-02 03:20:22,780 basehttp 45316 13092319232 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-12-02 03:20:23,852 basehttp 45316 13092319232 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-12-02 03:20:24,929 basehttp 45316 13092319232 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-12-02 03:20:25,675 basehttp 45316 13092319232 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+INFO 2025-12-02 03:20:26,748 basehttp 45316 13092319232 "POST /calibration/create HTTP/1.1" 201 287
+INFO 2025-12-02 03:20:27,788 basehttp 45316 13092319232 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 03:20:28,768 basehttp 45316 13092319232 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-12-02 03:20:29,775 basehttp 45316 13092319232 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 03:20:30,848 basehttp 45316 13092319232 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-12-02 03:20:49,646 basehttp 45316 13092319232 "GET /process-code/get HTTP/1.1" 200 814
+INFO 2025-12-02 03:20:53,576 basehttp 45316 13092319232 "PATCH /process-code/update HTTP/1.1" 200 140
+INFO 2025-12-02 03:21:06,916 basehttp 45316 13092319232 "PATCH /process-code/update HTTP/1.1" 200 140
+INFO 2025-12-02 03:22:40,212 basehttp 45316 13092319232 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 03:22:41,028 basehttp 45316 13092319232 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 03:22:41,800 basehttp 45316 13092319232 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 03:22:42,575 basehttp 45316 13092319232 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 03:22:43,341 basehttp 45316 13092319232 "PATCH /calibration/update-order HTTP/1.1" 200 71
+WARNING 2025-12-02 03:22:44,028 log 45316 13092319232 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:22:44,028 basehttp 45316 13092319232 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 03:22:44,700 log 45316 13092319232 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:22:44,700 basehttp 45316 13092319232 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 03:22:45,441 log 45316 13092319232 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:22:45,442 basehttp 45316 13092319232 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 03:22:46,145 log 45316 13092319232 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:22:46,146 basehttp 45316 13092319232 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 03:22:46,831 log 45316 13092319232 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:22:46,831 basehttp 45316 13092319232 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 03:22:47,553 log 45316 13092319232 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:22:47,554 basehttp 45316 13092319232 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 03:22:48,213 log 45316 13092319232 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:22:48,213 basehttp 45316 13092319232 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 03:22:48,891 log 45316 13092319232 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:22:48,891 basehttp 45316 13092319232 "PATCH /calibration/update-order HTTP/1.1" 400 83
+INFO 2025-12-02 03:23:30,754 basehttp 45316 13092319232 "GET /lab-materials/get HTTP/1.1" 200 1375
+WARNING 2025-12-02 03:23:33,166 log 45316 13092319232 Method Not Allowed (PATCH): /lab-materials/update
+WARNING 2025-12-02 03:23:33,166 basehttp 45316 13092319232 "PATCH /lab-materials/update HTTP/1.1" 405 0
+WARNING 2025-12-02 03:30:06,885 log 45316 13092319232 Not Found: /
+WARNING 2025-12-02 03:30:06,886 basehttp 45316 13092319232 "GET / HTTP/1.1" 404 25086
+INFO 2025-12-02 03:30:10,967 basehttp 45316 13092319232 "GET /analysis-category/exists?parameter=Nuevo HTTP/1.1" 200 67
+INFO 2025-12-02 03:30:11,784 basehttp 45316 13092319232 "POST /analysis-category/add-new HTTP/1.1" 200 70
+WARNING 2025-12-02 03:30:11,805 log 45316 13092319232 Not Found: /
+WARNING 2025-12-02 03:30:11,806 basehttp 45316 13092319232 "POST / HTTP/1.1" 404 25087
+INFO 2025-12-02 03:33:05,007 autoreload 45316 8669408832 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/labmaterialssettings_view.py changed, reloading.
+INFO 2025-12-02 03:33:08,817 autoreload 47581 8643989056 Watching for file changes with StatReloader
+INFO 2025-12-02 03:33:17,644 autoreload 47581 8643989056 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorysettingsexcel_view.py changed, reloading.
+INFO 2025-12-02 03:33:18,834 autoreload 47662 8640405056 Watching for file changes with StatReloader
+INFO 2025-12-02 03:35:43,961 basehttp 47662 13034172416 "GET /management-report-settings/get HTTP/1.1" 200 1104
+INFO 2025-12-02 03:35:44,660 basehttp 47662 13034172416 "GET /config/dop/get HTTP/1.1" 200 68
+INFO 2025-12-02 03:35:45,475 basehttp 47662 13034172416 "POST /config/dop/update HTTP/1.1" 200 68
+WARNING 2025-12-02 03:35:52,092 log 47662 13034172416 Bad Request: /management-report-settings/update
+WARNING 2025-12-02 03:35:52,093 basehttp 47662 13034172416 "PATCH /management-report-settings/update HTTP/1.1" 400 72
+INFO 2025-12-02 03:36:18,682 basehttp 47662 13034172416 "GET /management-report-settings/get HTTP/1.1" 200 1104
+INFO 2025-12-02 03:36:19,371 basehttp 47662 13034172416 "GET /config/dop/get HTTP/1.1" 200 68
+INFO 2025-12-02 03:36:20,136 basehttp 47662 13034172416 "POST /config/dop/update HTTP/1.1" 200 68
+INFO 2025-12-02 03:43:41,278 basehttp 47662 13034172416 "GET /management-report-settings/get HTTP/1.1" 200 1104
+INFO 2025-12-02 03:43:42,038 basehttp 47662 13034172416 "GET /config/dop/get HTTP/1.1" 200 68
+INFO 2025-12-02 03:43:42,799 basehttp 47662 13034172416 "POST /config/dop/update HTTP/1.1" 200 68
+INFO 2025-12-02 03:43:59,137 basehttp 47662 13034172416 "GET /crystals-param/get HTTP/1.1" 200 65
+WARNING 2025-12-02 03:43:59,187 log 47662 13034172416 Not Found: /
+WARNING 2025-12-02 03:43:59,187 basehttp 47662 13034172416 "GET / HTTP/1.1" 404 25086
+INFO 2025-12-02 03:46:34,513 autoreload 50022 8591617600 Watching for file changes with StatReloader
+INFO 2025-12-02 03:52:30,170 basehttp 50022 12938211328 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-02 03:52:32,646 basehttp 50022 12938211328 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-02 03:52:33,401 basehttp 50022 12938211328 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-02 03:52:35,493 basehttp 50022 12938211328 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-02 03:52:36,272 basehttp 50022 12938211328 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-02 03:52:37,081 basehttp 50022 12938211328 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-02 03:52:37,874 basehttp 50022 12938211328 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-02 03:52:40,408 basehttp 50022 12938211328 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-02 03:52:41,175 basehttp 50022 12938211328 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-12-02 03:52:43,464 basehttp 50022 12938211328 "POST /info-default/lab-materials-settings HTTP/1.1" 200 85
+INFO 2025-12-02 03:52:44,211 basehttp 50022 12938211328 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-02 03:52:44,978 basehttp 50022 12938211328 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-02 03:52:45,644 basehttp 50022 12938211328 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-12-02 03:52:46,339 basehttp 50022 12938211328 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 03:52:47,157 basehttp 50022 12938211328 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-12-02 03:53:05,487 basehttp 50022 12938211328 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-12-02 03:53:06,232 basehttp 50022 12938211328 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 03:53:13,324 basehttp 50022 12938211328 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-12-02 03:53:14,098 basehttp 50022 12938211328 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-02 03:57:57,986 basehttp 50022 12938211328 "POST /calibration/create HTTP/1.1" 201 281
+INFO 2025-12-02 03:57:59,005 basehttp 50022 12938211328 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-12-02 03:58:00,082 basehttp 50022 12938211328 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-12-02 03:58:01,176 basehttp 50022 12938211328 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-12-02 03:58:02,214 basehttp 50022 12938211328 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-12-02 03:58:03,261 basehttp 50022 12938211328 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-12-02 03:58:04,376 basehttp 50022 12938211328 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-12-02 03:58:05,416 basehttp 50022 12938211328 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-12-02 03:58:06,155 basehttp 50022 12938211328 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+INFO 2025-12-02 03:58:07,139 basehttp 50022 12938211328 "POST /calibration/create HTTP/1.1" 201 287
+INFO 2025-12-02 03:58:08,240 basehttp 50022 12938211328 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 03:58:09,251 basehttp 50022 12938211328 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-12-02 03:58:10,314 basehttp 50022 12938211328 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 03:58:11,387 basehttp 50022 12938211328 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-12-02 03:59:04,493 basehttp 50022 12938211328 "GET /process-code/get HTTP/1.1" 200 814
+INFO 2025-12-02 03:59:15,793 basehttp 50022 12938211328 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 03:59:16,612 basehttp 50022 12938211328 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 03:59:17,389 basehttp 50022 12938211328 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 03:59:18,132 basehttp 50022 12938211328 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 03:59:18,949 basehttp 50022 12938211328 "PATCH /calibration/update-order HTTP/1.1" 200 71
+WARNING 2025-12-02 03:59:19,669 log 50022 12938211328 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:59:19,669 basehttp 50022 12938211328 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 03:59:20,386 log 50022 12938211328 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:59:20,387 basehttp 50022 12938211328 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 03:59:21,054 log 50022 12938211328 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:59:21,055 basehttp 50022 12938211328 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 03:59:21,770 log 50022 12938211328 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:59:21,771 basehttp 50022 12938211328 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 03:59:22,487 log 50022 12938211328 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:59:22,488 basehttp 50022 12938211328 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 03:59:23,138 log 50022 12938211328 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:59:23,139 basehttp 50022 12938211328 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 03:59:23,804 log 50022 12938211328 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:59:23,804 basehttp 50022 12938211328 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 03:59:24,477 log 50022 12938211328 Bad Request: /calibration/update-order
+WARNING 2025-12-02 03:59:24,478 basehttp 50022 12938211328 "PATCH /calibration/update-order HTTP/1.1" 400 83
+INFO 2025-12-02 04:03:43,324 basehttp 50022 12938211328 "GET /management-report-settings/get HTTP/1.1" 200 1104
+INFO 2025-12-02 04:03:44,074 basehttp 50022 12938211328 "GET /config/dop/get HTTP/1.1" 200 68
+INFO 2025-12-02 04:03:44,821 basehttp 50022 12938211328 "POST /config/dop/update HTTP/1.1" 200 68
+WARNING 2025-12-02 04:03:49,730 log 50022 12938211328 Bad Request: /management-report-settings/update
+WARNING 2025-12-02 04:03:49,731 basehttp 50022 12938211328 "PATCH /management-report-settings/update HTTP/1.1" 400 72
+INFO 2025-12-02 04:04:51,295 basehttp 50022 12938211328 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-02 04:04:52,133 basehttp 50022 12938211328 "GET /lab-excel/get-numbers HTTP/1.1" 200 101
+ERROR 2025-12-02 04:04:57,166 log 50022 12938211328 Internal Server Error: /lab-excel/update
+ERROR 2025-12-02 04:04:57,169 basehttp 50022 12938211328 "PATCH /lab-excel/update HTTP/1.1" 500 106
+INFO 2025-12-02 04:06:13,183 basehttp 50022 12938211328 "GET /lab-materials/get HTTP/1.1" 200 1375
+INFO 2025-12-02 04:06:17,452 basehttp 50022 12938211328 "PATCH /lab-materials/update HTTP/1.1" 200 98
+INFO 2025-12-02 04:06:47,606 basehttp 50022 12938211328 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-02 04:06:48,399 basehttp 50022 12938211328 "GET /lab-excel/get-numbers HTTP/1.1" 200 101
+INFO 2025-12-02 04:07:42,076 basehttp 50022 12938211328 "GET /lab-materials/get HTTP/1.1" 200 1375
+INFO 2025-12-02 04:23:47,652 autoreload 50022 8591617600 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-12-02 04:23:49,286 autoreload 56467 8634654272 Watching for file changes with StatReloader
+INFO 2025-12-02 04:23:50,612 autoreload 56467 8634654272 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/calibration_view.py changed, reloading.
+INFO 2025-12-02 04:23:51,091 autoreload 56489 8668270144 Watching for file changes with StatReloader
+INFO 2025-12-02 04:23:52,383 autoreload 56489 8668270144 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/urls.py changed, reloading.
+INFO 2025-12-02 04:23:52,773 autoreload 56494 8672681536 Watching for file changes with StatReloader
+INFO 2025-12-02 14:35:13,769 autoreload 63900 8603303488 Watching for file changes with StatReloader
+INFO 2025-12-02 14:42:20,612 basehttp 63900 12961656832 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-02 14:42:21,483 basehttp 63900 12961656832 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-02 14:42:23,923 basehttp 63900 12961656832 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-02 14:42:24,776 basehttp 63900 12961656832 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-02 14:42:25,532 basehttp 63900 12961656832 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-02 14:42:27,536 basehttp 63900 12961656832 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-02 14:42:28,374 basehttp 63900 12961656832 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-02 14:42:29,185 basehttp 63900 12961656832 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-02 14:42:29,939 basehttp 63900 12961656832 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-02 14:42:32,723 basehttp 63900 12961656832 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-02 14:42:33,519 basehttp 63900 12961656832 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-12-02 14:42:35,795 basehttp 63900 12961656832 "POST /info-default/lab-materials-settings HTTP/1.1" 200 85
+INFO 2025-12-02 14:42:36,505 basehttp 63900 12961656832 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-02 14:42:37,253 basehttp 63900 12961656832 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-02 14:42:37,949 basehttp 63900 12961656832 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-12-02 14:42:38,635 basehttp 63900 12961656832 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 14:42:39,873 basehttp 63900 12961656832 "GET /company/get HTTP/1.1" 200 75
+INFO 2025-12-02 14:42:55,002 basehttp 63900 12961656832 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-12-02 14:42:55,717 basehttp 63900 12961656832 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 14:43:01,225 basehttp 63900 12961656832 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-12-02 14:43:01,991 basehttp 63900 12961656832 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-02 14:45:24,673 basehttp 63900 12961656832 "POST /calibration/create HTTP/1.1" 201 281
+INFO 2025-12-02 14:45:25,734 basehttp 63900 12961656832 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-12-02 14:45:26,749 basehttp 63900 12961656832 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-12-02 14:45:27,769 basehttp 63900 12961656832 "POST /calibration/create HTTP/1.1" 201 280
+INFO 2025-12-02 14:45:28,818 basehttp 63900 12961656832 "POST /calibration/create HTTP/1.1" 201 286
+INFO 2025-12-02 14:45:29,850 basehttp 63900 12961656832 "POST /calibration/create HTTP/1.1" 201 305
+INFO 2025-12-02 14:45:30,853 basehttp 63900 12961656832 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-12-02 14:45:31,889 basehttp 63900 12961656832 "POST /calibration/create HTTP/1.1" 201 301
+INFO 2025-12-02 14:45:32,616 basehttp 63900 12961656832 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+INFO 2025-12-02 14:45:33,690 basehttp 63900 12961656832 "POST /calibration/create HTTP/1.1" 201 287
+INFO 2025-12-02 14:45:34,812 basehttp 63900 12961656832 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 14:45:35,927 basehttp 63900 12961656832 "POST /calibration/create HTTP/1.1" 201 297
+INFO 2025-12-02 14:45:36,928 basehttp 63900 12961656832 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 14:45:37,987 basehttp 63900 12961656832 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-12-02 14:51:58,426 basehttp 63900 12961656832 "GET /process-code/get HTTP/1.1" 200 814
+INFO 2025-12-02 14:52:04,948 basehttp 63900 12961656832 "PATCH /process-code/update HTTP/1.1" 200 141
+INFO 2025-12-02 14:53:03,041 basehttp 63900 12961656832 "PATCH /process-code/update HTTP/1.1" 200 138
+INFO 2025-12-02 14:57:45,234 basehttp 63900 12961656832 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 14:57:46,027 basehttp 63900 12961656832 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 14:57:46,854 basehttp 63900 12961656832 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 14:57:47,660 basehttp 63900 12961656832 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 14:57:48,465 basehttp 63900 12961656832 "PATCH /calibration/update-order HTTP/1.1" 200 71
+WARNING 2025-12-02 14:57:49,232 log 63900 12961656832 Bad Request: /calibration/update-order
+WARNING 2025-12-02 14:57:49,233 basehttp 63900 12961656832 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 14:57:49,939 log 63900 12961656832 Bad Request: /calibration/update-order
+WARNING 2025-12-02 14:57:49,940 basehttp 63900 12961656832 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 14:57:50,631 log 63900 12961656832 Bad Request: /calibration/update-order
+WARNING 2025-12-02 14:57:50,654 basehttp 63900 12961656832 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 14:57:51,422 log 63900 12961656832 Bad Request: /calibration/update-order
+WARNING 2025-12-02 14:57:51,423 basehttp 63900 12961656832 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 14:57:52,111 log 63900 12961656832 Bad Request: /calibration/update-order
+WARNING 2025-12-02 14:57:52,111 basehttp 63900 12961656832 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 14:57:52,772 log 63900 12961656832 Bad Request: /calibration/update-order
+WARNING 2025-12-02 14:57:52,773 basehttp 63900 12961656832 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 14:57:53,491 log 63900 12961656832 Bad Request: /calibration/update-order
+WARNING 2025-12-02 14:57:53,493 basehttp 63900 12961656832 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 14:57:54,192 log 63900 12961656832 Bad Request: /calibration/update-order
+WARNING 2025-12-02 14:57:54,192 basehttp 63900 12961656832 "PATCH /calibration/update-order HTTP/1.1" 400 83
+INFO 2025-12-02 14:59:33,419 basehttp 63900 12961656832 "GET /management-report-settings/get HTTP/1.1" 200 1104
+INFO 2025-12-02 14:59:34,137 basehttp 63900 12961656832 "GET /config/dop/get HTTP/1.1" 200 68
+INFO 2025-12-02 14:59:34,885 basehttp 63900 12961656832 "POST /config/dop/update HTTP/1.1" 200 68
+WARNING 2025-12-02 14:59:40,829 log 63900 12961656832 Not Found: /management-report-settings/update
+WARNING 2025-12-02 14:59:40,831 basehttp 63900 12961656832 "PATCH /management-report-settings/update HTTP/1.1" 404 76
+WARNING 2025-12-02 15:58:00,696 log 63900 12961656832 Unauthorized: /lab-excel/get-letters
+WARNING 2025-12-02 15:58:00,699 basehttp 63900 12961656832 "GET /lab-excel/get-letters HTTP/1.1" 401 63
+WARNING 2025-12-02 15:58:00,767 log 63900 12961656832 Not Found: /auth/token/refresh/
+WARNING 2025-12-02 15:58:00,767 basehttp 63900 12961656832 "POST /auth/token/refresh/ HTTP/1.1" 404 25331
+INFO 2025-12-02 15:58:02,445 basehttp 63900 12961656832 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-02 15:58:03,243 basehttp 63900 12961656832 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-02 15:58:04,003 basehttp 63900 12961656832 "GET /lab-excel/get-numbers HTTP/1.1" 200 101
+ERROR 2025-12-02 16:00:22,463 log 63900 12961656832 Internal Server Error: /lab-excel/update
+ERROR 2025-12-02 16:00:22,465 basehttp 63900 12961656832 "PATCH /lab-excel/update HTTP/1.1" 500 106
+INFO 2025-12-02 16:04:57,019 basehttp 63900 12961656832 "GET /lab-materials/get HTTP/1.1" 200 1375
+INFO 2025-12-02 16:04:59,899 basehttp 63900 12961656832 "PATCH /lab-materials/update HTTP/1.1" 200 98
+INFO 2025-12-02 16:06:15,849 autoreload 63900 8603303488 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-12-02 16:06:18,273 autoreload 77992 8604704320 Watching for file changes with StatReloader
+INFO 2025-12-02 16:25:57,948 autoreload 81193 8633925184 Watching for file changes with StatReloader
+INFO 2025-12-02 16:35:54,576 autoreload 81193 8633925184 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-12-02 16:35:56,392 autoreload 82598 8605392448 Watching for file changes with StatReloader
+INFO 2025-12-02 16:38:41,054 autoreload 83272 8636829248 Watching for file changes with StatReloader
+INFO 2025-12-02 16:38:52,821 basehttp 83272 13026979840 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-02 16:38:53,702 basehttp 83272 13026979840 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-02 16:38:56,184 basehttp 83272 13026979840 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-02 16:38:56,936 basehttp 83272 13026979840 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-02 16:38:57,749 basehttp 83272 13026979840 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-02 16:38:59,930 basehttp 83272 13026979840 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-02 16:39:00,717 basehttp 83272 13026979840 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-02 16:39:01,498 basehttp 83272 13026979840 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-02 16:39:02,266 basehttp 83272 13026979840 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-02 16:39:04,866 basehttp 83272 13026979840 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-02 16:39:05,630 basehttp 83272 13026979840 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-12-02 16:39:07,911 basehttp 83272 13026979840 "POST /info-default/lab-materials-settings HTTP/1.1" 200 85
+INFO 2025-12-02 16:39:08,680 basehttp 83272 13026979840 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-02 16:39:09,436 basehttp 83272 13026979840 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-02 16:39:10,102 basehttp 83272 13026979840 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-02 16:39:10,814 basehttp 83272 13026979840 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 16:39:11,991 basehttp 83272 13026979840 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-02 16:40:22,984 autoreload 83272 8636829248 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorysettingsexcel_view.py changed, reloading.
+INFO 2025-12-02 16:40:24,272 autoreload 83590 8640568896 Watching for file changes with StatReloader
+INFO 2025-12-02 16:40:25,649 autoreload 83590 8640568896 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/urls.py changed, reloading.
+INFO 2025-12-02 16:40:26,080 autoreload 83606 8601960000 Watching for file changes with StatReloader
+INFO 2025-12-02 16:41:59,057 basehttp 83606 12959379456 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-02 16:41:59,910 basehttp 83606 12959379456 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-02 16:42:02,370 basehttp 83606 12959379456 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-02 16:42:03,139 basehttp 83606 12959379456 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-02 16:42:03,891 basehttp 83606 12959379456 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-02 16:42:06,035 basehttp 83606 12959379456 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-02 16:42:06,825 basehttp 83606 12959379456 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-02 16:42:07,569 basehttp 83606 12959379456 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-02 16:42:08,337 basehttp 83606 12959379456 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-02 16:42:10,909 basehttp 83606 12959379456 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-02 16:42:11,701 basehttp 83606 12959379456 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-12-02 16:42:13,921 basehttp 83606 12959379456 "POST /info-default/lab-materials-settings HTTP/1.1" 200 85
+INFO 2025-12-02 16:42:14,653 basehttp 83606 12959379456 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-02 16:42:15,437 basehttp 83606 12959379456 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-02 16:42:16,124 basehttp 83606 12959379456 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-02 16:42:16,823 basehttp 83606 12959379456 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 16:42:18,152 basehttp 83606 12959379456 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-02 16:42:49,441 basehttp 83606 12959379456 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-12-02 16:42:50,196 basehttp 83606 12959379456 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 16:56:10,331 basehttp 83606 12959379456 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 17:04:07,763 autoreload 88404 8606813760 Watching for file changes with StatReloader
+INFO 2025-12-02 17:04:20,224 basehttp 88404 12969013248 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-02 17:04:21,116 basehttp 88404 12969013248 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-02 17:04:23,789 basehttp 88404 12969013248 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-02 17:04:24,610 basehttp 88404 12969013248 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-02 17:04:25,391 basehttp 88404 12969013248 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-02 17:04:27,506 basehttp 88404 12969013248 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-02 17:04:28,246 basehttp 88404 12969013248 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-02 17:04:29,028 basehttp 88404 12969013248 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-02 17:04:29,816 basehttp 88404 12969013248 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-02 17:04:32,272 basehttp 88404 12969013248 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-02 17:04:33,004 basehttp 88404 12969013248 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-12-02 17:04:35,352 basehttp 88404 12969013248 "POST /info-default/lab-materials-settings HTTP/1.1" 200 85
+INFO 2025-12-02 17:04:36,121 basehttp 88404 12969013248 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-02 17:04:36,846 basehttp 88404 12969013248 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-02 17:04:37,551 basehttp 88404 12969013248 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-02 17:04:38,226 basehttp 88404 12969013248 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 17:04:39,309 basehttp 88404 12969013248 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-02 17:05:45,413 basehttp 88404 12969013248 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-12-02 17:05:46,158 basehttp 88404 12969013248 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-02 17:05:50,694 basehttp 88404 12969013248 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-12-02 17:05:51,391 basehttp 88404 12969013248 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-02 17:06:52,597 basehttp 88404 12969013248 "POST /calibration/create HTTP/1.1" 201 279
+INFO 2025-12-02 17:06:53,660 basehttp 88404 12969013248 "POST /calibration/create HTTP/1.1" 201 282
+INFO 2025-12-02 17:06:54,667 basehttp 88404 12969013248 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-12-02 17:06:55,705 basehttp 88404 12969013248 "POST /calibration/create HTTP/1.1" 201 278
+INFO 2025-12-02 17:06:56,692 basehttp 88404 12969013248 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-12-02 17:06:57,733 basehttp 88404 12969013248 "POST /calibration/create HTTP/1.1" 201 303
+INFO 2025-12-02 17:06:58,769 basehttp 88404 12969013248 "POST /calibration/create HTTP/1.1" 201 299
+INFO 2025-12-02 17:06:59,820 basehttp 88404 12969013248 "POST /calibration/create HTTP/1.1" 201 299
+INFO 2025-12-02 17:07:00,520 basehttp 88404 12969013248 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+INFO 2025-12-02 17:07:01,561 basehttp 88404 12969013248 "POST /calibration/create HTTP/1.1" 201 285
+INFO 2025-12-02 17:07:02,547 basehttp 88404 12969013248 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-12-02 17:07:03,715 basehttp 88404 12969013248 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-02 17:07:04,827 basehttp 88404 12969013248 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-12-02 17:07:05,844 basehttp 88404 12969013248 "POST /calibration/create HTTP/1.1" 201 294
+INFO 2025-12-02 17:07:44,189 basehttp 88404 12969013248 "GET /process-code/get HTTP/1.1" 200 814
+INFO 2025-12-02 17:07:49,013 basehttp 88404 12969013248 "PATCH /process-code/update HTTP/1.1" 200 139
+INFO 2025-12-02 17:07:52,276 basehttp 88404 12969013248 "PATCH /process-code/update HTTP/1.1" 200 138
+WARNING 2025-12-02 19:22:26,978 log 88404 12969013248 Unauthorized: /calibration/update-order
+WARNING 2025-12-02 19:22:26,979 basehttp 88404 12969013248 "PATCH /calibration/update-order HTTP/1.1" 401 63
+WARNING 2025-12-02 19:22:27,059 log 88404 12969013248 Not Found: /auth/token/refresh/
+WARNING 2025-12-02 19:22:27,059 basehttp 88404 12969013248 "POST /auth/token/refresh/ HTTP/1.1" 404 25669
+INFO 2025-12-02 19:22:28,390 basehttp 88404 12969013248 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-02 19:22:29,150 basehttp 88404 12969013248 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 19:22:30,007 basehttp 88404 12969013248 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 19:22:30,800 basehttp 88404 12969013248 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-02 19:22:31,599 basehttp 88404 12969013248 "PATCH /calibration/update-order HTTP/1.1" 200 71
+WARNING 2025-12-02 19:22:32,283 log 88404 12969013248 Bad Request: /calibration/update-order
+WARNING 2025-12-02 19:22:32,284 basehttp 88404 12969013248 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 19:22:32,972 log 88404 12969013248 Bad Request: /calibration/update-order
+WARNING 2025-12-02 19:22:32,973 basehttp 88404 12969013248 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 19:22:33,731 log 88404 12969013248 Bad Request: /calibration/update-order
+WARNING 2025-12-02 19:22:33,731 basehttp 88404 12969013248 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 19:22:34,701 log 88404 12969013248 Bad Request: /calibration/update-order
+WARNING 2025-12-02 19:22:34,701 basehttp 88404 12969013248 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 19:22:35,406 log 88404 12969013248 Bad Request: /calibration/update-order
+WARNING 2025-12-02 19:22:35,406 basehttp 88404 12969013248 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 19:22:36,142 log 88404 12969013248 Bad Request: /calibration/update-order
+WARNING 2025-12-02 19:22:36,143 basehttp 88404 12969013248 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 19:22:36,860 log 88404 12969013248 Bad Request: /calibration/update-order
+WARNING 2025-12-02 19:22:36,861 basehttp 88404 12969013248 "PATCH /calibration/update-order HTTP/1.1" 400 83
+WARNING 2025-12-02 19:22:37,574 log 88404 12969013248 Bad Request: /calibration/update-order
+WARNING 2025-12-02 19:22:37,574 basehttp 88404 12969013248 "PATCH /calibration/update-order HTTP/1.1" 400 83
+INFO 2025-12-02 19:23:06,714 basehttp 88404 12969013248 "GET /management-report-settings/get HTTP/1.1" 200 1103
+INFO 2025-12-02 19:23:07,476 basehttp 88404 12969013248 "GET /config/dop/get HTTP/1.1" 200 68
+INFO 2025-12-02 19:23:08,296 basehttp 88404 12969013248 "POST /config/dop/update HTTP/1.1" 200 68
+INFO 2025-12-02 19:23:12,942 basehttp 88404 12969013248 "PATCH /management-report-settings/update HTTP/1.1" 200 1252
+INFO 2025-12-02 19:23:45,132 basehttp 88404 12969013248 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-02 19:23:45,988 basehttp 88404 12969013248 "GET /lab-excel/get-numbers HTTP/1.1" 200 101
+ERROR 2025-12-02 19:25:06,017 log 88404 12969013248 Internal Server Error: /lab-excel/update
+ERROR 2025-12-02 19:25:06,020 basehttp 88404 12969013248 "PATCH /lab-excel/update HTTP/1.1" 500 106
+INFO 2025-12-02 19:25:26,583 basehttp 88404 12969013248 "GET /lab-materials/get HTTP/1.1" 200 1347
+INFO 2025-12-02 19:25:29,430 basehttp 88404 12969013248 "PATCH /lab-materials/update HTTP/1.1" 200 98
+WARNING 2025-12-02 19:25:54,714 log 88404 12969013248 Not Found: /
+WARNING 2025-12-02 19:25:54,715 basehttp 88404 12969013248 "GET / HTTP/1.1" 404 25593
+INFO 2025-12-02 19:26:00,667 basehttp 88404 12969013248 "GET /analysis-category/exists?parameter=Nuevo HTTP/1.1" 200 67
+INFO 2025-12-02 19:26:01,507 basehttp 88404 12969013248 "POST /analysis-category/add-new HTTP/1.1" 200 70
+WARNING 2025-12-02 19:26:01,525 log 88404 12969013248 Not Found: /
+WARNING 2025-12-02 19:26:01,525 basehttp 88404 12969013248 "POST / HTTP/1.1" 404 25594
+INFO 2025-12-02 19:26:23,489 basehttp 88404 12969013248 "GET /crystals-param/get HTTP/1.1" 200 65
+WARNING 2025-12-02 19:26:23,516 log 88404 12969013248 Not Found: /
+WARNING 2025-12-02 19:26:23,517 basehttp 88404 12969013248 "GET / HTTP/1.1" 404 25593
+INFO 2025-12-02 19:29:16,366 autoreload 88404 8606813760 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorysettingsexcel_view.py changed, reloading.
+INFO 2025-12-02 19:29:18,575 autoreload 2146 8603000384 Watching for file changes with StatReloader
+INFO 2025-12-05 01:07:18,228 autoreload 22852 8666394176 Watching for file changes with StatReloader
+INFO 2025-12-05 01:14:05,940 basehttp 22852 13086552064 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-05 01:14:06,901 basehttp 22852 13086552064 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 01:14:09,488 basehttp 22852 13086552064 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-05 01:14:11,980 basehttp 22852 13086552064 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 01:14:12,810 basehttp 22852 13086552064 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-05 01:14:15,062 basehttp 22852 13086552064 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-05 01:14:15,926 basehttp 22852 13086552064 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-05 01:14:16,827 basehttp 22852 13086552064 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-05 01:14:17,625 basehttp 22852 13086552064 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-05 01:14:20,186 basehttp 22852 13086552064 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-05 01:14:20,996 basehttp 22852 13086552064 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-12-05 01:14:23,316 basehttp 22852 13086552064 "POST /info-default/lab-materials-settings HTTP/1.1" 200 85
+INFO 2025-12-05 01:14:24,050 basehttp 22852 13086552064 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-05 01:14:24,904 basehttp 22852 13086552064 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-05 01:14:25,615 basehttp 22852 13086552064 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 01:14:26,328 basehttp 22852 13086552064 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-05 01:14:27,644 basehttp 22852 13086552064 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 01:15:16,014 basehttp 22852 13086552064 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-12-05 01:15:16,793 basehttp 22852 13086552064 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-05 01:15:33,734 basehttp 22852 13086552064 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-12-05 01:15:34,483 basehttp 22852 13086552064 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-05 01:17:24,459 basehttp 22852 13086552064 "POST /calibration/create HTTP/1.1" 201 279
+INFO 2025-12-05 01:17:25,525 basehttp 22852 13086552064 "POST /calibration/create HTTP/1.1" 201 282
+INFO 2025-12-05 01:17:26,576 basehttp 22852 13086552064 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-12-05 01:17:27,670 basehttp 22852 13086552064 "POST /calibration/create HTTP/1.1" 201 278
+INFO 2025-12-05 01:17:30,389 basehttp 22852 13086552064 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-12-05 01:17:31,428 basehttp 22852 13086552064 "POST /calibration/create HTTP/1.1" 201 303
+INFO 2025-12-05 01:17:32,467 basehttp 22852 13086552064 "POST /calibration/create HTTP/1.1" 201 299
+INFO 2025-12-05 01:17:33,500 basehttp 22852 13086552064 "POST /calibration/create HTTP/1.1" 201 299
+INFO 2025-12-05 01:17:34,204 basehttp 22852 13086552064 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+INFO 2025-12-05 01:17:35,229 basehttp 22852 13086552064 "POST /calibration/create HTTP/1.1" 201 285
+INFO 2025-12-05 01:17:36,304 basehttp 22852 13086552064 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-12-05 01:17:37,321 basehttp 22852 13086552064 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-05 01:17:38,373 basehttp 22852 13086552064 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-12-05 01:17:39,437 basehttp 22852 13086552064 "POST /calibration/create HTTP/1.1" 201 294
+INFO 2025-12-05 01:20:11,876 basehttp 22852 13086552064 "GET /process-code/get HTTP/1.1" 200 814
+INFO 2025-12-05 01:20:18,002 basehttp 22852 13086552064 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 01:20:18,810 basehttp 22852 13086552064 "GET /lab-excel/get-numbers HTTP/1.1" 200 101
+INFO 2025-12-05 01:20:26,494 basehttp 22852 13086552064 "GET /lab-materials/get HTTP/1.1" 200 1347
+INFO 2025-12-05 01:20:29,307 basehttp 22852 13086552064 "PATCH /lab-materials/update HTTP/1.1" 200 98
+WARNING 2025-12-05 01:25:01,681 log 22852 13086552064 Not Found: /
+WARNING 2025-12-05 01:25:01,696 basehttp 22852 13086552064 "GET / HTTP/1.1" 404 25593
+INFO 2025-12-05 01:25:05,624 basehttp 22852 13086552064 "GET /analysis-category/exists?parameter=Nuevo HTTP/1.1" 200 67
+INFO 2025-12-05 01:25:06,460 basehttp 22852 13086552064 "POST /analysis-category/add-new HTTP/1.1" 200 70
+WARNING 2025-12-05 01:25:06,486 log 22852 13086552064 Not Found: /
+WARNING 2025-12-05 01:25:06,486 basehttp 22852 13086552064 "POST / HTTP/1.1" 404 25594
+INFO 2025-12-05 01:29:27,223 autoreload 22852 8666394176 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorysettingsexcel_view.py changed, reloading.
+INFO 2025-12-05 01:29:28,853 autoreload 27211 8631008832 Watching for file changes with StatReloader
+INFO 2025-12-05 01:36:40,207 autoreload 27211 8631008832 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorysettingsexcel_view.py changed, reloading.
+INFO 2025-12-05 01:36:42,528 autoreload 28228 8676675136 Watching for file changes with StatReloader
+INFO 2025-12-05 01:36:54,191 autoreload 28228 8676675136 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-12-05 01:36:54,708 autoreload 28276 8662818368 Watching for file changes with StatReloader
+INFO 2025-12-05 01:37:06,250 autoreload 28276 8662818368 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/laboratorysettingsexcel_view.py changed, reloading.
+INFO 2025-12-05 01:37:06,955 autoreload 28315 8630894144 Watching for file changes with StatReloader
+INFO 2025-12-05 01:43:21,719 autoreload 28315 8630894144 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-12-05 01:43:23,522 autoreload 29246 8672992832 Watching for file changes with StatReloader
+INFO 2025-12-05 01:55:16,286 autoreload 31409 8662310464 Watching for file changes with StatReloader
+INFO 2025-12-05 01:55:56,279 basehttp 31409 13078638592 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-05 01:55:57,139 basehttp 31409 13078638592 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 01:55:59,689 basehttp 31409 13078638592 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-05 01:56:00,478 basehttp 31409 13078638592 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 01:56:01,248 basehttp 31409 13078638592 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-05 01:56:03,788 basehttp 31409 13078638592 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-05 01:56:04,599 basehttp 31409 13078638592 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-05 01:56:05,344 basehttp 31409 13078638592 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-05 01:56:06,153 basehttp 31409 13078638592 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-05 01:56:08,563 basehttp 31409 13078638592 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-05 01:56:09,393 basehttp 31409 13078638592 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+ERROR 2025-12-05 01:56:10,251 info_default 31409 13078638592 Error inserting default lab settings excel: value too long for type character varying(1)
+
+ERROR 2025-12-05 01:56:10,254 log 31409 13078638592 Internal Server Error: /info-default/lab-materials-settings
+ERROR 2025-12-05 01:56:10,254 basehttp 31409 13078638592 "POST /info-default/lab-materials-settings HTTP/1.1" 500 74
+INFO 2025-12-05 01:56:10,996 basehttp 31409 13078638592 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-05 01:56:11,886 basehttp 31409 13078638592 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-05 01:56:12,690 basehttp 31409 13078638592 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 01:56:13,409 basehttp 31409 13078638592 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-05 01:56:14,756 basehttp 31409 13078638592 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 01:56:53,193 basehttp 31409 13078638592 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-12-05 01:56:53,942 basehttp 31409 13078638592 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-05 01:56:59,194 basehttp 31409 13078638592 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-12-05 01:56:59,936 basehttp 31409 13078638592 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-05 02:01:26,729 autoreload 31409 8662310464 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/models.py changed, reloading.
+INFO 2025-12-05 02:01:30,908 autoreload 32341 8601013824 Watching for file changes with StatReloader
+INFO 2025-12-05 02:13:34,115 autoreload 34791 8625090112 Watching for file changes with StatReloader
+INFO 2025-12-05 02:14:10,822 basehttp 34791 13006155776 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-05 02:14:12,579 basehttp 34791 13006155776 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 02:14:15,060 basehttp 34791 13006155776 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-05 02:14:16,709 basehttp 34791 13006155776 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 02:14:18,370 basehttp 34791 13006155776 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-05 02:14:20,443 basehttp 34791 13006155776 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-05 02:14:21,223 basehttp 34791 13006155776 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-05 02:14:23,266 basehttp 34791 13006155776 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-05 02:14:24,396 basehttp 34791 13006155776 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-05 02:14:28,134 basehttp 34791 13006155776 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-05 02:14:29,706 basehttp 34791 13006155776 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-12-05 02:14:31,429 basehttp 34791 13006155776 "POST /info-default/lab-materials-settings HTTP/1.1" 200 91
+INFO 2025-12-05 02:14:32,826 basehttp 34791 13006155776 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-05 02:14:34,319 basehttp 34791 13006155776 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-05 02:14:35,237 basehttp 34791 13006155776 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 02:14:36,670 basehttp 34791 13006155776 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-05 02:14:37,725 basehttp 34791 13006155776 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 02:16:24,673 basehttp 34791 13006155776 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-12-05 02:16:25,433 basehttp 34791 13006155776 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-05 02:16:29,260 basehttp 34791 13006155776 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-12-05 02:16:30,765 basehttp 34791 13006155776 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-05 02:20:43,478 autoreload 34791 8625090112 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-12-05 02:20:45,199 autoreload 35987 8672017984 Watching for file changes with StatReloader
+INFO 2025-12-05 02:24:34,787 basehttp 35987 13097578496 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-05 02:24:35,644 basehttp 35987 13097578496 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 02:24:38,107 basehttp 35987 13097578496 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-05 02:24:38,955 basehttp 35987 13097578496 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 02:24:40,220 basehttp 35987 13097578496 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-05 02:24:43,549 basehttp 35987 13097578496 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-05 02:24:44,320 basehttp 35987 13097578496 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-05 02:24:45,126 basehttp 35987 13097578496 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-05 02:24:46,582 basehttp 35987 13097578496 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-05 02:24:49,248 basehttp 35987 13097578496 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-05 02:24:49,990 basehttp 35987 13097578496 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-12-05 02:24:56,590 basehttp 35987 13097578496 "POST /info-default/lab-materials-settings HTTP/1.1" 200 85
+INFO 2025-12-05 02:24:57,405 basehttp 35987 13097578496 "POST /info-default/lab-settings-excel HTTP/1.1" 200 91
+INFO 2025-12-05 02:24:58,145 basehttp 35987 13097578496 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-05 02:24:59,092 basehttp 35987 13097578496 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-05 02:24:59,755 basehttp 35987 13097578496 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 02:25:00,467 basehttp 35987 13097578496 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-05 02:25:01,409 basehttp 35987 13097578496 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 02:25:20,107 basehttp 35987 13097578496 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-12-05 02:25:20,847 basehttp 35987 13097578496 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-05 02:25:28,887 basehttp 35987 13097578496 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-12-05 02:25:29,676 basehttp 35987 13097578496 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-05 02:28:29,514 autoreload 35987 8672017984 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-12-05 02:28:31,110 autoreload 37228 8628670016 Watching for file changes with StatReloader
+INFO 2025-12-05 02:35:19,599 autoreload 38683 8592846400 Watching for file changes with StatReloader
+INFO 2025-12-05 02:36:50,922 basehttp 38683 12940701696 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-05 02:36:51,798 basehttp 38683 12940701696 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 02:36:54,312 basehttp 38683 12940701696 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-05 02:36:55,109 basehttp 38683 12940701696 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 02:36:55,922 basehttp 38683 12940701696 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-05 02:36:58,116 basehttp 38683 12940701696 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-05 02:36:58,882 basehttp 38683 12940701696 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-05 02:36:59,661 basehttp 38683 12940701696 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-05 02:37:00,448 basehttp 38683 12940701696 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-05 02:37:02,996 basehttp 38683 12940701696 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-05 02:37:03,810 basehttp 38683 12940701696 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-12-05 02:37:07,621 basehttp 38683 12940701696 "POST /info-default/lab-materials-settings HTTP/1.1" 200 85
+INFO 2025-12-05 02:37:08,437 basehttp 38683 12940701696 "POST /info-default/lab-settings-excel HTTP/1.1" 200 91
+INFO 2025-12-05 02:37:09,155 basehttp 38683 12940701696 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-05 02:37:09,898 basehttp 38683 12940701696 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-05 02:37:10,623 basehttp 38683 12940701696 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 02:37:11,335 basehttp 38683 12940701696 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-05 02:37:12,211 basehttp 38683 12940701696 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 02:50:18,483 autoreload 41752 8604106304 Watching for file changes with StatReloader
+INFO 2025-12-05 02:50:40,040 basehttp 41752 12963606528 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-05 02:50:40,933 basehttp 41752 12963606528 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 02:50:43,396 basehttp 41752 12963606528 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-05 02:50:44,184 basehttp 41752 12963606528 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 02:50:44,994 basehttp 41752 12963606528 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-05 02:50:47,128 basehttp 41752 12963606528 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-05 02:50:48,072 basehttp 41752 12963606528 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-05 02:50:48,852 basehttp 41752 12963606528 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-05 02:50:49,674 basehttp 41752 12963606528 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-05 02:50:52,327 basehttp 41752 12963606528 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-05 02:50:53,154 basehttp 41752 12963606528 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-12-05 02:50:56,883 basehttp 41752 12963606528 "POST /info-default/lab-materials-settings HTTP/1.1" 200 85
+INFO 2025-12-05 02:50:57,693 basehttp 41752 12963606528 "POST /info-default/lab-settings-excel HTTP/1.1" 200 91
+INFO 2025-12-05 02:50:58,458 basehttp 41752 12963606528 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-05 02:50:59,246 basehttp 41752 12963606528 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-05 02:50:59,937 basehttp 41752 12963606528 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 02:51:00,645 basehttp 41752 12963606528 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-05 02:51:01,798 basehttp 41752 12963606528 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 02:54:01,028 autoreload 41752 8604106304 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-12-05 02:54:03,019 autoreload 42315 8641289792 Watching for file changes with StatReloader
+INFO 2025-12-05 02:56:09,613 autoreload 42315 8641289792 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/models.py changed, reloading.
+INFO 2025-12-05 02:56:11,150 autoreload 42631 8602885696 Watching for file changes with StatReloader
+INFO 2025-12-05 02:56:24,012 autoreload 42631 8602885696 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-12-05 02:56:24,562 autoreload 42679 8598052416 Watching for file changes with StatReloader
+INFO 2025-12-05 02:58:41,511 autoreload 43640 8674090560 Watching for file changes with StatReloader
+INFO 2025-12-05 02:59:16,693 basehttp 43640 13100691456 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-05 02:59:17,579 basehttp 43640 13100691456 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 02:59:20,012 basehttp 43640 13100691456 "POST /lab-materials/insert HTTP/1.1" 200 98
+INFO 2025-12-05 02:59:20,806 basehttp 43640 13100691456 "GET /lab-excel/get-letters HTTP/1.1" 200 95
+INFO 2025-12-05 02:59:21,596 basehttp 43640 13100691456 "POST /info-default/users HTTP/1.1" 200 62
+INFO 2025-12-05 02:59:23,688 basehttp 43640 13100691456 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-05 02:59:24,470 basehttp 43640 13100691456 "POST /info-default/global-settings HTTP/1.1" 200 67
+INFO 2025-12-05 02:59:25,244 basehttp 43640 13100691456 "POST /info-default/company HTTP/1.1" 200 66
+INFO 2025-12-05 02:59:26,011 basehttp 43640 13100691456 "POST /info-default/activation HTTP/1.1" 200 69
+INFO 2025-12-05 02:59:28,434 basehttp 43640 13100691456 "POST /info-default/mgmt-layout HTTP/1.1" 200 40
+INFO 2025-12-05 02:59:29,202 basehttp 43640 13100691456 "POST /info-default/mgmt-settings HTTP/1.1" 200 78
+INFO 2025-12-05 02:59:33,003 basehttp 43640 13100691456 "POST /info-default/lab-materials-settings HTTP/1.1" 200 85
+INFO 2025-12-05 02:59:33,815 basehttp 43640 13100691456 "POST /info-default/lab-settings-excel HTTP/1.1" 200 91
+INFO 2025-12-05 02:59:34,516 basehttp 43640 13100691456 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-05 02:59:35,286 basehttp 43640 13100691456 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-05 02:59:35,972 basehttp 43640 13100691456 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 02:59:36,676 basehttp 43640 13100691456 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-05 02:59:37,611 basehttp 43640 13100691456 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 02:59:58,091 basehttp 43640 13100691456 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-12-05 02:59:58,820 basehttp 43640 13100691456 "GET /activation/status HTTP/1.1" 200 54
+INFO 2025-12-05 03:00:34,824 basehttp 43640 13100691456 "POST /activation/validate HTTP/1.1" 200 64
+INFO 2025-12-05 03:00:35,621 basehttp 43640 13100691456 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-05 03:00:43,724 basehttp 43640 13100691456 "GET /lab-excel/get-letters HTTP/1.1" 200 1148
+INFO 2025-12-05 03:00:44,554 basehttp 43640 13100691456 "GET /lab-excel/get-numbers HTTP/1.1" 200 1154
+INFO 2025-12-05 03:00:57,260 basehttp 43640 13100691456 "PATCH /lab-excel/update HTTP/1.1" 200 77
+INFO 2025-12-05 03:01:24,359 basehttp 43640 13100691456 "GET /lab-materials/get HTTP/1.1" 200 2600
+INFO 2025-12-05 03:01:30,369 basehttp 43640 13100691456 "PATCH /lab-materials/update HTTP/1.1" 200 98
+INFO 2025-12-05 03:09:24,995 autoreload 43640 8674090560 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-12-05 03:09:26,545 autoreload 45257 8630177344 Watching for file changes with StatReloader
+INFO 2025-12-05 03:10:45,019 basehttp 45257 13014593536 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-05 03:10:45,974 basehttp 45257 13014593536 "GET /lab-excel/get-letters HTTP/1.1" 200 1146
+INFO 2025-12-05 03:10:46,816 basehttp 45257 13014593536 "GET /lab-excel/get-letters HTTP/1.1" 200 1146
+INFO 2025-12-05 03:10:47,528 basehttp 45257 13014593536 "POST /info-default/users HTTP/1.1" 200 70
+INFO 2025-12-05 03:10:48,681 basehttp 45257 13014593536 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-05 03:10:49,376 basehttp 45257 13014593536 "POST /info-default/global-settings HTTP/1.1" 200 74
+INFO 2025-12-05 03:10:50,079 basehttp 45257 13014593536 "POST /info-default/company HTTP/1.1" 200 74
+INFO 2025-12-05 03:10:50,769 basehttp 45257 13014593536 "POST /info-default/activation HTTP/1.1" 200 77
+INFO 2025-12-05 03:10:52,275 basehttp 45257 13014593536 "POST /info-default/mgmt-layout HTTP/1.1" 200 39
+INFO 2025-12-05 03:10:52,966 basehttp 45257 13014593536 "POST /info-default/mgmt-settings HTTP/1.1" 200 85
+INFO 2025-12-05 03:10:53,780 info_default 45257 13014593536 Found legacy 'pza_' records. Migrating to standard names...
+INFO 2025-12-05 03:10:57,143 basehttp 45257 13014593536 "POST /info-default/lab-materials-settings HTTP/1.1" 200 109
+INFO 2025-12-05 03:10:57,891 basehttp 45257 13014593536 "POST /info-default/lab-settings-excel HTTP/1.1" 200 98
+INFO 2025-12-05 03:10:58,620 basehttp 45257 13014593536 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-05 03:10:59,400 basehttp 45257 13014593536 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-05 03:11:00,101 basehttp 45257 13014593536 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 03:11:00,831 basehttp 45257 13014593536 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-05 03:11:02,186 basehttp 45257 13014593536 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 03:12:42,687 basehttp 45257 13014593536 "POST /user/validate HTTP/1.1" 200 77
+INFO 2025-12-05 03:12:56,660 basehttp 45257 13014593536 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-12-05 03:12:57,448 basehttp 45257 13014593536 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-05 03:13:02,008 basehttp 45257 13014593536 "GET /lab-materials/get HTTP/1.1" 200 1347
+INFO 2025-12-05 03:13:07,226 basehttp 45257 13014593536 "PATCH /lab-materials/update HTTP/1.1" 200 100
+INFO 2025-12-05 03:13:43,747 basehttp 45257 13014593536 "GET /lab-excel/get-letters HTTP/1.1" 200 1146
+INFO 2025-12-05 03:13:44,541 basehttp 45257 13014593536 "GET /lab-excel/get-numbers HTTP/1.1" 200 1152
+INFO 2025-12-05 03:13:51,002 basehttp 45257 13014593536 "PATCH /lab-excel/update HTTP/1.1" 200 77
+INFO 2025-12-05 03:14:30,106 basehttp 45257 13014593536 "GET /management-report-settings/get HTTP/1.1" 200 1103
+INFO 2025-12-05 03:14:30,846 basehttp 45257 13014593536 "GET /config/dop/get HTTP/1.1" 200 68
+INFO 2025-12-05 03:14:31,651 basehttp 45257 13014593536 "POST /config/dop/update HTTP/1.1" 200 68
+INFO 2025-12-05 03:14:37,417 basehttp 45257 13014593536 "PATCH /management-report-settings/update HTTP/1.1" 200 1252
+INFO 2025-12-05 03:14:58,958 basehttp 45257 13014593536 "GET /management-report-settings/get HTTP/1.1" 200 1103
+INFO 2025-12-05 03:14:59,656 basehttp 45257 13014593536 "GET /config/dop/get HTTP/1.1" 200 68
+INFO 2025-12-05 03:15:00,460 basehttp 45257 13014593536 "POST /config/dop/update HTTP/1.1" 200 68
+INFO 2025-12-05 03:15:04,571 basehttp 45257 13014593536 "PATCH /management-report-settings/update HTTP/1.1" 200 1253
+INFO 2025-12-05 03:15:32,673 basehttp 45257 13014593536 "GET /management-report-settings/get HTTP/1.1" 200 1103
+INFO 2025-12-05 03:15:33,392 basehttp 45257 13014593536 "GET /config/dop/get HTTP/1.1" 200 68
+INFO 2025-12-05 03:15:34,185 basehttp 45257 13014593536 "POST /config/dop/update HTTP/1.1" 200 68
+WARNING 2025-12-05 03:15:42,416 log 45257 13014593536 Not Found: /
+WARNING 2025-12-05 03:15:42,417 basehttp 45257 13014593536 "GET / HTTP/1.1" 404 25593
+INFO 2025-12-05 03:15:47,556 basehttp 45257 13014593536 "GET /analysis-category/exists?parameter=nuevo HTTP/1.1" 200 67
+INFO 2025-12-05 03:15:48,339 basehttp 45257 13014593536 "POST /analysis-category/add-new HTTP/1.1" 200 70
+WARNING 2025-12-05 03:15:48,371 log 45257 13014593536 Not Found: /
+WARNING 2025-12-05 03:15:48,371 basehttp 45257 13014593536 "POST / HTTP/1.1" 404 25594
+INFO 2025-12-05 03:16:07,946 basehttp 45257 13014593536 "GET /management-report-layout/get HTTP/1.1" 200 1594
+INFO 2025-12-05 03:16:14,627 basehttp 45257 13014593536 "PATCH /management-report-layout/update HTTP/1.1" 200 81
+INFO 2025-12-05 03:16:15,311 basehttp 45257 13014593536 "GET /management-report-layout/get HTTP/1.1" 200 1594
+INFO 2025-12-05 03:16:50,521 basehttp 45257 13014593536 "GET /process-code/get HTTP/1.1" 200 83
+INFO 2025-12-05 03:17:04,670 basehttp 45257 13014593536 "POST /calibration/create HTTP/1.1" 201 279
+INFO 2025-12-05 03:17:05,925 basehttp 45257 13014593536 "POST /calibration/create HTTP/1.1" 201 282
+INFO 2025-12-05 03:17:06,966 basehttp 45257 13014593536 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-12-05 03:17:07,983 basehttp 45257 13014593536 "POST /calibration/create HTTP/1.1" 201 278
+INFO 2025-12-05 03:17:08,983 basehttp 45257 13014593536 "POST /calibration/create HTTP/1.1" 201 284
+INFO 2025-12-05 03:17:10,022 basehttp 45257 13014593536 "POST /calibration/create HTTP/1.1" 201 303
+INFO 2025-12-05 03:17:11,032 basehttp 45257 13014593536 "POST /calibration/create HTTP/1.1" 201 299
+INFO 2025-12-05 03:17:12,110 basehttp 45257 13014593536 "POST /calibration/create HTTP/1.1" 201 299
+INFO 2025-12-05 03:17:12,831 basehttp 45257 13014593536 "GET /calibration/get?name=SLURRY HTTP/1.1" 200 63
+INFO 2025-12-05 03:17:13,890 basehttp 45257 13014593536 "POST /calibration/create HTTP/1.1" 201 285
+INFO 2025-12-05 03:17:14,901 basehttp 45257 13014593536 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-12-05 03:17:15,900 basehttp 45257 13014593536 "POST /calibration/create HTTP/1.1" 201 296
+INFO 2025-12-05 03:17:16,937 basehttp 45257 13014593536 "POST /calibration/create HTTP/1.1" 201 295
+INFO 2025-12-05 03:17:18,003 basehttp 45257 13014593536 "POST /calibration/create HTTP/1.1" 201 294
+INFO 2025-12-05 03:18:00,044 basehttp 45257 13014593536 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-05 03:18:00,846 basehttp 45257 13014593536 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-05 03:18:01,644 basehttp 45257 13014593536 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-05 03:18:02,724 basehttp 45257 13014593536 "PATCH /calibration/update-order HTTP/1.1" 200 71
+INFO 2025-12-05 03:18:03,532 basehttp 45257 13014593536 "PATCH /calibration/update-order HTTP/1.1" 200 71
+WARNING 2025-12-05 03:19:45,520 log 45257 13014593536 Method Not Allowed (DELETE): /calibration/delete
+WARNING 2025-12-05 03:19:45,523 basehttp 45257 13014593536 "DELETE /calibration/delete HTTP/1.1" 405 0
+INFO 2025-12-05 03:24:29,317 basehttp 45257 13014593536 "GET /crystals-param/get HTTP/1.1" 200 65
+WARNING 2025-12-05 03:24:29,363 log 45257 13014593536 Not Found: /
+WARNING 2025-12-05 03:24:29,363 basehttp 45257 13014593536 "GET / HTTP/1.1" 404 25593
+INFO 2025-12-05 03:24:30,091 basehttp 45257 13014593536 "GET /crystals-param-new/get HTTP/1.1" 200 89
+INFO 2025-12-05 03:24:30,780 basehttp 45257 13014593536 "GET /crystals-param-ma/get HTTP/1.1" 200 69
+INFO 2025-12-05 03:24:31,484 basehttp 45257 13014593536 "GET /crystals-param-cv/get HTTP/1.1" 200 69
+INFO 2025-12-05 03:37:00,185 autoreload 45257 8630177344 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-12-05 03:37:02,416 autoreload 49585 8666754624 Watching for file changes with StatReloader
+INFO 2025-12-05 03:49:39,461 autoreload 49585 8666754624 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-12-05 03:49:41,550 autoreload 51513 8669666880 Watching for file changes with StatReloader
+INFO 2025-12-05 03:49:56,450 autoreload 51513 8669666880 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/urls.py changed, reloading.
+INFO 2025-12-05 03:49:57,945 autoreload 51569 8628039232 Watching for file changes with StatReloader
+INFO 2025-12-05 03:53:30,689 basehttp 51569 13011054592 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-05 04:07:44,893 basehttp 51569 13011054592 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-05 04:07:45,794 basehttp 51569 13011054592 "GET /lab-excel/get-letters HTTP/1.1" 200 1144
+INFO 2025-12-05 04:07:46,580 basehttp 51569 13011054592 "GET /lab-excel/get-letters HTTP/1.1" 200 1144
+INFO 2025-12-05 04:07:47,295 basehttp 51569 13011054592 "POST /info-default/users HTTP/1.1" 200 70
+INFO 2025-12-05 04:07:48,411 basehttp 51569 13011054592 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-05 04:07:49,116 basehttp 51569 13011054592 "POST /info-default/global-settings HTTP/1.1" 200 74
+INFO 2025-12-05 04:07:49,800 basehttp 51569 13011054592 "POST /info-default/company HTTP/1.1" 200 74
+INFO 2025-12-05 04:07:50,499 basehttp 51569 13011054592 "POST /info-default/activation HTTP/1.1" 200 77
+INFO 2025-12-05 04:07:52,028 basehttp 51569 13011054592 "POST /info-default/mgmt-layout HTTP/1.1" 200 39
+INFO 2025-12-05 04:07:52,719 basehttp 51569 13011054592 "POST /info-default/mgmt-settings HTTP/1.1" 200 85
+INFO 2025-12-05 04:07:53,523 basehttp 51569 13011054592 "POST /info-default/lab-materials-settings HTTP/1.1" 200 81
+INFO 2025-12-05 04:07:54,221 basehttp 51569 13011054592 "POST /info-default/lab-settings-excel HTTP/1.1" 200 98
+INFO 2025-12-05 04:07:56,732 basehttp 51569 13011054592 "POST /info-default/crystals-data-parametrization HTTP/1.1" 200 92
+INFO 2025-12-05 04:07:57,686 basehttp 51569 13011054592 "POST /info-default/laboratory-parametrization HTTP/1.1" 200 90
+INFO 2025-12-05 04:07:58,409 basehttp 51569 13011054592 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-05 04:07:59,170 basehttp 51569 13011054592 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-05 04:07:59,859 basehttp 51569 13011054592 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 04:08:00,597 basehttp 51569 13011054592 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-05 04:08:01,574 basehttp 51569 13011054592 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 04:15:30,288 basehttp 51569 13011054592 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-05 04:15:31,165 basehttp 51569 13011054592 "GET /lab-excel/get-letters HTTP/1.1" 200 1144
+INFO 2025-12-05 04:15:31,956 basehttp 51569 13011054592 "GET /lab-excel/get-letters HTTP/1.1" 200 1144
+INFO 2025-12-05 04:15:32,643 basehttp 51569 13011054592 "POST /info-default/users HTTP/1.1" 200 70
+INFO 2025-12-05 04:15:33,737 basehttp 51569 13011054592 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-05 04:15:34,443 basehttp 51569 13011054592 "POST /info-default/global-settings HTTP/1.1" 200 74
+INFO 2025-12-05 04:15:35,158 basehttp 51569 13011054592 "POST /info-default/company HTTP/1.1" 200 74
+INFO 2025-12-05 04:15:35,859 basehttp 51569 13011054592 "POST /info-default/activation HTTP/1.1" 200 77
+INFO 2025-12-05 04:15:37,719 basehttp 51569 13011054592 "POST /info-default/mgmt-layout HTTP/1.1" 200 39
+INFO 2025-12-05 04:15:38,412 basehttp 51569 13011054592 "POST /info-default/mgmt-settings HTTP/1.1" 200 85
+INFO 2025-12-05 04:15:39,176 basehttp 51569 13011054592 "POST /info-default/lab-materials-settings HTTP/1.1" 200 81
+INFO 2025-12-05 04:15:39,928 basehttp 51569 13011054592 "POST /info-default/lab-settings-excel HTTP/1.1" 200 98
+INFO 2025-12-05 04:15:40,628 basehttp 51569 13011054592 "POST /info-default/crystals-data-parametrization HTTP/1.1" 200 89
+INFO 2025-12-05 04:15:41,442 basehttp 51569 13011054592 "POST /info-default/laboratory-parametrization HTTP/1.1" 200 86
+INFO 2025-12-05 04:15:42,165 basehttp 51569 13011054592 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-05 04:15:42,947 basehttp 51569 13011054592 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-05 04:15:43,619 basehttp 51569 13011054592 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 04:15:44,338 basehttp 51569 13011054592 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-05 04:15:45,555 basehttp 51569 13011054592 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 04:15:46,753 basehttp 51569 13011054592 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-05 04:15:47,447 basehttp 51569 13011054592 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-05 04:16:30,875 basehttp 51569 13011054592 "POST /calibration/activate HTTP/1.1" 200 72
+INFO 2025-12-05 04:16:45,813 basehttp 51569 13011054592 "POST /user/validate HTTP/1.1" 200 77
+INFO 2025-12-05 04:16:56,337 basehttp 51569 13011054592 "POST /user/validate HTTP/1.1" 200 76
+INFO 2025-12-05 04:16:57,048 basehttp 51569 13011054592 "GET /activation/status HTTP/1.1" 200 53
+WARNING 2025-12-05 04:17:24,293 log 51569 13011054592 Not Found: /
+WARNING 2025-12-05 04:17:24,293 basehttp 51569 13011054592 "GET / HTTP/1.1" 404 25968
+WARNING 2025-12-05 04:17:26,244 log 51569 13011054592 Not Found: /
+WARNING 2025-12-05 04:17:26,244 basehttp 51569 13011054592 "POST / HTTP/1.1" 404 25969
+WARNING 2025-12-05 04:17:31,873 log 51569 13011054592 Not Found: /
+WARNING 2025-12-05 04:17:31,874 basehttp 51569 13011054592 "GET / HTTP/1.1" 404 25968
+INFO 2025-12-05 04:17:36,306 basehttp 51569 13011054592 "GET /analysis-category/exists?parameter=numero HTTP/1.1" 200 67
+INFO 2025-12-05 04:17:37,081 basehttp 51569 13011054592 "POST /analysis-category/add-new HTTP/1.1" 200 70
+WARNING 2025-12-05 04:17:37,097 log 51569 13011054592 Not Found: /
+WARNING 2025-12-05 04:17:37,097 basehttp 51569 13011054592 "POST / HTTP/1.1" 404 25969
+INFO 2025-12-05 04:17:44,275 basehttp 51569 13011054592 "GET /crystals-param/get HTTP/1.1" 200 2534
+WARNING 2025-12-05 04:17:44,301 log 51569 13011054592 Not Found: /
+WARNING 2025-12-05 04:17:44,301 basehttp 51569 13011054592 "GET / HTTP/1.1" 404 25968
+INFO 2025-12-05 04:17:45,015 basehttp 51569 13011054592 "GET /crystals-param-new/get HTTP/1.1" 200 89
+INFO 2025-12-05 04:17:45,714 basehttp 51569 13011054592 "GET /crystals-param-ma/get HTTP/1.1" 200 69
+INFO 2025-12-05 04:17:46,422 basehttp 51569 13011054592 "GET /crystals-param-cv/get HTTP/1.1" 200 69
+INFO 2025-12-05 04:18:01,052 basehttp 51569 13011054592 "GET /lab-param/get HTTP/1.1" 200 13016
+INFO 2025-12-05 04:18:01,727 basehttp 51569 13011054592 "GET /lab-param-calc/refino/get HTTP/1.1" 200 96
+INFO 2025-12-05 04:18:02,450 basehttp 51569 13011054592 "GET /lab-param-calc/masa-a/get HTTP/1.1" 200 96
+INFO 2025-12-05 04:18:03,179 basehttp 51569 13011054592 "GET /lab-param-calc/masa-b/get HTTP/1.1" 200 96
+INFO 2025-12-05 04:18:03,924 basehttp 51569 13011054592 "GET /lab-param-calc/masa-c/get HTTP/1.1" 200 96
+INFO 2025-12-05 04:26:45,104 autoreload 51569 8628039232 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/info_default.py changed, reloading.
+INFO 2025-12-05 04:26:47,067 autoreload 58906 8641990208 Watching for file changes with StatReloader
+INFO 2025-12-05 04:27:10,150 autoreload 58906 8641990208 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/urls.py changed, reloading.
+INFO 2025-12-05 04:27:10,782 autoreload 58982 8669601344 Watching for file changes with StatReloader
+INFO 2025-12-05 04:31:03,694 autoreload 58982 8669601344 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/urls.py changed, reloading.
+INFO 2025-12-05 04:31:05,385 autoreload 59548 8642915904 Watching for file changes with StatReloader

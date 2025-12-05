@@ -105,7 +105,7 @@ def update_laboratory_calculated_masa_a_parametrization(request: HttpRequest):
 @log_api_access
 def get_laboratory_calculated_masa_b_parametrization(request: HttpRequest):
     try:
-        data = [model_to_dict(o) for o in LaboratoryCalculatedMasaBParametrization.objects.filter(factory_id=request.factory_id)]
+        data = [model_to_dict(o) for o in LaboratoryCalculatedMasaBParametrization.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))]
         return JsonResponse({"message": "✅ Parametrización calculada Masa B obtenida exitosamente", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener parametrización Masa B", "error": str(e)}, status=500)
@@ -121,7 +121,7 @@ def update_laboratory_calculated_masa_b_parametrization(request: HttpRequest):
         body = json.loads(request.body or b"{}")
         for parameter, categories in body.items():
             for categoria, ranges in (categories or {}).items():
-                LaboratoryCalculatedMasaBParametrization.objects.filter(parameter=parameter, categoria=categoria, factory_id=request.factory_id).update(
+                LaboratoryCalculatedMasaBParametrization.objects.filter(parameter=parameter, categoria=categoria, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(
                     range_from=ranges.get("range_from"), range_to=ranges.get("range_to")
                 )
         return JsonResponse({"message": "✅ Parametrización Masa B actualizada exitosamente", "ok": True})
@@ -134,7 +134,7 @@ def update_laboratory_calculated_masa_b_parametrization(request: HttpRequest):
 @log_api_access
 def get_laboratory_calculated_masa_c_parametrization(request: HttpRequest):
     try:
-        data = [model_to_dict(o) for o in LaboratoryCalculatedMasaCParametrization.objects.filter(factory_id=request.factory_id)]
+        data = [model_to_dict(o) for o in LaboratoryCalculatedMasaCParametrization.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))]
         return JsonResponse({"message": "✅ Parametrización calculada Masa C obtenida exitosamente", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener parametrización Masa C", "error": str(e)}, status=500)
@@ -150,7 +150,7 @@ def update_laboratory_calculated_masa_c_parametrization(request: HttpRequest):
         body = json.loads(request.body or b"{}")
         for parameter, categories in body.items():
             for categoria, ranges in (categories or {}).items():
-                LaboratoryCalculatedMasaCParametrization.objects.filter(parameter=parameter, categoria=categoria, factory_id=request.factory_id).update(
+                LaboratoryCalculatedMasaCParametrization.objects.filter(parameter=parameter, categoria=categoria, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(
                     range_from=ranges.get("range_from"), range_to=ranges.get("range_to")
                 )
         return JsonResponse({"message": "✅ Parametrización Masa C actualizada exitosamente", "ok": True})

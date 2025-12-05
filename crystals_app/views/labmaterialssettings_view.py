@@ -27,9 +27,46 @@ def get_lab_materials_settings(request: HttpRequest):
 def insert_lab_materials_settings(request: HttpRequest):
     """
     Inserta los 19 materiales base con visible=1 SOLO si la tabla está vacía.
-    Endpoint muy simple para inicialización de base de datos.
+    Si recibe un payload con updates, actúa como update (parche para clientes que usan insert para guardar).
     """
     try:
+        # Check for update payload first
+        try:
+            body = json.loads(request.body or b"{}")
+            if "updates" in body:
+                return update_lab_materials_settings(request)
+        except Exception:
+            pass
+            
+        # Check for 'values' payload (list of booleans) from client
+        try:
+            body = json.loads(request.body or b"{}")
+            if "values" in body:
+                values = body["values"]
+                base_materials = [
+                    'licor', 'sirope', 'masa_refino', 'magma_b', 'meladura',
+                    'masa_a', 'lavado_a', 'nutsch_a', 'magma_c', 'miel_a',
+                    'masa_b', 'nutsch_b', 'cr_des', 'miel_b', 'masa_c',
+                    'nutsch_c', 'miel_final', 'pol_azuc', 'sol_tota_hda_azu'
+                ]
+                # Ensure values list matches length
+                updated_count = 0
+                for i, material in enumerate(base_materials):
+                    if i < len(values):
+                        visible = 1 if values[i] else 0
+                        LabMaterialsSettings.objects.filter(
+                            material=material, 
+                            factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
+                        ).update(visible=visible)
+                        updated_count += 1
+                return JsonResponse({
+                    "message": f"✅ Materiales actualizados exitosamente ({updated_count} registros)", 
+                    "ok": True, 
+                    "updated": updated_count
+                })
+        except Exception:
+            pass
+
         # Verificar si la tabla está vacía
         if LabMaterialsSettings.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).count() > 0:
             return JsonResponse({
@@ -67,7 +104,7 @@ def insert_lab_materials_settings(request: HttpRequest):
 
 
 @csrf_exempt
-@require_http_methods(["POST"])
+@require_http_methods(["POST", "PATCH"])
 @jwt_required
 @sensitive_endpoint
 @log_api_access

@@ -119,7 +119,7 @@ def insert_general_reporting_order(request):
         ]
         
         # Bulk create
-        records = [GeneralReportingOrder(factory_id=request.factory_id, **item) for item in default_data]
+        records = [GeneralReportingOrder(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1), **item) for item in default_data]
         GeneralReportingOrder.objects.bulk_create(records)
         
         logger.info(f"✅ Inserted {len(default_data)} general reporting order records")
@@ -147,7 +147,7 @@ def insert_laboratory_reporting_order(request):
     """
     try:
         # Check if table already has data
-        count = LaboratoryReportingOrder.objects.filter(factory_id=request.factory_id).count()
+        count = LaboratoryReportingOrder.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).count()
         if count > 0:
             return JsonResponse({
                 'ok': True,
@@ -198,7 +198,7 @@ def insert_laboratory_reporting_order(request):
         ]
         
         # Bulk create
-        records = [LaboratoryReportingOrder(factory_id=request.factory_id, **item) for item in default_data]
+        records = [LaboratoryReportingOrder(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1), **item) for item in default_data]
         LaboratoryReportingOrder.objects.bulk_create(records)
         
         logger.info(f"✅ Inserted {len(default_data)} laboratory reporting order records")

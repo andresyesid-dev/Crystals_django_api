@@ -131,7 +131,7 @@ def insert_default_management_report_settings(request: HttpRequest):
             amount_perc_muy_gran=0,
             amount_total=0,
             perc_powder=0,
-            factory_id=request.factory_id
+            factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
         )
         
         return JsonResponse({

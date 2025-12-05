@@ -10,7 +10,8 @@ from rest_framework.response import Response
 from django.db import IntegrityError
 from ..models import (
     User, Config, GlobalSetting, Company, Activation,
-    ManagementReportLayout, ManagementReportSettings
+    ManagementReportLayout, ManagementReportSettings,
+    SpecificReportingOrder, GeneralReportingOrder, LaboratoryReportingOrder
 )
 import logging
 
@@ -70,6 +71,9 @@ def insert_default_config(request):
                 )
                 created_count += 1
         
+        # Initialize reporting orders as well (since client doesn't call them explicitly)
+        _init_reporting_orders(factory_id)
+        
         return Response({
             'success': True,
             'created': created_count,
@@ -78,6 +82,113 @@ def insert_default_config(request):
     except Exception as e:
         logger.error(f"Error inserting default config: {e}")
         return Response({'success': False, 'error': str(e)}, status=500)
+
+
+def _init_reporting_orders(factory_id):
+    """Helper to initialize reporting orders if empty."""
+    try:
+        # 1. Specific Reporting Order
+        if not SpecificReportingOrder.objects.filter(factory_id=factory_id).exists():
+            specific_data = [
+                {'value': 'WEIGHTS PER SHIFT', 'ordering': 0},
+                {'value': 'TACHO', 'ordering': 1},
+                {'value': 'DATE AND TIME', 'ordering': 2},
+                {'value': 'TACHERO', 'ordering': 3},
+                {'value': 'BAKING TIME', 'ordering': 4},
+                {'value': 'MASS NUMBER', 'ordering': 5},
+                {'value': 'Mean', 'ordering': 6},
+                {'value': 'CV', 'ordering': 7},
+                {'value': '% Fino.', 'ordering': 8},
+                {'value': '% Peq.', 'ordering': 9},
+                {'value': '% Opt.', 'ordering': 10},
+                {'value': '% Gran.', 'ordering': 11},
+                {'value': '% Muy gran.', 'ordering': 12},
+                {'value': 'REL. L/A', 'ordering': 13},
+                {'value': '% crist. alarg', 'ordering': 14},
+                {'value': '% Powder', 'ordering': 15},
+                {'value': 'Amount % Fino.', 'ordering': 16},
+                {'value': 'Amount % Peq.', 'ordering': 17},
+                {'value': 'Amount % Opt.', 'ordering': 18},
+                {'value': 'Amount % Gran.', 'ordering': 19},
+                {'value': 'Amount % Muy gran.', 'ordering': 20},
+                {'value': 'Total Amount', 'ordering': 21}
+            ]
+            SpecificReportingOrder.objects.bulk_create([
+                SpecificReportingOrder(factory_id=factory_id, **item) for item in specific_data
+            ])
+
+        # 2. General Reporting Order
+        if not GeneralReportingOrder.objects.filter(factory_id=factory_id).exists():
+            general_data = [
+                {'value': 'Calibration', 'ordering': 0},
+                {'value': 'Mean', 'ordering': 1},
+                {'value': 'MA Objective', 'ordering': 2},
+                {'value': 'CV', 'ordering': 3},
+                {'value': 'CV Objective', 'ordering': 4},
+                {'value': '% Fino.', 'ordering': 5},
+                {'value': '% Peq.', 'ordering': 6},
+                {'value': '% Opt.', 'ordering': 7},
+                {'value': '% Gran.', 'ordering': 8},
+                {'value': '% Muy gran.', 'ordering': 9},
+                {'value': 'REL. L/A', 'ordering': 10},
+                {'value': '% crist. alarg', 'ordering': 11},
+                {'value': 'Amount % Fino.', 'ordering': 12},
+                {'value': 'Amount % Peq.', 'ordering': 13},
+                {'value': 'Amount % Opt.', 'ordering': 14},
+                {'value': 'Amount % Gran.', 'ordering': 15},
+                {'value': 'Amount % Muy gran.', 'ordering': 16},
+                {'value': 'Total Amount', 'ordering': 17}
+            ]
+            GeneralReportingOrder.objects.bulk_create([
+                GeneralReportingOrder(factory_id=factory_id, **item) for item in general_data
+            ])
+
+        # 3. Laboratory Reporting Order
+        if not LaboratoryReportingOrder.objects.filter(factory_id=factory_id).exists():
+            lab_data = [
+                {'value': 'DATE AND TIME', 'ordering': 0},
+                {'value': 'PZA LICOR', 'ordering': 1},
+                {'value': 'PZA SIROPE', 'ordering': 2},
+                {'value': 'PZA MASA REFINO', 'ordering': 3},
+                {'value': 'PZA MAGMA B', 'ordering': 4},
+                {'value': 'PZA MELADURA', 'ordering': 5},
+                {'value': 'PZA MASA A', 'ordering': 6},
+                {'value': 'PZA LAVADO A', 'ordering': 7},
+                {'value': 'PZA NUTSCH A', 'ordering': 8},
+                {'value': 'PZA MAGMA C', 'ordering': 9},
+                {'value': 'PZA MIEL A', 'ordering': 10},
+                {'value': 'PZA MASA B', 'ordering': 11},
+                {'value': 'PZA NUTSCH B', 'ordering': 12},
+                {'value': 'PZA CR DES', 'ordering': 13},
+                {'value': 'PZA MIEL B', 'ordering': 14},
+                {'value': 'PZA MASA C', 'ordering': 15},
+                {'value': 'PZA NUTSCH C', 'ordering': 16},
+                {'value': 'PZA MIEL FINAL', 'ordering': 17},
+                {'value': 'BX MASA C', 'ordering': 18},
+                {'value': 'BX CRISTAL DES', 'ordering': 19},
+                {'value': 'BX NUTSCH C', 'ordering': 20},
+                {'value': 'BX MASA B', 'ordering': 21},
+                {'value': 'BX MASA A', 'ordering': 22},
+                {'value': 'BX MAGMA B', 'ordering': 23},
+                {'value': 'BX MASA REFINO', 'ordering': 24},
+                {'value': 'BX MAGMA C', 'ordering': 25},
+                {'value': 'BX MIEL FINAL', 'ordering': 26},
+                {'value': 'BX NUTSCH B', 'ordering': 27},
+                {'value': 'BX MIEL B', 'ordering': 28},
+                {'value': 'BX MIEL A', 'ordering': 29},
+                {'value': 'BX LAVADO A', 'ordering': 30},
+                {'value': 'BX NUTSCH A', 'ordering': 31},
+                {'value': 'BX SIROPE', 'ordering': 32},
+                {'value': 'BX DEL LICOR', 'ordering': 33},
+                {'value': 'BX MELADURA', 'ordering': 34},
+                {'value': 'POL AZUC', 'ordering': 35},
+                {'value': 'SOL TOTA HDA AZU', 'ordering': 36}
+            ]
+            LaboratoryReportingOrder.objects.bulk_create([
+                LaboratoryReportingOrder(factory_id=factory_id, **item) for item in lab_data
+            ])
+    except Exception as e:
+        logger.error(f"Error initializing reporting orders: {e}")
 
 
 @api_view(['POST'])
@@ -276,4 +387,357 @@ def insert_default_mgmt_settings(request):
         })
     except Exception as e:
         logger.error(f"Error inserting default mgmt settings: {e}")
+        return Response({'success': False, 'error': str(e)}, status=500)
+
+
+@api_view(['POST'])
+def insert_default_lab_materials_settings(request):
+    """Insert default lab materials settings (rows of materials) for the factory."""
+    factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+    
+    try:
+        from ..models import LabMaterialsSettings
+        
+        # Default materials list (matching client and labmaterialssettings_view.py)
+        materials = [
+            'licor', 'sirope', 'masa_refino', 'magma_b', 'meladura',
+            'masa_a', 'lavado_a', 'nutsch_a', 'magma_c', 'miel_a',
+            'masa_b', 'nutsch_b', 'cr_des', 'miel_b', 'masa_c',
+            'nutsch_c', 'miel_final', 'pol_azuc', 'sol_tota_hda_azu'
+        ]
+        
+        # Check if settings already exist
+        existing = LabMaterialsSettings.objects.filter(factory_id=factory_id)
+        if existing.exists():
+            # Check if we have the old "pza_" prefixed records and fix them
+            pza_records = existing.filter(material__startswith='pza_')
+            if pza_records.exists():
+                logger.info("Found legacy 'pza_' records. Migrating to standard names...")
+                for record in pza_records:
+                    new_name = record.material.replace('pza_', '')
+                    # Check if the new name is in our target list
+                    if new_name in materials:
+                        # Check if target already exists (duplicate)
+                        if not LabMaterialsSettings.objects.filter(factory_id=factory_id, material=new_name).exists():
+                            record.material = new_name
+                            record.save()
+                        else:
+                            # If target exists, just delete the old one
+                            record.delete()
+                
+                # Also clean up any bx_ records if they are not used by client
+                existing.filter(material__startswith='bx_').delete()
+                
+                return Response({
+                    'success': True,
+                    'created': False,
+                    'updated': True,
+                    'message': 'Lab materials settings migrated to standard names'
+                })
+
+            return Response({
+                'success': True,
+                'created': False,
+                'message': 'Lab materials settings already exist'
+            })
+        
+        created_count = 0
+        for material in materials:
+            LabMaterialsSettings.objects.create(
+                material=material,
+                visible=1,
+                factory_id=factory_id
+            )
+            created_count += 1
+        
+        return Response({
+            'success': True,
+            'created': True,
+            'count': created_count,
+            'message': 'Lab materials settings created'
+        })
+    except Exception as e:
+        logger.error(f"Error inserting default lab materials settings: {e}")
+        return Response({'success': False, 'error': str(e)}, status=500)
+
+
+@api_view(['POST'])
+def insert_default_lab_settings_excel(request):
+    """Insert default laboratory settings excel (single record with '...') for the factory."""
+    factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+    
+    try:
+        from ..models import LaboratorySettingsExcel
+        
+        # Define defaults
+        defaults = {
+            'pza_licor_letter': '...', 'pza_licor_number': '...',
+            'pza_sirope_letter': '...', 'pza_sirope_number': '...',
+            'pza_masa_refino_letter': '...', 'pza_masa_refino_number': '...',
+            'pza_magma_b_letter': '...', 'pza_magma_b_number': '...',
+            'pza_meladura_letter': '...', 'pza_meladura_number': '...',
+            'pza_masa_a_letter': '...', 'pza_masa_a_number': '...',
+            'pza_lavado_a_letter': '...', 'pza_lavado_a_number': '...',
+            'pza_nutsch_a_letter': '...', 'pza_nutsch_a_number': '...',
+            'pza_magma_c_letter': '...', 'pza_magma_c_number': '...',
+            'pza_miel_a_letter': '...', 'pza_miel_a_number': '...',
+            'pza_masa_b_letter': '...', 'pza_masa_b_number': '...',
+            'pza_nutsch_b_letter': '...', 'pza_nutsch_b_number': '...',
+            'pza_cr_des_letter': '...', 'pza_cr_des_number': '...',
+            'pza_miel_b_letter': '...', 'pza_miel_b_number': '...',
+            'pza_masa_c_letter': '...', 'pza_masa_c_number': '...',
+            'pza_nutsch_c_letter': '...', 'pza_nutsch_c_number': '...',
+            'pza_miel_final_letter': '...', 'pza_miel_final_number': '...',
+            'bx_masa_c_letter': '...', 'bx_masa_c_number': '...',
+            'bx_cristal_des_letter': '...', 'bx_cristal_des_number': '...',
+            'bx_nutsch_c_letter': '...', 'bx_nutsch_c_number': '...',
+            'bx_masa_b_letter': '...', 'bx_masa_b_number': '...',
+            'bx_masa_a_letter': '...', 'bx_masa_a_number': '...',
+            'bx_magma_b_letter': '...', 'bx_magma_b_number': '...',
+            'bx_masa_refino_letter': '...', 'bx_masa_refino_number': '...',
+            'bx_magma_c_letter': '...', 'bx_magma_c_number': '...',
+            'bx_miel_final_letter': '...', 'bx_miel_final_number': '...',
+            'bx_nutsch_b_letter': '...', 'bx_nutsch_b_number': '...',
+            'bx_miel_b_letter': '...', 'bx_miel_b_number': '...',
+            'bx_miel_a_letter': '...', 'bx_miel_a_number': '...',
+            'bx_lavado_a_letter': '...', 'bx_lavado_a_number': '...',
+            'bx_nutsch_a_letter': '...', 'bx_nutsch_a_number': '...',
+            'bx_sirope_letter': '...', 'bx_sirope_number': '...',
+            'bx_del_licor_letter': '...', 'bx_del_licor_number': '...',
+            'bx_meladura_letter': '...', 'bx_meladura_number': '...',
+            'pol_azuc_letter': '...', 'pol_azuc_number': '...',
+            'sol_tota_hda_azu_letter': '...', 'sol_tota_hda_azu_number': '...',
+            'factory_id': factory_id
+        }
+
+        # Check if settings already exist
+        obj = LaboratorySettingsExcel.objects.filter(factory_id=factory_id).first()
+        
+        if obj:
+            # If exists but has NULL values (e.g. pza_licor_letter is None or empty), update it
+            if not obj.pza_licor_letter or obj.pza_licor_letter == "":
+                for key, value in defaults.items():
+                    setattr(obj, key, value)
+                obj.save()
+                return Response({
+                    'success': True,
+                    'created': False,
+                    'updated': True,
+                    'message': 'Laboratory settings excel updated with defaults (fixed NULLs)'
+                })
+            
+            return Response({
+                'success': True,
+                'created': False,
+                'message': 'Laboratory settings excel already exist and are valid'
+            })
+
+        # Create default record
+        # We try to force id=0, but if it fails we let DB decide
+        defaults['id'] = 0
+        LaboratorySettingsExcel.objects.create(**defaults)
+        
+        return Response({
+            'success': True,
+            'created': True,
+            'message': 'Laboratory settings excel created with defaults'
+        })
+    except Exception as e:
+        logger.error(f"Error inserting default lab settings excel: {e}")
+        return Response({'success': False, 'error': str(e)}, status=500)
+
+
+@api_view(['POST'])
+def insert_default_crystals_data_parametrization(request):
+    """Insert default crystals data parametrization for the factory."""
+    factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+    
+    try:
+        from ..models import CrystalsDataParametrization
+        
+        # Check if settings already exist
+        if CrystalsDataParametrization.objects.filter(factory_id=factory_id).exists():
+            return Response({
+                'success': True,
+                'created': False,
+                'message': 'Crystals data parametrization already exists'
+            })
+            
+        parameters = [
+            "%_fino.",
+            "%_peq.",
+            "%_opt.",
+            "%_gran.",
+            "%_muy_gran.",
+            "rel._l/a",
+            "%_crist._alarg",
+        ]
+        categories = ["Good", "Regular", "Bad"]
+        
+        created_count = 0
+        for parameter in parameters:
+            for category in categories:
+                CrystalsDataParametrization.objects.create(
+                    parameter=parameter,
+                    categoria=category,
+                    range_from=0,
+                    range_to=0,
+                    factory_id=factory_id
+                )
+                created_count += 1
+        
+        return Response({
+            'success': True,
+            'created': True,
+            'count': created_count,
+            'message': 'Crystals data parametrization created'
+        })
+    except Exception as e:
+        logger.error(f"Error inserting default crystals data parametrization: {e}")
+        return Response({'success': False, 'error': str(e)}, status=500)
+
+
+@api_view(['POST'])
+def insert_default_laboratory_parametrization(request):
+    """Insert default laboratory parametrization for the factory."""
+    factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+    
+    try:
+        from ..models import LaboratoryParametrization
+        
+        # Check if settings already exist
+        if LaboratoryParametrization.objects.filter(factory_id=factory_id).exists():
+            return Response({
+                'success': True,
+                'created': False,
+                'message': 'Laboratory parametrization already exists'
+            })
+            
+        materials = [
+            'pza_licor', 'pza_sirope', 'pza_masa_refino', 'pza_magma_b', 'pza_meladura',
+            'pza_masa_a', 'pza_lavado_a', 'pza_nutsch_a', 'pza_magma_c', 'pza_miel_a',
+            'pza_masa_b', 'pza_nutsch_b', 'pza_cr_des', 'pza_miel_b', 'pza_masa_c',
+            'pza_nutsch_c', 'pza_miel_final', 'bx_masa_c', 'bx_cristal_des', 'bx_nutsch_c',
+            'bx_masa_b', 'bx_masa_a', 'bx_magma_b', 'bx_masa_refino', 'bx_magma_c',
+            'bx_miel_final', 'bx_nutsch_b', 'bx_miel_b', 'bx_miel_a', 'bx_lavado_a',
+            'bx_nutsch_a', 'bx_sirope', 'bx_del_licor', 'bx_meladura', 'pol_azuc',
+            'sol_tota_hda_azu'
+        ]
+        categories = ["Good", "Regular", "Bad"]
+        
+        created_count = 0
+        batch = []
+        for material in materials:
+            for category in categories:
+                batch.append(LaboratoryParametrization(
+                    material=material,
+                    categoria=category,
+                    range_from=0,
+                    range_to=0,
+                    factory_id=factory_id
+                ))
+                created_count += 1
+        
+        LaboratoryParametrization.objects.bulk_create(batch)
+        
+        return Response({
+            'success': True,
+            'created': True,
+            'count': created_count,
+            'message': 'Laboratory parametrization created'
+        })
+    except Exception as e:
+        logger.error(f"Error inserting default laboratory parametrization: {e}")
+        return Response({'success': False, 'error': str(e)}, status=500)
+
+
+@api_view(['POST'])
+def insert_default_laboratory_calculated_refino_parametrization(request):
+    """Insert default laboratory calculated refino parametrization."""
+    factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+    try:
+        from ..models import LaboratoryCalculatedRefinoParametrization
+        if LaboratoryCalculatedRefinoParametrization.objects.filter(factory_id=factory_id).exists():
+            return Response({'success': True, 'created': False, 'message': 'Already exists'})
+            
+        parameters = ["caida", "rendimientos", "%_cristales", "agotamientos"]
+        categories = ["Good", "Regular", "Bad"]
+        batch = [
+            LaboratoryCalculatedRefinoParametrization(
+                parameter=p, categoria=c, range_from=0, range_to=0, factory_id=factory_id
+            ) for p in parameters for c in categories
+        ]
+        LaboratoryCalculatedRefinoParametrization.objects.bulk_create(batch)
+        return Response({'success': True, 'created': True, 'count': len(batch)})
+    except Exception as e:
+        logger.error(f"Error inserting default refino param: {e}")
+        return Response({'success': False, 'error': str(e)}, status=500)
+
+
+@api_view(['POST'])
+def insert_default_laboratory_calculated_masa_a_parametrization(request):
+    """Insert default laboratory calculated masa a parametrization."""
+    factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+    try:
+        from ..models import LaboratoryCalculatedMasaAParametrization
+        if LaboratoryCalculatedMasaAParametrization.objects.filter(factory_id=factory_id).exists():
+            return Response({'success': True, 'created': False, 'message': 'Already exists'})
+            
+        parameters = ["caida", "rendimientos", "%_cristales", "agotamientos"]
+        categories = ["Good", "Regular", "Bad"]
+        batch = [
+            LaboratoryCalculatedMasaAParametrization(
+                parameter=p, categoria=c, range_from=0, range_to=0, factory_id=factory_id
+            ) for p in parameters for c in categories
+        ]
+        LaboratoryCalculatedMasaAParametrization.objects.bulk_create(batch)
+        return Response({'success': True, 'created': True, 'count': len(batch)})
+    except Exception as e:
+        logger.error(f"Error inserting default masa a param: {e}")
+        return Response({'success': False, 'error': str(e)}, status=500)
+
+
+@api_view(['POST'])
+def insert_default_laboratory_calculated_masa_b_parametrization(request):
+    """Insert default laboratory calculated masa b parametrization."""
+    factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+    try:
+        from ..models import LaboratoryCalculatedMasaBParametrization
+        if LaboratoryCalculatedMasaBParametrization.objects.filter(factory_id=factory_id).exists():
+            return Response({'success': True, 'created': False, 'message': 'Already exists'})
+            
+        parameters = ["caida", "rendimientos", "%_cristales", "agotamientos"]
+        categories = ["Good", "Regular", "Bad"]
+        batch = [
+            LaboratoryCalculatedMasaBParametrization(
+                parameter=p, categoria=c, range_from=0, range_to=0, factory_id=factory_id
+            ) for p in parameters for c in categories
+        ]
+        LaboratoryCalculatedMasaBParametrization.objects.bulk_create(batch)
+        return Response({'success': True, 'created': True, 'count': len(batch)})
+    except Exception as e:
+        logger.error(f"Error inserting default masa b param: {e}")
+        return Response({'success': False, 'error': str(e)}, status=500)
+
+
+@api_view(['POST'])
+def insert_default_laboratory_calculated_masa_c_parametrization(request):
+    """Insert default laboratory calculated masa c parametrization."""
+    factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+    try:
+        from ..models import LaboratoryCalculatedMasaCParametrization
+        if LaboratoryCalculatedMasaCParametrization.objects.filter(factory_id=factory_id).exists():
+            return Response({'success': True, 'created': False, 'message': 'Already exists'})
+            
+        parameters = ["caida", "rendimientos", "%_cristales", "agotamientos"]
+        categories = ["Good", "Regular", "Bad"]
+        batch = [
+            LaboratoryCalculatedMasaCParametrization(
+                parameter=p, categoria=c, range_from=0, range_to=0, factory_id=factory_id
+            ) for p in parameters for c in categories
+        ]
+        LaboratoryCalculatedMasaCParametrization.objects.bulk_create(batch)
+        return Response({'success': True, 'created': True, 'count': len(batch)})
+    except Exception as e:
+        logger.error(f"Error inserting default masa c param: {e}")
         return Response({'success': False, 'error': str(e)}, status=500)
