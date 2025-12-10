@@ -35,7 +35,7 @@ def insert_default_users(request):
         # Create admin user
         User.objects.create(
             username='admin',
-            password='$p5k2$$dYnR.Z1Y$E83bbM0gY6fhiP1sWLUcieTw3ON68FVU',
+            password='$p5k2$$QDK9VNxv$CDaB6.VfKuEQgMwtaybnDczD93T0.t3N',
             factory_id=factory_id
         )
         
