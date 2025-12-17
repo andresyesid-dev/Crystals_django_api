@@ -31,7 +31,7 @@ def add_historic_analysis_data(request: HttpRequest):
             long_crystals=body.get("long_crystals") or None,
             factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
         )
-        return JsonResponse({"message": "✅ Datos de análisis histórico agregados", "created": model_to_dict(obj)})
+        return JsonResponse({"message": "✅ Datos de análisis histórico agregados", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al agregar datos", "error": str(e)}, status=500)
 
@@ -45,8 +45,27 @@ def get_analysis_historic_data(request: HttpRequest):
         end = request.GET.get("end")
         if not start or not end:
             return JsonResponse({"message": "❌ Los parámetros 'start' y 'end' son requeridos", "error": "start and end required"}, status=400)
-        qs = HistoricAnalysisData.objects.filter(historic_report__datetime__gte=start, historic_report__datetime__lte=end, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
-        data = [model_to_dict(o) for o in qs]
-        return JsonResponse({"message": "✅ Datos históricos obtenidos", "results": data})
+            
+        # Use select_related to optimize the join
+        qs = HistoricAnalysisData.objects.filter(historic_report__datetime__gte=start, historic_report__datetime__lte=end, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).select_related('historic_report')
+        
+        results = []
+        for analysis in qs:
+            row = model_to_dict(analysis)
+            hr = analysis.historic_report
+            
+            # Add joined fields expected by client (matching HistoricAnalysisDataTable local query)
+            row.update({
+                "hr_id": hr.id,
+                "hr_datetime": hr.datetime,
+                "calibration": hr.calibration,
+                "width_mean": hr.width_mean,
+                "height_mean": hr.height_mean,
+                "height_cv": hr.height_cv,
+                "width_samples": hr.width_samples
+            })
+            results.append(row)
+            
+        return JsonResponse({"message": "✅ Datos históricos obtenidos", "results": results})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener datos", "error": str(e)}, status=500)

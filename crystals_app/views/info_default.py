@@ -597,6 +597,8 @@ def insert_default_crystals_data_parametrization(request):
         return Response({'success': False, 'error': str(e)}, status=500)
 
 
+
+
 @api_view(['POST'])
 def insert_default_laboratory_parametrization(request):
     """Insert default laboratory parametrization for the factory."""
@@ -740,4 +742,90 @@ def insert_default_laboratory_calculated_masa_c_parametrization(request):
         return Response({'success': True, 'created': True, 'count': len(batch)})
     except Exception as e:
         logger.error(f"Error inserting default masa c param: {e}")
+        return Response({'success': False, 'error': str(e)}, status=500)
+
+
+@api_view(['POST'])
+def insert_default_laboratory_data(request):
+    """Insert default laboratory data (single record with '...') for the factory."""
+    factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+    
+    try:
+        from ..models import LaboratoryData
+        
+        # Check if data already exists
+        if LaboratoryData.objects.filter(factory_id=factory_id).exists():
+            return Response({
+                'success': True,
+                'created': False,
+                'message': 'Laboratory data already exists'
+            })
+            
+        # Define fields to populate with "..."
+        fields = [
+            'date_and_time',
+            'pza_licor', 'pza_sirope', 'pza_masa_refino', 'pza_magma_b', 'pza_meladura',
+            'pza_masa_a', 'pza_lavado_a', 'pza_nutsch_a', 'pza_magma_c', 'pza_miel_a',
+            'pza_masa_b', 'pza_nutsch_b', 'pza_cr_des', 'pza_miel_b', 'pza_masa_c',
+            'pza_nutsch_c', 'pza_miel_final', 'bx_masa_c', 'bx_cristal_des', 'bx_nutsch_c',
+            'bx_masa_b', 'bx_masa_a', 'bx_magma_b', 'bx_masa_refino', 'bx_magma_c',
+            'bx_miel_final', 'bx_nutsch_b', 'bx_miel_b', 'bx_miel_a', 'bx_lavado_a',
+            'bx_nutsch_a', 'bx_sirope', 'bx_del_licor', 'bx_meladura', 'pol_azuc',
+            'sol_tota_hda_azu'
+        ]
+        
+        data = {field: '...' for field in fields}
+        data['factory_id'] = factory_id
+        
+        LaboratoryData.objects.create(**data)
+        
+        return Response({
+            'success': True,
+            'created': True,
+            'message': 'Laboratory data created with default values'
+        })
+    except Exception as e:
+        logger.error(f"Error inserting default laboratory data: {e}")
+        return Response({'success': False, 'error': str(e)}, status=500)
+
+
+@api_view(['POST'])
+def insert_default_brix_calculator(request):
+    """Insert default brix calculator data (temperatures 60.0-70.0)."""
+    factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+    
+    try:
+        from ..models import BrixCalculatorData
+        
+        # Check if data already exists
+        if BrixCalculatorData.objects.filter(factory_id=factory_id).exists():
+            return Response({
+                'success': True,
+                'created': False,
+                'message': 'Brix calculator data already exists'
+            })
+            
+        # Range 60.0 to 70.0 with step 0.25 -> 41 items
+        items = []
+        val = 60.0
+        while val <= 70.01:
+             items.append(round(val, 2))
+             val += 0.25
+        
+        batch = [
+            BrixCalculatorData(
+                tc=tc, pureza=0, ss=0, brx=0, factory_id=factory_id
+            ) for tc in items
+        ]
+        
+        BrixCalculatorData.objects.bulk_create(batch)
+        
+        return Response({
+            'success': True,
+            'created': True,
+            'count': len(batch),
+            'message': 'Default brix calculator data inserted'
+        })
+    except Exception as e:
+        logger.error(f"Error inserting default brix calc data: {e}")
         return Response({'success': False, 'error': str(e)}, status=500)

@@ -480,3 +480,155 @@ connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), po
 [SECURITY] 2025-12-05 20:57:05,787 WARNING Invalid JWT token for endpoint: /config/language/get - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
 [SECURITY] 2025-12-05 23:22:25,639 WARNING Invalid JWT token for endpoint: /config/language/get - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
 [SECURITY] 2025-12-10 00:01:10,486 WARNING Invalid JWT token for endpoint: /process-code/get - {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-12 16:14:39,239 WARNING JWT token missing for protected endpoint: /lab-data/insert-default - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-12 23:30:45,564 ERROR JWT Authentication error: connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 6543 failed: Operation timed out
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 6543 failed: Network is unreachable
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 6543 failed: Network is unreachable
+	Is the server running on that host and accepting TCP/IP connections?
+ - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-12 23:31:38,312 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-12 23:31:38,341 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-12 23:31:38,347 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-12 23:31:38,353 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-12 23:31:38,359 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-12 23:31:38,365 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-12 23:31:38,370 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-12 23:31:38,376 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-12 23:31:38,379 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-12 23:31:38,387 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-12 23:31:38,390 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-14 01:20:26,741 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-14 01:20:26,812 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-14 01:20:26,818 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-14 01:20:26,821 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-14 01:20:26,827 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-14 01:20:26,830 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-14 01:20:26,834 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-14 01:20:26,842 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-14 01:20:26,849 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-14 01:20:26,858 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-14 01:20:26,861 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-14 01:22:19,083 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-14 01:22:19,092 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-14 01:22:19,098 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-14 01:22:19,104 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-14 01:22:19,122 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-14 01:22:19,129 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:07:01,204 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-15 01:07:01,249 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:07:01,257 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-15 01:07:01,261 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:07:01,266 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-15 01:07:01,270 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:07:01,276 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:07:01,281 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-15 01:07:01,285 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:07:01,289 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-15 01:07:01,291 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:00,391 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:00,456 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:00,469 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:00,479 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:00,495 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:00,502 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:00,981 WARNING JWT token missing for protected endpoint: /config/language/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:00,988 WARNING JWT token missing for protected endpoint: /config/language/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:00,995 WARNING JWT token missing for protected endpoint: /config/language/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,059 WARNING JWT token missing for protected endpoint: /global-settings/line-color/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,066 WARNING JWT token missing for protected endpoint: /global-settings/line-color/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,075 WARNING JWT token missing for protected endpoint: /global-settings/line-color/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,081 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,090 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,098 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,107 WARNING JWT token missing for protected endpoint: /calibration/active - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,114 WARNING JWT token missing for protected endpoint: /calibration/active - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,124 WARNING JWT token missing for protected endpoint: /calibration/active - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,130 WARNING JWT token missing for protected endpoint: /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,140 WARNING JWT token missing for protected endpoint: /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,148 WARNING JWT token missing for protected endpoint: /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,166 WARNING JWT token missing for protected endpoint: /activation/status - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,176 WARNING JWT token missing for protected endpoint: /activation/status - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,185 WARNING JWT token missing for protected endpoint: /activation/status - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,478 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,484 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,491 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,902 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,910 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,920 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,925 WARNING JWT token missing for protected endpoint: /calibration/active - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,933 WARNING JWT token missing for protected endpoint: /calibration/active - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,942 WARNING JWT token missing for protected endpoint: /calibration/active - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,948 WARNING JWT token missing for protected endpoint: /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,960 WARNING JWT token missing for protected endpoint: /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,969 WARNING JWT token missing for protected endpoint: /calibration/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,974 WARNING JWT token missing for protected endpoint: /activation/status - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,981 WARNING JWT token missing for protected endpoint: /activation/status - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:01,990 WARNING JWT token missing for protected endpoint: /activation/status - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:19,502 WARNING JWT token missing for protected endpoint: /calibration/active - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:19,520 WARNING JWT token missing for protected endpoint: /calibration/active - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:19,532 WARNING JWT token missing for protected endpoint: /calibration/active - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:19,908 WARNING JWT token missing for protected endpoint: /manual-measurements/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:19,917 WARNING JWT token missing for protected endpoint: /manual-measurements/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:19,924 WARNING JWT token missing for protected endpoint: /manual-measurements/list - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:21,552 WARNING JWT token missing for protected endpoint: /analysis-category/get-new - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:21,572 WARNING JWT token missing for protected endpoint: /analysis-category/get-new - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:21,581 WARNING JWT token missing for protected endpoint: /analysis-category/get-new - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:21,654 WARNING JWT token missing for protected endpoint: /reporting-order/specific/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:21,662 WARNING JWT token missing for protected endpoint: /reporting-order/specific/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 01:25:21,670 WARNING JWT token missing for protected endpoint: /reporting-order/specific/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-15 02:44:21,605 WARNING JWT token missing for protected endpoint: /company/get - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 21:43:01,047 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-16 21:43:01,138 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 21:43:01,144 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-16 21:43:01,149 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 21:43:01,154 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-16 21:43:01,157 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 21:43:01,162 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 21:43:01,167 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-16 21:43:01,169 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 21:43:01,174 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-16 21:43:01,177 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 22:01:35,998 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-16 22:01:36,042 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 22:01:36,048 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-16 22:01:36,052 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 22:01:36,057 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-16 22:01:36,060 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 22:01:36,067 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 22:01:36,071 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-16 22:01:36,074 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 22:01:36,080 ERROR Login error: could not translate host name "aws-1-us-east-1.pooler.supabase.com" to address: nodename nor servname provided, or not known
+ - IP: 127.0.0.1 - User: Unknown
+[SECURITY] 2025-12-16 22:01:36,086 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 22:54:42,411 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 22:54:42,434 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 22:54:42,447 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 22:54:42,456 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 22:54:42,467 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-16 22:54:42,597 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous

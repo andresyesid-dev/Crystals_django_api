@@ -12,7 +12,34 @@ import json
 @log_api_access
 def get_management_report_layout(request: HttpRequest):
     try:
-        data = [model_to_dict(o) for o in ManagementReportLayout.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))]
+        factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+        qs = ManagementReportLayout.objects.filter(factory_id=factory_id)
+        
+        # Auto-create defaults if empty (Matching local table logic)
+        if not qs.exists():
+            default_data = [
+                (1, 0, 0, "general_data_table", "table"),
+                (1, 0, 1, "mean_line_chart", "graph"),
+                (1, 0, 2, "dop_bar_chart", "graph"),
+                (1, 1, 0, "specific_data_table", "table"),
+                (1, 1, 1, "cv_line_chart", "graph"),
+                (2, 0, 0, "general_laboratory_table", "table"),
+                (2, 0, 1, "specific_laboratory_table", "table"),
+                (2, 0, 2, "calculated_laboratory_data", "table"),
+                (2, 1, 0, "fall_of_purity_laboratory_data", "graph"),
+                (2, 1, 1, "percentage_of_crystals_per_mass", "graph"),
+                (2, 1, 2, "calculated_individual_reports", "table"),
+            ]
+            layouts = [
+                ManagementReportLayout(
+                    screen_number=item[0], row=item[1], column=item[2],
+                    element_id=item[3], element_type=item[4], factory_id=factory_id
+                ) for item in default_data
+            ]
+            ManagementReportLayout.objects.bulk_create(layouts)
+            qs = ManagementReportLayout.objects.filter(factory_id=factory_id)
+
+        data = [model_to_dict(o) for o in qs]
         return JsonResponse({"message": "✅ Diseño de reporte de gestión obtenido exitosamente", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener diseño de reporte", "error": str(e)}, status=500)

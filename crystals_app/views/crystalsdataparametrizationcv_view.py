@@ -12,8 +12,15 @@ import json
 @log_api_access
 def get_crystals_data_parametrization_cv(request: HttpRequest):
     try:
-        data = [model_to_dict(o) for o in CrystalsDataParametrizationCV.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))]
-        return JsonResponse({"message": "✅ Parametrización CV obtenida", "results": data})
+        data = []
+        for o in CrystalsDataParametrizationCV.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)):
+            item = model_to_dict(o)
+            if item.get("range_from") is not None:
+                item["range_from"] = float(item["range_from"])
+            if item.get("range_to") is not None:
+                item["range_to"] = float(item["range_to"])
+            data.append(item)
+        return JsonResponse({"message": "✅ Datos obtenidos exitosamente", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener parametrización CV", "error": str(e)}, status=500)
 

@@ -13,8 +13,28 @@ import json
 @log_api_access
 def get_lab_materials_settings(request: HttpRequest):
     try:
-        data = [model_to_dict(o) for o in LabMaterialsSettings.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))]
-        return JsonResponse({"message": "✅ Configuración de materiales obtenida exitosamente", "results": data})
+
+        # Match client expectations: return a single object where keys are material names and values are visible status
+        queryset = LabMaterialsSettings.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
+        
+        pivot_data = {}
+        # Populate with default keys first (optional but safer)
+        base_materials = [
+            'licor', 'sirope', 'masa_refino', 'magma_b', 'meladura',
+            'masa_a', 'lavado_a', 'nutsch_a', 'magma_c', 'miel_a',
+            'masa_b', 'nutsch_b', 'cr_des', 'miel_b', 'masa_c',
+            'nutsch_c', 'miel_final', 'pol_azuc', 'sol_tota_hda_azu'
+        ]
+        for mat in base_materials:
+            pivot_data[mat] = 0 # Default to 0/False if missing
+            
+        # Overlay actual DB values
+        for obj in queryset:
+            if obj.material:
+                pivot_data[obj.material] = obj.visible
+                
+        # Return as a single-item list because client code accesses results[0]
+        return JsonResponse({"message": "✅ Configuración de materiales obtenida exitosamente", "results": [pivot_data]})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener configuración de materiales", "error": str(e)}, status=500)
 

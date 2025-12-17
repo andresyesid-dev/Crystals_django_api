@@ -51,7 +51,7 @@ def add_historic_report(request: HttpRequest):
             height_range=float(height.get("range", 0) or 0),
             factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
         )
-        return JsonResponse({"message": "✅ Reporte histórico agregado", "created": model_to_dict(obj)})
+        return JsonResponse({"message": "✅ Reporte histórico agregado", "id": obj.id})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al agregar reporte", "error": str(e)}, status=500)
 
@@ -69,17 +69,36 @@ def get_historic_reports(request: HttpRequest):
         qs = HistoricReport.objects.filter(datetime__gte=start, datetime__lte=end, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         results = []
         cats = {a.historic_report_id: a for a in AnalysisCategory.objects.filter(historic_report_id__in=list(qs.values_list('id', flat=True)), factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))}
-        for hr in qs.order_by("datetime"):
-            row = model_to_dict(hr)
-            ac = cats.get(hr.id)
-            if ac:
-                row.update({
-                    "batch_number": ac.batch_number,
-                    "username": ac.username,
-                    "baking_time": ac.baking_time,
-                    "mass_number": ac.mass_number,
-                })
-            results.append(row)
+        
+        for hr in qs:
+            try:
+                row = model_to_dict(hr)
+                
+                # Fix Field Mismatch: Client expects 'calibration_id' (DB column), Django model calls it 'calibration_fk'
+                if 'calibration_fk' in row:
+                    row['calibration_id'] = row['calibration_fk']
+                
+                # Mimic LEFT JOIN behavior: Ensure keys exist even if AnalysisCategory is missing
+                ac = cats.get(hr.id)
+                if ac:
+                    row.update({
+                        "batch_number": ac.batch_number,
+                        "username": ac.username,
+                        "baking_time": ac.baking_time,
+                        "mass_number": ac.mass_number,
+                    })
+                else:
+                    row.update({
+                        "batch_number": None,
+                        "username": None,
+                        "baking_time": None,
+                        "mass_number": None,
+                    })
+                
+                results.append(row)
+            except Exception as row_error:
+                continue
+
         return JsonResponse({"message": "✅ Reportes históricos obtenidos", "results": results})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener reportes", "error": str(e)}, status=500)
@@ -132,8 +151,9 @@ def get_order_last_report(request: HttpRequest):
             return JsonResponse({"message": "❌ El parámetro 'last_id' es requerido", "error": "last_id required"}, status=400)
         # Match local: SELECT ordering FROM calibrations INNER JOIN historic_reports
         # WHERE historic_reports.calibration_id = :last_calibration
+        # Match local: Client sends NAME (e.g., "MASA A") as last_id, not integer ID.
         obj = HistoricReport.objects.filter(
-            calibration_fk_id=last_id,
+            calibration_fk__name=last_id,
             factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
         ).select_related('calibration_fk').order_by("-datetime").first()
         

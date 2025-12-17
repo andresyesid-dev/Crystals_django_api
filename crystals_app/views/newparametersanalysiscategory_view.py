@@ -18,6 +18,8 @@ def add_new_parameter(request: HttpRequest):
         type_ = body.get("type")
         if not parameter or not type_:
             return JsonResponse({"message": "❌ Los campos 'parameter' y 'type' son requeridos", "error": "parameter and type required"}, status=400)
+        if NewParametersAnalysisCategory.objects.filter(parameter=parameter, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).exists():
+            return JsonResponse({"message": "⚠️ El parámetro ya existe", "ok": True})
         NewParametersAnalysisCategory.objects.create(parameter=parameter, type=type_, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Nuevo parámetro agregado exitosamente", "ok": True})
     except Exception as e:

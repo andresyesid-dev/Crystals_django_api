@@ -19,7 +19,7 @@ def get_brix_calculator_data(request: HttpRequest):
 
 
 @csrf_exempt
-@require_http_methods(["POST"])
+@require_http_methods(["POST", "PATCH"])
 @jwt_required
 @sensitive_endpoint
 @log_api_access

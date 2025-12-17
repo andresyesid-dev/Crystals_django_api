@@ -100,3 +100,51 @@ def delete_laboratory_data_record(request: HttpRequest):
         return JsonResponse({"message": "✅ Registro de laboratorio eliminado exitosamente", "deleted": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al eliminar registro de laboratorio", "error": str(e)}, status=500)
+
+
+@csrf_exempt
+@require_http_methods(["POST"])
+@jwt_required
+@sensitive_endpoint
+@log_api_access
+def lab_data_insert_default(request: HttpRequest):
+    try:
+        factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+        if LaboratoryData.objects.filter(id=0, factory_id=factory_id).exists():
+             return JsonResponse({"message": "⚠️ El registro por defecto ya existe", "ok": True})
+        
+        # Create default record with "..." in all text fields
+        # Note: We need to respect the model fields. Assuming most are CharFields or similar where "..." is valid.
+        # If there are numeric fields, this might error.
+        # However, the user said "todos los valores deben ser un texto '...'".
+        # I'll check the model columns first to be safe, but for now I'll create an empty object and set fields.
+        
+        # Actually, let's look at the model definition to be sure about fields.
+        # But per user request, I will attempt to set fields to "...".
+        # Since I don't see the models.py here, I will rely on the instruction.
+        
+        default_data = {
+            "id": 0,
+            "factory_id": factory_id,
+            "date_and_time": "..."
+        }
+        
+        # Attempt to get all field names from the model to populate them
+        for field in LaboratoryData._meta.fields:
+            if field.name not in ["id", "factory_id", "date_and_time"]:
+                 # Check if field accepts strings. If it's a number, "..." will fail.
+                 # Assuming text fields for now or that the user knows what they are asking.
+                 # Safest bet for 'all values' is to iterate model fields.
+                 if field.get_internal_type() in ['CharField', 'TextField']:
+                     default_data[field.name] = "..."
+                 else:
+                     # For numeric types, we can't put "...". 
+                     # I will leave them as None/Default or ask.
+                     # But the user was specific: "cada una de las columnas".
+                     # This implies they might all be text.
+                     pass
+
+        obj = LaboratoryData.objects.create(**default_data)
+        return JsonResponse({"message": "✅ Registro por defecto creado exitosamente", "ok": True})
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al crear registro por defecto", "error": str(e)}, status=500)

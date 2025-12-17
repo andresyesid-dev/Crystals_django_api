@@ -86,7 +86,7 @@ calibration_urls = [
 	path('calibration/active', calibration_view.select_active_calibration),
 	path('calibration/activate', calibration_view.set_calibration_as_active),
 	path('calibration/create', calibration_view.create_calibration),
-	path('calibration/update', calibration_view.update_calibration),
+	path('calibration/update/', calibration_view.update_calibration),
 	path('calibration/delete', calibration_view.delete_calibration),
 	path('calibration/get', calibration_view.get_calibration),
 	path('calibration/update-order', calibration_view.update_calibration_order),
@@ -259,6 +259,7 @@ laboratory_data_urls = [
 	path('lab-data/add', laboratorydata_view.add_laboratory_data),
 	path('lab-data/historic', laboratorydata_view.get_historic_laboratory_data),
 	path('lab-data/delete', laboratorydata_view.delete_laboratory_data_record),
+	path('lab-data/insert-default', laboratorydata_view.lab_data_insert_default),
 ]
 
 user_urls = [
@@ -295,11 +296,13 @@ default_data_urls = [
 	path('info-default/lab-materials-settings', info_default.insert_default_lab_materials_settings),
 	path('info-default/lab-settings-excel', info_default.insert_default_lab_settings_excel),
 	path('info-default/crystals-data-parametrization', info_default.insert_default_crystals_data_parametrization),
-	path('info-default/laboratory-parametrization', info_default.insert_default_laboratory_parametrization),
+    path('info-default/laboratory-parametrization', info_default.insert_default_laboratory_parametrization),
 	path('info-default/laboratory-calculated-refino-parametrization', info_default.insert_default_laboratory_calculated_refino_parametrization),
 	path('info-default/laboratory-calculated-masa-a-parametrization', info_default.insert_default_laboratory_calculated_masa_a_parametrization),
 	path('info-default/laboratory-calculated-masa-b-parametrization', info_default.insert_default_laboratory_calculated_masa_b_parametrization),
 	path('info-default/laboratory-calculated-masa-c-parametrization', info_default.insert_default_laboratory_calculated_masa_c_parametrization),
+	path('info-default/laboratory-data', info_default.insert_default_laboratory_data),
+	path('info-default/brix-calculator', info_default.insert_default_brix_calculator),
 ]
 
 urlpatterns = (
