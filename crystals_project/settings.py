@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,9 @@ SECRET_KEY = 'django-insecure-_^lwi2chlc8)t8x9x249^_*h0n1p8vugji#44&pqtc0=lm-39m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+
+CSRF_TRUSTED_ORIGINS = ['https://*.railway.app']
 
 
 # Application definition
@@ -81,26 +85,41 @@ WSGI_APPLICATION = 'crystals_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# OPCIÓN RECOMENDADA: Transaction Mode (Puerto 6543)
-# Ventaja: MUCHAS más conexiones simultáneas, ideal para APIs con múltiples clientes
-# Desventaja: No soporta prepared statements (no problem para Django ORM)
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres.iwmrkcuuhvygchesovwl',  # Formato: postgres.PROJECT_REF
-        'PASSWORD': 'Soporte!2025',
-        'HOST': 'aws-1-us-east-1.pooler.supabase.com',  # Pooler compartido
-        'PORT': '6543',  # Puerto 6543 para Transaction Mode (más conexiones)
-        'OPTIONS': {
-            'sslmode': 'require',
-            'connect_timeout': 30,
-        },
-        'CONN_MAX_AGE': 60,  # Conexiones de 1 minuto (Transaction Mode cierra rápido)
-        'CONN_HEALTH_CHECKS': True,  # Verificar salud de conexiones
-        'ATOMIC_REQUESTS': False,
+# Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
+if os.environ.get('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(
+            conn_max_age=60,
+            ssl_require=True
+        )
     }
-}
+    DATABASES['default']['OPTIONS'] = {
+        'sslmode': 'require',
+        'connect_timeout': 30,
+    }
+    DATABASES['default']['CONN_HEALTH_CHECKS'] = True
+    DATABASES['default']['ATOMIC_REQUESTS'] = False
+else:
+    # OPCIÓN RECOMENDADA: Transaction Mode (Puerto 6543)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'postgres',
+            'USER': 'postgres.iwmrkcuuhvygchesovwl',  # Formato: postgres.PROJECT_REF
+            'PASSWORD': 'Soporte!2025',
+            'HOST': 'aws-1-us-east-1.pooler.supabase.com',  # Pooler compartido
+            'PORT': '6543',  # Puerto 6543 para Transaction Mode (más conexiones)
+            'OPTIONS': {
+                'sslmode': 'require',
+                'connect_timeout': 30,
+            },
+            'CONN_MAX_AGE': 60,  # Conexiones de 1 minuto (Transaction Mode cierra rápido)
+            'CONN_HEALTH_CHECKS': True,  # Verificar salud de conexiones
+            'ATOMIC_REQUESTS': False,
+        }
+    }
 
 # OPCIÓN ALTERNATIVA: Session Mode (Puerto 5432) - SOLO si necesitas prepared statements
 # Desventaja: LÍMITE de conexiones muy bajo (máx 15-25 según plan Supabase)

@@ -14305,3 +14305,67 @@ INFO 2025-12-17 00:00:11,510 autoreload 75390 8604630592 /Users/andresyesidmotta
 INFO 2025-12-17 00:00:13,597 autoreload 75665 8610360896 Watching for file changes with StatReloader
 INFO 2025-12-17 00:00:22,266 autoreload 75665 8610360896 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_app/views/newparametersanalysiscategory_view.py changed, reloading.
 INFO 2025-12-17 00:00:23,048 autoreload 75705 8600653376 Watching for file changes with StatReloader
+INFO 2025-12-17 23:47:32,780 autoreload 6736 8605191744 Watching for file changes with StatReloader
+INFO 2025-12-17 23:47:52,267 basehttp 6736 12963033088 "POST /auth/login/ HTTP/1.1" 200 709
+INFO 2025-12-17 23:47:53,198 basehttp 6736 12963033088 "GET /lab-excel/get-letters HTTP/1.1" 200 1146
+INFO 2025-12-17 23:47:53,958 basehttp 6736 12963033088 "GET /lab-excel/get-letters HTTP/1.1" 200 1146
+INFO 2025-12-17 23:47:54,677 basehttp 6736 12963033088 "POST /info-default/users HTTP/1.1" 200 70
+INFO 2025-12-17 23:47:55,839 basehttp 6736 12963033088 "POST /info-default/config HTTP/1.1" 200 38
+INFO 2025-12-17 23:47:56,557 basehttp 6736 12963033088 "POST /info-default/global-settings HTTP/1.1" 200 74
+INFO 2025-12-17 23:47:57,287 basehttp 6736 12963033088 "POST /info-default/company HTTP/1.1" 200 74
+INFO 2025-12-17 23:47:57,996 basehttp 6736 12963033088 "POST /info-default/activation HTTP/1.1" 200 77
+INFO 2025-12-17 23:47:59,527 basehttp 6736 12963033088 "POST /info-default/mgmt-layout HTTP/1.1" 200 39
+INFO 2025-12-17 23:48:00,250 basehttp 6736 12963033088 "POST /info-default/mgmt-settings HTTP/1.1" 200 85
+INFO 2025-12-17 23:48:01,056 basehttp 6736 12963033088 "POST /info-default/lab-materials-settings HTTP/1.1" 200 81
+INFO 2025-12-17 23:48:01,767 basehttp 6736 12963033088 "POST /info-default/lab-settings-excel HTTP/1.1" 200 98
+INFO 2025-12-17 23:48:02,473 basehttp 6736 12963033088 "POST /info-default/crystals-data-parametrization HTTP/1.1" 200 89
+INFO 2025-12-17 23:48:03,196 basehttp 6736 12963033088 "POST /info-default/laboratory-parametrization HTTP/1.1" 200 86
+INFO 2025-12-17 23:48:03,922 basehttp 6736 12963033088 "POST /info-default/laboratory-calculated-refino-parametrization HTTP/1.1" 200 59
+INFO 2025-12-17 23:48:04,634 basehttp 6736 12963033088 "POST /info-default/laboratory-calculated-masa-a-parametrization HTTP/1.1" 200 59
+INFO 2025-12-17 23:48:05,340 basehttp 6736 12963033088 "POST /info-default/laboratory-calculated-masa-b-parametrization HTTP/1.1" 200 59
+INFO 2025-12-17 23:48:06,030 basehttp 6736 12963033088 "POST /info-default/laboratory-calculated-masa-c-parametrization HTTP/1.1" 200 59
+INFO 2025-12-17 23:48:06,777 basehttp 6736 12963033088 "POST /info-default/laboratory-data HTTP/1.1" 200 75
+WARNING 2025-12-17 23:48:06,813 log 6736 12963033088 Not Found: /
+WARNING 2025-12-17 23:48:06,813 basehttp 6736 12963033088 "POST / HTTP/1.1" 404 27306
+WARNING 2025-12-17 23:48:06,828 log 6736 12963033088 Not Found: /
+WARNING 2025-12-17 23:48:06,828 basehttp 6736 12963033088 "POST / HTTP/1.1" 404 27306
+INFO 2025-12-17 23:48:07,533 basehttp 6736 12963033088 "POST /info-default/brix-calculator HTTP/1.1" 200 80
+INFO 2025-12-17 23:48:08,225 basehttp 6736 12963033088 "GET /config/language/get HTTP/1.1" 200 52
+INFO 2025-12-17 23:48:09,007 basehttp 6736 12963033088 "GET /global-settings/line-color/get HTTP/1.1" 200 75
+INFO 2025-12-17 23:48:09,724 basehttp 6736 12963033088 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-17 23:48:10,456 basehttp 6736 12963033088 "GET /calibration/active HTTP/1.1" 200 290
+INFO 2025-12-17 23:48:11,165 basehttp 6736 12963033088 "GET /calibration/list HTTP/1.1" 200 2926
+INFO 2025-12-17 23:48:11,890 basehttp 6736 12963033088 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-17 23:48:13,081 basehttp 6736 12963033088 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-17 23:48:14,438 basehttp 6736 12963033088 "GET /company/get HTTP/1.1" 200 121
+INFO 2025-12-17 23:48:15,142 basehttp 6736 12963033088 "GET /calibration/active HTTP/1.1" 200 290
+INFO 2025-12-17 23:48:15,862 basehttp 6736 12963033088 "GET /calibration/list HTTP/1.1" 200 2926
+INFO 2025-12-17 23:48:16,561 basehttp 6736 12963033088 "GET /activation/status HTTP/1.1" 200 53
+INFO 2025-12-17 23:48:22,327 basehttp 6736 12963033088 "GET /lab-materials/get HTTP/1.1" 200 370
+INFO 2025-12-17 23:48:23,017 basehttp 6736 12963033088 "GET /lab-data/get HTTP/1.1" 200 883
+INFO 2025-12-17 23:48:27,406 basehttp 6736 12963033088 "GET /lab-materials/get HTTP/1.1" 200 370
+INFO 2025-12-17 23:48:28,153 basehttp 6736 12963033088 "GET /lab-data/get HTTP/1.1" 200 883
+INFO 2025-12-17 23:48:29,034 basehttp 6736 12963033088 "PATCH /lab-data/update HTTP/1.1" 200 85
+INFO 2025-12-17 23:48:29,916 basehttp 6736 12963033088 "POST /lab-data/add HTTP/1.1" 200 902
+INFO 2025-12-17 23:50:25,668 basehttp 6736 12963033088 "GET /lab-materials/get HTTP/1.1" 200 370
+INFO 2025-12-17 23:50:26,361 basehttp 6736 12963033088 "GET /lab-data/get HTTP/1.1" 200 883
+INFO 2025-12-17 23:51:32,659 basehttp 6736 12963033088 "GET /lab-materials/get HTTP/1.1" 200 370
+INFO 2025-12-17 23:51:33,347 basehttp 6736 12963033088 "GET /lab-data/get HTTP/1.1" 200 883
+INFO 2025-12-17 23:51:34,222 basehttp 6736 12963033088 "PATCH /lab-data/update HTTP/1.1" 200 85
+INFO 2025-12-17 23:51:35,088 basehttp 6736 12963033088 "POST /lab-data/add HTTP/1.1" 200 902
+INFO 2025-12-18 00:01:54,909 basehttp 6736 12963033088 "GET /lab-materials/get HTTP/1.1" 200 370
+INFO 2025-12-18 00:01:55,671 basehttp 6736 12963033088 "GET /lab-data/get HTTP/1.1" 200 883
+INFO 2025-12-18 00:01:57,875 basehttp 6736 12963033088 "GET /lab-materials/get HTTP/1.1" 200 370
+INFO 2025-12-18 00:01:58,613 basehttp 6736 12963033088 "GET /lab-data/get HTTP/1.1" 200 883
+INFO 2025-12-18 00:01:59,501 basehttp 6736 12963033088 "PATCH /lab-data/update HTTP/1.1" 200 85
+INFO 2025-12-18 00:02:00,380 basehttp 6736 12963033088 "POST /lab-data/add HTTP/1.1" 200 902
+INFO 2025-12-18 00:55:52,487 autoreload 6736 8605191744 /Users/andresyesidmottasarmiento/OneDrive/crystals_and_API/api/crystals_project/settings.py changed, reloading.
+WARNING 2025-12-18 15:01:16,985 log 60918 8667373120 Unauthorized: /historic-analysis/add
+WARNING 2025-12-18 15:01:17,648 log 60918 8667373120 Unauthorized: /historic-analysis/add
+WARNING 2025-12-18 15:01:18,316 log 60918 8667373120 Unauthorized: /historic-analysis/add
+WARNING 2025-12-18 15:01:18,986 log 60918 8667373120 Unauthorized: /historic-analysis/add
+WARNING 2025-12-18 15:01:45,195 log 61306 8608157248 Unauthorized: /historic-analysis/add
+WARNING 2025-12-18 15:01:46,260 log 61306 8608157248 Unauthorized: /historic-analysis/add
+WARNING 2025-12-18 15:01:46,964 log 61306 8608157248 Unauthorized: /historic-analysis/add
+WARNING 2025-12-18 15:01:47,702 log 61306 8608157248 Unauthorized: /historic-analysis/add
+WARNING 2025-12-18 15:02:47,097 log 61616 8640962112 Bad Request: /historic-analysis/add

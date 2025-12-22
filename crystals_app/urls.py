@@ -2,6 +2,7 @@ from django.urls import path
 from .views import (
 	activation_view,
 	analysiscategory_view,
+	analysisresults_view,
 	auth_view,
 	brixcalculatordata_view,
 	calibration_view,
@@ -72,6 +73,10 @@ analysiscategory_urls = [
 	path('analysis-category/get-new', analysiscategory_view.get_new_parameters_analysis_categories),
 	path('analysis-category/delete', analysiscategory_view.delete_parameter_analysis_category),
 	path('analysis-category/exists', analysiscategory_view.check_category_exists),
+]
+
+analysisresults_urls = [
+	path('analysis-results/add', analysisresults_view.add_analysis_results),
 ]
 
 brixcalculator_urls = [
@@ -310,6 +315,7 @@ urlpatterns = (
 	+ security_urls
 	+ activation_urls
 	+ analysiscategory_urls
+	+ analysisresults_urls
 	+ brixcalculator_urls
 	+ calibration_urls
 	+ company_urls

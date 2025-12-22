@@ -580,6 +580,7 @@ class AnalysisResults(models.Model):
 	elongated_crystals = models.FloatField(default=0.0)
 	pct_powder = models.FloatField(default=0.0)
 	historic_report_id = models.BigIntegerField(default=0)
+	factory_id = models.IntegerField(default=1)
 
 	class Meta:
 		db_table = 'analysis_results'

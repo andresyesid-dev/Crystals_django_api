@@ -632,3 +632,11 @@ connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), po
 [SECURITY] 2025-12-16 22:54:42,456 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
 [SECURITY] 2025-12-16 22:54:42,467 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
 [SECURITY] 2025-12-16 22:54:42,597 WARNING JWT token missing for protected endpoint: /lab-excel/get-letters - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-18 15:01:16,963 WARNING JWT token missing for protected endpoint: /historic-analysis/add - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-18 15:01:17,647 WARNING JWT token missing for protected endpoint: /historic-analysis/add - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-18 15:01:18,315 WARNING JWT token missing for protected endpoint: /historic-analysis/add - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-18 15:01:18,976 WARNING JWT token missing for protected endpoint: /historic-analysis/add - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-18 15:01:45,188 WARNING JWT token missing for protected endpoint: /historic-analysis/add - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-18 15:01:46,257 WARNING JWT token missing for protected endpoint: /historic-analysis/add - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-18 15:01:46,962 WARNING JWT token missing for protected endpoint: /historic-analysis/add - IP: 127.0.0.1 - User: Anonymous
+[SECURITY] 2025-12-18 15:01:47,701 WARNING JWT token missing for protected endpoint: /historic-analysis/add - IP: 127.0.0.1 - User: Anonymous
