@@ -18,14 +18,46 @@ import json
 @log_api_access
 def get_laboratory_parametrization(request: HttpRequest):
     try:
+        # CRITICAL: Django ORM does NOT preserve insertion order like SQLite
+        # Must explicitly order by material and categoria to match widget expectations
+        material_order = [
+            "pza_licor", "pza_sirope", "pza_masa_refino", "pza_magma_b", "pza_meladura",
+            "pza_masa_a", "pza_lavado_a", "pza_nutsch_a", "pza_magma_c", "pza_miel_a",
+            "pza_masa_b", "pza_nutsch_b", "pza_cr_des", "pza_miel_b", "pza_masa_c",
+            "pza_nutsch_c", "pza_miel_final", "bx_masa_c", "bx_cristal_des", "bx_nutsch_c",
+            "bx_masa_b", "bx_masa_a", "bx_magma_b", "bx_masa_refino", "bx_magma_c",
+            "bx_miel_final", "bx_nutsch_b", "bx_miel_b", "bx_miel_a", "bx_lavado_a",
+            "bx_nutsch_a", "bx_sirope", "bx_del_licor", "bx_meladura", "pol_azuc", "sol_tota_hda_azu"
+        ]
+        categoria_order = ['Good', 'Regular', 'Bad']
+        factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+        
+        # Build ordered response by querying each material+category combination
         data = []
-        for o in LaboratoryParametrization.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)):
-            item = model_to_dict(o)
-            if item.get("range_from") is not None:
-                item["range_from"] = float(item["range_from"])
-            if item.get("range_to") is not None:
-                item["range_to"] = float(item["range_to"])
-            data.append(item)
+        for material in material_order:
+            for categoria in categoria_order:
+                obj = LaboratoryParametrization.objects.filter(
+                    material=material, 
+                    categoria=categoria, 
+                    factory_id=factory_id
+                ).first()
+                
+                if obj:
+                    item = model_to_dict(obj, exclude=['id', 'factory_id'])
+                    if item.get("range_from") is not None:
+                        item["range_from"] = float(item["range_from"])
+                    if item.get("range_to") is not None:
+                        item["range_to"] = float(item["range_to"])
+                    data.append(item)
+                else:
+                    # Return empty record to maintain index alignment
+                    data.append({
+                        'material': material,
+                        'categoria': categoria,
+                        'range_from': 0.0,
+                        'range_to': 0.0
+                    })
+        
         return JsonResponse({"message": "✅ Parametrización de laboratorio obtenida exitosamente", "results": data})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener parametrización de laboratorio", "error": str(e)}, status=500)
