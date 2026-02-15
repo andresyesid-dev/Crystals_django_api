@@ -262,20 +262,18 @@ def get_calibration(request: HttpRequest):
 def update_calibration_order(request: HttpRequest):
     """
     Actualiza el ordering de una calibración.
+    ordering=None significa que la calibración está excluida del historic report
     """
     try:
         payload = _parse_json(request)
         calibration_id = payload.get("id") or payload.get("calibration_id")
-        ordering = payload.get("ordering")
+        ordering = payload.get("ordering")  # Can be None to exclude from reports
         
         if not calibration_id:
             print(f"❌ update_calibration_order failed: missing id. Payload: {payload}")
             return JsonResponse({"message": "❌ Se requiere 'id' o 'calibration_id'", "error": "calibration_id required"}, status=400)
         
-        if ordering is None:
-            print(f"❌ update_calibration_order failed: missing ordering. Payload: {payload}")
-            return JsonResponse({"message": "❌ Se requiere el campo 'ordering'", "error": "ordering required"}, status=400)
-        
+        # ordering can be None (to exclude) or a number (to set position)
         # Match local implementation: direct update
         Calibration.objects.filter(id=calibration_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(ordering=ordering)
         return JsonResponse({"message": "✅ Orden de calibración actualizado", "ok": True})

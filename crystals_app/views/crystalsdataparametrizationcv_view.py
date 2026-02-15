@@ -12,13 +12,16 @@ import json
 @log_api_access
 def get_crystals_data_parametrization_cv(request: HttpRequest):
     try:
+        # Must exclude 'id' and 'factory_id' to match SQLite local schema
         data = []
         for o in CrystalsDataParametrizationCV.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)):
-            item = model_to_dict(o)
+            item = model_to_dict(o, exclude=['id', 'factory_id'])
             if item.get("range_from") is not None:
                 item["range_from"] = float(item["range_from"])
             if item.get("range_to") is not None:
                 item["range_to"] = float(item["range_to"])
+            if item.get("tolerance") is not None:
+                item["tolerance"] = float(item["tolerance"])
             data.append(item)
         return JsonResponse({"message": "✅ Datos obtenidos exitosamente", "results": data})
     except Exception as e:

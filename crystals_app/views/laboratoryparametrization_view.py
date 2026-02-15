@@ -32,15 +32,17 @@ def get_laboratory_parametrization(request: HttpRequest):
         categoria_order = ['Good', 'Regular', 'Bad']
         factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
         
-        # Build ordered response by querying each material+category combination
+        # OPTIMIZED: Fetch all records in ONE query
+        all_records = {}
+        for obj in LaboratoryParametrization.objects.filter(factory_id=factory_id):
+            key = (obj.material, obj.categoria)
+            all_records[key] = obj
+        
+        # Build ordered response in memory
         data = []
         for material in material_order:
             for categoria in categoria_order:
-                obj = LaboratoryParametrization.objects.filter(
-                    material=material, 
-                    categoria=categoria, 
-                    factory_id=factory_id
-                ).first()
+                obj = all_records.get((material, categoria))
                 
                 if obj:
                     item = model_to_dict(obj, exclude=['id', 'factory_id'])
