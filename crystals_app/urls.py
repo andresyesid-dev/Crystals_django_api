@@ -4,6 +4,7 @@ from .views import (
 	analysiscategory_view,
 	analysisresults_view,
 	auth_view,
+	batch_view,
 	brixcalculatordata_view,
 	calibration_view,
 	company_view,
@@ -58,6 +59,8 @@ security_urls = [
 	path('security/block-ip/', security_view.block_ip_endpoint, name='block_ip'),
 	path('security/unblock-ip/', security_view.unblock_ip_endpoint, name='unblock_ip'),
 	path('security/logs/', security_view.security_logs, name='security_logs'),
+	path('security/register-block/', security_view.register_permanent_block, name='register_permanent_block'),
+	path('security/check-block/', security_view.check_permanent_block, name='check_permanent_block'),
 ]
 
 # Per-model route lists
@@ -310,6 +313,11 @@ default_data_urls = [
 	path('info-default/brix-calculator', info_default.insert_default_brix_calculator),
 ]
 
+# Fase 0 — Escrituras atomicas por lote (una transaccion, todo-o-nada)
+batch_urls = [
+	path('batch/atomic', batch_view.atomic_batch, name='atomic_batch'),
+]
+
 urlpatterns = (
 	auth_urls
 	+ security_urls
@@ -347,4 +355,5 @@ urlpatterns = (
 	+ laboratory_data_urls
 	+ user_urls
 	+ default_data_urls
+	+ batch_urls
 )

@@ -28,7 +28,8 @@ def get_management_report_settings(request: HttpRequest):
             "sol_tota_hda_azu": 1, "rel_la_grapgh": 1,
             "amount_perc_fino": 0, "amount_perc_peq": 0, "amount_perc_opt": 0,
             "amount_perc_gran": 0, "amount_perc_muy_gran": 0, "amount_total": 0,
-            "perc_powder": 1
+            "perc_powder": 1,
+            "median_variable": 1, "skewness_variable": 1,
         }
         obj, created = ManagementReportSettings.objects.get_or_create(
             factory_id=request.META.get('HTTP_X_FACTORY_ID', 1),
@@ -151,6 +152,8 @@ def insert_default_management_report_settings(request: HttpRequest):
             amount_perc_muy_gran=0,
             amount_total=0,
             perc_powder=0,
+            median_variable=1,
+            skewness_variable=1,
             factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
         )
         

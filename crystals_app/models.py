@@ -79,6 +79,10 @@ class HistoricReport(models.Model):
 	height_sum = models.FloatField()
 	height_samples = models.FloatField()
 	height_range = models.FloatField()
+	height_median = models.FloatField(null=True, blank=True, default=0.0)
+	height_skewness = models.FloatField(null=True, blank=True, default=0.0)
+	width_median = models.FloatField(null=True, blank=True, default=0.0)
+	width_skewness = models.FloatField(null=True, blank=True, default=0.0)
 	calibration_fk = models.ForeignKey(
 		Calibration, on_delete=models.CASCADE, db_column='calibration_id'
 	)
@@ -105,6 +109,17 @@ class Activation(models.Model):
 
 	class Meta:
 		db_table = 'activation'
+		managed = True
+
+
+class BlockedIP(models.Model):
+	ip_address = models.CharField(max_length=50, unique=True)
+	hostname = models.CharField(max_length=255, null=True, blank=True)
+	blocked_at = models.DateTimeField(auto_now_add=True)
+	reason = models.CharField(max_length=255, default='Repeated failed login attempts')
+
+	class Meta:
+		db_table = 'blocked_ips'
 		managed = True
 
 
@@ -181,6 +196,8 @@ class ManagementReportSettings(models.Model):
 	amount_perc_muy_gran = models.IntegerField(null=True, blank=True, default=0)
 	amount_total = models.IntegerField(null=True, blank=True, default=0)
 	perc_powder = models.IntegerField(null=True, blank=True, default=0)
+	median_variable = models.IntegerField(null=True, blank=True, default=1)
+	skewness_variable = models.IntegerField(null=True, blank=True, default=1)
 	factory_id = models.IntegerField(default=1)
 
 	class Meta:
