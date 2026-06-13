@@ -7,7 +7,7 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
-from ..decorators import admin_required
+from ..decorators import admin_required, jwt_required
 from ..utils import get_client_ip
 
 security_logger = logging.getLogger('security')
@@ -331,6 +331,65 @@ def unblock_ip_endpoint(request):
             'message': '❌ Error al desbloquear IP',
             'error': 'Failed to unblock IP'
         }, status=500)
+
+
+@csrf_exempt
+@require_http_methods(["POST"])
+@jwt_required
+def register_permanent_block(request):
+    """
+    Called by the client app when a machine permanently exceeds login attempts.
+    Stores the IP in the blocked_ips table in Supabase.
+    """
+    try:
+        from ..models import BlockedIP
+        body = json.loads(request.body or b"{}")
+        ip_address = body.get("ip_address")
+        hostname = body.get("hostname", "")
+
+        if not ip_address:
+            return JsonResponse({"message": "❌ IP requerida", "ok": False}, status=400)
+
+        _, created = BlockedIP.objects.get_or_create(
+            ip_address=ip_address,
+            defaults={"hostname": hostname, "reason": "Repeated failed login attempts"}
+        )
+
+        security_monitor.record_security_event(
+            'PERMANENT_IP_BLOCK',
+            'HIGH',
+            f"IP {ip_address} (host: {hostname}) bloqueada permanentemente por intentos fallidos",
+            ip=ip_address
+        )
+
+        return JsonResponse({
+            "message": f"✅ IP {ip_address} bloqueada permanentemente",
+            "ok": True,
+            "created": created
+        })
+    except Exception as e:
+        return JsonResponse({"message": "❌ Error al registrar bloqueo", "error": str(e), "ok": False}, status=500)
+
+
+@csrf_exempt
+@require_http_methods(["GET"])
+@jwt_required
+def check_permanent_block(request):
+    """
+    Called by the client app at startup to check if this machine is permanently blocked.
+    Query param: ?ip=<ip_address>
+    """
+    try:
+        from ..models import BlockedIP
+        ip_address = request.GET.get("ip", "").strip()
+
+        if not ip_address:
+            return JsonResponse({"blocked": False, "message": "❌ IP requerida"}, status=400)
+
+        blocked = BlockedIP.objects.filter(ip_address=ip_address).exists()
+        return JsonResponse({"blocked": blocked, "ip": ip_address})
+    except Exception as e:
+        return JsonResponse({"blocked": False, "error": str(e)}, status=500)
 
 
 @require_http_methods(["GET"])

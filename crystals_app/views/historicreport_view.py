@@ -49,6 +49,10 @@ def add_historic_report(request: HttpRequest):
             height_sum=float(height.get("sum", 0) or 0),
             height_samples=float(height.get("samples", 0) or 0),
             height_range=float(height.get("range", 0) or 0),
+            height_median=float(height.get("median", 0) or 0),
+            height_skewness=float(height.get("skewness", 0) or 0),
+            width_median=float(width.get("median", 0) or 0),
+            width_skewness=float(width.get("skewness", 0) or 0),
             factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
         )
         return JsonResponse({"message": "✅ Reporte histórico agregado", "id": obj.id})

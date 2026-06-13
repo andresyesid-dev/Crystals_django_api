@@ -13,7 +13,7 @@ import json
 def get_crystals_data_parametrization_nw_params(request: HttpRequest):
     try:
         data = []
-        for o in CrystalsDataParametrizationNewParams.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)):
+        for o in CrystalsDataParametrizationNewParams.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).order_by('parameter', 'categoria'):
             item = model_to_dict(o)
             if item.get("range_from") is not None:
                 item["range_from"] = float(item["range_from"])
@@ -58,7 +58,8 @@ def add_new_newprms_parameters(request: HttpRequest):
         for parametro in to_add:
             for categoria in ["Good", "Regular", "Bad"]:
                 CrystalsDataParametrizationNewParams.objects.create(parameter=parametro, categoria=categoria, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
-        CrystalsDataParametrizationNewParams.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).exclude(parameter__in=incoming).delete()
+        # NOTE: Do NOT delete parameters not in incoming list.
+        # Parameters must persist even when a new analysis category is removed.
         return JsonResponse({"message": "✅ Parámetros agregados exitosamente", "ok": True, "added": list(to_add)})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al agregar parámetros", "error": str(e)}, status=500)

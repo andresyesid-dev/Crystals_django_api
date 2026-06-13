@@ -14,7 +14,7 @@ def get_crystals_data_parametrization_cv(request: HttpRequest):
     try:
         # Must exclude 'id' and 'factory_id' to match SQLite local schema
         data = []
-        for o in CrystalsDataParametrizationCV.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)):
+        for o in CrystalsDataParametrizationCV.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).order_by('parameter', 'categoria'):
             item = model_to_dict(o, exclude=['id', 'factory_id'])
             if item.get("range_from") is not None:
                 item["range_from"] = float(item["range_from"])
@@ -91,7 +91,8 @@ def add_new_cv_parameters(request: HttpRequest):
         for parametro in to_add:
             for categoria in ["Good", "Regular", "Bad"]:
                 CrystalsDataParametrizationCV.objects.create(parameter=parametro, categoria=categoria, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
-        CrystalsDataParametrizationCV.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).exclude(parameter__in=incoming).delete()
+        # NOTE: Do NOT delete parameters not in incoming list.
+        # Parameters must persist even when a calibration's ordering is temporarily removed.
         return JsonResponse({"message": "✅ Parámetros CV agregados exitosamente", "ok": True, "added": list(to_add)})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al agregar parámetros CV", "error": str(e)}, status=500)
