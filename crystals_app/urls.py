@@ -14,6 +14,8 @@ from .views import (
 	crystalsdataparametrizationcv_view,
 	crystalsdataparametrizationma_view,
 	crystalsdataparametrizationnwparams_view,
+	error_log_view,
+	factory_view,
 	generalreportingorder_view,
 	globalsetting_view,
 	historicanalysisdata_view,
@@ -27,6 +29,7 @@ from .views import (
 	laboratoryparametrization_view,
 	laboratoryreportingorder_view,
 	laboratorysettingsexcel_view,
+	management_report_prefetch_view,
 	managementreportlayout_view,
 	managementreportsettings_view,
 	manualmeasurement_view,
@@ -275,6 +278,16 @@ user_urls = [
 	path('user/create', user_view.create_user),
 ]
 
+# Login de fábrica en la nube (recorre TODAS las fábricas; sin X-Factory-ID).
+factory_urls = [
+	path('factory/validate-credentials', factory_view.validate_factory_credentials),
+]
+
+# Historial centralizado de errores del desktop (F5.15, fase Online).
+error_log_urls = [
+	path('error-log/add', error_log_view.add_error_log),
+]
+
 # Default data insertion URLs
 default_data_urls = [
 	# Reporting order tables
@@ -318,6 +331,12 @@ batch_urls = [
 	path('batch/atomic', batch_view.atomic_batch, name='atomic_batch'),
 ]
 
+# T1 — Endpoint compuesto de lectura: colapsa las 23 GETs del prefetch de
+# reportes de gestion en una sola peticion (ver management_report_prefetch_view).
+management_report_prefetch_urls = [
+	path('management-report/prefetch', management_report_prefetch_view.management_report_prefetch, name='management_report_prefetch'),
+]
+
 urlpatterns = (
 	auth_urls
 	+ security_urls
@@ -354,6 +373,9 @@ urlpatterns = (
 	+ laboratory_settings_excel_urls
 	+ laboratory_data_urls
 	+ user_urls
+	+ factory_urls
+	+ error_log_urls
 	+ default_data_urls
 	+ batch_urls
+	+ management_report_prefetch_urls
 )

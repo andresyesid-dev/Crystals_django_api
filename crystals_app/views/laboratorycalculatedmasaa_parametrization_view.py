@@ -1,15 +1,19 @@
 from django.http import JsonResponse, HttpRequest
 from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
+from ..cache_utils import cached_per_factory, bump_cache_version
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.forms.models import model_to_dict
 from ..models import LaboratoryCalculatedMasaAParametrization
 import json
 
+_CACHE_GROUP = 'lab_calc_masa_a_param'
+
 
 @require_http_methods(["GET"])
 @jwt_required
 @log_api_access
+@cached_per_factory(_CACHE_GROUP)
 def get_laboratory_calculated_masa_a_parametrization(request: HttpRequest):
     try:
         data = []
@@ -38,6 +42,7 @@ def update_laboratory_calculated_masa_a_parametrization(request: HttpRequest):
                 LaboratoryCalculatedMasaAParametrization.objects.filter(parameter=parameter, categoria=categoria, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(
                     range_from=ranges.get("range_from"), range_to=ranges.get("range_to")
                 )
+        bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Parametrización Masa A calculada actualizada exitosamente", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar parametrización Masa A calculada", "error": str(e)}, status=500)

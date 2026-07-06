@@ -35,8 +35,13 @@ class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
 
 
+# Rate limit holgado (30/m): tolera ráfagas legítimas de logins exitosos (p. ej.
+# reautenticación del cliente o varios equipos tras la misma IP/NAT) sin cortar
+# en duro. La defensa real contra fuerza bruta es el contador de fallos 401/403
+# de SecurityMonitoringMiddleware, que solo penaliza credenciales inválidas; un
+# login exitoso nunca debe contar como ataque ni autobloquear a un usuario legítimo.
 @csrf_exempt
-@ratelimit(key='ip', rate='5/m', method='POST', block=True)
+@ratelimit(key='ip', rate='30/m', method='POST', block=True)
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def login(request):

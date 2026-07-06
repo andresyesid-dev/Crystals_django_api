@@ -1,9 +1,17 @@
 from django.http import JsonResponse, HttpRequest
 from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
+from ..cache_utils import cached_per_factory, bump_cache_version
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from ..models import AnalysisCategory, NewParametersAnalysisCategory, SpecificReportingOrder, CrystalsDataParametrizationNewParams
 import json
+
+# Grupo de caché T4 de los parámetros nuevos de categoría de análisis. Algunas
+# escrituras de este módulo tocan tablas de OTROS grupos (parametrización NW y
+# orden específico de reportes), así que invalidan también esos grupos.
+_CACHE_GROUP = 'analysis_cat_new'
+_CACHE_GROUP_NW = 'crystals_data_param_nw'
+_CACHE_GROUP_SPECIFIC = 'specific_reporting_order'
 
 
 @csrf_exempt
@@ -67,6 +75,9 @@ def add_new_parameters_analysis_categories(request: HttpRequest):
                  defaults={'range_from': 0, 'range_to': 0}
              )
 
+        factory = request.META.get('HTTP_X_FACTORY_ID', 1)
+        bump_cache_version(_CACHE_GROUP, factory)
+        bump_cache_version(_CACHE_GROUP_NW, factory)
         message = "✅ Parámetro agregado exitosamente" if created else "⚠️ El parámetro ya existe (Se verificaron columnas y configuración)"
         return JsonResponse({"message": message, "ok": True})
     except Exception as e:
@@ -76,6 +87,7 @@ def add_new_parameters_analysis_categories(request: HttpRequest):
 @require_http_methods(["GET"])
 @jwt_required
 @log_api_access
+@cached_per_factory(_CACHE_GROUP)
 def get_new_parameters_analysis_categories(request: HttpRequest):
     try:
         data = list(NewParametersAnalysisCategory.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).values())
@@ -97,6 +109,9 @@ def delete_parameter_analysis_category(request: HttpRequest):
             return JsonResponse({"message": "❌ Parámetro requerido", "error": "parameter required"}, status=400)
         NewParametersAnalysisCategory.objects.filter(parameter=parameter, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).delete()
         SpecificReportingOrder.objects.filter(value=parameter.replace('_', ' '), factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).delete()
+        factory = request.META.get('HTTP_X_FACTORY_ID', 1)
+        bump_cache_version(_CACHE_GROUP, factory)
+        bump_cache_version(_CACHE_GROUP_SPECIFIC, factory)
         return JsonResponse({"message": "✅ Parámetro eliminado exitosamente", "deleted": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al eliminar parámetro", "error": str(e)}, status=500)

@@ -1,14 +1,18 @@
 from django.http import JsonResponse, HttpRequest
 from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
+from ..cache_utils import cached_per_factory, bump_cache_version
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from ..models import GeneralReportingOrder
 import json
 
+_CACHE_GROUP = 'general_reporting_order'
+
 
 @require_http_methods(["GET"])
 @jwt_required
 @log_api_access
+@cached_per_factory(_CACHE_GROUP)
 def get_general_headers_ordering(request: HttpRequest):
     try:
         vals = list(GeneralReportingOrder.objects.filter(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).order_by("ordering").values_list("value", flat=True))
@@ -30,6 +34,7 @@ def update_general_headers_order(request: HttpRequest):
         if value is None or ordering is None:
             return JsonResponse({"message": "❌ Los campos 'value' y 'ordering' son requeridos", "error": "value and ordering required"}, status=400)
         GeneralReportingOrder.objects.filter(value=value, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(ordering=ordering)
+        bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Orden actualizado exitosamente", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar orden", "error": str(e)}, status=500)

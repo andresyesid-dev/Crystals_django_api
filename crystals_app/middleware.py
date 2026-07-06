@@ -176,12 +176,23 @@ class SecurityMonitoringMiddleware(MiddlewareMixin):
         """
         client_ip = get_client_ip(request)
         
-        # Monitor for brute force attacks
-        if request.path in ['/auth/login/', '/user/validate']:
+        # Monitor for brute force attacks.
+        #
+        # IMPORTANTE: el bloqueo NO corta la petición de /auth/login/ aquí. Si lo
+        # hiciera, un usuario con credenciales VÁLIDAS quedaría atrapado: el
+        # contador solo se limpia con un login 200 (en process_response), pero
+        # nunca llegaría a autenticarse porque la petición se cortaría antes.
+        # En su lugar, dejamos pasar el login a la vista para que valide
+        # credenciales:
+        #   - si son correctas  -> process_response limpia el contador (se sale del bloqueo)
+        #   - si son incorrectas -> process_response lo incrementa y se mantiene el bloqueo
+        # Así el contador solo penaliza fallos reales (401/403), nunca una ráfaga
+        # legítima de logins exitosos. /user/validate sí se corta en duro porque
+        # no tiene esa válvula de escape de "200 limpia".
+        if request.path == '/user/validate':
             failed_attempts_key = f'failed_login_{client_ip}'
             failed_attempts = cache.get(failed_attempts_key, 0)
-            
-            if failed_attempts >= 5:  # Lock after 5 failed attempts
+            if failed_attempts >= 5:
                 log_security_event(
                     'BRUTE_FORCE_DETECTED',
                     request,

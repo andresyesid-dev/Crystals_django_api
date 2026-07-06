@@ -49,7 +49,15 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # T0 — Instrumentación: primero del todo para cronometrar el tiempo TOTAL
+    # de servidor, incluido el trabajo de los demás middlewares.
+    'crystals_app.perf_middleware.PerformanceTimingMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    # T3 — Compresión: alto en la pila para comprimir la respuesta final.
+    # Va después de SecurityMiddleware de Django (que solo fija headers) y
+    # antes de las vistas; el cliente envía Accept-Encoding: gzip y descomprime
+    # de forma transparente.
+    'django.middleware.gzip.GZipMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'crystals_app.middleware.SecurityMonitoringMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -270,6 +278,10 @@ LOGGING = {
             'format': '[SECURITY] {asctime} {levelname} {message} - IP: {extra_ip} - User: {extra_user}',
             'style': '{',
         },
+        'perf': {
+            'format': '{asctime} {message}',
+            'style': '{',
+        },
     },
     'handlers': {
         'file': {
@@ -283,6 +295,12 @@ LOGGING = {
             'class': 'logging.FileHandler',
             'filename': 'security.log',
             'formatter': 'security',
+        },
+        'perf_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'performance.log',
+            'formatter': 'perf',
         },
         'console': {
             'level': 'DEBUG',
@@ -305,6 +323,11 @@ LOGGING = {
             'handlers': ['file', 'console'],
             'level': 'DEBUG',
             'propagate': True,
+        },
+        'crystals_perf': {
+            'handlers': ['perf_file'],
+            'level': 'INFO',
+            'propagate': False,
         },
     },
 }
