@@ -18,7 +18,7 @@ logger = logging.getLogger('crystals_api')
 @jwt_required
 def insert_specific_reporting_order(request):
     """
-    Insert default specific reporting order records (22 items).
+    Insert default specific reporting order records (24 items).
     Only inserts if table is empty.
     """
     try:
@@ -32,7 +32,7 @@ def insert_specific_reporting_order(request):
                 'message': 'Specific reporting order already initialized'
             })
         
-        # Default data (22 records)
+        # Default data (24 records)
         default_data = [
             {'value': 'WEIGHTS PER SHIFT', 'ordering': 0},
             {'value': 'TACHO', 'ordering': 1},
@@ -55,7 +55,9 @@ def insert_specific_reporting_order(request):
             {'value': 'Amount % Opt.', 'ordering': 18},
             {'value': 'Amount % Gran.', 'ordering': 19},
             {'value': 'Amount % Muy gran.', 'ordering': 20},
-            {'value': 'Total Amount', 'ordering': 21}
+            {'value': 'Total Amount', 'ordering': 21},
+            {'value': 'Median', 'ordering': 22},
+            {'value': 'Skewness', 'ordering': 23}
         ]
         
         # Bulk create
@@ -82,7 +84,7 @@ def insert_specific_reporting_order(request):
 @jwt_required
 def insert_general_reporting_order(request):
     """
-    Insert default general reporting order records (18 items).
+    Insert default general reporting order records (21 items).
     Only inserts if table is empty.
     """
     try:
@@ -96,7 +98,7 @@ def insert_general_reporting_order(request):
                 'message': 'General reporting order already initialized'
             })
         
-        # Default data (18 records)
+        # Default data (21 records)
         default_data = [
             {'value': 'Calibration', 'ordering': 0},
             {'value': 'Mean', 'ordering': 1},
@@ -110,12 +112,15 @@ def insert_general_reporting_order(request):
             {'value': '% Muy gran.', 'ordering': 9},
             {'value': 'REL. L/A', 'ordering': 10},
             {'value': '% crist. alarg', 'ordering': 11},
-            {'value': 'Amount % Fino.', 'ordering': 12},
-            {'value': 'Amount % Peq.', 'ordering': 13},
-            {'value': 'Amount % Opt.', 'ordering': 14},
-            {'value': 'Amount % Gran.', 'ordering': 15},
-            {'value': 'Amount % Muy gran.', 'ordering': 16},
-            {'value': 'Total Amount', 'ordering': 17}
+            {'value': '% Powder', 'ordering': 12},
+            {'value': 'Amount % Fino.', 'ordering': 13},
+            {'value': 'Amount % Peq.', 'ordering': 14},
+            {'value': 'Amount % Opt.', 'ordering': 15},
+            {'value': 'Amount % Gran.', 'ordering': 16},
+            {'value': 'Amount % Muy gran.', 'ordering': 17},
+            {'value': 'Total Amount', 'ordering': 18},
+            {'value': 'Median', 'ordering': 19},
+            {'value': 'Skewness', 'ordering': 20}
         ]
         
         # Bulk create

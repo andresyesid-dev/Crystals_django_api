@@ -1,9 +1,14 @@
 from django.http import JsonResponse, HttpRequest
 from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
+from ..cache_utils import cached_per_factory, bump_cache_version
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from ..models import Config
 import json
+
+# Grupo de caché T4: las 3 claves de config viajan juntas en el prefetch y
+# cambian poco; cualquier escritura de config invalida el grupo completo.
+_CACHE_GROUP = 'config'
 
 
 def _get(key: str, factory_id: int):
@@ -15,6 +20,7 @@ def _get(key: str, factory_id: int):
 @require_http_methods(["GET"])
 @jwt_required
 @log_api_access
+@cached_per_factory(_CACHE_GROUP)
 def get_language(request: HttpRequest):
     try:
         return JsonResponse({"message": "✅ Idioma obtenido", "value": _get("language", request.META.get('HTTP_X_FACTORY_ID', 1))})
@@ -25,6 +31,7 @@ def get_language(request: HttpRequest):
 @require_http_methods(["GET"])
 @jwt_required
 @log_api_access
+@cached_per_factory(_CACHE_GROUP)
 def get_DOP_config(request: HttpRequest):
     try:
         v = _get("DOP graph divided", request.META.get('HTTP_X_FACTORY_ID', 1))
@@ -38,6 +45,7 @@ def get_DOP_config(request: HttpRequest):
 @require_http_methods(["GET"])
 @jwt_required
 @log_api_access
+@cached_per_factory(_CACHE_GROUP)
 def get_calculated_data_period(request: HttpRequest):
     try:
         return JsonResponse({"message": "✅ Período obtenido", "value": _get("calculated data period", request.META.get('HTTP_X_FACTORY_ID', 1))})
@@ -58,6 +66,7 @@ def update_language(request: HttpRequest):
             return JsonResponse({"message": "❌ El campo 'language' es requerido", "error": "language required"}, status=400)
         # Match local implementation: direct update
         Config.objects.filter(key="language", factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(value=v)
+        bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Idioma actualizado", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar idioma", "error": str(e)}, status=500)
@@ -75,6 +84,7 @@ def update_DOP_config(request: HttpRequest):
         val = "on" if checked else "off"
         # Match local implementation: direct update
         Config.objects.filter(key="DOP graph divided", factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(value=val)
+        bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Configuración DOP actualizada", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar configuración DOP", "error": str(e)}, status=500)
@@ -93,7 +103,7 @@ def update_calculated_data_period(request: HttpRequest):
             return JsonResponse({"message": "❌ El campo 'period' es requerido", "error": "period required"}, status=400)
         # Match local implementation: direct update
         Config.objects.filter(key="calculated data period", factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(value=period)
+        bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Período actualizado", "ok": True})
     except Exception as e:
-        return JsonResponse({"message": "❌ Error al actualizar período", "error": str(e)}, status=500)
         return JsonResponse({"message": "❌ Error al actualizar período", "error": str(e)}, status=500)

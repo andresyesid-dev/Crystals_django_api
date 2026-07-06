@@ -1,16 +1,20 @@
 from django.http import JsonResponse, HttpRequest
 from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
+from ..cache_utils import cached_per_factory, bump_cache_version
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.forms.models import model_to_dict
 from ..models import ManagementReportSettings
 import json
 
+_CACHE_GROUP = 'management_report_settings'
+
 
 @require_http_methods(["GET"])
 @jwt_required
 @sensitive_endpoint
 @log_api_access
+@cached_per_factory(_CACHE_GROUP)
 def get_management_report_settings(request: HttpRequest):
     try:
         defaults = {
@@ -49,6 +53,7 @@ def insert_management_report_settings(request: HttpRequest):
     try:
         body = json.loads(request.body or b"{}")
         obj = ManagementReportSettings.objects.create(factory_id=request.META.get('HTTP_X_FACTORY_ID', 1), **body)
+        bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Configuración de reporte insertada exitosamente", "created": model_to_dict(obj)})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al insertar configuración de reporte", "error": str(e)}, status=500)
@@ -73,6 +78,7 @@ def update_management_report_settings(request: HttpRequest):
             if k != "id":
                 setattr(obj, k, v)
         obj.save()
+        bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Configuración de reporte actualizada exitosamente", "updated": model_to_dict(obj)})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar configuración de reporte", "error": str(e)}, status=500)
@@ -157,6 +163,7 @@ def insert_default_management_report_settings(request: HttpRequest):
             factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
         )
         
+        bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({
             "message": "✅ Configuración por defecto creada exitosamente",
             "created": model_to_dict(default_settings)

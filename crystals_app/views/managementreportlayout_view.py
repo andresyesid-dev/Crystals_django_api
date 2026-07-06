@@ -1,15 +1,19 @@
 from django.http import JsonResponse, HttpRequest
 from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
+from ..cache_utils import cached_per_factory, bump_cache_version
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.forms.models import model_to_dict
 from ..models import ManagementReportLayout
 import json
 
+_CACHE_GROUP = 'mgmt_report_layout'
+
 
 @require_http_methods(["GET"])
 @jwt_required
 @log_api_access
+@cached_per_factory(_CACHE_GROUP)
 def get_management_report_layout(request: HttpRequest):
     try:
         factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
@@ -85,6 +89,7 @@ def insert_management_report_layout(request: HttpRequest):
                     column=column,
                     element_type=element_type,
                 )
+        bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Diseño de reporte insertado/actualizado exitosamente", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al insertar diseño de reporte", "error": str(e)}, status=500)
@@ -103,6 +108,7 @@ def update_management_report_layout(request: HttpRequest):
             ManagementReportLayout.objects.filter(element_id=element_id, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(
                 screen_number=screen_number, row=row, column=column
             )
+        bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Diseño de reporte actualizado exitosamente", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar diseño de reporte", "error": str(e)}, status=500)
@@ -141,6 +147,7 @@ def set_default_management_report_layout(request: HttpRequest):
                     element_type=element_type,
                     factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
                 )
+        bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Diseño predeterminado establecido exitosamente", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al establecer diseño predeterminado", "error": str(e)}, status=500)
@@ -191,7 +198,8 @@ def insert_default_management_report_layout(request: HttpRequest):
             ))
         
         ManagementReportLayout.objects.bulk_create(layouts)
-        
+
+        bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({
             "ok": True,
             "created": len(layouts),
