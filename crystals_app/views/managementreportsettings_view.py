@@ -6,6 +6,9 @@ from django.views.decorators.http import require_http_methods
 from django.forms.models import model_to_dict
 from ..models import ManagementReportSettings
 import json
+import logging
+
+logger = logging.getLogger(__name__)
 
 _CACHE_GROUP = 'management_report_settings'
 
@@ -81,6 +84,12 @@ def update_management_report_settings(request: HttpRequest):
         bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Configuración de reporte actualizada exitosamente", "updated": model_to_dict(obj)})
     except Exception as e:
+        # El traceback debe quedar en los logs del servidor: el cliente descarta
+        # el body de los 500 y sin esto el fallo es indiagnosticable.
+        logger.exception(
+            "update_management_report_settings falló (factory=%s, body=%.300s)",
+            request.META.get('HTTP_X_FACTORY_ID'), request.body,
+        )
         return JsonResponse({"message": "❌ Error al actualizar configuración de reporte", "error": str(e)}, status=500)
 
 

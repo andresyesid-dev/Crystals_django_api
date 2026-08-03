@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.forms.models import model_to_dict
 from django.db import transaction
-from ..models import Calibration, ProcessCodeData, HistoricReport
+from ..models import Calibration, ProcessCodeData, HistoricReport, EnableAditionalRanges
 from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
 from ..cache_utils import cached_per_factory, bump_cache_version
 import json
@@ -128,7 +128,9 @@ def create_calibration(request: HttpRequest):
             "powder": values_dict.get("powder"),
             "ordering": ordering if ordering is not None else values_dict.get("ordering"),
             "target_cv": values_dict.get("target_cv"),
-            "target_mean": values_dict.get("target_mean")
+            "target_mean": values_dict.get("target_mean"),
+            "aditional_ranges": values_dict.get("aditional_ranges") or None,
+            "category_names": values_dict.get("category_names") or None
         }
         
         # Allow explicit ID if provided (e.g. for imports)
@@ -144,6 +146,13 @@ def create_calibration(request: HttpRequest):
             # Then create calibration
             fields["factory_id"] = request.META.get('HTTP_X_FACTORY_ID', 1)
             obj = Calibration.objects.create(**fields)
+
+            # Sembrar fila en enable_aditional_ranges (habilitada por defecto)
+            EnableAditionalRanges.objects.update_or_create(
+                calibration=name,
+                factory_id=request.META.get('HTTP_X_FACTORY_ID', 1),
+                defaults={"enable": 1},
+            )
 
         bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Calibración creada exitosamente", "created": model_to_dict(obj)}, status=201)
@@ -189,19 +198,25 @@ def update_calibration(request: HttpRequest):
         
         # Update within transaction (match local behavior)
         with transaction.atomic():
-            # If name is changing, update process_code_data
+            # If name is changing, update process_code_data + enable_aditional_ranges
             new_name = values.get("name")
             if new_name and new_name != old_name:
                 ProcessCodeData.objects.filter(process=old_name, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(process=new_name)
+                EnableAditionalRanges.objects.filter(calibration=old_name, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(calibration=new_name)
             
             # Update calibration fields
             updatable_fields = {
-                "name", "pixels_per_metric", "metric_name", "range", 
-                "target_cv", "target_mean", "powder"
+                "name", "pixels_per_metric", "metric_name", "range",
+                "target_cv", "target_mean", "powder",
+                "aditional_ranges", "category_names"
             }
             for field in updatable_fields:
                 if field in values:
-                    setattr(obj, field, values[field])
+                    value = values[field]
+                    # Paridad con el cliente local: cadena vacía -> NULL.
+                    if field in ("aditional_ranges", "category_names") and value == "":
+                        value = None
+                    setattr(obj, field, value)
             obj.save()
 
         bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
@@ -243,8 +258,11 @@ def delete_calibration(request: HttpRequest):
             
             # 2. Delete from process_code_data
             ProcessCodeData.objects.filter(process=calibration_name, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).delete()
-            
-            # 3. Delete calibration
+
+            # 3. Delete from enable_aditional_ranges (mantener sincronía)
+            EnableAditionalRanges.objects.filter(calibration=calibration_name, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).delete()
+
+            # 4. Delete calibration
             calibration.delete()
 
         bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
@@ -344,7 +362,10 @@ def delete_all_calibrations(request: HttpRequest):
             
             # 3. Delete from process_code_data
             ProcessCodeData.objects.filter(process__in=names, factory_id=factory_id).delete()
-            
+
+            # 3b. Delete from enable_aditional_ranges (mantener sincronía)
+            EnableAditionalRanges.objects.filter(calibration__in=names, factory_id=factory_id).delete()
+
             # 4. Delete calibrations
             count, _ = calibrations.delete()
             

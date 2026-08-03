@@ -12,6 +12,8 @@ class Calibration(models.Model):
 	ordering = models.IntegerField(null=True, blank=True)
 	target_cv = models.FloatField(null=True, blank=True)
 	target_mean = models.FloatField(null=True, blank=True)
+	aditional_ranges = models.TextField(null=True, blank=True)
+	category_names = models.TextField(null=True, blank=True)
 	factory_id = models.IntegerField(default=1)
 
 	class Meta:
@@ -651,6 +653,18 @@ class AnalysisResults(models.Model):
 		db_table = 'analysis_results'
 		managed = True
 
+
+
+class EnableAditionalRanges(models.Model):
+	# Una fila por calibración: gobierna si esa calibración aplica sus
+	# aditional_ranges en el análisis. Por defecto habilitada (enable=1).
+	calibration = models.CharField(max_length=50)
+	enable = models.IntegerField(default=1)
+	factory_id = models.IntegerField(default=1)
+
+	class Meta:
+		db_table = 'enable_aditional_ranges'
+		managed = True
 
 
 class ErrorLog(models.Model):

@@ -14,6 +14,7 @@ from .views import (
 	crystalsdataparametrizationcv_view,
 	crystalsdataparametrizationma_view,
 	crystalsdataparametrizationnwparams_view,
+	enableaditionalranges_view,
 	error_log_view,
 	factory_view,
 	generalreportingorder_view,
@@ -104,6 +105,11 @@ calibration_urls = [
 	path('calibration/table-info', calibration_view.get_calibrations_table_info),
 	path('calibration/update-table', calibration_view.update_calibration_table),
 	path('calibration/delete-all', calibration_view.delete_all_calibrations),
+]
+
+enable_aditional_ranges_urls = [
+	path('enable-aditional-ranges/list', enableaditionalranges_view.list_enable_aditional_ranges),
+	path('enable-aditional-ranges/save', enableaditionalranges_view.save_enable_aditional_ranges),
 ]
 
 company_urls = [
@@ -378,4 +384,5 @@ urlpatterns = (
 	+ default_data_urls
 	+ batch_urls
 	+ management_report_prefetch_urls
+	+ enable_aditional_ranges_urls
 )

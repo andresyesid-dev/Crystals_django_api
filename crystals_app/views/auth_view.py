@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -182,9 +183,14 @@ def logout(request):
         }, status=status.HTTP_400_BAD_REQUEST)
 
 
+# Rate limit 30/m: con los access tokens de 60 min, este endpoint pasa a usarse
+# de verdad (antes casi nunca, porque los tokens no caducaban). Varias estaciones
+# del mismo ingenio salen por una sola IP pública (NAT), así que el 3/m anterior
+# las habría hecho chocar entre sí. 30/m deja margen holgado sin abrir la puerta:
+# renovar exige ya poseer un refresh token válido.
 @api_view(['POST'])
 @permission_classes([AllowAny])
-@ratelimit(key='ip', rate='3/m', method='POST', block=True)
+@ratelimit(key='ip', rate='30/m', method='POST', block=True)
 def refresh_token(request):
     """
     Refresh token endpoint
@@ -195,15 +201,28 @@ def refresh_token(request):
             return Response({
                 'error': 'Refresh token is required'
             }, status=status.HTTP_400_BAD_REQUEST)
-        
+
         token = RefreshToken(refresh_token)
         new_access = token.access_token
-        
+
+        # El token nuevo se publica bajo DOS claves a propósito:
+        #   'access'       — la que usa el cliente (client.py: `if 'access' in
+        #                    result`), y la misma que devuelve /auth/login/.
+        #   'access_token' — la que devolvía este endpoint históricamente.
+        # Antes solo existía 'access_token', así que el cliente NUNCA reconocía
+        # la respuesta y caía siempre al login completo. El fallo era invisible
+        # porque con tokens de 10 años el refresh casi no se ejercitaba. Publicar
+        # ambas mantiene compatibles a los clientes ya instalados y a los nuevos,
+        # que no se actualizan a la vez que la API.
+        access_str = str(new_access)
         return Response({
             'message': '✅ Token renovado exitosamente',
-            'access_token': str(new_access),
+            'access': access_str,
+            'access_token': access_str,
             'token_type': 'Bearer',
-            'expires_in': 3600
+            'expires_in': int(
+                settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'].total_seconds()
+            ),
         }, status=status.HTTP_200_OK)
         
     except Exception as e:
