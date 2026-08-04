@@ -12,6 +12,8 @@ class Calibration(models.Model):
 	ordering = models.IntegerField(null=True, blank=True)
 	target_cv = models.FloatField(null=True, blank=True)
 	target_mean = models.FloatField(null=True, blank=True)
+	aditional_ranges = models.TextField(null=True, blank=True)
+	category_names = models.TextField(null=True, blank=True)
 	factory_id = models.IntegerField(default=1)
 
 	class Meta:
@@ -27,6 +29,24 @@ class User(models.Model):
 	class Meta:
 		db_table = 'users'
 		managed = True
+
+
+class CredentialsFactory(models.Model):
+	# Login de fábrica en la nube. EXCEPCIÓN multi-tenant: esta tabla NO se
+	# filtra por factory_id — el login recorre TODAS las fábricas para averiguar
+	# a cuál pertenece la contraseña ingresada. La PK ES el factory_id.
+	#
+	# managed = False: la tabla ya existe (espejo de la SQLite del cliente) y se
+	# siembra con un data migration controlado (0017), no con un CreateModel.
+	# Así Django no intenta recrear el esquema y no se enreda con la deuda de
+	# migraciones heredada del proyecto.
+	factory_id = models.IntegerField(primary_key=True)
+	factory_name = models.CharField(max_length=100)
+	password = models.CharField(max_length=255)  # hash bcrypt almacenado como str
+
+	class Meta:
+		db_table = 'credentials_factory'
+		managed = False
 
 
 class Config(models.Model):
@@ -91,6 +111,17 @@ class HistoricReport(models.Model):
 	class Meta:
 		db_table = 'historic_reports'
 		managed = True
+		indexes = [
+			# T5: las lecturas de reportes filtran por factory_id (igualdad) +
+			# datetime (rango). El campo es CharField pero el formato ISO
+			# 'YYYY-MM-DD HH:MM:SS' es lexicograficamente == cronologicamente
+			# ordenable, asi que el B-tree compuesto acelera el rango. Columna
+			# de igualdad primero, rango despues (orden optimo en B-tree).
+			models.Index(
+				fields=['factory_id', 'datetime'],
+				name='idx_histrep_factory_datetime',
+			),
+		]
 
 
 class GlobalSetting(models.Model):
@@ -140,6 +171,16 @@ class HistoricAnalysisData(models.Model):
 	class Meta:
 		db_table = 'historic_analysis_data'
 		managed = True
+		indexes = [
+			# T5: get_analysis_historic_data filtra por factory_id propio y hace
+			# JOIN con historic_report (cuyo datetime acota el rango). Este
+			# indice acelera el filtro de fabrica + la resolucion del JOIN; el
+			# rango de fecha lo cubre idx_histrep_factory_datetime del lado padre.
+			models.Index(
+				fields=['factory_id', 'historic_report'],
+				name='idx_histanal_factory_report',
+			),
+		]
 
 
 class ManagementReportSettings(models.Model):
@@ -575,6 +616,15 @@ class LaboratoryData(models.Model):
 	class Meta:
 		db_table = 'laboratory_data'
 		managed = True
+		indexes = [
+			# T5: get_historic_laboratory_data filtra por factory_id (igualdad) +
+			# date_and_time (rango), mismo formato ISO ordenable. Igualdad antes
+			# que rango en el B-tree compuesto.
+			models.Index(
+				fields=['factory_id', 'date_and_time'],
+				name='idx_labdata_factory_datetime',
+			),
+		]
 
 
 class Numero(models.Model):
@@ -603,3 +653,38 @@ class AnalysisResults(models.Model):
 		db_table = 'analysis_results'
 		managed = True
 
+
+
+class EnableAditionalRanges(models.Model):
+	# Una fila por calibración: gobierna si esa calibración aplica sus
+	# aditional_ranges en el análisis. Por defecto habilitada (enable=1).
+	calibration = models.CharField(max_length=50)
+	enable = models.IntegerField(default=1)
+	factory_id = models.IntegerField(default=1)
+
+	class Meta:
+		db_table = 'enable_aditional_ranges'
+		managed = True
+
+
+class ErrorLog(models.Model):
+	# Historial centralizado de errores del desktop (F5.15, fase Online).
+	# Espejo de la tabla local `error_log` de crystals3.0 (mismas columnas en
+	# español) + `recibido_en`, que llena el SERVIDOR al recibir el registro:
+	# la fecha_hora viene del reloj de la PC del ingenio y puede estar mal
+	# configurada; recibido_en da la referencia temporal confiable.
+	# Todos los campos del cliente son nullables: un endpoint de errores no
+	# debe rechazar un error por venir incompleto.
+	factory_id = models.IntegerField(default=1)
+	fecha_hora = models.CharField(max_length=50, null=True, blank=True)
+	tipo_error = models.CharField(max_length=100, null=True, blank=True)
+	mensaje = models.TextField(null=True, blank=True)
+	traceback = models.TextField(null=True, blank=True)
+	contexto = models.CharField(max_length=255, null=True, blank=True)
+	modo = models.CharField(max_length=10, null=True, blank=True)
+	version_app = models.CharField(max_length=20, null=True, blank=True)
+	recibido_en = models.DateTimeField(auto_now_add=True)
+
+	class Meta:
+		db_table = 'error_log'
+		managed = True

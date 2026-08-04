@@ -9,6 +9,57 @@ from ..models import HistoricReport, Calibration, AnalysisCategory
 import json
 
 
+# Orden POSICIONAL canónico de la tabla SQLite local `historic_reports`
+# (ver crystals3.0/src/database/schema/tables.sql). El cliente accede a este
+# registro por índice numérico (last_report.value(16) == height_cv,
+# value(17) == height_mean en analysis_graphs_widget.py), así que el dict que
+# devolvemos DEBE preservar exactamente este orden — los dicts de Python
+# conservan orden de inserción y el cliente lo lee posicionalmente.
+#
+# Diferencia clave con model_to_dict(): SQLite tiene `id` en 0 y `calibration_id`
+# en 2 (columna que el modelo Django llama calibration_fk y coloca al final).
+# Sin este orden, value(16) cae sobre height_mean/height_sum y, peor, sobre los
+# campos nullable height_median/height_skewness que pueden ser None -> el cliente
+# revienta con "conversion from NoneType to Decimal is not supported".
+#
+# Los campos median/skewness (nullable en el modelo) se emiten con fallback 0.0
+# para blindar el acceso posicional del cliente aunque en BD sean NULL.
+def _serialize_historic_report_sqlite_order(hr):
+    def num(v):
+        return v if v is not None else 0.0
+    return {
+        "id": hr.id,
+        "datetime": hr.datetime,
+        "calibration_id": hr.calibration_fk_id,
+        "calibration": hr.calibration,
+        "correlation": num(hr.correlation),
+        "width_min": num(hr.width_min),
+        "width_max": num(hr.width_max),
+        "width_sd": num(hr.width_sd),
+        "width_cv": num(hr.width_cv),
+        "width_mean": num(hr.width_mean),
+        "width_sum": num(hr.width_sum),
+        "width_samples": num(hr.width_samples),
+        "width_range": num(hr.width_range),
+        "height_min": num(hr.height_min),
+        "height_max": num(hr.height_max),
+        "height_sd": num(hr.height_sd),
+        "height_cv": num(hr.height_cv),        # índice 16
+        "height_mean": num(hr.height_mean),    # índice 17
+        "height_sum": num(hr.height_sum),
+        "height_samples": num(hr.height_samples),
+        "height_range": num(hr.height_range),
+        # Campos añadidos después (migración 0014). Van al final para NO
+        # desplazar los índices 0-19 que el cliente lee posicionalmente. Se
+        # exponen por nombre para que el cliente pueda migrar a acceso canónico.
+        "height_median": num(hr.height_median),
+        "height_skewness": num(hr.height_skewness),
+        "width_median": num(hr.width_median),
+        "width_skewness": num(hr.width_skewness),
+        "factory_id": hr.factory_id,
+    }
+
+
 @csrf_exempt
 @require_http_methods(["POST"])
 @jwt_required
@@ -76,12 +127,12 @@ def get_historic_reports(request: HttpRequest):
         
         for hr in qs:
             try:
-                row = model_to_dict(hr)
-                
-                # Fix Field Mismatch: Client expects 'calibration_id' (DB column), Django model calls it 'calibration_fk'
-                if 'calibration_fk' in row:
-                    row['calibration_id'] = row['calibration_fk']
-                
+                # Orden posicional idéntico a SQLite (id, datetime, calibration_id,
+                # ...) para que el acceso por índice del cliente sea correcto.
+                # Las columnas del LEFT JOIN (AnalysisCategory) se agregan después,
+                # igual que antes.
+                row = _serialize_historic_report_sqlite_order(hr)
+
                 # Mimic LEFT JOIN behavior: Ensure keys exist even if AnalysisCategory is missing
                 ac = cats.get(hr.id)
                 if ac:
@@ -140,7 +191,12 @@ def get_last_report(request: HttpRequest):
             calibration_fk__ordering__isnull=False,
             factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
         ).select_related('calibration_fk').order_by("-datetime").first()
-        return JsonResponse({"message": "✅ Último reporte obtenido", "result": model_to_dict(obj) if obj else None})
+        result = None
+        if obj:
+            # Orden posicional idéntico a SQLite: el cliente lee
+            # last_report.value(16)/value(17) por índice (height_cv/height_mean).
+            result = _serialize_historic_report_sqlite_order(obj)
+        return JsonResponse({"message": "✅ Último reporte obtenido", "result": result})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener último reporte", "error": str(e)}, status=500)
 
@@ -153,15 +209,24 @@ def get_order_last_report(request: HttpRequest):
         last_id = request.GET.get("last_id")
         if not last_id:
             return JsonResponse({"message": "❌ El parámetro 'last_id' es requerido", "error": "last_id required"}, status=400)
-        # Match local: SELECT ordering FROM calibrations INNER JOIN historic_reports
-        # WHERE historic_reports.calibration_id = :last_calibration
-        # Match local: Client sends NAME (e.g., "MASA A") as last_id, not integer ID.
-        obj = HistoricReport.objects.filter(
-            calibration_fk__name=last_id,
-            factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)
-        ).select_related('calibration_fk').order_by("-datetime").first()
-        
-        ordering = obj.calibration_fk.ordering if obj and obj.calibration_fk else None
+        # Contrato canónico (SQLite): SELECT ordering FROM calibrations
+        # WHERE calibrations.id = :last_calibration. El cliente envía el ID
+        # numérico de la calibración (confirmado contra historic_reports.py:129
+        # y historic_reports_table.py:185, que filtran por calibration_id).
+        # Se mantiene fallback por nombre por compatibilidad con flujos antiguos
+        # que pudieran enviar el nombre en vez del id.
+        factory_id = request.META.get('HTTP_X_FACTORY_ID', 1)
+        calibration = None
+        if str(last_id).isdigit():
+            calibration = Calibration.objects.filter(
+                id=int(last_id), factory_id=factory_id
+            ).first()
+        if calibration is None:
+            calibration = Calibration.objects.filter(
+                name=last_id, factory_id=factory_id
+            ).first()
+
+        ordering = calibration.ordering if calibration else None
         return JsonResponse({"message": "✅ Orden obtenido", "ordering": ordering})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al obtener orden", "error": str(e)}, status=500)

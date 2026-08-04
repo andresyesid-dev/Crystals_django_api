@@ -15,6 +15,11 @@ COPY . .
 # Expose port
 EXPOSE 8000
 
+# PYTHONUNBUFFERED: forces Python to flush stdout/stderr immediately so logs
+# from Django (running inside gunicorn workers) appear in Railway in real time.
+ENV PYTHONUNBUFFERED=1
+
 # Command to run the application
 # Runs pending migrations then starts gunicorn
-CMD sh -c "python manage.py migrate --no-input && gunicorn crystals_project.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 3"
+# --access-logfile - : sends gunicorn's per-request log to stdout (Railway captures it)
+CMD sh -c "python manage.py migrate --no-input && gunicorn crystals_project.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 3 --access-logfile -"

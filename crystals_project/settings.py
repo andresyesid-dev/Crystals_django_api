@@ -49,7 +49,15 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # T0 — Instrumentación: primero del todo para cronometrar el tiempo TOTAL
+    # de servidor, incluido el trabajo de los demás middlewares.
+    'crystals_app.perf_middleware.PerformanceTimingMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    # T3 — Compresión: alto en la pila para comprimir la respuesta final.
+    # Va después de SecurityMiddleware de Django (que solo fija headers) y
+    # antes de las vistas; el cliente envía Accept-Encoding: gzip y descomprime
+    # de forma transparente.
+    'django.middleware.gzip.GZipMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'crystals_app.middleware.SecurityMonitoringMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -209,9 +217,29 @@ REST_FRAMEWORK = {
 from datetime import timedelta
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=3650),  # ~100 years (effectively infinite)
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=3650),
-    'ROTATE_REFRESH_TOKENS': False,  # No need to rotate if they never expire
+    # Un JWT es stateless: se valida por firma, no contra la base de datos. Por
+    # eso un access token NO se puede revocar y su expiración corta ES el
+    # mecanismo de revocación. Antes eran 3650 días (~10 años), lo que en la
+    # práctica significaba "sin revocación posible": un token filtrado seguía
+    # siendo válido una década y la única forma de matarlo era rotar la
+    # SECRET_KEY, invalidando de golpe las ~70 instalaciones.
+    #
+    # 60 min cubre de sobra cualquier operación larga del cliente. Al expirar,
+    # APIClient._make_request ya reacciona al 401 renovando de forma
+    # transparente (refresh -> y si falla, login completo). El operador nunca ve
+    # nada: las credenciales de servicio viven en el cliente, no se le piden.
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    # 30 días: una estación que pase semanas sin conexión reconecta y renueva
+    # sin fricción. Si aun así el refresh hubiera caducado, el cliente cae al
+    # login completo, que siempre funciona. No hay modo de fallo para el usuario.
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
+    # NO activar la rotación: /auth/token/refresh no devuelve un refresh nuevo y
+    # el cliente conserva el que ya tenía (client.py, `result.get('refresh',
+    # refresh_token)`). Con rotación + BLACKLIST_AFTER_ROTATION, ese refresh
+    # quedaría en la lista negra mientras el cliente lo sigue usando: se
+    # autobloquearía. Rotar exige antes devolver el refresh nuevo en la
+    # respuesta y que el cliente lo persista.
+    'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
     'UPDATE_LAST_LOGIN': True,
     'ALGORITHM': 'HS256',
@@ -270,6 +298,10 @@ LOGGING = {
             'format': '[SECURITY] {asctime} {levelname} {message} - IP: {extra_ip} - User: {extra_user}',
             'style': '{',
         },
+        'perf': {
+            'format': '{asctime} {message}',
+            'style': '{',
+        },
     },
     'handlers': {
         'file': {
@@ -283,6 +315,12 @@ LOGGING = {
             'class': 'logging.FileHandler',
             'filename': 'security.log',
             'formatter': 'security',
+        },
+        'perf_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'performance.log',
+            'formatter': 'perf',
         },
         'console': {
             'level': 'DEBUG',
@@ -305,6 +343,11 @@ LOGGING = {
             'handlers': ['file', 'console'],
             'level': 'DEBUG',
             'propagate': True,
+        },
+        'crystals_perf': {
+            'handlers': ['perf_file'],
+            'level': 'INFO',
+            'propagate': False,
         },
     },
 }

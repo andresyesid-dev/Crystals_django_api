@@ -1,15 +1,19 @@
 from django.http import JsonResponse, HttpRequest
 from ..decorators import jwt_required, permission_required, log_api_access, sensitive_endpoint
+from ..cache_utils import cached_per_factory, bump_cache_version
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.forms.models import model_to_dict
 from ..models import CrystalsDataParametrizationNewParams
 import json
 
+_CACHE_GROUP = 'crystals_data_param_nw'
+
 
 @require_http_methods(["GET"])
 @jwt_required
 @log_api_access
+@cached_per_factory(_CACHE_GROUP)
 def get_crystals_data_parametrization_nw_params(request: HttpRequest):
     try:
         data = []
@@ -38,6 +42,7 @@ def update_crystals_data_parametrization_nw_params(request: HttpRequest):
                 CrystalsDataParametrizationNewParams.objects.filter(parameter=parameter, categoria=categoria, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1)).update(
                     range_from=ranges.get("range_from"), range_to=ranges.get("range_to")
                 )
+        bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Parametrización actualizada exitosamente", "ok": True})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al actualizar parametrización", "error": str(e)}, status=500)
@@ -60,6 +65,7 @@ def add_new_newprms_parameters(request: HttpRequest):
                 CrystalsDataParametrizationNewParams.objects.create(parameter=parametro, categoria=categoria, factory_id=request.META.get('HTTP_X_FACTORY_ID', 1))
         # NOTE: Do NOT delete parameters not in incoming list.
         # Parameters must persist even when a new analysis category is removed.
+        bump_cache_version(_CACHE_GROUP, request.META.get('HTTP_X_FACTORY_ID', 1))
         return JsonResponse({"message": "✅ Parámetros agregados exitosamente", "ok": True, "added": list(to_add)})
     except Exception as e:
         return JsonResponse({"message": "❌ Error al agregar parámetros", "error": str(e)}, status=500)

@@ -9,6 +9,7 @@ psycopg2-binary==2.9.10
 
 # Password Hashing (match crystals app)
 pbkdf2==1.3
+bcrypt==5.0.0  # login de fábrica (credentials_factory), misma versión que el cliente
 
 # Django REST Framework & JWT Authentication
 djangorestframework==3.16.1

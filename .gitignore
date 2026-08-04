@@ -8,5 +8,15 @@ env/
 # macOS
 .DS_Store
 
+# Logs de runtime (no versionar)
+*.log
+
+# Base de datos local (SQLite de pruebas)
+*.sqlite3
+
+# Editores
+.vscode/
+.idea/
+
 # Otros
 node_modules/
